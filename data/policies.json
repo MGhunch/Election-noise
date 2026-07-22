@@ -1,30 +1,246 @@
 {
   "updated": "2026-07-22",
-  "note": "Imported from the uploaded NZ Election 2026 policy database HTML. Titles, party, size and verification status are preserved. The original six categories have been mapped to the nine Election Noise conversations.",
+  "note": "Sources verified against RNZ election coverage 22 July 2026. Two policies (TPM justice items) source to Te Ao Maori News pending RNZ match; ACT crime package and NZ First sentencing pledge remain unsourced.",
   "policies": [
-    {"id":"policy-001","party":"Green","title":"A Home for Everybody — 40k homes, rent caps","conversation":"Housing","secondary":"Cost of Living","size":"Flagship","verified":false,"source":""},
-    {"id":"policy-002","party":"Labour","title":"Medicard — 3 free GP visits","conversation":"Health","secondary":"Cost of Living","size":"Flagship","verified":true,"source":""},
-    {"id":"policy-003","party":"Labour","title":"Free prescriptions, scans, screening","conversation":"Health","secondary":"Cost of Living","size":"Significant","verified":false,"source":""},
-    {"id":"policy-004","party":"Te Pāti Māori","title":"Kaupapa Māori mental health investment","conversation":"Health","secondary":"Crime & Justice","size":"Significant","verified":false,"source":""},
-    {"id":"policy-005","party":"Labour","title":"NZ Future Fund","conversation":"Future & Infrastructure","secondary":"","size":"Significant","verified":true,"source":""},
-    {"id":"policy-006","party":"Labour","title":"Expand Apprenticeship Boost","conversation":"Education","secondary":"Economy","size":"Narrow","verified":false,"source":""},
-    {"id":"policy-007","party":"TOP","title":"Productivity Unleashed — R&D 2% GDP, AI rules","conversation":"Future & Infrastructure","secondary":"Economy","size":"Significant","verified":true,"source":""},
-    {"id":"policy-008","party":"Labour","title":"$20/week public transport fare cap","conversation":"Cost of Living","secondary":"","size":"Significant","verified":true,"source":""},
-    {"id":"policy-009","party":"Labour","title":"SolarSaver + $3k solar grants","conversation":"Cost of Living","secondary":"Housing","size":"Narrow","verified":false,"source":""},
-    {"id":"policy-010","party":"Green","title":"Winter Energy Payment for students","conversation":"Cost of Living","secondary":"","size":"Narrow","verified":true,"source":""},
-    {"id":"policy-011","party":"National","title":"Home Energy Fund","conversation":"Cost of Living","secondary":"Housing","size":"Narrow","verified":false,"source":""},
-    {"id":"policy-012","party":"TOP","title":"Rein in monopolies — banks, supermarkets","conversation":"Cost of Living","secondary":"Economy","size":"Significant","verified":true,"source":""},
-    {"id":"policy-013","party":"Labour","title":"28% targeted CGT on property","conversation":"Economy","secondary":"Health","size":"Flagship","verified":true,"source":""},
-    {"id":"policy-014","party":"National","title":"Compulsory KiwiSaver + Baby Boost","conversation":"Economy","secondary":"Cost of Living","size":"Flagship","verified":true,"source":""},
-    {"id":"policy-015","party":"Green","title":"Wealth, corporate + inheritance taxes","conversation":"Economy","secondary":"Cost of Living","size":"Flagship","verified":true,"source":""},
-    {"id":"policy-016","party":"ACT","title":"Shrink govt — 43 depts to 19","conversation":"Government & Democracy","secondary":"Economy","size":"Flagship","verified":true,"source":""},
-    {"id":"policy-017","party":"NZ First","title":"Offshore oil and gas surveys","conversation":"Cost of Living","secondary":"Economy","size":"Flagship","verified":true,"source":""},
-    {"id":"policy-018","party":"NZ First","title":"Revive National Bank / BNZ","conversation":"Economy","secondary":"Cost of Living","size":"Flagship","verified":true,"source":""},
-    {"id":"policy-019","party":"NZ First","title":"Compulsory KiwiSaver, 10% contributions","conversation":"Economy","secondary":"Cost of Living","size":"Significant","verified":true,"source":""},
-    {"id":"policy-020","party":"TOP","title":"Abundant Energy — 30GW by 2050","conversation":"Cost of Living","secondary":"Economy","size":"Flagship","verified":true,"source":""},
-    {"id":"policy-021","party":"Te Pāti Māori","title":"Abolish prisons by 2040","conversation":"Crime & Justice","secondary":"Health","size":"Flagship","verified":false,"source":""},
-    {"id":"policy-022","party":"National","title":"Sexual offenders sentencing","conversation":"Crime & Justice","secondary":"","size":"Significant","verified":true,"source":""},
-    {"id":"policy-023","party":"ACT","title":"Five-policy crime package","conversation":"Crime & Justice","secondary":"","size":"Significant","verified":false,"source":""},
-    {"id":"policy-024","party":"NZ First","title":"Sentencing Act reform pledge","conversation":"Crime & Justice","secondary":"","size":"Narrow","verified":false,"source":""}
+    {
+      "id": "policy-001",
+      "party": "Green",
+      "title": "A Home for Everybody — 40k homes, rent caps",
+      "conversation": "Housing",
+      "secondary": "Cost of Living",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/political/590598/greens-promise-to-cap-rent-rises-at-2-percent-a-year"
+    },
+    {
+      "id": "policy-002",
+      "party": "Labour",
+      "title": "Medicard — 3 free GP visits",
+      "conversation": "Health",
+      "secondary": "Cost of Living",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax"
+    },
+    {
+      "id": "policy-003",
+      "party": "Labour",
+      "title": "Free prescriptions, scans, screening",
+      "conversation": "Health",
+      "secondary": "Cost of Living",
+      "size": "Significant",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/598331/labour-promises-free-maternity-scans-if-elected"
+    },
+    {
+      "id": "policy-004",
+      "party": "Te Pāti Māori",
+      "title": "Kaupapa Māori mental health investment",
+      "conversation": "Health",
+      "secondary": "Crime & Justice",
+      "size": "Significant",
+      "verified": false,
+      "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/"
+    },
+    {
+      "id": "policy-005",
+      "party": "Labour",
+      "title": "NZ Future Fund",
+      "conversation": "Future & Infrastructure",
+      "secondary": "",
+      "size": "Significant",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/576428/labour-announces-future-fund-as-first-key-election-policy"
+    },
+    {
+      "id": "policy-006",
+      "party": "Labour",
+      "title": "Expand Apprenticeship Boost",
+      "conversation": "Education",
+      "secondary": "Economy",
+      "size": "Narrow",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/633845/election-26-labour-proposes-apprenticeship-boost-expansion"
+    },
+    {
+      "id": "policy-007",
+      "party": "TOP",
+      "title": "Productivity Unleashed — R&D 2% GDP, AI rules",
+      "conversation": "Future & Infrastructure",
+      "secondary": "Economy",
+      "size": "Significant",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies"
+    },
+    {
+      "id": "policy-008",
+      "party": "Labour",
+      "title": "$20/week public transport fare cap",
+      "conversation": "Cost of Living",
+      "secondary": "",
+      "size": "Significant",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/597767/labour-vows-to-put-20-a-week-cap-on-public-transport-10-outside-main-centres"
+    },
+    {
+      "id": "policy-009",
+      "party": "Labour",
+      "title": "SolarSaver + $3k solar grants",
+      "conversation": "Cost of Living",
+      "secondary": "Housing",
+      "size": "Narrow",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar"
+    },
+    {
+      "id": "policy-010",
+      "party": "Green",
+      "title": "Winter Energy Payment for students",
+      "conversation": "Cost of Living",
+      "secondary": "",
+      "size": "Narrow",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/political/593910/green-party-advocates-increased-energy-support-for-students"
+    },
+    {
+      "id": "policy-011",
+      "party": "National",
+      "title": "Home Energy Fund",
+      "conversation": "Cost of Living",
+      "secondary": "Housing",
+      "size": "Narrow",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar"
+    },
+    {
+      "id": "policy-012",
+      "party": "TOP",
+      "title": "Rein in monopolies — banks, supermarkets",
+      "conversation": "Cost of Living",
+      "secondary": "Economy",
+      "size": "Significant",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies"
+    },
+    {
+      "id": "policy-013",
+      "party": "Labour",
+      "title": "28% targeted CGT on property",
+      "conversation": "Economy",
+      "secondary": "Health",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax"
+    },
+    {
+      "id": "policy-014",
+      "party": "National",
+      "title": "Compulsory KiwiSaver + Baby Boost",
+      "conversation": "Economy",
+      "secondary": "Cost of Living",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/609851/national-to-make-kiwisaver-compulsory-if-elected"
+    },
+    {
+      "id": "policy-015",
+      "party": "Green",
+      "title": "Wealth, corporate + inheritance taxes",
+      "conversation": "Economy",
+      "secondary": "Cost of Living",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/609649/greens-propose-wealth-corporate-and-inheritance-taxes-to-fund-income-tax-changes"
+    },
+    {
+      "id": "policy-016",
+      "party": "ACT",
+      "title": "Shrink govt — 43 depts to 19",
+      "conversation": "Government & Democracy",
+      "secondary": "Economy",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/634881/act-party-leader-david-seymour-takes-aim-at-parliamentary-allies-opponents-but-especially-labour"
+    },
+    {
+      "id": "policy-017",
+      "party": "NZ First",
+      "title": "Offshore oil and gas surveys",
+      "conversation": "Cost of Living",
+      "secondary": "Economy",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/742372/nz-first-promises-to-invest-in-oil-gas-surveys"
+    },
+    {
+      "id": "policy-018",
+      "party": "NZ First",
+      "title": "Revive National Bank / BNZ",
+      "conversation": "Economy",
+      "secondary": "Cost of Living",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan"
+    },
+    {
+      "id": "policy-019",
+      "party": "NZ First",
+      "title": "Compulsory KiwiSaver, 10% contributions",
+      "conversation": "Economy",
+      "secondary": "Cost of Living",
+      "size": "Significant",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan"
+    },
+    {
+      "id": "policy-020",
+      "party": "TOP",
+      "title": "Abundant Energy — 30GW by 2050",
+      "conversation": "Cost of Living",
+      "secondary": "Economy",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies"
+    },
+    {
+      "id": "policy-021",
+      "party": "Te Pāti Māori",
+      "title": "Abolish prisons by 2040",
+      "conversation": "Crime & Justice",
+      "secondary": "Health",
+      "size": "Flagship",
+      "verified": false,
+      "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/"
+    },
+    {
+      "id": "policy-022",
+      "party": "National",
+      "title": "Sexual offenders sentencing",
+      "conversation": "Crime & Justice",
+      "secondary": "",
+      "size": "Significant",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/political/595474/national-to-scrap-good-character-assessments-for-sex-offenders-at-sentencing"
+    },
+    {
+      "id": "policy-023",
+      "party": "ACT",
+      "title": "Five-policy crime package",
+      "conversation": "Crime & Justice",
+      "secondary": "",
+      "size": "Significant",
+      "verified": false,
+      "source": ""
+    },
+    {
+      "id": "policy-024",
+      "party": "NZ First",
+      "title": "Sentencing Act reform pledge",
+      "conversation": "Crime & Justice",
+      "secondary": "",
+      "size": "Narrow",
+      "verified": false,
+      "source": ""
+    }
   ]
 }
