@@ -316,6 +316,10 @@ h1 {
 }
 
 .policy-row {
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
   text-align: left;
   display: grid;
   grid-template-columns: 28px minmax(0, 1fr) auto;
@@ -323,6 +327,12 @@ h1 {
   align-items: center;
   padding: 13px 14px;
   background: var(--white);
+  transition: background 140ms ease;
+}
+
+.policy-row:hover,
+.policy-row:focus-visible {
+  background: var(--soft);
 }
 
 .policy-row-dot {
