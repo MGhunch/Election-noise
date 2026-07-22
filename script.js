@@ -26,7 +26,7 @@ const PARTY_COLOURS = {
   "Green": "#159447",
   "ACT": "#f1c40f",
   "NZ First": "#54565A",
-  "Te Pāti Māori": "#111111",
+  "Te Pāti Māori": "#7A4033",
   "TOP": "#1b8f9c"
 };
 
