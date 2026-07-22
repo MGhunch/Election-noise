@@ -31,7 +31,7 @@ const PARTY_COLOURS = {
 };
 
 const SIZE_MAP = {
-  "Narrow": 18,
+  "Niche": 18,
   "Significant": 27,
   "Flagship": 40
 };
@@ -174,7 +174,7 @@ function renderGrid() {
 
 function renderCircle(policy) {
   const colour = PARTY_COLOURS[policy.party] || "#777777";
-  const size = SIZE_MAP[policy.size] || SIZE_MAP.Narrow;
+  const size = SIZE_MAP[policy.size] || SIZE_MAP.Niche;
   const classes = [
     "policy-circle",
     policy.verified === false ? "is-unverified" : ""
