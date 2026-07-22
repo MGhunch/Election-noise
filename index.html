@@ -22,8 +22,23 @@
     </div>
   </header>
 
+  <nav class="view-toggle" aria-label="View">
+    <button class="view-tab" type="button" data-view="shape" aria-pressed="false">Shape</button>
+    <button class="view-tab" type="button" data-view="size" aria-pressed="true">Size</button>
+  </nav>
+
   <main>
-    <section id="conversation-grid" class="conversation-grid" aria-label="Election conversations"></section>
+    <section id="conversation-grid" class="conversation-grid view-pane" data-view-pane="size" aria-label="Election conversations"></section>
+
+    <section id="shape-view" class="shape-view view-pane" data-view-pane="shape" hidden aria-label="The shape of the shouting">
+      <div class="shape-line shape-line-h"></div>
+      <div class="shape-line shape-line-v"></div>
+      <div class="shape-axis shape-axis-top">Big picture thinking</div>
+      <div class="shape-axis shape-axis-bottom">Back pocket cash</div>
+      <div class="shape-axis shape-axis-left">Soon</div>
+      <div class="shape-axis shape-axis-right">Later</div>
+      <div id="shape-field" class="shape-field"></div>
+    </section>
 
     <section class="controls" aria-label="Party filters">
       <div id="party-filters" class="party-filters"></div>

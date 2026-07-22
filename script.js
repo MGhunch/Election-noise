@@ -39,6 +39,7 @@ const SIZE_MAP = {
 let policies = [];
 let activeParties = new Set();
 let openConversation = null;
+let currentView = "size";
 
 const grid = document.querySelector("#conversation-grid");
 const filters = document.querySelector("#party-filters");
@@ -63,6 +64,7 @@ async function init() {
     renderFilters();
     renderGrid();
     bindStaticControls();
+    bindViewToggle();
   } catch (error) {
     grid.innerHTML = `
       <div class="conversation-card" style="grid-column: 1 / -1;">
@@ -254,11 +256,11 @@ function renderDetail(conversation) {
     ? allConversationPolicies
     : allConversationPolicies.filter(policy => activeParties.has(policy.party));
 
-  const partyContext = activeParties.size === 0 ? "" : ` Showing ${[...activeParties].join(", ")}.`;
+  const partyContext = activeParties.size === 0 ? "" : `Showing ${[...activeParties].join(", ")}.`;
 
   document.querySelector("#detail-title").textContent = conversation;
   document.querySelector("#detail-summary").textContent =
-    `${noiseLevel(allConversationPolicies)}${partyContext}`;
+    [noiseLevel(allConversationPolicies), partyContext].filter(Boolean).join(". ");
 
   const list = document.querySelector("#detail-policies");
 
@@ -345,14 +347,199 @@ function bindStaticControls() {
     });
 }
 
+function bindViewToggle() {
+  document.querySelectorAll(".view-tab").forEach(button => {
+    button.addEventListener("click", () => switchView(button.dataset.view));
+  });
+}
+
+function switchView(view) {
+  if (view === currentView) return;
+
+  const outgoing = document.querySelector(`[data-view-pane="${currentView}"]`);
+  const incoming = document.querySelector(`[data-view-pane="${view}"]`);
+
+  currentView = view;
+
+  document.querySelectorAll(".view-tab").forEach(tab => {
+    tab.setAttribute("aria-pressed", String(tab.dataset.view === view));
+  });
+
+  outgoing.classList.add("is-transitioning");
+
+  window.setTimeout(() => {
+    outgoing.hidden = true;
+    outgoing.classList.remove("is-transitioning");
+
+    incoming.hidden = false;
+    incoming.classList.add("is-transitioning");
+
+    if (view === "shape") renderShape();
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        incoming.classList.remove("is-transitioning");
+      });
+    });
+  }, 220);
+}
+
+function renderShape() {
+  const field = document.querySelector("#shape-field");
+  const rect = field.getBoundingClientRect();
+  const width = rect.width || 1000;
+  const height = rect.height || 540;
+  const margin = 70;
+  const centerX = width / 2;
+  const centerY = height / 2;
+
+  const nodes = policies.map(policy => {
+    const radius = (SIZE_MAP[policy.size] || SIZE_MAP.Niche) / 2 * 0.7;
+    const jitter = hashJitter(policy.id);
+    const targetX = margin + ((policy.immediacy - 1) / 4) * (width - margin * 2) + jitter.x;
+    const targetY = margin + ((5 - policy.mechanism) / 4) * (height - margin * 2) + jitter.y;
+    return { policy, radius, targetX, targetY, x: targetX, y: targetY };
+  });
+
+  // Stage-pull + collide relaxation: nodes are pulled toward their true
+  // Immediacy/Mechanism position each step, pushed apart only when they
+  // overlap more than the "squash" allowance, and given a gentle overall
+  // pull toward the shared centre so the five stage-columns read as one
+  // connected mass rather than five separate little clusters.
+  for (let iteration = 0; iteration < 260; iteration++) {
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const distance = Math.sqrt(dx * dx + dy * dy) || 0.01;
+        const minDistance = a.radius + b.radius;
+
+        if (distance < minDistance) {
+          const overlap = (minDistance - distance) / 2;
+          const nx = dx / distance;
+          const ny = dy / distance;
+          a.x -= nx * overlap;
+          a.y -= ny * overlap;
+          b.x += nx * overlap;
+          b.y += ny * overlap;
+        }
+      }
+    }
+
+    nodes.forEach(node => {
+      node.x += (node.targetX - node.x) * 0.018;
+      node.y += (node.targetY - node.y) * 0.03;
+      node.x += (centerX - node.x) * 0.01;
+      node.y += (centerY - node.y) * 0.01;
+      node.x = Math.max(node.radius, Math.min(width - node.radius, node.x));
+      node.y = Math.max(node.radius, Math.min(height - node.radius, node.y));
+    });
+  }
+
+  field.classList.remove("is-ready");
+
+  const calloutX = width / 2 + (width / 2 - margin) / 2;
+  const calloutY = height / 2 + (height / 2 - margin) / 2;
+
+  const calloutHtml = `
+    <span
+      class="shape-callout"
+      tabindex="0"
+      role="note"
+      data-tooltip="Nothing much here, because cost of living policies are a short term thing."
+      style="left:${calloutX}px; top:${calloutY}px"
+    ></span>
+  `;
+
+  field.innerHTML = calloutHtml + nodes.map((node, index) => {
+    const policy = node.policy;
+    const colour = PARTY_COLOURS[policy.party] || "#777777";
+    const classes = [
+      "policy-circle",
+      policy.verified === false ? "is-unverified" : ""
+    ].filter(Boolean).join(" ");
+
+    return `
+      <button
+        class="${classes}"
+        type="button"
+        aria-label="${escapeHtml(`${policy.party}: ${policy.title}. ${policy.size} policy.`)}"
+        data-policy-id="${escapeHtml(String(policy.id))}"
+        data-party="${escapeHtml(policy.party)}"
+        data-tooltip="${escapeHtml(policy.title)}"
+        style="--party-colour:${colour}; --circle-size:${node.radius * 2}px; --enter-delay:${Math.min(index * 12, 380)}ms; left:${centerX}px; top:${centerY}px"
+      ></button>
+    `;
+  }).join("");
+
+  field.querySelectorAll(".policy-circle").forEach(circle => {
+    circle.addEventListener("pointerenter", showTooltip);
+    circle.addEventListener("pointermove", moveTooltip);
+    circle.addEventListener("pointerleave", hideTooltip);
+    circle.addEventListener("focus", showTooltip);
+    circle.addEventListener("blur", hideTooltip);
+
+    circle.addEventListener("click", event => {
+      event.stopPropagation();
+      hideTooltip();
+      const policy = policies.find(item => String(item.id) === circle.dataset.policyId);
+      openPolicy(policy);
+    });
+  });
+
+  updateCircleFocus();
+
+  const callout = field.querySelector(".shape-callout");
+  callout.addEventListener("pointerenter", showTooltip);
+  callout.addEventListener("pointermove", moveTooltip);
+  callout.addEventListener("pointerleave", hideTooltip);
+  callout.addEventListener("focus", showTooltip);
+  callout.addEventListener("blur", hideTooltip);
+
+  // Spawn every circle at the field's centre, then on the next frame move
+  // them all out to their true position together — one blob assembling
+  // itself, not 44 dots appearing where they land.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      field.classList.add("is-ready");
+      const circles = field.querySelectorAll(".policy-circle");
+      nodes.forEach((node, index) => {
+        circles[index].style.left = `${node.x}px`;
+        circles[index].style.top = `${node.y}px`;
+      });
+    });
+  });
+}
+
+function hashJitter(id) {
+  const hashX = hashString(`${id}-x`);
+  const hashY = hashString(`${id}-y`);
+  const spreadX = 78;
+  const spreadY = 42;
+  return {
+    x: (((hashX % 2000) / 2000) - 0.5) * 2 * spreadX,
+    y: (((hashY % 2000) / 2000) - 0.5) * 2 * spreadY
+  };
+}
+
+function hashString(value) {
+  let hash = 0;
+  for (let i = 0; i < value.length; i++) {
+    hash = (hash * 31 + value.charCodeAt(i)) | 0;
+  }
+  return Math.abs(hash);
+}
+
 function noiseLevel(conversationPolicies) {
   const score = conversationPolicies.reduce(
     (sum, p) => sum + sizeWeight(p.size) * (p.verified === false ? 0.5 : 1), 0);
-  if (score === 0) return "Nothing to see.";
-  if (score <= 3) return "Not much noise.";
-  if (score <= 7) return "A bit of noise.";
-  if (score <= 12) return "Lots of noise.";
-  return "Really quite noisy.";
+  if (score === 0) return "Nothing to see";
+  if (score <= 3) return "Not much noise";
+  if (score <= 7) return "A bit of noise";
+  if (score <= 12) return "Lots of noise";
+  return "Really quite noisy";
 }
 
 function sizeWeight(size) {
