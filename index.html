@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Election Noise</title>
+  <meta name="description" content="The shape of the election conversation.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">New Zealand election policy map</p>
+      <h1>Election Noise</h1>
+      <p class="dek">The shape of the election conversation.</p>
+    </div>
+
+    <div class="update-block" aria-live="polite">
+      <strong id="policy-count">0 policies</strong>
+      <span id="updated-date">Loading…</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Party filters">
+      <div id="party-filters" class="party-filters"></div>
+      <button id="about-button" class="text-button" type="button">How it works</button>
+    </section>
+
+    <section id="conversation-grid" class="conversation-grid" aria-label="Election conversations"></section>
+
+    <section id="detail-panel" class="detail-panel" hidden aria-live="polite">
+      <div class="detail-heading">
+        <div>
+          <p class="eyebrow">Conversation</p>
+          <h2 id="detail-title"></h2>
+          <p id="detail-summary" class="detail-summary"></p>
+        </div>
+        <button id="close-detail" class="close-button" type="button" aria-label="Close conversation details">×</button>
+      </div>
+      <div id="detail-policies" class="policy-list"></div>
+    </section>
+  </main>
+
+  <dialog id="policy-dialog" class="policy-dialog">
+    <button id="close-policy" class="close-button dialog-close" type="button" aria-label="Close policy details">×</button>
+    <p id="dialog-party" class="eyebrow"></p>
+    <h2 id="dialog-title"></h2>
+    <dl class="policy-meta">
+      <div><dt>Conversation</dt><dd id="dialog-conversation"></dd></div>
+      <div><dt>Impact</dt><dd id="dialog-size"></dd></div>
+      <div><dt>Status</dt><dd id="dialog-status"></dd></div>
+    </dl>
+    <a id="dialog-source" class="source-link" href="#" target="_blank" rel="noopener">View source</a>
+  </dialog>
+
+  <dialog id="about-dialog" class="about-dialog">
+    <button id="close-about" class="close-button dialog-close" type="button" aria-label="Close">×</button>
+    <p class="eyebrow">How it works</p>
+    <h2>One circle. One policy.</h2>
+    <p>Circle colour shows the party. Circle size reflects the likely scale of the policy: flagship, significant or narrow.</p>
+    <p>Each policy has one primary conversation. Select a party to bring its campaign into focus, or open a conversation to see the full list.</p>
+    <p class="method-note">Policies should be sourced from the RNZ Policy Tracker. Conversation labels and impact weightings are editorial classifications by Election Noise.</p>
+  </dialog>
+
+  <footer>
+    <span>Election Noise</span>
+    <span>Built by Hunch</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

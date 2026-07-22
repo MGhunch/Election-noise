@@ -1,0 +1,286 @@
+{
+  "updated": "2026-07-22",
+  "note": "DEMO DATA ONLY. Replace these entries with verified policies and source URLs before launch.",
+  "policies": [
+    {
+      "id": "demo-01",
+      "party": "Labour",
+      "title": "Demo: three free GP visits",
+      "conversation": "Health",
+      "secondary": "Cost of Living",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-02",
+      "party": "National",
+      "title": "Demo: elective surgery boost",
+      "conversation": "Health",
+      "secondary": "",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-03",
+      "party": "Green",
+      "title": "Demo: free dental care",
+      "conversation": "Health",
+      "secondary": "Cost of Living",
+      "size": "Flagship",
+      "verified": false,
+      "source": ""
+    },
+    {
+      "id": "demo-04",
+      "party": "Labour",
+      "title": "Demo: tax-free income threshold",
+      "conversation": "Cost of Living",
+      "secondary": "Economy",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-05",
+      "party": "National",
+      "title": "Demo: income tax adjustment",
+      "conversation": "Cost of Living",
+      "secondary": "Economy",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-06",
+      "party": "NZ First",
+      "title": "Demo: supermarket competition package",
+      "conversation": "Cost of Living",
+      "secondary": "Economy",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-07",
+      "party": "ACT",
+      "title": "Demo: reduce fuel levies",
+      "conversation": "Cost of Living",
+      "secondary": "Environment",
+      "size": "Narrow",
+      "verified": false,
+      "source": ""
+    },
+    {
+      "id": "demo-08",
+      "party": "Labour",
+      "title": "Demo: small business reinvestment credit",
+      "conversation": "Economy",
+      "secondary": "",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-09",
+      "party": "National",
+      "title": "Demo: infrastructure investment fund",
+      "conversation": "Economy",
+      "secondary": "Future & Infrastructure",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-10",
+      "party": "ACT",
+      "title": "Demo: public spending cap",
+      "conversation": "Economy",
+      "secondary": "Government & Democracy",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-11",
+      "party": "TOP",
+      "title": "Demo: tax system reform",
+      "conversation": "Economy",
+      "secondary": "Housing",
+      "size": "Flagship",
+      "verified": false,
+      "source": ""
+    },
+    {
+      "id": "demo-12",
+      "party": "Labour",
+      "title": "Demo: first-home co-ownership scheme",
+      "conversation": "Housing",
+      "secondary": "Cost of Living",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-13",
+      "party": "Green",
+      "title": "Demo: public housing build programme",
+      "conversation": "Housing",
+      "secondary": "",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-14",
+      "party": "National",
+      "title": "Demo: planning reform",
+      "conversation": "Housing",
+      "secondary": "Economy",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-15",
+      "party": "Labour",
+      "title": "Demo: teacher workforce package",
+      "conversation": "Education",
+      "secondary": "",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-16",
+      "party": "ACT",
+      "title": "Demo: school attendance sanctions",
+      "conversation": "Education",
+      "secondary": "Government & Democracy",
+      "size": "Narrow",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-17",
+      "party": "Te Pāti Māori",
+      "title": "Demo: kaupapa Māori education investment",
+      "conversation": "Education",
+      "secondary": "",
+      "size": "Flagship",
+      "verified": false,
+      "source": ""
+    },
+    {
+      "id": "demo-18",
+      "party": "National",
+      "title": "Demo: additional police recruitment",
+      "conversation": "Crime & Justice",
+      "secondary": "",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-19",
+      "party": "Labour",
+      "title": "Demo: youth crime prevention package",
+      "conversation": "Crime & Justice",
+      "secondary": "Education",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-20",
+      "party": "NZ First",
+      "title": "Demo: tougher sentencing rules",
+      "conversation": "Crime & Justice",
+      "secondary": "",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-21",
+      "party": "Green",
+      "title": "Demo: clean energy transition fund",
+      "conversation": "Environment",
+      "secondary": "Future & Infrastructure",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-22",
+      "party": "National",
+      "title": "Demo: fast-track consenting reform",
+      "conversation": "Environment",
+      "secondary": "Economy",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-23",
+      "party": "Labour",
+      "title": "Demo: national AI capability programme",
+      "conversation": "Future & Infrastructure",
+      "secondary": "Economy",
+      "size": "Significant",
+      "verified": false,
+      "source": ""
+    },
+    {
+      "id": "demo-24",
+      "party": "National",
+      "title": "Demo: major roads programme",
+      "conversation": "Future & Infrastructure",
+      "secondary": "Economy",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-25",
+      "party": "TOP",
+      "title": "Demo: long-term resilience fund",
+      "conversation": "Future & Infrastructure",
+      "secondary": "Environment",
+      "size": "Significant",
+      "verified": false,
+      "source": ""
+    },
+    {
+      "id": "demo-26",
+      "party": "Te Pāti Māori",
+      "title": "Demo: constitutional transformation process",
+      "conversation": "Government & Democracy",
+      "secondary": "",
+      "size": "Flagship",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-27",
+      "party": "ACT",
+      "title": "Demo: public service restructure",
+      "conversation": "Government & Democracy",
+      "secondary": "Economy",
+      "size": "Significant",
+      "verified": true,
+      "source": ""
+    },
+    {
+      "id": "demo-28",
+      "party": "Green",
+      "title": "Demo: voting age reform",
+      "conversation": "Government & Democracy",
+      "secondary": "",
+      "size": "Narrow",
+      "verified": false,
+      "source": ""
+    }
+  ]
+}
