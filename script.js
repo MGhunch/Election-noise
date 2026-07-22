@@ -25,8 +25,8 @@ const PARTY_COLOURS = {
   "National": "#0057b8",
   "Green": "#159447",
   "ACT": "#f1c40f",
-  "NZ First": "#111111",
-  "Te Pāti Māori": "#7b2b83",
+  "NZ First": "#54565A",
+  "Te Pāti Māori": "#111111",
   "TOP": "#1b8f9c"
 };
 
@@ -269,7 +269,7 @@ function renderDetail(conversation) {
 
   list.innerHTML = visiblePolicies.map(policy => `
     <button class="policy-row" type="button" data-detail-policy="${escapeHtml(String(policy.id))}">
-      <span class="policy-row-dot${policy.verified === false ? " is-unverified" : ""}" style="--party-colour:${PARTY_COLOURS[policy.party] || "#777"}; --dot-size:${Math.round(SIZE_MAP[policy.size] * 0.6)}px"></span>
+      <span class="policy-row-dot${policy.verified === false ? " is-unverified" : ""}" data-party="${escapeHtml(policy.party)}" style="--party-colour:${PARTY_COLOURS[policy.party] || "#777"}; --dot-size:${Math.round(SIZE_MAP[policy.size] * 0.6)}px"></span>
       <span>
         <strong>${escapeHtml(policy.title)}</strong>
         <small>${escapeHtml(policy.party)}${policy.secondary ? ` · also ${escapeHtml(policy.secondary)}` : ""}</small>

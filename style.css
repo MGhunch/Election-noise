@@ -660,3 +660,10 @@ footer {
     padding-top: 12px;
   }
 }
+
+
+.policy-circle[data-party="Te Pāti Māori"]:not(.is-unverified),
+.policy-row-dot[data-party="Te Pāti Māori"]:not(.is-unverified),
+.filter-button[data-party="Te Pāti Māori"] .party-dot {
+  background: linear-gradient(135deg, #111111 0 50%, #d2232a 50% 100%);
+}
