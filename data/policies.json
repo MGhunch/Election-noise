@@ -45,7 +45,7 @@
     {
       "id": "policy-005",
       "party": "Labour",
-      "title": "NZ Future Fund",
+      "title": "NZ Future Fund — SOE dividends into NZ investment, detail post-election",
       "conversation": "Future & Infrastructure",
       "secondary": "",
       "size": "Significant",
@@ -105,10 +105,10 @@
     {
       "id": "policy-011",
       "party": "National",
-      "title": "Home Energy Fund — low-interest loans for solar, batteries, insulation",
+      "title": "Home Energy Fund — solar and battery loans",
       "conversation": "Cost of Living",
       "secondary": "Housing",
-      "size": "Significant",
+      "size": "Niche",
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar"
     },
@@ -128,7 +128,7 @@
       "title": "28% targeted CGT on property",
       "conversation": "Economy",
       "secondary": "Health",
-      "size": "Flagship",
+      "size": "Significant",
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax"
     },
@@ -166,8 +166,8 @@
       "id": "policy-017",
       "party": "NZ First",
       "title": "Offshore oil and gas surveys",
-      "conversation": "Cost of Living",
-      "secondary": "Economy",
+      "conversation": "Future & Infrastructure",
+      "secondary": "Cost of Living",
       "size": "Flagship",
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/742372/nz-first-promises-to-invest-in-oil-gas-surveys"
@@ -196,8 +196,8 @@
       "id": "policy-020",
       "party": "TOP",
       "title": "Abundant Energy — 30GW by 2050",
-      "conversation": "Cost of Living",
-      "secondary": "Economy",
+      "conversation": "Future & Infrastructure",
+      "secondary": "Cost of Living",
       "size": "Flagship",
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies"
@@ -275,10 +275,10 @@
     {
       "id": "policy-028",
       "party": "TOP",
-      "title": "Affordable Housing",
+      "title": "Affordable Housing — land value tax, house prices must fall",
       "conversation": "Housing",
       "secondary": "Cost of Living",
-      "size": "Niche",
+      "size": "Significant",
       "verified": false,
       "source": "https://www.opportunity.org.nz/affordable_housing"
     },
@@ -305,7 +305,7 @@
     {
       "id": "policy-031",
       "party": "TOP",
-      "title": "Healthy People",
+      "title": "Healthy People — primary care focus, reinstate Smokefree 2025",
       "conversation": "Health",
       "secondary": "",
       "size": "Niche",
