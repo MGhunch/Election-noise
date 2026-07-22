@@ -43,6 +43,7 @@ let openConversation = null;
 const grid = document.querySelector("#conversation-grid");
 const filters = document.querySelector("#party-filters");
 const detailPanel = document.querySelector("#detail-panel");
+const floatingTooltip = document.querySelector("#floating-tooltip");
 
 async function init() {
   try {
@@ -116,11 +117,6 @@ function renderGrid() {
     );
 
     const partyCount = new Set(conversationPolicies.map(p => p.party)).size;
-    const noiseScore = conversationPolicies.reduce(
-      (total, policy) => total + sizeWeight(policy.size),
-      0
-    );
-
     const circles = conversationPolicies.length
       ? conversationPolicies
           .sort((a, b) => sizeWeight(b.size) - sizeWeight(a.size))
@@ -134,8 +130,7 @@ function renderGrid() {
           <h2>${escapeHtml(conversation)}</h2>
           <p class="conversation-stats">
             ${conversationPolicies.length} ${conversationPolicies.length === 1 ? "policy" : "policies"} ·
-            ${partyCount} ${partyCount === 1 ? "party" : "parties"} ·
-            ${noiseScore} noise
+            ${partyCount} ${partyCount === 1 ? "party" : "parties"}
           </p>
         </button>
         <div class="policy-field">
@@ -154,11 +149,26 @@ function renderGrid() {
     });
   });
 
-  grid.querySelectorAll(".policy-circle").forEach(circle => {
+  grid.querySelectorAll(".policy-circle").forEach((circle, index) => {
+    circle.style.setProperty("--enter-delay", `${Math.min(index * 24, 420)}ms`);
+
+    circle.addEventListener("pointerenter", showTooltip);
+    circle.addEventListener("pointermove", moveTooltip);
+    circle.addEventListener("pointerleave", hideTooltip);
+    circle.addEventListener("focus", showTooltip);
+    circle.addEventListener("blur", hideTooltip);
+
     circle.addEventListener("click", event => {
       event.stopPropagation();
+      hideTooltip();
       const policy = policies.find(item => String(item.id) === circle.dataset.policyId);
       openPolicy(policy);
+    });
+  });
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      grid.classList.add("is-ready");
     });
   });
 
@@ -180,10 +190,46 @@ function renderCircle(policy) {
       aria-label="${escapeHtml(`${policy.party}: ${policy.title}. ${policy.size} policy.`)}"
       data-policy-id="${escapeHtml(String(policy.id))}"
       data-party="${escapeHtml(policy.party)}"
-      data-tooltip="${escapeHtml(`${policy.party}: ${policy.title}`)}"
+      data-tooltip="${escapeHtml(policy.title)}"
       style="--party-colour:${colour}; --circle-size:${size}px"
     ></button>
   `;
+}
+
+function showTooltip(event) {
+  const circle = event.currentTarget;
+  floatingTooltip.textContent = circle.dataset.tooltip;
+  floatingTooltip.hidden = false;
+  moveTooltip(event);
+}
+
+function moveTooltip(event) {
+  if (floatingTooltip.hidden) return;
+
+  const anchor = event.currentTarget.getBoundingClientRect();
+  const pointerX = Number.isFinite(event.clientX) && event.clientX > 0
+    ? event.clientX
+    : anchor.left + anchor.width / 2;
+  const pointerY = Number.isFinite(event.clientY) && event.clientY > 0
+    ? event.clientY
+    : anchor.top;
+
+  const gap = 14;
+  const padding = 10;
+  const tooltipWidth = floatingTooltip.offsetWidth;
+  const tooltipHeight = floatingTooltip.offsetHeight;
+
+  let left = pointerX - tooltipWidth / 2;
+  left = Math.max(padding, Math.min(left, window.innerWidth - tooltipWidth - padding));
+
+  let top = pointerY - tooltipHeight - gap;
+  if (top < padding) top = pointerY + gap;
+
+  floatingTooltip.style.transform = `translate3d(${Math.round(left)}px, ${Math.round(top)}px, 0)`;
+}
+
+function hideTooltip() {
+  floatingTooltip.hidden = true;
 }
 
 function updateCircleFocus() {

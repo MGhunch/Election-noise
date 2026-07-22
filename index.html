@@ -10,9 +10,10 @@
 <body>
   <header class="site-header">
     <div>
-      <p class="eyebrow">New Zealand election policy map</p>
+      <p class="eyebrow">Who's saying what?</p>
       <h1>Election Noise</h1>
       <p class="dek">The shape of the election conversation.</p>
+      <p class="source-note">Election Noise: Policies as reported by Radio New Zealand</p>
     </div>
 
     <div class="update-block" aria-live="polite">
@@ -22,12 +23,14 @@
   </header>
 
   <main>
+    <section id="conversation-grid" class="conversation-grid" aria-label="Election conversations"></section>
+
     <section class="controls" aria-label="Party filters">
       <div id="party-filters" class="party-filters"></div>
       <button id="about-button" class="text-button" type="button">How it works</button>
     </section>
 
-    <section id="conversation-grid" class="conversation-grid" aria-label="Election conversations"></section>
+    <div id="floating-tooltip" class="floating-tooltip" role="tooltip" hidden></div>
 
     <section id="detail-panel" class="detail-panel" hidden aria-live="polite">
       <div class="detail-heading">
