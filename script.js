@@ -350,8 +350,9 @@ function noiseLevel(conversationPolicies) {
     (sum, p) => sum + sizeWeight(p.size) * (p.verified === false ? 0.5 : 1), 0);
   if (score === 0) return "Nothing to see.";
   if (score <= 3) return "Not much noise.";
-  if (score <= 8) return "A bit of noise.";
-  return "Lots of noise.";
+  if (score <= 7) return "A bit of noise.";
+  if (score <= 12) return "Lots of noise.";
+  return "Really quite noisy.";
 }
 
 function sizeWeight(size) {
