@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-22",
+  "updated": "2026-07-23",
   "note": "Solid circles reported by RNZ; outlined circles link to party websites. Full party-site sweep completed 22 Jul 2026.",
   "policies": [
     {
@@ -10,7 +10,9 @@
       "secondary": "Cost of Living",
       "size": "Flagship",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/political/590598/greens-promise-to-cap-rent-rises-at-2-percent-a-year"
+      "source": "https://www.rnz.co.nz/news/political/590598/greens-promise-to-cap-rent-rises-at-2-percent-a-year",
+      "immediacy": 2,
+      "mechanism": 4
     },
     {
       "id": "policy-002",
@@ -20,7 +22,9 @@
       "secondary": "Cost of Living",
       "size": "Flagship",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax"
+      "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax",
+      "immediacy": 1,
+      "mechanism": 3
     },
     {
       "id": "policy-003",
@@ -30,7 +34,9 @@
       "secondary": "Cost of Living",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/598331/labour-promises-free-maternity-scans-if-elected"
+      "source": "https://www.rnz.co.nz/news/politics/598331/labour-promises-free-maternity-scans-if-elected",
+      "immediacy": 1,
+      "mechanism": 3
     },
     {
       "id": "policy-004",
@@ -40,17 +46,21 @@
       "secondary": "Crime & Justice",
       "size": "Significant",
       "verified": false,
-      "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/"
+      "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/",
+      "immediacy": 2,
+      "mechanism": 3
     },
     {
       "id": "policy-005",
       "party": "Labour",
-      "title": "NZ Future Fund — SOE dividends into NZ investment, detail post-election",
+      "title": "NZ Future Fund — SOE dividends into NZ investment.",
       "conversation": "Future & Infrastructure",
       "secondary": "",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/576428/labour-announces-future-fund-as-first-key-election-policy"
+      "source": "https://www.rnz.co.nz/news/politics/576428/labour-announces-future-fund-as-first-key-election-policy",
+      "immediacy": 5,
+      "mechanism": 5
     },
     {
       "id": "policy-006",
@@ -60,7 +70,9 @@
       "secondary": "Economy",
       "size": "Niche",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/633845/election-26-labour-proposes-apprenticeship-boost-expansion"
+      "source": "https://www.rnz.co.nz/news/politics/633845/election-26-labour-proposes-apprenticeship-boost-expansion",
+      "immediacy": 2,
+      "mechanism": 1
     },
     {
       "id": "policy-007",
@@ -70,7 +82,9 @@
       "secondary": "Economy",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies"
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
+      "immediacy": 4,
+      "mechanism": 5
     },
     {
       "id": "policy-008",
@@ -80,7 +94,9 @@
       "secondary": "",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/597767/labour-vows-to-put-20-a-week-cap-on-public-transport-10-outside-main-centres"
+      "source": "https://www.rnz.co.nz/news/politics/597767/labour-vows-to-put-20-a-week-cap-on-public-transport-10-outside-main-centres",
+      "immediacy": 1,
+      "mechanism": 2
     },
     {
       "id": "policy-009",
@@ -90,7 +106,9 @@
       "secondary": "Housing",
       "size": "Niche",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar"
+      "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar",
+      "immediacy": 1,
+      "mechanism": 2
     },
     {
       "id": "policy-010",
@@ -100,7 +118,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/political/593910/green-party-advocates-increased-energy-support-for-students"
+      "source": "https://www.rnz.co.nz/news/political/593910/green-party-advocates-increased-energy-support-for-students",
+      "immediacy": 1,
+      "mechanism": 1
     },
     {
       "id": "policy-011",
@@ -110,7 +130,9 @@
       "secondary": "Housing",
       "size": "Niche",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar"
+      "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar",
+      "immediacy": 2,
+      "mechanism": 2
     },
     {
       "id": "policy-012",
@@ -120,7 +142,9 @@
       "secondary": "Economy",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies"
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
+      "immediacy": 3,
+      "mechanism": 4
     },
     {
       "id": "policy-013",
@@ -130,7 +154,9 @@
       "secondary": "Health",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax"
+      "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax",
+      "immediacy": 1,
+      "mechanism": 4
     },
     {
       "id": "policy-014",
@@ -140,7 +166,9 @@
       "secondary": "Cost of Living",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/609851/national-to-make-kiwisaver-compulsory-if-elected"
+      "source": "https://www.rnz.co.nz/news/politics/609851/national-to-make-kiwisaver-compulsory-if-elected",
+      "immediacy": 2,
+      "mechanism": 5
     },
     {
       "id": "policy-015",
@@ -150,7 +178,9 @@
       "secondary": "Cost of Living",
       "size": "Flagship",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/609649/greens-propose-wealth-corporate-and-inheritance-taxes-to-fund-income-tax-changes"
+      "source": "https://www.rnz.co.nz/news/politics/609649/greens-propose-wealth-corporate-and-inheritance-taxes-to-fund-income-tax-changes",
+      "immediacy": 2,
+      "mechanism": 4
     },
     {
       "id": "policy-016",
@@ -160,7 +190,9 @@
       "secondary": "Economy",
       "size": "Flagship",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/634881/act-party-leader-david-seymour-takes-aim-at-parliamentary-allies-opponents-but-especially-labour"
+      "source": "https://www.rnz.co.nz/news/politics/634881/act-party-leader-david-seymour-takes-aim-at-parliamentary-allies-opponents-but-especially-labour",
+      "immediacy": 2,
+      "mechanism": 5
     },
     {
       "id": "policy-017",
@@ -170,7 +202,9 @@
       "secondary": "Cost of Living",
       "size": "Flagship",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/742372/nz-first-promises-to-invest-in-oil-gas-surveys"
+      "source": "https://www.rnz.co.nz/news/politics/742372/nz-first-promises-to-invest-in-oil-gas-surveys",
+      "immediacy": 4,
+      "mechanism": 5
     },
     {
       "id": "policy-018",
@@ -180,7 +214,9 @@
       "secondary": "Cost of Living",
       "size": "Flagship",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan"
+      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan",
+      "immediacy": 5,
+      "mechanism": 5
     },
     {
       "id": "policy-019",
@@ -190,7 +226,9 @@
       "secondary": "Cost of Living",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan"
+      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan",
+      "immediacy": 2,
+      "mechanism": 5
     },
     {
       "id": "policy-020",
@@ -200,7 +238,9 @@
       "secondary": "Cost of Living",
       "size": "Flagship",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies"
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
+      "immediacy": 5,
+      "mechanism": 5
     },
     {
       "id": "policy-021",
@@ -210,7 +250,9 @@
       "secondary": "Health",
       "size": "Flagship",
       "verified": false,
-      "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/"
+      "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/",
+      "immediacy": 5,
+      "mechanism": 5
     },
     {
       "id": "policy-022",
@@ -220,7 +262,9 @@
       "secondary": "",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/political/595474/national-to-scrap-good-character-assessments-for-sex-offenders-at-sentencing"
+      "source": "https://www.rnz.co.nz/news/political/595474/national-to-scrap-good-character-assessments-for-sex-offenders-at-sentencing",
+      "immediacy": 2,
+      "mechanism": 4
     },
     {
       "id": "policy-023",
@@ -230,7 +274,9 @@
       "secondary": "",
       "size": "Significant",
       "verified": false,
-      "source": "https://www.act.org.nz/policies/law-and-order"
+      "source": "https://www.act.org.nz/policies/law-and-order",
+      "immediacy": 2,
+      "mechanism": 4
     },
     {
       "id": "policy-024",
@@ -240,7 +286,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": ""
+      "source": "",
+      "immediacy": 3,
+      "mechanism": 4
     },
     {
       "id": "policy-025",
@@ -250,7 +298,9 @@
       "secondary": "Economy",
       "size": "Significant",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies"
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
+      "immediacy": 4,
+      "mechanism": 5
     },
     {
       "id": "policy-026",
@@ -260,7 +310,9 @@
       "secondary": "",
       "size": "Flagship",
       "verified": true,
-      "source": "https://www.rnz.co.nz/news/politics/594584/the-opportunity-party-the-election-dark-horse"
+      "source": "https://www.rnz.co.nz/news/politics/594584/the-opportunity-party-the-election-dark-horse",
+      "immediacy": 3,
+      "mechanism": 5
     },
     {
       "id": "policy-027",
@@ -270,7 +322,9 @@
       "secondary": "",
       "size": "Significant",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/citizens-voice"
+      "source": "https://www.opportunity.org.nz/citizens-voice",
+      "immediacy": 3,
+      "mechanism": 5
     },
     {
       "id": "policy-028",
@@ -280,7 +334,9 @@
       "secondary": "Cost of Living",
       "size": "Significant",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/affordable_housing"
+      "source": "https://www.opportunity.org.nz/affordable_housing",
+      "immediacy": 4,
+      "mechanism": 5
     },
     {
       "id": "policy-029",
@@ -290,7 +346,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/smart_on_crime"
+      "source": "https://www.opportunity.org.nz/smart_on_crime",
+      "immediacy": 3,
+      "mechanism": 4
     },
     {
       "id": "policy-030",
@@ -298,9 +356,11 @@
       "title": "Future-fit Education",
       "conversation": "Education",
       "secondary": "",
-      "size": "Niche",
+      "size": "Significant",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/future_fit_education"
+      "source": "https://www.opportunity.org.nz/future_fit_education",
+      "immediacy": 4,
+      "mechanism": 3
     },
     {
       "id": "policy-031",
@@ -310,7 +370,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/healthy_people"
+      "source": "https://www.opportunity.org.nz/healthy_people",
+      "immediacy": 3,
+      "mechanism": 3
     },
     {
       "id": "policy-032",
@@ -320,7 +382,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/climate_action"
+      "source": "https://www.opportunity.org.nz/climate_action",
+      "immediacy": 4,
+      "mechanism": 5
     },
     {
       "id": "policy-033",
@@ -330,7 +394,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/healthy_land"
+      "source": "https://www.opportunity.org.nz/healthy_land",
+      "immediacy": 4,
+      "mechanism": 4
     },
     {
       "id": "policy-034",
@@ -338,9 +404,11 @@
       "title": "Intergenerational Infrastructure",
       "conversation": "Future & Infrastructure",
       "secondary": "",
-      "size": "Niche",
+      "size": "Significant",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/intergenerational_infrastructure"
+      "source": "https://www.opportunity.org.nz/intergenerational_infrastructure",
+      "immediacy": 5,
+      "mechanism": 5
     },
     {
       "id": "policy-035",
@@ -350,7 +418,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/clean_up_politics"
+      "source": "https://www.opportunity.org.nz/clean_up_politics",
+      "immediacy": 3,
+      "mechanism": 4
     },
     {
       "id": "policy-036",
@@ -360,7 +430,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.opportunity.org.nz/honouring_te_tiriti"
+      "source": "https://www.opportunity.org.nz/honouring_te_tiriti",
+      "immediacy": 4,
+      "mechanism": 5
     },
     {
       "id": "policy-037",
@@ -370,7 +442,9 @@
       "secondary": "",
       "size": "Significant",
       "verified": false,
-      "source": "https://www.greens.org.nz/dfs_nav_data"
+      "source": "https://www.greens.org.nz/dfs_nav_data",
+      "immediacy": 4,
+      "mechanism": 4
     },
     {
       "id": "policy-038",
@@ -380,7 +454,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.greens.org.nz/green_party_calls_for_union_membership_as_default_setting_for_new_employees"
+      "source": "https://www.greens.org.nz/green_party_calls_for_union_membership_as_default_setting_for_new_employees",
+      "immediacy": 2,
+      "mechanism": 4
     },
     {
       "id": "policy-039",
@@ -390,7 +466,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.labour.org.nz/our-policies/"
+      "source": "https://www.labour.org.nz/our-policies/",
+      "immediacy": 2,
+      "mechanism": 1
     },
     {
       "id": "policy-040",
@@ -400,7 +478,9 @@
       "secondary": "",
       "size": "Significant",
       "verified": false,
-      "source": "https://www.act.org.nz/defending-equal-rights-democracy"
+      "source": "https://www.act.org.nz/defending-equal-rights-democracy",
+      "immediacy": 3,
+      "mechanism": 5
     },
     {
       "id": "policy-041",
@@ -410,7 +490,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.act.org.nz/hunters-lfo"
+      "source": "https://www.act.org.nz/hunters-lfo",
+      "immediacy": 2,
+      "mechanism": 4
     },
     {
       "id": "policy-042",
@@ -420,7 +502,9 @@
       "secondary": "",
       "size": "Significant",
       "verified": false,
-      "source": "https://www.nzfirst.nz/news"
+      "source": "https://www.nzfirst.nz/news",
+      "immediacy": 3,
+      "mechanism": 5
     },
     {
       "id": "policy-043",
@@ -430,7 +514,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.nzfirst.nz/news"
+      "source": "https://www.nzfirst.nz/news",
+      "immediacy": 1,
+      "mechanism": 4
     },
     {
       "id": "policy-044",
@@ -440,7 +526,9 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "https://www.nzfirst.nz/news"
+      "source": "https://www.nzfirst.nz/news",
+      "immediacy": 4,
+      "mechanism": 5
     }
   ]
 }
