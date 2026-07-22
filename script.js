@@ -297,7 +297,7 @@ function openPolicy(policy) {
       : policy.conversation;
   document.querySelector("#dialog-size").textContent = policy.size;
   document.querySelector("#dialog-status").textContent =
-    policy.verified === false ? "Not yet verified" : "Verified";
+    policy.verified === false ? "From the party website" : "Reported by RNZ";
 
   const sourceLink = document.querySelector("#dialog-source");
 
@@ -338,7 +338,8 @@ function bindStaticControls() {
 }
 
 function noiseLevel(conversationPolicies) {
-  const score = conversationPolicies.reduce((sum, p) => sum + sizeWeight(p.size), 0);
+  const score = conversationPolicies.reduce(
+    (sum, p) => sum + sizeWeight(p.size) * (p.verified === false ? 0.5 : 1), 0);
   if (score === 0) return "Nothing to see.";
   if (score <= 3) return "Not much noise.";
   if (score <= 8) return "A bit of noise.";
