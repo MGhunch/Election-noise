@@ -31,9 +31,9 @@ const PARTY_COLOURS = {
 };
 
 const SIZE_MAP = {
-  "Niche": 18,
-  "Significant": 27,
-  "Flagship": 40
+  "Niche": 24,
+  "Significant": 36,
+  "Flagship": 52
 };
 
 let policies = [];
