@@ -37,7 +37,7 @@ const SIZE_MAP = {
 };
 
 let policies = [];
-let activeParty = "All";
+let activeParties = new Set();
 let openConversation = null;
 
 const grid = document.querySelector("#conversation-grid");
@@ -83,12 +83,13 @@ function renderFilters() {
 
   filters.innerHTML = options.map(party => {
     const colour = party === "All" ? "#777777" : PARTY_COLOURS[party];
+    const pressed = party === "All" ? activeParties.size === 0 : activeParties.has(party);
     return `
       <button
         class="filter-button"
         type="button"
         data-party="${escapeHtml(party)}"
-        aria-pressed="${party === activeParty}"
+        aria-pressed="${pressed}"
         style="--party-colour:${colour}"
       >
         <span class="party-dot" aria-hidden="true"></span>
@@ -99,7 +100,14 @@ function renderFilters() {
 
   filters.querySelectorAll(".filter-button").forEach(button => {
     button.addEventListener("click", () => {
-      activeParty = button.dataset.party;
+      const party = button.dataset.party;
+      if (party === "All") {
+        activeParties.clear();
+      } else if (activeParties.has(party)) {
+        activeParties.delete(party);
+      } else {
+        activeParties.add(party);
+      }
       renderFilters();
       updateCircleFocus();
 
@@ -231,9 +239,9 @@ function hideTooltip() {
 
 function updateCircleFocus() {
   document.querySelectorAll(".policy-circle").forEach(circle => {
-    const isActive = activeParty === "All" || circle.dataset.party === activeParty;
+    const isActive = activeParties.size === 0 || activeParties.has(circle.dataset.party);
     circle.classList.toggle("is-muted", !isActive);
-    circle.classList.toggle("is-selected", activeParty !== "All" && isActive);
+    circle.classList.toggle("is-selected", activeParties.size > 0 && isActive);
   });
 }
 
@@ -242,11 +250,11 @@ function renderDetail(conversation) {
     .filter(policy => policy.conversation === conversation)
     .sort((a, b) => sizeWeight(b.size) - sizeWeight(a.size));
 
-  const visiblePolicies = activeParty === "All"
+  const visiblePolicies = activeParties.size === 0
     ? allConversationPolicies
-    : allConversationPolicies.filter(policy => policy.party === activeParty);
+    : allConversationPolicies.filter(policy => activeParties.has(policy.party));
 
-  const partyContext = activeParty === "All" ? "" : ` Showing ${activeParty}.`;
+  const partyContext = activeParties.size === 0 ? "" : ` Showing ${[...activeParties].join(", ")}.`;
 
   document.querySelector("#detail-title").textContent = conversation;
   document.querySelector("#detail-summary").textContent =
@@ -259,7 +267,7 @@ function renderDetail(conversation) {
       <div class="policy-row">
         <div></div>
         <div>
-          <strong>No ${escapeHtml(activeParty)} policies here yet.</strong>
+          <strong>No ${escapeHtml([...activeParties].join(", "))} policies here yet.</strong>
           <small>This empty space is part of the story.</small>
         </div>
       </div>
