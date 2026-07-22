@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-22",
-  "note": "RNZ-verified where reported; outlined policies link to the party's own policy page. TOP manifesto swept 22 Jul 2026.",
+  "note": "Solid circles reported by RNZ; outlined circles link to party websites. Full party-site sweep completed 22 Jul 2026.",
   "policies": [
     {
       "id": "policy-001",
@@ -230,7 +230,7 @@
       "secondary": "",
       "size": "Significant",
       "verified": false,
-      "source": ""
+      "source": "https://www.act.org.nz/policies/law-and-order"
     },
     {
       "id": "policy-024",
@@ -361,6 +361,86 @@
       "size": "Niche",
       "verified": false,
       "source": "https://www.opportunity.org.nz/honouring_te_tiriti"
+    },
+    {
+      "id": "policy-037",
+      "party": "Green",
+      "title": "Drink Swim Fish — freshwater and oceans plan",
+      "conversation": "Environment",
+      "secondary": "",
+      "size": "Significant",
+      "verified": false,
+      "source": "https://www.greens.org.nz/dfs_nav_data"
+    },
+    {
+      "id": "policy-038",
+      "party": "Green",
+      "title": "Automatic union membership for new employees",
+      "conversation": "Economy",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.greens.org.nz/green_party_calls_for_union_membership_as_default_setting_for_new_employees"
+    },
+    {
+      "id": "policy-039",
+      "party": "Labour",
+      "title": "Family Doctor Loan Scheme",
+      "conversation": "Health",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.labour.org.nz/our-policies/"
+    },
+    {
+      "id": "policy-040",
+      "party": "ACT",
+      "title": "Defending equal rights — Treaty principles campaign",
+      "conversation": "Government & Democracy",
+      "secondary": "",
+      "size": "Significant",
+      "verified": false,
+      "source": "https://www.act.org.nz/defending-equal-rights-democracy"
+    },
+    {
+      "id": "policy-041",
+      "party": "ACT",
+      "title": "Hunting and firearms reform",
+      "conversation": "Crime & Justice",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.act.org.nz/hunters-lfo"
+    },
+    {
+      "id": "policy-042",
+      "party": "NZ First",
+      "title": "End the supermarket duopoly",
+      "conversation": "Cost of Living",
+      "secondary": "",
+      "size": "Significant",
+      "verified": false,
+      "source": "https://www.nzfirst.nz/news"
+    },
+    {
+      "id": "policy-043",
+      "party": "NZ First",
+      "title": "Disestablish Auckland's Independent Māori Statutory Board",
+      "conversation": "Government & Democracy",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.nzfirst.nz/news"
+    },
+    {
+      "id": "policy-044",
+      "party": "NZ First",
+      "title": "Commonwealth Games bid for Christchurch",
+      "conversation": "Future & Infrastructure",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.nzfirst.nz/news"
     }
   ]
 }
