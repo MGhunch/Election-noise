@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-22",
-  "note": "Sources verified against RNZ election coverage 22 July 2026. Two policies (TPM justice items) source to Te Ao Maori News pending RNZ match; ACT crime package and NZ First sentencing pledge remain unsourced.",
+  "note": "RNZ-verified where reported; outlined policies link to the party's own policy page. TOP manifesto swept 22 Jul 2026.",
   "policies": [
     {
       "id": "policy-001",
@@ -241,6 +241,126 @@
       "size": "Niche",
       "verified": false,
       "source": ""
+    },
+    {
+      "id": "policy-025",
+      "party": "TOP",
+      "title": "Healthy Oceans — end bottom trawling, 30% marine reserves",
+      "conversation": "Environment",
+      "secondary": "Economy",
+      "size": "Significant",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies"
+    },
+    {
+      "id": "policy-026",
+      "party": "TOP",
+      "title": "Tax Reset — land tax, Citizen Income, super means-testing",
+      "conversation": "Economy",
+      "secondary": "",
+      "size": "Flagship",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/politics/594584/the-opportunity-party-the-election-dark-horse"
+    },
+    {
+      "id": "policy-027",
+      "party": "TOP",
+      "title": "Citizens' Voice — democratic participation reform",
+      "conversation": "Government & Democracy",
+      "secondary": "",
+      "size": "Significant",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/citizens-voice"
+    },
+    {
+      "id": "policy-028",
+      "party": "TOP",
+      "title": "Affordable Housing",
+      "conversation": "Housing",
+      "secondary": "Cost of Living",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/affordable_housing"
+    },
+    {
+      "id": "policy-029",
+      "party": "TOP",
+      "title": "Smart On Crime",
+      "conversation": "Crime & Justice",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/smart_on_crime"
+    },
+    {
+      "id": "policy-030",
+      "party": "TOP",
+      "title": "Future-fit Education",
+      "conversation": "Education",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/future_fit_education"
+    },
+    {
+      "id": "policy-031",
+      "party": "TOP",
+      "title": "Healthy People",
+      "conversation": "Health",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/healthy_people"
+    },
+    {
+      "id": "policy-032",
+      "party": "TOP",
+      "title": "Climate Action",
+      "conversation": "Environment",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/climate_action"
+    },
+    {
+      "id": "policy-033",
+      "party": "TOP",
+      "title": "Healthy Land",
+      "conversation": "Environment",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/healthy_land"
+    },
+    {
+      "id": "policy-034",
+      "party": "TOP",
+      "title": "Intergenerational Infrastructure",
+      "conversation": "Future & Infrastructure",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/intergenerational_infrastructure"
+    },
+    {
+      "id": "policy-035",
+      "party": "TOP",
+      "title": "Clean Up Politics",
+      "conversation": "Government & Democracy",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/clean_up_politics"
+    },
+    {
+      "id": "policy-036",
+      "party": "TOP",
+      "title": "Honouring Te Tiriti",
+      "conversation": "Government & Democracy",
+      "secondary": "",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/honouring_te_tiriti"
     }
   ]
 }
