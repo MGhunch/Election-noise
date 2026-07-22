@@ -128,10 +128,7 @@ function renderGrid() {
       <article class="conversation-card" data-conversation="${escapeHtml(conversation)}">
         <button class="conversation-button" type="button" data-open-conversation="${escapeHtml(conversation)}">
           <h2>${escapeHtml(conversation)}</h2>
-          <p class="conversation-stats">
-            ${conversationPolicies.length} ${conversationPolicies.length === 1 ? "policy" : "policies"} ·
-            ${partyCount} ${partyCount === 1 ? "party" : "parties"}
-          </p>
+          <p class="conversation-stats">${noiseLevel(conversationPolicies)}</p>
         </button>
         <div class="policy-field">
           ${circles}
@@ -249,12 +246,11 @@ function renderDetail(conversation) {
     ? allConversationPolicies
     : allConversationPolicies.filter(policy => policy.party === activeParty);
 
-  const participatingParties = new Set(allConversationPolicies.map(p => p.party)).size;
-  const partyContext = activeParty === "All" ? "" : ` · Showing ${activeParty}`;
+  const partyContext = activeParty === "All" ? "" : ` Showing ${activeParty}.`;
 
   document.querySelector("#detail-title").textContent = conversation;
   document.querySelector("#detail-summary").textContent =
-    `${allConversationPolicies.length} policies · ${participatingParties} participating parties${partyContext}`;
+    `${noiseLevel(allConversationPolicies)}${partyContext}`;
 
   const list = document.querySelector("#detail-policies");
 
@@ -273,7 +269,7 @@ function renderDetail(conversation) {
 
   list.innerHTML = visiblePolicies.map(policy => `
     <button class="policy-row" type="button" data-detail-policy="${escapeHtml(String(policy.id))}">
-      <span class="policy-row-dot" style="--party-colour:${PARTY_COLOURS[policy.party] || "#777"}"></span>
+      <span class="policy-row-dot${policy.verified === false ? " is-unverified" : ""}" style="--party-colour:${PARTY_COLOURS[policy.party] || "#777"}; --dot-size:${Math.round(SIZE_MAP[policy.size] * 0.6)}px"></span>
       <span>
         <strong>${escapeHtml(policy.title)}</strong>
         <small>${escapeHtml(policy.party)}${policy.secondary ? ` · also ${escapeHtml(policy.secondary)}` : ""}</small>
@@ -339,6 +335,14 @@ function bindStaticControls() {
         if (event.target === dialog) dialog.close();
       });
     });
+}
+
+function noiseLevel(conversationPolicies) {
+  const score = conversationPolicies.reduce((sum, p) => sum + sizeWeight(p.size), 0);
+  if (score === 0) return "Nothing to see.";
+  if (score <= 3) return "Not much noise.";
+  if (score <= 8) return "A bit of noise.";
+  return "Lots of noise.";
 }
 
 function sizeWeight(size) {

@@ -316,8 +316,9 @@ h1 {
 }
 
 .policy-row {
+  text-align: left;
   display: grid;
-  grid-template-columns: 14px minmax(0, 1fr) auto;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
   gap: 12px;
   align-items: center;
   padding: 13px 14px;
@@ -325,10 +326,16 @@ h1 {
 }
 
 .policy-row-dot {
-  width: 12px;
-  height: 12px;
+  width: var(--dot-size, 12px);
+  height: var(--dot-size, 12px);
   border-radius: 50%;
   background: var(--party-colour);
+  justify-self: center;
+}
+
+.policy-row-dot.is-unverified {
+  background: var(--white);
+  border: 3px solid var(--party-colour);
 }
 
 .policy-row strong {
@@ -342,7 +349,7 @@ h1 {
 .impact-badge {
   color: var(--muted);
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
