@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Election Noise — Calibrate</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root {
+  --ink: #151515;
+  --muted: #6b6b6b;
+  --line: #dedede;
+  --soft: #f5f5f3;
+  --white: #ffffff;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { color-scheme: light; }
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+button, input, textarea, select { font: inherit; color: inherit; }
+
+/* ---------- Password gate ---------- */
+#gate {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+}
+.gate-box { width: min(320px, calc(100% - 48px)); text-align: center; }
+.gate-box p.eyebrow { margin: 0 0 8px; }
+.gate-box h1 { font-size: 1.3rem; margin: 0 0 18px; }
+.gate-box input {
+  width: 100%; padding: 11px 13px; border: 1px solid var(--line);
+  border-radius: 8px; font-size: 0.95rem; margin-bottom: 10px;
+}
+.gate-box button {
+  width: 100%; padding: 11px; border: 0; border-radius: 8px;
+  background: var(--ink); color: var(--white); font-weight: 700; cursor: pointer;
+}
+.gate-error { color: #c22; font-size: 0.82rem; min-height: 18px; margin-top: 4px; }
+
+/* ---------- Chrome ---------- */
+.site-header, main, footer, .cal-footer {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+.site-header {
+  display: flex; justify-content: space-between; gap: 24px; align-items: end;
+  padding: 42px 0 26px; border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  margin: 0 0 8px; color: var(--muted); font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.11em; text-transform: uppercase;
+}
+h1, h2, p { margin-top: 0; }
+h1 {
+  margin-bottom: 14px; margin-left: -0.045em;
+  font-size: clamp(2.6rem, 7vw, 5.8rem); line-height: 0.9; letter-spacing: -0.065em;
+}
+.dek { margin-bottom: 0; color: var(--muted); font-size: clamp(1rem, 2vw, 1.25rem); }
+.update-block { text-align: right; font-size: 0.82rem; color: var(--muted); }
+.update-block strong { display: block; color: var(--ink); font-size: 0.95rem; }
+.save-indicator { font-size: 0.74rem; color: var(--muted); margin-top: 3px; }
+.save-indicator.is-saved { color: #1a7d3a; }
+
+.party-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--party-colour, var(--ink)); }
+
+/* ---------- Table ---------- */
+.table-scroll { overflow-x: auto; }
+.row-grid {
+  display: grid;
+  grid-template-columns: 20px minmax(220px, 2.3fr) minmax(150px, 1.3fr) 96px minmax(140px, 1.3fr) 40px;
+  gap: 14px;
+  align-items: center;
+  min-width: 780px;
+}
+.table-head {
+  padding: 0 4px 8px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+}
+
+.accordion { margin-top: 4px; }
+.party-group { border-bottom: 1px solid var(--line); }
+.party-header {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 4px; background: none; border: 0; cursor: pointer; text-align: left;
+}
+.party-header:hover { background: var(--soft); }
+.party-header-left { display: flex; align-items: center; gap: 10px; }
+.party-header .party-dot { width: 12px; height: 12px; }
+.party-header strong { font-size: 0.98rem; }
+.party-header .muted { color: var(--muted); font-size: 0.8rem; }
+.party-chevron { font-size: 1.5rem; line-height: 1; transition: transform 160ms ease; color: var(--muted); }
+.party-group.is-open .party-chevron { transform: rotate(90deg); }
+.party-body { display: none; padding: 4px 4px 14px; }
+.party-group.is-open .party-body { display: block; }
+
+.policy-row {
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--soft);
+  cursor: pointer;
+  background: none;
+  border-left: 0; border-right: 0; border-top: 0;
+  text-align: left;
+  width: 100%;
+}
+.policy-row:hover { background: var(--soft); }
+.policy-row.is-changed { background: #fffbea; }
+.policy-row:last-child { border-bottom: 0; }
+
+.row-dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--party-colour); border: 2px solid rgba(0,0,0,0.12);
+}
+.row-dot.is-unverified { background: var(--white); border: 2.5px solid var(--party-colour); }
+
+.row-title { font-size: 0.86rem; font-weight: 700; line-height: 1.25; }
+.row-meta { font-size: 0.7rem; color: var(--muted); margin-top: 1px; }
+.row-value { font-size: 0.8rem; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-value.is-blank { color: var(--muted); font-style: italic; }
+.row-conf { font-size: 0.85rem; text-align: center; }
+.changed-dot { color: #8a6d00; font-size: 0.7rem; margin-left: 4px; }
+
+/* ---------- Modal ---------- */
+#modal-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(20,20,20,0.4);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 32px 16px;
+  overflow-y: auto;
+}
+.modal-panel {
+  background: var(--white);
+  border-radius: 14px;
+  width: min(760px, 100%);
+  padding: 22px 24px 0;
+}
+.modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 3px; }
+.modal-head-left { display: flex; align-items: flex-start; gap: 9px; }
+.modal-head-left .row-dot { margin-top: 5px; }
+.modal-title { font-size: 1.1rem; font-weight: 800; line-height: 1.25; }
+.modal-close {
+  border: 1px solid var(--line); background: var(--white); border-radius: 8px;
+  width: 30px; height: 30px; cursor: pointer; font-size: 1rem; line-height: 1; color: var(--muted);
+  flex: 0 0 auto;
+}
+.modal-close:hover { background: var(--soft); }
+.modal-meta { font-size: 0.76rem; color: var(--muted); margin: 0 0 14px; }
+.modal-body { padding-bottom: 4px; }
+.modal-footer {
+  position: sticky; bottom: 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 14px 0; margin-top: 6px;
+  background: var(--white); border-top: 1px solid var(--line);
+}
+.modal-nav { display: flex; gap: 8px; }
+.modal-nav button {
+  border: 1px solid var(--line); background: var(--white); border-radius: 8px;
+  padding: 6px 12px; font-size: 0.78rem; font-weight: 700; cursor: pointer;
+}
+.modal-nav button:hover:not(:disabled) { background: var(--soft); }
+.modal-nav button:disabled { opacity: 0.35; cursor: default; }
+.modal-save {
+  border: 0; border-radius: 8px; padding: 9px 18px; font-size: 0.85rem;
+  background: var(--ink); color: var(--white); font-weight: 700; cursor: pointer;
+}
+
+.desc-block { margin: 0 0 4px; }
+.desc-block label {
+  display: block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--muted); margin-bottom: 3px;
+}
+.desc-block textarea {
+  width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px;
+  font-size: 0.86rem; background: var(--white); min-height: 40px; resize: vertical;
+}
+
+.axis-row {
+  display: grid;
+  grid-template-columns: 90px minmax(150px, 220px) 1fr;
+  gap: 8px 16px;
+  padding: 9px 0;
+  border-top: 1px solid var(--soft);
+  align-items: start;
+}
+.axis-label {
+  font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink); padding-top: 6px;
+}
+.axis-data { display: flex; flex-direction: column; gap: 6px; }
+.axis-data .sub-label { font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: -3px; }
+.axis-data select {
+  width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px;
+  font-size: 0.82rem; background: var(--white);
+}
+.axis-why label {
+  display: block; font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--muted); margin-bottom: 3px;
+}
+.axis-why textarea {
+  width: 100%; padding: 6px 9px; border: 1px solid var(--line); border-radius: 6px;
+  font-size: 0.82rem; background: var(--white); min-height: 34px; resize: vertical;
+}
+.source-name { font-size: 0.86rem; font-weight: 700; }
+.source-btn {
+  display: inline-block; font-size: 0.8rem; font-weight: 700; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px;
+  text-decoration: none; white-space: nowrap;
+}
+.source-btn:hover { background: var(--soft); }
+.source-none { color: var(--muted); font-size: 0.82rem; }
+
+@media (max-width: 720px) {
+  .axis-row { grid-template-columns: 1fr; }
+  .modal-panel { padding: 20px 18px 16px; }
+}
+
+/* ---------- Sticky footer ---------- */
+.cal-footer {
+  position: sticky; bottom: 0;
+  display: flex; align-items: center; justify-content: flex-end;
+  padding: 14px 0; background: var(--white); border-top: 1px solid var(--line); margin-top: 10px;
+}
+.btn { border: 0; border-radius: 8px; padding: 9px 15px; font-size: 0.86rem; background: var(--ink); color: var(--white); font-weight: 700; cursor: pointer; }
+footer { display: flex; justify-content: space-between; padding: 20px 0 36px; color: var(--muted); font-size: 0.78rem; }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gate-box">
+    <p class="eyebrow">🔒 Calibrate</p>
+    <h1>Election Noise</h1>
+    <input id="gate-input" type="password" placeholder="Password" autocomplete="off">
+    <button id="gate-submit" type="button">Enter</button>
+    <p class="gate-error" id="gate-error"></p>
+  </div>
+</div>
+
+<div id="app" hidden>
+
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">🔒 Calibrate</p>
+      <h1>Election Noise</h1>
+      <p class="dek">Fix or update any robot anomalies.</p>
+    </div>
+    <div class="update-block">
+      <strong id="edit-count">0 policies changed</strong>
+      <span id="policy-count-label"></span>
+      <div class="save-indicator" id="save-indicator"></div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="table-scroll">
+      <div class="row-grid table-head">
+        <div></div>
+        <div>Policy</div>
+        <div>Shape</div>
+        <div>Size</div>
+        <div>Politics</div>
+        <div>Conf</div>
+      </div>
+
+      <div class="accordion" id="accordion"></div>
+    </div>
+  </main>
+
+  <div class="cal-footer">
+    <button class="btn" id="export-btn" type="button">Export Data File</button>
+  </div>
+
+  <footer>
+    <span>Calibration tool. Changes update the data file. No live changes to the data.</span>
+    <span>Built by Hunch</span>
+  </footer>
+</div>
+
+<div id="modal-overlay" hidden>
+  <div class="modal-panel" id="modal-panel"></div>
+</div>
+
+<script>
+const PASSWORD = "C4l1br8";
+const STORAGE_KEY = "electionNoiseCalibrateDraft";
+
+const PARTY_ORDER = ["Labour", "National", "Green", "ACT", "NZ First", "Te Pāti Māori", "TOP"];
+const PARTY_COLOURS = {
+  "Labour": "#d82c2f",
+  "National": "#0057b8",
+  "Green": "#159447",
+  "ACT": "#f1c40f",
+  "NZ First": "#54565A",
+  "Te Pāti Māori": "#7A4033",
+  "TOP": "#1b8f9c"
+};
+const SIZE_ORDER = ["Niche", "Significant", "Flagship"];
+
+const IMMEDIACY_LABELS = ["", "Within a year", "1–2 terms", "This decade", "Generational", "Undated"];
+const MECHANISM_LABELS = ["", "Cash in hand", "Programme/service", "Regulatory", "Fiscal/structural", "Structural rewiring"];
+const ECON = ["Far Left", "Left", "Centre", "Right", "Far Right"];
+const SOC = ["Very Progressive", "Progressive", "Centre", "Conservative", "Very Conservative"];
+const CONFIDENCE_MARK = { high: "●", medium: "◐", low: "○" };
+
+const EDITABLE_FIELDS = ["description", "immediacy", "mechanism", "shapeWhy", "sizeWhy", "size", "leftRight", "progConservative", "confidence", "politicsWhy"];
+
+const SOURCE_NAMES = {
+  "rnz.co.nz": "RNZ",
+  "act.org.nz": "ACT Party site",
+  "opportunity.org.nz": "TOP website",
+  "greens.org.nz": "Green Party site",
+  "labour.org.nz": "Labour Party site",
+  "nzfirst.nz": "NZ First site",
+  "teaonews.co.nz": "Te Ao Māori News",
+  "national.org.nz": "National Party site"
+};
+function sourceName(url) {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    return SOURCE_NAMES[host] || host;
+  } catch (e) {
+    return url;
+  }
+}
+
+// Draft descriptions — Claude's first pass, written from the title/source
+// data on hand. Pre-populated but fully editable.
+const DESCRIPTIONS = {
+  "policy-001": "Caps rent increases at 2% a year and commits to building 40,000 new public and affordable homes.",
+  "policy-002": "Gives every New Zealander three free GP visits a year through a new Medicard scheme.",
+  "policy-003": "Removes the cost of prescriptions and extends free scans and screening, including maternity scans.",
+  "policy-004": "Invests in kaupapa Māori-led mental health services as an alternative to the mainstream system.",
+  "policy-005": "Redirects state-owned enterprise dividends into a sovereign wealth fund for long-term NZ investment.",
+  "policy-006": "Extends the existing Apprenticeship Boost subsidy so more trainees are covered for longer.",
+  "policy-007": "Lifts R&D spending toward 2% of GDP and sets new rules for AI adoption across the economy.",
+  "policy-008": "Caps weekly public transport fares at $20 in main centres and $10 elsewhere.",
+  "policy-009": "Offers $3,000 grants and low-cost loans to help households install solar panels.",
+  "policy-010": "Extends the Winter Energy Payment to students, who are currently excluded from it.",
+  "policy-011": "Sets up a fund offering low-interest loans for household solar panels and batteries.",
+  "policy-012": "Introduces stronger competition regulation targeting the banking and supermarket sectors.",
+  "policy-013": "Introduces a 28% capital gains tax targeted at residential property, ring-fenced to help fund Medicard.",
+  "policy-014": "Makes KiwiSaver contributions compulsory and introduces a Baby Boost payment for new parents.",
+  "policy-015": "Introduces a wealth tax, raises corporate tax, and adds an inheritance tax to fund income tax changes.",
+  "policy-016": "Consolidates 43 government departments into 19 to cut the size and cost of the public service.",
+  "policy-017": "Funds new offshore surveys to reopen exploration for oil and gas reserves.",
+  "policy-018": "Proposes using Kiwibank to buy BNZ, expanding state ownership in banking.",
+  "policy-019": "Makes KiwiSaver compulsory with contributions set at 10% of income.",
+  "policy-020": "Targets 30 gigawatts of new generation capacity by 2050 to drive down energy costs.",
+  "policy-021": "Commits to phasing out and abolishing the prison system entirely by 2040.",
+  "policy-022": "Scraps good character assessments for sex offenders at sentencing.",
+  "policy-023": "A five-part law-and-order package covering rural crime, public safety, animal-based coercion, burglary sentencing, and deporting serious offenders.",
+  "policy-024": "Pledges to reform the Sentencing Act — details not yet public.",
+  "policy-025": "Ends bottom trawling and expands marine reserves to cover 30% of NZ waters.",
+  "policy-026": "Introduces a land tax and a Citizen's Income while means-testing superannuation.",
+  "policy-027": "Proposes democratic-participation reforms to give citizens a stronger direct voice between elections.",
+  "policy-028": "Introduces a land value tax with the explicit goal of bringing house prices down.",
+  "policy-029": "Favours evidence-based crime prevention and rehabilitation over a purely punitive approach.",
+  "policy-030": "Reworks the education system to better prepare students for future skills and work.",
+  "policy-031": "Refocuses funding on primary care and reinstates the Smokefree 2025 goal.",
+  "policy-032": "Strengthens the Emissions Trading Scheme to include agriculture and rewards soil and wetland carbon storage.",
+  "policy-033": "Tightens water-quality regulation and land-use rules to protect waterways and soil health.",
+  "policy-034": "Commits to major public infrastructure spending, including free public transport, alongside RMA replacement and user-pays reforms.",
+  "policy-035": "Introduces donation limits, a lobbying register, an anti-corruption commission, and electoral reform.",
+  "policy-036": "Commits to honouring Te Tiriti o Waitangi more fully in law and government practice.",
+  "policy-037": "A freshwater and oceans plan aimed at making waterways clean enough to drink from, swim in, and fish from.",
+  "policy-038": "Makes union membership the default setting for new employees, who could opt out.",
+  "policy-039": "Offers loans to help fund the training and retention of family doctors (GPs).",
+  "policy-040": "Campaigns to legislate a definition of the Treaty principles, framed by ACT as ensuring equal rights for all citizens.",
+  "policy-041": "Reforms firearms law to ease restrictions for hunters and licensed firearms owners.",
+  "policy-042": "Proposes measures to break up or open up competition in the supermarket duopoly.",
+  "policy-043": "Proposes disestablishing Auckland Council's Independent Māori Statutory Board.",
+  "policy-044": "Backs a Christchurch bid to host the Commonwealth Games."
+};
+
+// First-pass Econ/Social scores reconstructed from the 23 Jul compass
+// session (the standalone compass-calibration.html these came from was
+// never committed to the repo, so this is rebuilt from that session's
+// record rather than read fresh — flag anything that looks off).
+const POLITICS_FIRST_PASS = {
+  "policy-001": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-002": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-003": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-004": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-005": { econ: "Centre", soc: "Centre", confidence: "medium", note: "State-directed investment vehicle, not clearly redistributive either way." },
+  "policy-006": { econ: "Left", soc: "Centre", confidence: "high", note: "" },
+  "policy-007": { econ: "Centre", soc: "Centre", confidence: "medium", note: "Mixes state R&D investment with market-friendly innovation framing." },
+  "policy-008": { econ: "Left", soc: "Centre", confidence: "high", note: "" },
+  "policy-009": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-010": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-011": { econ: "Right", soc: "Centre", confidence: "high", note: "" },
+  "policy-012": { econ: "Left", soc: "Centre", confidence: "medium", note: "Claude's least confident call: anti-monopoly regulation reads left on intervention, but it's market-restoring, not redistributive. Candidate for Centre or Right." },
+  "policy-013": { econ: "Left", soc: "Centre", confidence: "high", note: "" },
+  "policy-014": { econ: "Centre", soc: "Conservative", confidence: "medium", note: "Mandate cuts against usual National positioning; Baby Boost carries pro-family/traditional framing." },
+  "policy-015": { econ: "Far Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-016": { econ: "Far Right", soc: "Centre", confidence: "medium", note: "No real cultural content — Centre is a default, not a finding." },
+  "policy-017": { econ: "Right", soc: "Conservative", confidence: "high", note: "" },
+  "policy-018": { econ: "Left", soc: "Centre", confidence: "high", note: "" },
+  "policy-019": { econ: "Centre", soc: "Conservative", confidence: "low", note: "Paternalistic-mandate framing nudges conservative but it's a weak signal." },
+  "policy-020": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-021": { econ: "Centre", soc: "Very Progressive", confidence: "high", note: "" },
+  "policy-022": { econ: "Centre", soc: "Conservative", confidence: "high", note: "" },
+  "policy-023": { econ: "Centre", soc: "Conservative", confidence: "high", note: "" },
+  "policy-024": { econ: "Centre", soc: "Conservative", confidence: "high", note: "Still unsourced per v001/v002 — cut or source before this matters." },
+  "policy-025": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-026": { econ: "Far Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-027": { econ: "Centre", soc: "Progressive", confidence: "high", note: "" },
+  "policy-028": { econ: "Far Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-029": { econ: "Centre", soc: "Progressive", confidence: "high", note: "" },
+  "policy-030": { econ: "Centre", soc: "Centre", confidence: "medium", note: "Read 24 Jul but genuinely mixed content." },
+  "policy-031": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-032": { econ: "Left", soc: "Progressive", confidence: "high", note: "Read 24 Jul: strengthens ETS (adds agriculture), incentivises soil/wetland carbon sequestration." },
+  "policy-033": { econ: "Left", soc: "Progressive", confidence: "high", note: "Read 24 Jul: water-quality regulation + land-use restriction, heavier intervention than the title suggested." },
+  "policy-034": { econ: "Centre", soc: "Centre", confidence: "high", note: "Read 24 Jul: genuinely mixed — big public spend + free public transport pulls left, RMA replacement + user-pays pulls right." },
+  "policy-035": { econ: "Centre", soc: "Progressive", confidence: "high", note: "Read 24 Jul: donation limits, lobbying register, anti-corruption commission, electoral reform." },
+  "policy-036": { econ: "Centre", soc: "Progressive", confidence: "medium", note: "" },
+  "policy-037": { econ: "Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-038": { econ: "Far Left", soc: "Progressive", confidence: "high", note: "" },
+  "policy-039": { econ: "Left", soc: "Centre", confidence: "medium", note: "" },
+  "policy-040": { econ: "Centre", soc: "Conservative", confidence: "medium", note: "ACT frames this as equal rights; scored by NZ cultural-coding convention (same logic as NZ First's IMSB policy) rather than either side's own framing. Worth a second look given disclosure stakes." },
+  "policy-041": { econ: "Centre", soc: "Conservative", confidence: "low", note: "Classical-liberty-expanding position, scored culturally conservative by NZ convention (post-2019 reading) — a US reading would flip this." },
+  "policy-042": { econ: "Left", soc: "Centre", confidence: "high", note: "" },
+  "policy-043": { econ: "Centre", soc: "Conservative", confidence: "high", note: "" },
+  "policy-044": { econ: "Centre", soc: "Centre", confidence: "low", note: "Prestige/tourism spend — weak signal either direction." }
+};
+
+// Baked-in fallback copy of the live dataset, used only if the live fetch
+// of ../data/policies.json fails (e.g. opened without a server).
+const POLICIES_FALLBACK = {"updated": "2026-07-23", "note": "Solid circles reported by RNZ; outlined circles link to party websites. Full party-site sweep completed 22 Jul 2026.", "policies": [{"id": "policy-001", "party": "Green", "title": "A Home for Everybody — 40k homes, rent caps", "conversation": "Housing", "secondary": "Cost of Living", "size": "Flagship", "verified": true, "source": "https://www.rnz.co.nz/news/political/590598/greens-promise-to-cap-rent-rises-at-2-percent-a-year", "immediacy": 2, "mechanism": 4}, {"id": "policy-002", "party": "Labour", "title": "Medicard — 3 free GP visits", "conversation": "Health", "secondary": "Cost of Living", "size": "Flagship", "verified": true, "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax", "immediacy": 1, "mechanism": 3}, {"id": "policy-003", "party": "Labour", "title": "Free prescriptions, scans, screening", "conversation": "Health", "secondary": "Cost of Living", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/politics/598331/labour-promises-free-maternity-scans-if-elected", "immediacy": 1, "mechanism": 3}, {"id": "policy-004", "party": "Te Pāti Māori", "title": "Kaupapa Māori mental health investment", "conversation": "Health", "secondary": "Crime & Justice", "size": "Significant", "verified": false, "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/", "immediacy": 2, "mechanism": 3}, {"id": "policy-005", "party": "Labour", "title": "NZ Future Fund — SOE dividends into NZ investment.", "conversation": "Future & Infrastructure", "secondary": "", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/politics/576428/labour-announces-future-fund-as-first-key-election-policy", "immediacy": 5, "mechanism": 5}, {"id": "policy-006", "party": "Labour", "title": "Expand Apprenticeship Boost", "conversation": "Education", "secondary": "Economy", "size": "Niche", "verified": true, "source": "https://www.rnz.co.nz/news/politics/633845/election-26-labour-proposes-apprenticeship-boost-expansion", "immediacy": 2, "mechanism": 1}, {"id": "policy-007", "party": "TOP", "title": "Productivity Unleashed — R&D 2% GDP, AI rules", "conversation": "Future & Infrastructure", "secondary": "Economy", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies", "immediacy": 4, "mechanism": 5}, {"id": "policy-008", "party": "Labour", "title": "$20/week public transport fare cap", "conversation": "Cost of Living", "secondary": "", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/politics/597767/labour-vows-to-put-20-a-week-cap-on-public-transport-10-outside-main-centres", "immediacy": 1, "mechanism": 2}, {"id": "policy-009", "party": "Labour", "title": "SolarSaver + $3k solar grants", "conversation": "Cost of Living", "secondary": "Housing", "size": "Niche", "verified": true, "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar", "immediacy": 1, "mechanism": 2}, {"id": "policy-010", "party": "Green", "title": "Winter Energy Payment for students", "conversation": "Cost of Living", "secondary": "", "size": "Niche", "verified": true, "source": "https://www.rnz.co.nz/news/political/593910/green-party-advocates-increased-energy-support-for-students", "immediacy": 1, "mechanism": 1}, {"id": "policy-011", "party": "National", "title": "Home Energy Fund — solar and battery loans", "conversation": "Cost of Living", "secondary": "Housing", "size": "Niche", "verified": true, "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar", "immediacy": 2, "mechanism": 2}, {"id": "policy-012", "party": "TOP", "title": "Rein in monopolies — banks, supermarkets", "conversation": "Cost of Living", "secondary": "Economy", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies", "immediacy": 3, "mechanism": 4}, {"id": "policy-013", "party": "Labour", "title": "28% targeted CGT on property", "conversation": "Economy", "secondary": "Health", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax", "immediacy": 1, "mechanism": 4}, {"id": "policy-014", "party": "National", "title": "Compulsory KiwiSaver + Baby Boost", "conversation": "Future & Infrastructure", "secondary": "Cost of Living", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/politics/609851/national-to-make-kiwisaver-compulsory-if-elected", "immediacy": 2, "mechanism": 5}, {"id": "policy-015", "party": "Green", "title": "Wealth, corporate + inheritance taxes", "conversation": "Economy", "secondary": "Cost of Living", "size": "Flagship", "verified": true, "source": "https://www.rnz.co.nz/news/politics/609649/greens-propose-wealth-corporate-and-inheritance-taxes-to-fund-income-tax-changes", "immediacy": 2, "mechanism": 4}, {"id": "policy-016", "party": "ACT", "title": "Shrink govt — 43 depts to 19", "conversation": "Government & Democracy", "secondary": "Economy", "size": "Flagship", "verified": true, "source": "https://www.rnz.co.nz/news/politics/634881/act-party-leader-david-seymour-takes-aim-at-parliamentary-allies-opponents-but-especially-labour", "immediacy": 2, "mechanism": 5}, {"id": "policy-017", "party": "NZ First", "title": "Offshore oil and gas surveys", "conversation": "Future & Infrastructure", "secondary": "Cost of Living", "size": "Flagship", "verified": true, "source": "https://www.rnz.co.nz/news/politics/742372/nz-first-promises-to-invest-in-oil-gas-surveys", "immediacy": 4, "mechanism": 5}, {"id": "policy-018", "party": "NZ First", "title": "Boost Kiwibank by buying BNZ", "conversation": "Economy", "secondary": "Cost of Living", "size": "Flagship", "verified": true, "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan", "immediacy": 5, "mechanism": 5}, {"id": "policy-019", "party": "NZ First", "title": "Compulsory KiwiSaver, 10% contributions", "conversation": "Future & Infrastructure", "secondary": "Cost of Living", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan", "immediacy": 2, "mechanism": 5}, {"id": "policy-020", "party": "TOP", "title": "Abundant Energy — 30GW by 2050", "conversation": "Future & Infrastructure", "secondary": "Cost of Living", "size": "Flagship", "verified": true, "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies", "immediacy": 5, "mechanism": 5}, {"id": "policy-021", "party": "Te Pāti Māori", "title": "Abolish prisons by 2040", "conversation": "Crime & Justice", "secondary": "Health", "size": "Flagship", "verified": false, "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/", "immediacy": 5, "mechanism": 5}, {"id": "policy-022", "party": "National", "title": "Sexual offenders sentencing", "conversation": "Crime & Justice", "secondary": "", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/political/595474/national-to-scrap-good-character-assessments-for-sex-offenders-at-sentencing", "immediacy": 2, "mechanism": 4}, {"id": "policy-023", "party": "ACT", "title": "Five-policy crime package", "conversation": "Crime & Justice", "secondary": "", "size": "Significant", "verified": false, "source": "https://www.act.org.nz/policies/law-and-order", "immediacy": 2, "mechanism": 4}, {"id": "policy-024", "party": "NZ First", "title": "Sentencing Act reform pledge", "conversation": "Crime & Justice", "secondary": "", "size": "Niche", "verified": false, "source": "", "immediacy": 3, "mechanism": 4}, {"id": "policy-025", "party": "TOP", "title": "Healthy Oceans — end bottom trawling, 30% marine reserves", "conversation": "Environment", "secondary": "Economy", "size": "Significant", "verified": true, "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies", "immediacy": 4, "mechanism": 5}, {"id": "policy-026", "party": "TOP", "title": "Tax Reset — land tax, Citizen Income, super means-testing", "conversation": "Economy", "secondary": "", "size": "Flagship", "verified": true, "source": "https://www.rnz.co.nz/news/politics/594584/the-opportunity-party-the-election-dark-horse", "immediacy": 3, "mechanism": 5}, {"id": "policy-027", "party": "TOP", "title": "Citizens' Voice — democratic participation reform", "conversation": "Government & Democracy", "secondary": "", "size": "Significant", "verified": false, "source": "https://www.opportunity.org.nz/citizens-voice", "immediacy": 3, "mechanism": 5}, {"id": "policy-028", "party": "TOP", "title": "Affordable Housing — land value tax, house prices must fall", "conversation": "Housing", "secondary": "Cost of Living", "size": "Significant", "verified": false, "source": "https://www.opportunity.org.nz/affordable_housing", "immediacy": 4, "mechanism": 5}, {"id": "policy-029", "party": "TOP", "title": "Smart On Crime", "conversation": "Crime & Justice", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.opportunity.org.nz/smart_on_crime", "immediacy": 3, "mechanism": 4}, {"id": "policy-030", "party": "TOP", "title": "Future-fit Education", "conversation": "Education", "secondary": "", "size": "Significant", "verified": false, "source": "https://www.opportunity.org.nz/future_fit_education", "immediacy": 4, "mechanism": 3}, {"id": "policy-031", "party": "TOP", "title": "Healthy People — primary care focus, reinstate Smokefree 2025", "conversation": "Health", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.opportunity.org.nz/healthy_people", "immediacy": 3, "mechanism": 3}, {"id": "policy-032", "party": "TOP", "title": "Climate Action", "conversation": "Environment", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.opportunity.org.nz/climate_action", "immediacy": 4, "mechanism": 5}, {"id": "policy-033", "party": "TOP", "title": "Healthy Land", "conversation": "Environment", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.opportunity.org.nz/healthy_land", "immediacy": 4, "mechanism": 4}, {"id": "policy-034", "party": "TOP", "title": "Intergenerational Infrastructure", "conversation": "Future & Infrastructure", "secondary": "", "size": "Significant", "verified": false, "source": "https://www.opportunity.org.nz/intergenerational_infrastructure", "immediacy": 5, "mechanism": 5}, {"id": "policy-035", "party": "TOP", "title": "Clean Up Politics", "conversation": "Government & Democracy", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.opportunity.org.nz/clean_up_politics", "immediacy": 3, "mechanism": 4}, {"id": "policy-036", "party": "TOP", "title": "Honouring Te Tiriti", "conversation": "Government & Democracy", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.opportunity.org.nz/honouring_te_tiriti", "immediacy": 4, "mechanism": 5}, {"id": "policy-037", "party": "Green", "title": "Drink Swim Fish — freshwater and oceans plan", "conversation": "Environment", "secondary": "", "size": "Significant", "verified": false, "source": "https://www.greens.org.nz/dfs_nav_data", "immediacy": 4, "mechanism": 4}, {"id": "policy-038", "party": "Green", "title": "Automatic union membership for new employees", "conversation": "Economy", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.greens.org.nz/green_party_calls_for_union_membership_as_default_setting_for_new_employees", "immediacy": 2, "mechanism": 4}, {"id": "policy-039", "party": "Labour", "title": "Family Doctor Loan Scheme", "conversation": "Health", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.labour.org.nz/our-policies/", "immediacy": 2, "mechanism": 1}, {"id": "policy-040", "party": "ACT", "title": "Defending equal rights — Treaty principles campaign", "conversation": "Government & Democracy", "secondary": "", "size": "Significant", "verified": false, "source": "https://www.act.org.nz/defending-equal-rights-democracy", "immediacy": 3, "mechanism": 5}, {"id": "policy-041", "party": "ACT", "title": "Hunting and firearms reform", "conversation": "Crime & Justice", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.act.org.nz/hunters-lfo", "immediacy": 2, "mechanism": 4}, {"id": "policy-042", "party": "NZ First", "title": "End the supermarket duopoly", "conversation": "Cost of Living", "secondary": "", "size": "Significant", "verified": false, "source": "https://www.nzfirst.nz/news", "immediacy": 3, "mechanism": 5}, {"id": "policy-043", "party": "NZ First", "title": "Disestablish Auckland's Independent Māori Statutory Board", "conversation": "Government & Democracy", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.nzfirst.nz/news", "immediacy": 1, "mechanism": 4}, {"id": "policy-044", "party": "NZ First", "title": "Commonwealth Games bid for Christchurch", "conversation": "Future & Infrastructure", "secondary": "", "size": "Niche", "verified": false, "source": "https://www.nzfirst.nz/news", "immediacy": 4, "mechanism": 5}]};
+
+let policies = [];       // working (editable) array
+let baseline = [];       // first-pass snapshot, for "changed" + reset
+let openParties = new Set();
+let currentModalId = null;
+
+const gate = document.getElementById("gate");
+const app = document.getElementById("app");
+
+document.getElementById("gate-submit").addEventListener("click", tryUnlock);
+document.getElementById("gate-input").addEventListener("keydown", e => { if (e.key === "Enter") tryUnlock(); });
+
+function tryUnlock() {
+  const val = document.getElementById("gate-input").value;
+  if (val === PASSWORD) {
+    sessionStorage.setItem("enCalibrateAuth", "1");
+    gate.hidden = true;
+    app.hidden = false;
+    boot();
+  } else {
+    document.getElementById("gate-error").textContent = "Wrong password.";
+  }
+}
+
+if (sessionStorage.getItem("enCalibrateAuth") === "1") {
+  gate.hidden = true;
+  app.hidden = false;
+  boot();
+}
+
+async function boot() {
+  let payload;
+  try {
+    const res = await fetch("../data/policies.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("fetch failed");
+    payload = await res.json();
+  } catch (err) {
+    payload = POLICIES_FALLBACK;
+  }
+
+  const rawPolicies = Array.isArray(payload) ? payload : payload.policies;
+
+  policies = rawPolicies.map(p => {
+    const politics = POLITICS_FIRST_PASS[p.id] || { econ: "Centre", soc: "Centre", confidence: "low", note: "No first-pass score reconstructed — needs a fresh read." };
+    return {
+      id: p.id,
+      party: p.party,
+      title: p.title,
+      conversation: p.conversation,
+      secondary: p.secondary || "",
+      size: p.size,
+      verified: p.verified,
+      source: p.source || "",
+      description: p.description || DESCRIPTIONS[p.id] || "",
+      immediacy: p.immediacy != null ? p.immediacy : 3,
+      mechanism: p.mechanism != null ? p.mechanism : 3,
+      shapeWhy: p.shapeWhy || "",
+      sizeWhy: p.sizeWhy || "",
+      leftRight: p.leftRight || politics.econ,
+      progConservative: p.progConservative || politics.soc,
+      confidence: p.confidence || politics.confidence,
+      politicsWhy: p.notes || politics.note
+    };
+  });
+
+  baseline = JSON.parse(JSON.stringify(policies));
+
+  restoreDraft();
+
+  document.getElementById("policy-count-label").textContent = `${policies.length} policies`;
+
+  renderAccordion();
+  updateEditCount();
+
+  document.getElementById("export-btn").addEventListener("click", doExport);
+
+  document.getElementById("modal-overlay").addEventListener("click", e => {
+    if (e.target.id === "modal-overlay") closeModal();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeModal();
+  });
+}
+
+/* ---------------- Local draft persistence ---------------- */
+function restoreDraft() {
+  let raw;
+  try {
+    raw = localStorage.getItem(STORAGE_KEY);
+  } catch (e) {
+    return;
+  }
+  if (!raw) return;
+  let draft;
+  try {
+    draft = JSON.parse(raw);
+  } catch (e) {
+    return;
+  }
+  if (!draft || !draft.policies) return;
+
+  policies.forEach(p => {
+    const saved = draft.policies[p.id];
+    if (!saved) return;
+    EDITABLE_FIELDS.forEach(field => {
+      if (saved[field] !== undefined) p[field] = saved[field];
+    });
+  });
+
+  if (draft.savedAt) {
+    const indicator = document.getElementById("save-indicator");
+    indicator.textContent = `Restored local save from ${new Date(draft.savedAt).toLocaleString()}`;
+    indicator.classList.add("is-saved");
+  }
+}
+
+function saveDraft() {
+  const draftPolicies = {};
+  policies.forEach(p => {
+    const entry = {};
+    EDITABLE_FIELDS.forEach(field => { entry[field] = p[field]; });
+    draftPolicies[p.id] = entry;
+  });
+  const payload = { savedAt: new Date().toISOString(), policies: draftPolicies };
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    const indicator = document.getElementById("save-indicator");
+    indicator.textContent = `Saved locally ${new Date().toLocaleTimeString()}`;
+    indicator.classList.add("is-saved");
+  } catch (e) {
+    const indicator = document.getElementById("save-indicator");
+    indicator.textContent = "Local save failed (storage full or blocked)";
+    indicator.classList.remove("is-saved");
+  }
+}
+
+function visiblePolicies() {
+  return policies;
+}
+
+/* ---------------- Compact table ---------------- */
+function renderAccordion() {
+  const container = document.getElementById("accordion");
+  const vis = visiblePolicies();
+  const parties = PARTY_ORDER.filter(party => vis.some(p => p.party === party));
+
+  container.innerHTML = parties.map(party => {
+    const partyPolicies = vis.filter(p => p.party === party).sort((a, b) => a.id.localeCompare(b.id));
+    const changedCount = partyPolicies.filter(isChanged).length;
+    const isOpen = openParties.has(party);
+    const colour = PARTY_COLOURS[party];
+
+    const rows = partyPolicies.map(rowHtml).join("");
+
+    return `<div class="party-group ${isOpen ? "is-open" : ""}" data-party-group="${party}">
+      <button class="party-header" type="button" data-toggle-party="${party}">
+        <span class="party-header-left">
+          <span class="party-dot" style="--party-colour:${colour}"></span>
+          <strong>${party}</strong>
+          <span class="muted">${partyPolicies.length} ${partyPolicies.length === 1 ? "policy" : "policies"}${changedCount ? ` · ${changedCount} changed` : ""}</span>
+        </span>
+        <span class="party-chevron">›</span>
+      </button>
+      <div class="party-body">${rows}</div>
+    </div>`;
+  }).join("");
+
+  container.querySelectorAll("[data-toggle-party]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const party = btn.dataset.toggleParty;
+      if (openParties.has(party)) openParties.delete(party); else openParties.add(party);
+      renderAccordion();
+    });
+  });
+
+  container.querySelectorAll("[data-open-policy]").forEach(btn => {
+    btn.addEventListener("click", () => openModal(btn.dataset.openPolicy));
+  });
+}
+
+function rowHtml(p) {
+  const changed = isChanged(p);
+  const colour = PARTY_COLOURS[p.party] || "#777";
+  const dotCls = "row-dot" + (p.verified === false ? " is-unverified" : "");
+
+  const shapeVal = `${IMMEDIACY_LABELS[p.immediacy]} · ${MECHANISM_LABELS[p.mechanism]}`;
+  const politicsVal = `${p.leftRight} · ${p.progConservative}`;
+  const descBlank = !p.description ? "is-blank" : "";
+
+  return `<button class="policy-row ${changed ? "is-changed" : ""}" type="button" data-open-policy="${p.id}">
+    <div class="row-grid">
+      <span class="${dotCls}" style="--party-colour:${colour}"></span>
+      <span>
+        <span class="row-title">${escapeHtml(p.title)}${changed ? '<span class="changed-dot">●</span>' : ""}</span>
+        <div class="row-meta">${escapeHtml(p.conversation)} · ${p.verified === false ? "party site only" : "reported"}</div>
+      </span>
+      <span class="row-value" title="${escapeHtml(shapeVal)}">${escapeHtml(shapeVal)}</span>
+      <span class="row-value">${p.size}</span>
+      <span class="row-value" title="${escapeHtml(politicsVal)}">${escapeHtml(politicsVal)}</span>
+      <span class="row-conf">${CONFIDENCE_MARK[p.confidence] || "○"}</span>
+    </div>
+  </button>`;
+}
+
+/* ---------------- Modal ---------------- */
+function openModal(id) {
+  currentModalId = id;
+  renderModal();
+  document.getElementById("modal-overlay").hidden = false;
+}
+
+function closeModal() {
+  currentModalId = null;
+  document.getElementById("modal-overlay").hidden = true;
+}
+
+function modalOrderedList() {
+  // Same party, filtered, sorted — matches what's on screen behind the modal.
+  const p = policies.find(pp => pp.id === currentModalId);
+  if (!p) return [];
+  return visiblePolicies().filter(pp => pp.party === p.party).sort((a, b) => a.id.localeCompare(b.id));
+}
+
+function renderModal() {
+  const p = policies.find(pp => pp.id === currentModalId);
+  if (!p) return;
+  const colour = PARTY_COLOURS[p.party] || "#777";
+  const dotCls = "row-dot" + (p.verified === false ? " is-unverified" : "");
+
+  const list = modalOrderedList();
+  const idx = list.findIndex(pp => pp.id === p.id);
+
+  const sourceRow = p.source ? `
+    <div class="axis-row">
+      <div class="axis-label">Source</div>
+      <div class="axis-data">
+        <div class="source-name">${escapeHtml(sourceName(p.source))}</div>
+        <div class="sub-label">Confidence</div>
+        <select data-id="${p.id}" data-field="confidence">
+          ${["high","medium","low"].map(v => `<option value="${v}" ${p.confidence === v ? "selected" : ""}>${CONFIDENCE_MARK[v]} ${v}</option>`).join("")}
+        </select>
+      </div>
+      <div class="source-link"><a class="source-btn" href="${escapeHtml(p.source)}" target="_blank" rel="noopener">View source ↗</a></div>
+    </div>` : `
+    <div class="axis-row">
+      <div class="axis-label">Source</div>
+      <div class="axis-data">
+        <div class="source-none">No source yet</div>
+        <div class="sub-label">Confidence</div>
+        <select data-id="${p.id}" data-field="confidence">
+          ${["high","medium","low"].map(v => `<option value="${v}" ${p.confidence === v ? "selected" : ""}>${CONFIDENCE_MARK[v]} ${v}</option>`).join("")}
+        </select>
+      </div>
+      <div></div>
+    </div>`;
+
+  document.getElementById("modal-panel").innerHTML = `
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="${dotCls}" style="--party-colour:${colour}"></span>
+        <div>
+          <div class="modal-title">${escapeHtml(p.title)}</div>
+          <div class="modal-meta">${p.party} · ${escapeHtml(p.conversation)} · ${p.verified === false ? "party site only" : "reported"}</div>
+        </div>
+      </div>
+      <button class="modal-close" type="button" id="modal-close-btn" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="desc-block">
+        <label>Description</label>
+        <textarea data-id="${p.id}" data-field="description" rows="2">${escapeHtml(p.description || "")}</textarea>
+      </div>
+
+      <div class="axis-row">
+        <div class="axis-label">Shape</div>
+        <div class="axis-data">
+          <div class="sub-label">Immediacy</div>
+          <select data-id="${p.id}" data-field="immediacy">
+            ${[1,2,3,4,5].map(n => `<option value="${n}" ${p.immediacy === n ? "selected" : ""}>${n} — ${IMMEDIACY_LABELS[n]}</option>`).join("")}
+          </select>
+          <div class="sub-label">Mechanism</div>
+          <select data-id="${p.id}" data-field="mechanism">
+            ${[1,2,3,4,5].map(n => `<option value="${n}" ${p.mechanism === n ? "selected" : ""}>${n} — ${MECHANISM_LABELS[n]}</option>`).join("")}
+          </select>
+        </div>
+        <div class="axis-why">
+          <label>Why?</label>
+          <textarea data-id="${p.id}" data-field="shapeWhy" rows="2" placeholder="Why this Immediacy/Mechanism score?">${escapeHtml(p.shapeWhy || "")}</textarea>
+        </div>
+      </div>
+
+      <div class="axis-row">
+        <div class="axis-label">Size</div>
+        <div class="axis-data">
+          <select data-id="${p.id}" data-field="size">
+            ${SIZE_ORDER.map(s => `<option value="${s}" ${p.size === s ? "selected" : ""}>${s}</option>`).join("")}
+          </select>
+        </div>
+        <div class="axis-why">
+          <label>Why?</label>
+          <textarea data-id="${p.id}" data-field="sizeWhy" rows="2" placeholder="Why this size tier?">${escapeHtml(p.sizeWhy || "")}</textarea>
+        </div>
+      </div>
+
+      <div class="axis-row">
+        <div class="axis-label">Politics</div>
+        <div class="axis-data">
+          <div class="sub-label">Econ L↔R</div>
+          <select data-id="${p.id}" data-field="leftRight">
+            ${ECON.map(v => `<option value="${v}" ${p.leftRight === v ? "selected" : ""}>${v}</option>`).join("")}
+          </select>
+          <div class="sub-label">Social P↔C</div>
+          <select data-id="${p.id}" data-field="progConservative">
+            ${SOC.map(v => `<option value="${v}" ${p.progConservative === v ? "selected" : ""}>${v}</option>`).join("")}
+          </select>
+        </div>
+        <div class="axis-why">
+          <label>Why?</label>
+          <textarea data-id="${p.id}" data-field="politicsWhy" rows="2" placeholder="Why this Econ/Social score?">${escapeHtml(p.politicsWhy || "")}</textarea>
+        </div>
+      </div>
+
+      ${sourceRow}
+    </div>
+
+    <div class="modal-footer">
+      <div class="modal-nav">
+        <button type="button" id="modal-prev" ${idx <= 0 ? "disabled" : ""}>← Prev</button>
+        <button type="button" id="modal-next" ${idx < 0 || idx >= list.length - 1 ? "disabled" : ""}>Next →</button>
+      </div>
+      <button class="modal-save" type="button" id="modal-save-btn">Save</button>
+    </div>
+  `;
+
+  document.getElementById("modal-close-btn").addEventListener("click", closeModal);
+  document.getElementById("modal-save-btn").addEventListener("click", () => {
+    saveDraft();
+    closeModal();
+  });
+  document.getElementById("modal-prev").addEventListener("click", () => {
+    if (idx > 0) openModal(list[idx - 1].id);
+  });
+  document.getElementById("modal-next").addEventListener("click", () => {
+    if (idx < list.length - 1) openModal(list[idx + 1].id);
+  });
+
+  document.querySelectorAll("#modal-panel select[data-field]").forEach(el => {
+    el.addEventListener("change", () => applyField(el));
+  });
+  document.querySelectorAll("#modal-panel textarea[data-field]").forEach(el => {
+    el.addEventListener("change", () => applyField(el));
+    el.addEventListener("blur", () => applyField(el));
+  });
+}
+
+function applyField(el) {
+  const id = el.dataset.id, field = el.dataset.field;
+  const policy = policies.find(p => p.id === id);
+  if (!policy) return;
+  const value = (field === "immediacy" || field === "mechanism") ? Number(el.value) : el.value;
+  if (policy[field] === value) return;
+  policy[field] = value;
+  saveDraft();
+  renderAccordion();
+  updateEditCount();
+  // Keep the row's changed-state fresh underneath without closing the modal.
+  if (currentModalId === id) {
+    const idx = modalOrderedList().findIndex(pp => pp.id === id);
+    const prevBtn = document.getElementById("modal-prev");
+    const nextBtn = document.getElementById("modal-next");
+    if (prevBtn) prevBtn.disabled = idx <= 0;
+    if (nextBtn) nextBtn.disabled = idx < 0 || idx >= modalOrderedList().length - 1;
+  }
+}
+
+function isChanged(p) {
+  const base = baseline.find(b => b.id === p.id);
+  if (!base) return false;
+  return base.size !== p.size || base.immediacy !== p.immediacy || base.mechanism !== p.mechanism ||
+    base.leftRight !== p.leftRight || base.progConservative !== p.progConservative ||
+    base.confidence !== p.confidence ||
+    (base.description || "") !== (p.description || "") ||
+    (base.shapeWhy || "") !== (p.shapeWhy || "") ||
+    (base.sizeWhy || "") !== (p.sizeWhy || "") ||
+    (base.politicsWhy || "") !== (p.politicsWhy || "");
+}
+
+function updateEditCount() {
+  const n = policies.filter(isChanged).length;
+  document.getElementById("edit-count").textContent = `${n} ${n === 1 ? "policy" : "policies"} changed`;
+}
+
+/* ---------------- Export ---------------- */
+function doExport() {
+  const out = {
+    updated: new Date().toISOString().slice(0, 10),
+    note: "Solid circles reported by RNZ; outlined circles link to party websites. Includes calibrated Shape/Size/Politics scoring, rationale and descriptions.",
+    policies: policies.map(p => ({
+      id: p.id,
+      party: p.party,
+      title: p.title,
+      conversation: p.conversation,
+      secondary: p.secondary,
+      size: p.size,
+      verified: p.verified,
+      source: p.source,
+      description: p.description,
+      immediacy: p.immediacy,
+      mechanism: p.mechanism,
+      shapeWhy: p.shapeWhy,
+      sizeWhy: p.sizeWhy,
+      leftRight: p.leftRight,
+      progConservative: p.progConservative,
+      confidence: p.confidence,
+      notes: p.politicsWhy
+    }))
+  };
+  const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "policies.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+</script>
+</body>
+</html>
