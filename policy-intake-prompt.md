@@ -35,21 +35,23 @@ Score the policy across two axes: Immediacy and Mechanism.
 1 (cash in hand) → 3 (free services) → 5 (structural rewiring)
 
 ## 4. Political
-Two independent axes: **Economic** (Left–Right) and **Social** (Progressive–Conservative). Score each on its own — a policy can be Right economically and Progressive socially, or any other combination. Don't let one axis pull the other toward consistency.
+Two independent axes: **Economic** (left–right) and **Direction** (something new ↔ keep it / bring it back). Score each on its own; don't let one pull the other toward consistency.
 
-**Economic Left** is more redistribution and government ownership. **Economic Right** is more market forces and individual responsibility.
+**Economic left** is more redistribution and government ownership. **Economic right** is more market forces and individual responsibility.
 
-**Social Progressive** is more about challenging hierarchy and individual autonomy. **Social Conservative** is more about reinforcing authority and protecting traditional values.
+**Direction** is temporal, not moral: does the mechanism move the settings somewhere New Zealand has never run them (**something new**, positive), or keep — or return to — settings New Zealand has or had (**keep it / bring it back**, negative)? Restoring a repealed law is bring-it-back regardless of whose law it was; the axis describes where policies are going, never whether going there is good. Where the destination is ambiguous, the party's own stated destination places it — their framing, their placement (the party's-own-hierarchy rule, applied to direction).
 
-Score how much more, on a 1–5 scale (1 = strongly left, 2 = left, 3 = genuinely centrist, 4 = right, 5 = strongly right). Same principle on the Social axis (1 = strongly progressive → 5 = strongly conservative).
+Score −3 to +3 on both axes. Econ: negative = left, positive = right. Direction: positive = new, negative = keep/bring back. Six rungs, three names, named and held:
 
-Example of the move: a policy legalising and taxing cannabis retail — market allocation of a new good (Econ 4), expanded personal autonomy from established norms (Social 2). Right and Progressive in the same record; both scores from the mechanism.
+- **Tilts (±1)** — a detectable nudge. Deliberately low bar: if you can feel it, it lives here at minimum.
+- **Leans (±2)** — clearly moves the settings: a real redistributive or market mechanism; a real move to somewhere new, or a real restoration.
+- **All-in (±3)** — rewires or reverses the settings: state ownership, universal transfer, privatisation; building what has never existed here, or returning to a prior settlement.
 
-Judge each policy against a neutral do-nothing baseline, not against other policies you've scored — that's what keeps the scale consistent record to record.
+**0 is not a rung — it's a verdict, earned two ways only:** genuinely balanced pulls (engaged — the why names both), or the axis barely applies (not engaged). Set `econ_engaged` / `direction_engaged` accordingly. Not-engaged 0s are off-axis, not centrist — a picture leaves them off that axis entirely.
 
-**3 is a real choice, not a shortcut.** Only land there if the policy actually balances both sides — not because you haven't worked out which way it leans. If you're tempted to pick 3, check first: is this genuinely centrist, or have I just not looked hard enough?
+**When pulls conflict, score the spine.** Most policies have a dominant instrument; score that and name the counter-pull in the why. An engaged 0 is a true 50/50, which should be rare.
 
-Name the specific mechanism driving each score in the why — never the party's usual position. No real lean on an axis → `null` for that axis, plainly — don't default to centre as if that were a finding. Never adjusted to match an external reference (Vote Compass, polling) — score this policy alone.
+Example of the move: a policy legalising and taxing cannabis retail — market allocation of a new good (Econ +2, Leans right), a regime New Zealand has never run (Direction +2, Leans new). Judge against today's settings as the baseline; name the specific mechanism in every why — never the party's usual position; never adjust to match an external reference.
 
 ## Confidence
 
@@ -76,11 +78,13 @@ Valid JSON, this shape exactly:
   "immediacy": 0,
   "mechanism": 0,
   "econ": 0,
-  "social": 0,
+  "econ_engaged": true,
+  "direction": 0,
+  "direction_engaged": true,
   "why": { "size": "", "shape": "", "political": "" },
   "confidence": "",
   "confidence_note": ""
 }
 ```
 
-If held for insufficient source: same shape, `description` holds the flag string, `size`/`immediacy`/`mechanism`/`econ`/`social` are `null`, `why` values are `""`, `confidence` is `"Check"`, `confidence_note` explains what's missing.
+If held for insufficient source: same shape, `description` holds the flag string, `size`/`immediacy`/`mechanism` are `null`, `econ`/`direction` are `0` with both engaged flags `false`, `why` values are `""`, `confidence` is `"Check"`, `confidence_note` explains what's missing.
