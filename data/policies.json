@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-23",
-  "note": "Solid circles reported by RNZ; outlined circles link to party websites. Full party-site sweep completed 22 Jul 2026.",
+  "updated": "2026-07-24",
+  "note": "Solid circles reported by RNZ; outlined circles link to party websites. Full party-site sweep completed 22 Jul 2026. Enriched 24 Jul 2026: descriptions, Political (econ/social 1-5, null = no lean), why, confidence per Policy Intake prompt v3.",
   "policies": [
     {
       "id": "policy-001",
@@ -12,7 +12,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/political/590598/greens-promise-to-cap-rent-rises-at-2-percent-a-year",
       "immediacy": 2,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Legislates a 2 percent annual cap on rent increases, scraps no-cause evictions, introduces a rental Warrant of Fitness and landlord register, and expands public housing by tens of thousands of homes.",
+      "econ": 1,
+      "social": null,
+      "why": {
+        "size": "rent control plus mass build",
+        "shape": "legislation this term, rules",
+        "political": "price control and state provision"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-002",
@@ -23,8 +33,18 @@
       "size": "Flagship",
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax",
-      "immediacy": 1,
-      "mechanism": 3
+      "immediacy": 2,
+      "mechanism": 3,
+      "description": "Gives every New Zealander a Medicard from birth or residency carrying three free GP visits a year from July 2028, backed by an independent GP pricing authority; funded by the capital gains tax.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "universal free-visit entitlement",
+        "shape": "free visits fund from 2028",
+        "political": "universal service, tax funded"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-003",
@@ -36,7 +56,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/598331/labour-promises-free-maternity-scans-if-elected",
       "immediacy": 1,
-      "mechanism": 3
+      "mechanism": 3,
+      "description": "Removes the $5 prescription fee from 1 July 2027 and adds free maternity scans (July 2028, $28.6m a year) and free cervical screening for ages 25-69 (October 2027) to the Medicard.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "fee removal, universal screening",
+        "shape": "prescriptions free within year",
+        "political": "removes user charges universally"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-004",
@@ -48,7 +78,17 @@
       "verified": false,
       "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/",
       "immediacy": 2,
-      "mechanism": 3
+      "mechanism": 3,
+      "description": "Investment in kaupapa Maori mental health services alongside community-led alternatives to the prison system.",
+      "econ": 2,
+      "social": 2,
+      "why": {
+        "size": "targeted service investment",
+        "shape": "service build, this term",
+        "political": "indigenous-led service expansion"
+      },
+      "confidence": "Check",
+      "confidence_note": "Cited article's retrieved text covers the justice policy; the mental-health investment detail needs verifying against the full piece"
     },
     {
       "id": "policy-005",
@@ -60,7 +100,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/576428/labour-announces-future-fund-as-first-key-election-policy",
       "immediacy": 5,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Establishes a New Zealand-only investment fund seeded with dividends from selected state-owned assets plus a one-off $200m Crown injection, with seeded assets protected from sale in legislation.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "state fund, modest seed",
+        "shape": "generational fund, undated scale",
+        "political": "state ownership and investment"
+      },
+      "confidence": "Low",
+      "confidence_note": "Party withholding asset list and fund scale until in government"
     },
     {
       "id": "policy-006",
@@ -72,7 +122,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/633845/election-26-labour-proposes-apprenticeship-boost-expansion",
       "immediacy": 2,
-      "mechanism": 1
+      "mechanism": 1,
+      "description": "Restores the $500-a-month employer subsidy to two years from 2028, adds road construction, water treatment and hairdressing from 2027, with $1,000 tool grants and funded mentoring - about $56.5m a year.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "targeted subsidy expansion",
+        "shape": "new trades 2027, subsidy 2028",
+        "political": "state subsidy for training"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-007",
@@ -84,7 +144,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
       "immediacy": 4,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Lifts R&D spending to at least 2 percent of GDP, builds a regulatory framework for AI, forgives student loan interest, and opens regulated sectors including cannabis and gene technology.",
+      "econ": 3,
+      "social": 2,
+      "why": {
+        "size": "economy-wide innovation programme",
+        "shape": "decade-scale regulatory build",
+        "political": "sector liberalisation expands autonomy"
+      },
+      "confidence": "Low",
+      "confidence_note": "Explainer-level source; site now brands this area Breakthrough Economy - retitle question stands"
     },
     {
       "id": "policy-008",
@@ -96,7 +166,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/597767/labour-vows-to-put-20-a-week-cap-on-public-transport-10-outside-main-centres",
       "immediacy": 1,
-      "mechanism": 2
+      "mechanism": 2,
+      "description": "Caps weekly public transport fares at $20 in Auckland, Wellington and Christchurch and $10 everywhere else from 1 July 2027, costing about $65m a year from the National Land Transport Fund.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "universal fare subsidy",
+        "shape": "caps start within a year",
+        "political": "subsidised fares, public provision"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-009",
@@ -108,7 +188,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar",
       "immediacy": 1,
-      "mechanism": 2
+      "mechanism": 2,
+      "description": "A $160m four-year package: up to $3,000 solar subsidies for low and middle income households, two Crown-backed loan schemes repaid via rates or power bills, and a $30m community battery fund, running within 12 months.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "targeted grants and loans",
+        "shape": "running within twelve months",
+        "political": "subsidy shaping household choices"
+      },
+      "confidence": "High",
+      "confidence_note": "Size sits on the Niche/Significant boundary - own press conference and $160m, but constituency-targeted; held at Niche"
     },
     {
       "id": "policy-010",
@@ -120,7 +210,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/political/593910/green-party-advocates-increased-energy-support-for-students",
       "immediacy": 1,
-      "mechanism": 1
+      "mechanism": 1,
+      "description": "Member's bill extending the Winter Energy Payment to full-time tertiary students and temporarily raising it by $50 a week to match the fuel crisis relief payment.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "payment extension, one group",
+        "shape": "payment lands immediately",
+        "political": "extends cash support"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-011",
@@ -132,7 +232,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar",
       "immediacy": 2,
-      "mechanism": 2
+      "mechanism": 2,
+      "description": "A central-local government entity ($7m Crown equity for 20 percent) offering low-interest loans secured against property and repaid through rates, plus solar installation without council consent.",
+      "econ": 3,
+      "social": null,
+      "why": {
+        "size": "small loan-scheme entity",
+        "shape": "entity setup, this term",
+        "political": "state finance plus deregulation"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-012",
@@ -144,7 +254,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
       "immediacy": 3,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Strengthens competition enforcement against monopoly power in banking, supermarkets and building materials.",
+      "econ": 3,
+      "social": null,
+      "why": {
+        "size": "enforcement across three sectors",
+        "shape": "next-term enforcement build",
+        "political": "competition enforcement, market preserving"
+      },
+      "confidence": "Low",
+      "confidence_note": "Explainer-level source"
     },
     {
       "id": "policy-013",
@@ -156,7 +276,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/577021/labour-to-campaign-on-narrow-capital-gains-tax-no-wealth-tax",
       "immediacy": 1,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "A 28 percent tax on profits from selling property other than the family home and farms, from July 2027, not retrospective, raising about $700m a year for the Medicard.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "narrow new tax, small revenue",
+        "shape": "starts July 2027, rules",
+        "political": "taxes capital for services"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-014",
@@ -168,7 +298,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/609851/national-to-make-kiwisaver-compulsory-if-elected",
       "immediacy": 2,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Makes KiwiSaver compulsory for all workers from 1 July 2028, lifts contributions to 6 percent each by 2032, auto-enrols babies from July 2027 with a $1,500 Baby Boost, and adds parental-leave contributions - over $1b across four years.",
+      "econ": 3,
+      "social": null,
+      "why": {
+        "size": "compulsory nationwide scheme, $1b",
+        "shape": "dated phase-in, structural mandate",
+        "political": "state mandate, private accounts"
+      },
+      "confidence": "High",
+      "confidence_note": "Flagship pull noted; held Significant for like-for-like with policy-019"
     },
     {
       "id": "policy-015",
@@ -180,7 +320,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/609649/greens-propose-wealth-corporate-and-inheritance-taxes-to-fund-income-tax-changes",
       "immediacy": 2,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "A 2.5 percent annual tax on net assets over $10m, a 33 percent tax on inheritances and gifts over $1m, and higher corporate and bank taxes, funding a $10,000 tax-free threshold and a 45 percent rate over $160,000.",
+      "econ": 1,
+      "social": null,
+      "why": {
+        "size": "new tax suite, $5b",
+        "shape": "legislation this term, rules",
+        "political": "redistributes wealth to earners"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-016",
@@ -192,7 +342,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/634881/act-party-leader-david-seymour-takes-aim-at-parliamentary-allies-opponents-but-especially-labour",
       "immediacy": 2,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Consolidates 43 government departments into 19 and cuts ministers from 28 to 18, with single-minister accountability, fixed-term removable chief executives, and the Public Service Commission scrapped.",
+      "econ": 4,
+      "social": null,
+      "why": {
+        "size": "halves the state machinery",
+        "shape": "restructure this term, structural",
+        "political": "shrinks state, market framing"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-017",
@@ -204,7 +364,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/742372/nz-first-promises-to-invest-in-oil-gas-surveys",
       "immediacy": 4,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Invests an initial $1b in a National Subsurface Development Survey of offshore basins covering oil, gas, geothermal and CO2 storage, with top basins surveyed within two years and a royalty above 50 percent as production matures.",
+      "econ": 3,
+      "social": null,
+      "why": {
+        "size": "$1b state resource programme",
+        "shape": "supply pathway six-plus years",
+        "political": "state investment, extractive markets"
+      },
+      "confidence": "High",
+      "confidence_note": "Mechanism flagged: a state survey programme reads closer to 4 than the recorded 5"
     },
     {
       "id": "policy-018",
@@ -216,7 +386,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan",
       "immediacy": 5,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Buys back BNZ from National Australia Bank and merges it with Kiwibank into a fully Crown-owned National Bank of New Zealand, funded by sovereign bonds, Crown debt, Future Fund and ACC investment.",
+      "econ": 1,
+      "social": null,
+      "why": {
+        "size": "nationalises a major bank",
+        "shape": "generational ownership change",
+        "political": "state ownership of banking"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-019",
@@ -227,8 +407,18 @@
       "size": "Significant",
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan",
-      "immediacy": 2,
-      "mechanism": 5
+      "immediacy": 3,
+      "mechanism": 5,
+      "description": "Makes KiwiSaver compulsory across the workforce with employee and employer contributions eventually rising to 10 percent, offset by unspecified tax cuts.",
+      "econ": 3,
+      "social": null,
+      "why": {
+        "size": "compulsory nationwide scheme",
+        "shape": "undated phase-in, structural",
+        "political": "state mandate, private accounts"
+      },
+      "confidence": "Low",
+      "confidence_note": "No dates or costings given; 'eventually' is the only timing"
     },
     {
       "id": "policy-020",
@@ -240,7 +430,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
       "immediacy": 5,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Seeks cross-party agreement to add 30GW of renewable generation by 2050, ring-fences Crown power profits for renewables, merges energy regulators and consolidates 29 lines companies to no more than eight.",
+      "econ": 3,
+      "social": null,
+      "why": {
+        "size": "sector-wide generation rewiring",
+        "shape": "2050 target, structural",
+        "political": "state coordination, not redistribution"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-021",
@@ -252,7 +452,17 @@
       "verified": false,
       "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/",
       "immediacy": 5,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Phases out prisons by 2040 in favour of community-led justice built on accountability, healing trauma and reconnecting whakapapa; the party could not supply implementation detail when asked.",
+      "econ": 2,
+      "social": 1,
+      "why": {
+        "size": "abolishes a state institution",
+        "shape": "2040 target, structural",
+        "political": "dismantles core state institution"
+      },
+      "confidence": "Low",
+      "confidence_note": "Party unable to provide mechanics to the Herald; scored on stated design"
     },
     {
       "id": "policy-022",
@@ -264,7 +474,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/political/595474/national-to-scrap-good-character-assessments-for-sex-offenders-at-sentencing",
       "immediacy": 2,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Prohibits judges from treating good character as a mitigating factor at sentencing for all sexual offending, building on the 40 percent cap on sentencing discounts.",
+      "econ": null,
+      "social": 4,
+      "why": {
+        "size": "redefines one sentencing factor",
+        "shape": "statute change this term",
+        "political": "strengthens punitive authority"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-023",
@@ -276,7 +496,17 @@
       "verified": false,
       "source": "https://www.act.org.nz/policies/law-and-order",
       "immediacy": 2,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Accredited security guards with detention and exclusion powers, three-strikes burglary minimums, deportation liability for serious-offence resident visa holders, 100,000 rural patrol hours, and a coercion-through-animal-abuse offence.",
+      "econ": null,
+      "social": 4,
+      "why": {
+        "size": "five enforcement measures bundled",
+        "shape": "legislation this term, rules",
+        "political": "expands enforcement authority"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-024",
@@ -286,9 +516,19 @@
       "secondary": "",
       "size": "Niche",
       "verified": false,
-      "source": "",
+      "source": "https://www.nzherald.co.nz/nz/politics/nz-first-to-oppose-clauses-in-governments-crimes-act-reform/ZI42NLLVUBB3ZN3KRNWZDA7T44/",
       "immediacy": 3,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Pledges to reform the Sentencing Act next term to deliver mandatory minimum prison sentences, including for assaults on first responders, after opposing their absence from the Crimes Amendment Bill.",
+      "econ": null,
+      "social": 4,
+      "why": {
+        "size": "targeted sentencing floor change",
+        "shape": "explicitly next term, rules",
+        "political": "mandatory minimums, state authority"
+      },
+      "confidence": "High",
+      "confidence_note": "Source found (NZ Herald) - closes the v001 unsourced flag; verified left false pending the RNZ-only convention call"
     },
     {
       "id": "policy-025",
@@ -300,7 +540,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
       "immediacy": 4,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Moves fisheries from single-species quotas to ecosystem-based management, phases out bottom trawling and expands marine protection toward 30 percent of the ocean.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "rewires fisheries management",
+        "shape": "decade-scale transition",
+        "political": "restricts extraction for commons"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-026",
@@ -312,7 +562,17 @@
       "verified": true,
       "source": "https://www.rnz.co.nz/news/politics/594584/the-opportunity-party-the-election-dark-horse",
       "immediacy": 3,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "A 1.75 percent urban and 0.5 percent rural land value tax funding a $19,400-a-year Citizen's Income for over-18s replacing main benefits, plus compulsory KiwiSaver 2.0 and three income brackets from 28 to 39 percent.",
+      "econ": 1,
+      "social": null,
+      "why": {
+        "size": "UBI plus land tax",
+        "shape": "next-term structural reset",
+        "political": "land tax funds universal income"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-027",
@@ -324,7 +584,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/citizens-voice",
       "immediacy": 3,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Citizen assemblies matching Parliament in size to consider and advise on major issues, overseen by an independent Parliamentary Commissioner.",
+      "econ": null,
+      "social": 2,
+      "why": {
+        "size": "new deliberative institution",
+        "shape": "next-term institutional build",
+        "political": "participation beyond existing institutions"
+      },
+      "confidence": "Low",
+      "confidence_note": "Explainer-level source"
     },
     {
       "id": "policy-028",
@@ -336,7 +606,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/affordable_housing",
       "immediacy": 4,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Uses the Land Value Tax to deliberately bring house prices down while attacking an 80,000-home shortage through simplified national zoning, streamlined small-build consents and underwriting affordable developments.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "prices-down plus build boom",
+        "shape": "decade-scale market shift",
+        "political": "tax pressure on land wealth"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-029",
@@ -348,7 +628,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/smart_on_crime",
       "immediacy": 3,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Decriminalises drug possession but not supply, expands drug and mental-health court pilots, and redirects prison spending toward programmes proven to reduce crime.",
+      "econ": null,
+      "social": 2,
+      "why": {
+        "size": "targeted justice reweighting",
+        "shape": "next-term programme shift",
+        "political": "decriminalisation expands autonomy"
+      },
+      "confidence": "Low",
+      "confidence_note": "Explainer-level source"
     },
     {
       "id": "policy-030",
@@ -360,7 +650,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/future_fit_education",
       "immediacy": 4,
-      "mechanism": 3
+      "mechanism": 3,
+      "description": "Overhauls early childhood education with centre size limits, tighter ratios, pay parity with school teachers and support for parent-led centres, plus civics from Year 6, reduced classroom screen time and funded night schools.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "multi-part sector programme",
+        "shape": "decade-scale sector change",
+        "political": "state provision and pay parity"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-031",
@@ -372,7 +672,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/healthy_people",
       "immediacy": 3,
-      "mechanism": 3
+      "mechanism": 3,
+      "description": "Refocuses health spending on prevention and primary care, lifts pay and conditions for health workers, and reinstates the Smokefree 2025 legislation.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "sector refocus, targeted",
+        "shape": "next-term service shift",
+        "political": "public provision and prevention"
+      },
+      "confidence": "Low",
+      "confidence_note": "Site page is directional; detailed policy unreleased"
     },
     {
       "id": "policy-032",
@@ -384,7 +694,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/climate_action",
       "immediacy": 4,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Adds an agricultural emissions mechanism to the ETS, excludes new exotic forestry, hands budget-setting to the Climate Change Commission, and rewards soil and wetland carbon sequestration.",
+      "econ": 3,
+      "social": null,
+      "why": {
+        "size": "extends emissions pricing scheme",
+        "shape": "decade-scale scheme change",
+        "political": "market instrument, expanded scope"
+      },
+      "confidence": "High",
+      "confidence_note": "Mechanism flagged: ETS amendment reads closer to 4 than the recorded 5"
     },
     {
       "id": "policy-033",
@@ -396,7 +716,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/healthy_land",
       "immediacy": 4,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Increases conservation and biosecurity funding focused on wetlands and native reforestation, tightens water-quality regulation with independent oversight, and builds nature markets rewarding biodiversity.",
+      "econ": 3,
+      "social": null,
+      "why": {
+        "size": "funding plus regulation mix",
+        "shape": "decade-scale land transition",
+        "political": "funding, rules and markets"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-034",
@@ -408,7 +738,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/intergenerational_infrastructure",
       "immediacy": 5,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "A 30-year infrastructure framework set apolitically by the Infrastructure Commission, significantly higher public investment, free public transport for all users, completed RMA replacement and mandated asset-management standards.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "generational framework, free transport",
+        "shape": "30-year framework, structural",
+        "political": "public investment and free services"
+      },
+      "confidence": "High",
+      "confidence_note": "Free-all-public-transport alone gives this a Flagship pull; held Significant"
     },
     {
       "id": "policy-035",
@@ -420,7 +760,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/clean_up_politics",
       "immediacy": 3,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Limits and discloses political donations, regulates professional lobbyists, and establishes an Anti-Corruption Commission with enforcement powers.",
+      "econ": null,
+      "social": null,
+      "why": {
+        "size": "donation and lobbying rules",
+        "shape": "next-term integrity build",
+        "political": "integrity mechanics, no lean"
+      },
+      "confidence": "Low",
+      "confidence_note": "Explainer-level source; neither axis engaged by the mechanism"
     },
     {
       "id": "policy-036",
@@ -432,7 +782,17 @@
       "verified": false,
       "source": "https://www.opportunity.org.nz/honouring_te_tiriti",
       "immediacy": 4,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Repeals the Treaty Principles Bill and Takutai Moana Amendment if passed, embeds Aotearoa history including Te Tiriti at all education levels, and grows te reo teaching capacity.",
+      "econ": null,
+      "social": 2,
+      "why": {
+        "size": "repeal plus curriculum change",
+        "shape": "decade-scale embedding",
+        "political": "strengthens Treaty partnership"
+      },
+      "confidence": "Low",
+      "confidence_note": "Site page is directional"
     },
     {
       "id": "policy-037",
@@ -444,7 +804,17 @@
       "verified": false,
       "source": "https://www.greens.org.nz/dfs_nav_data",
       "immediacy": 4,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Bans bottom trawling, lowers the nitrate limit for drinking water, and sets swimmable-rivers and ocean-protection rules across eight policy interventions.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "eight-part water rulebook",
+        "shape": "decade-scale standards",
+        "political": "regulates industry for commons"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-038",
@@ -456,7 +826,17 @@
       "verified": false,
       "source": "https://www.greens.org.nz/green_party_calls_for_union_membership_as_default_setting_for_new_employees",
       "immediacy": 2,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Amends the Employment Relations Act so new employees in workplaces covered by a collective agreement are automatically union members, with the right to opt out.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "single-act default change",
+        "shape": "legislation this term, rules",
+        "political": "strengthens collective bargaining"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-039",
@@ -467,8 +847,18 @@
       "size": "Niche",
       "verified": false,
       "source": "https://www.labour.org.nz/our-policies/",
-      "immediacy": 2,
-      "mechanism": 1
+      "immediacy": 1,
+      "mechanism": 1,
+      "description": "A loan scheme from 1 July 2027 helping GPs buy into local practices and stay in their communities.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "small targeted loan scheme",
+        "shape": "starts within a year",
+        "political": "state-backed professional finance"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-040",
@@ -480,7 +870,17 @@
       "verified": false,
       "source": "https://www.act.org.nz/defending-equal-rights-democracy",
       "immediacy": 3,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Continues the campaign to define Treaty principles in law based on the 1840 texts - the same rights and duties for all citizens - alongside opposing co-governance arrangements in public bodies.",
+      "econ": null,
+      "social": 4,
+      "why": {
+        "size": "constitutional definition change",
+        "shape": "next-term legislative push",
+        "political": "uniform-rights law over partnership"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-041",
@@ -492,7 +892,17 @@
       "verified": false,
       "source": "https://www.act.org.nz/hunters-lfo",
       "immediacy": 2,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "Rewrites the Arms Act winding back the firearms registry, keeps operating relief for clubs and ranges, and gives hunters a formal role in game-animal and pest management.",
+      "econ": null,
+      "social": 2,
+      "why": {
+        "size": "targeted regulatory rewrite",
+        "shape": "legislation this term, rules",
+        "political": "loosens state control, owner autonomy"
+      },
+      "confidence": "Low",
+      "confidence_note": "Social axis strains here: the autonomy-versus-authority definition scores gun liberalisation Progressive - flagged for the methodology page"
     },
     {
       "id": "policy-042",
@@ -501,10 +911,20 @@
       "conversation": "Cost of Living",
       "secondary": "",
       "size": "Significant",
-      "verified": false,
-      "source": "https://www.nzfirst.nz/news",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/national/programmes/checkpoint/audio/2019031720/nz-first-makes-campaign-promise-to-break-up-supermarket-duopoly",
       "immediacy": 3,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "Legislates to break Foodstuffs into two competing cooperatives (New World/Four Square and Pak'nSave), lifts Commerce Commission penalties to Australian levels, and gives the Grocery Commissioner binding powers.",
+      "econ": 2,
+      "social": null,
+      "why": {
+        "size": "forced divestiture of duopoly",
+        "shape": "next-term structural breakup",
+        "political": "forced divestiture, state enforcement"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-043",
@@ -513,10 +933,20 @@
       "conversation": "Government & Democracy",
       "secondary": "",
       "size": "Niche",
-      "verified": false,
-      "source": "https://www.nzfirst.nz/news",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/te-ao-maori/601621/new-zealand-first-s-campaign-to-scrap-independent-maori-statutory-board-just-dumb-racist-stuff-mayor",
       "immediacy": 1,
-      "mechanism": 4
+      "mechanism": 4,
+      "description": "A member's bill disestablishing Auckland's Independent Maori Statutory Board (Houkura), transferring its functions, property and obligations back to Auckland Council.",
+      "econ": null,
+      "social": 4,
+      "why": {
+        "size": "single body, one city",
+        "shape": "bill already introduced",
+        "political": "removes Maori governance structure"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     },
     {
       "id": "policy-044",
@@ -528,7 +958,81 @@
       "verified": false,
       "source": "https://www.nzfirst.nz/news",
       "immediacy": 4,
-      "mechanism": 5
+      "mechanism": 5,
+      "description": "insufficient source detail",
+      "econ": null,
+      "social": null,
+      "why": {
+        "size": "",
+        "shape": "",
+        "political": ""
+      },
+      "confidence": "Check",
+      "confidence_note": "Generic party news page cited; no policy-specific announcement located. Existing display values retained pending a real source. Recorded Mechanism 5 also looks wrong for a games bid."
+    },
+    {
+      "id": "policy-045",
+      "party": "National",
+      "title": "Next Billion Customers - trade expansion strategy",
+      "conversation": "Economy",
+      "secondary": "Future & Infrastructure",
+      "size": "Significant",
+      "verified": false,
+      "source": "https://www.national.org.nz/new-trade",
+      "immediacy": 4,
+      "mechanism": 4,
+      "description": "Plan to pursue new trade agreements across Europe, South America, Asia and Africa - markets totalling almost one billion potential customers - with reduced trade barriers, streamlined border processes and digital export tools, toward doubling export value by 2034.",
+      "econ": 4,
+      "social": null,
+      "why": {
+        "size": "national strategy, unspecified mechanisms",
+        "shape": "agreements take years, 2034 goal",
+        "political": "market access, not redistribution"
+      },
+      "confidence": "Low",
+      "confidence_note": "Page is aspirational - no fiscal commitment or named agreements; 2034 doubling goal is pre-existing government policy"
+    },
+    {
+      "id": "policy-046",
+      "party": "National",
+      "title": "Faster commercial building consents",
+      "conversation": "Economy",
+      "size": "Niche",
+      "verified": false,
+      "source": "https://www.national.org.nz/build-the-future",
+      "immediacy": 2,
+      "mechanism": 4,
+      "description": "Formalises producer statements in the Building Act so qualified engineers can sign off certain commercial building work without council inspection, and designates a specialist national Building Consent Authority for large or complex commercial buildings.",
+      "econ": 4,
+      "social": null,
+      "why": {
+        "size": "technical consenting reform, one sector",
+        "shape": "legislation next term, rules change",
+        "political": "state checks to private sign-off"
+      },
+      "confidence": "High",
+      "confidence_note": ""
+    },
+    {
+      "id": "policy-047",
+      "party": "National",
+      "title": "Consent must be a yes - Crimes Act change",
+      "conversation": "Crime & Justice",
+      "size": "Significant",
+      "verified": false,
+      "source": "https://www.national.org.nz/news/20260719-honpaulgoldsmith",
+      "immediacy": 2,
+      "mechanism": 4,
+      "description": "Amends the Crimes Act to define sexual consent as actively given - a communicated yes by words or actions rather than the absence of a no - without shifting the burden of proof in prosecutions.",
+      "econ": null,
+      "social": 2,
+      "why": {
+        "size": "redefines consent in criminal law",
+        "shape": "single statute amendment, next term",
+        "political": "affirmative standard expands protection"
+      },
+      "confidence": "High",
+      "confidence_note": ""
     }
   ]
 }
