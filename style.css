@@ -5,14 +5,11 @@
   --soft: #f5f5f3;
   --white: #ffffff;
   --focus: #151515;
-  --labour: #d82c2f;
-  --national: #0057b8;
-  --greens: #159447;
-  --act: #f1c40f;
-  --nz-first: #111111;
-  --maori: #7b2b83;
-  --top: #1b8f9c;
 }
+
+/* Party colours are not defined here. They live in PARTY_COLOURS in script.js
+   and are applied per element as an inline --party-colour, because each circle
+   takes its colour from the policy data. Change them there, not here. */
 
 * {
   box-sizing: border-box;

@@ -1,5 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <circle cx="12" cy="18" r="11" fill="#d82c2f"/>
-  <circle cx="25" cy="10" r="6.5" fill="#1b8f9c"/>
-  <circle cx="26" cy="24" r="4.5" fill="#54565A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Election Noise. One dot per party, alphabetical, clockwise from top. -->
+  <circle cx="32.45" cy="11.15" r="8.5" fill="#f1c40f" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><!-- ACT -->
+  <circle cx="47.53" cy="19.52" r="8.5" fill="#159447" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><!-- Green -->
+  <circle cx="52.34" cy="37.06" r="8.5" fill="#d82c2f" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><!-- Labour -->
+  <circle cx="40.59" cy="50.02" r="8.5" fill="#0057b8" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><!-- National -->
+  <circle cx="23.61" cy="50.67" r="8.5" fill="#54565A" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><!-- NZ First -->
+  <circle cx="11.66" cy="36.06" r="8.5" fill="#7A4033" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><!-- Te Pati Maori -->
+  <circle cx="16.17" cy="19.67" r="8.5" fill="#1b8f9c" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><!-- TOP -->
 </svg>
