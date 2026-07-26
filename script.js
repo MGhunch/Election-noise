@@ -31,10 +31,23 @@ const PARTY_COLOURS = {
   "TOP": "#1b8f9c"
 };
 
+// SIZE_MAP is the fixed scale. The Shape view and the detail-panel dots read
+// it directly and must keep doing so — the blob's collide relaxation is tuned
+// against these numbers and shouldn't move because the grid changed.
 const SIZE_MAP = {
   "Niche": 24,
   "Significant": 36,
   "Flagship": 52
+};
+
+// The grid uses relative ratios instead, scaled at render time so that the
+// fullest conversation just fills its square. That's what makes "how full the
+// tile is" mean something: the loudest tile is always near the top of its
+// range, and every other tile reads as less than it.
+const GRID_SIZE_RATIO = {
+  "Niche": 0.42,
+  "Significant": 0.62,
+  "Flagship": 1
 };
 
 // A record is drawn only if it is a live commitment AND carries a real size.
@@ -80,6 +93,7 @@ async function init() {
     renderGrid();
     bindStaticControls();
     bindViewToggle();
+    bindResize();
   } catch (error) {
     grid.innerHTML = `
       <div class="conversation-card" style="grid-column: 1 / -1;">
@@ -188,6 +202,8 @@ function renderGrid() {
     });
   });
 
+  calibrateGrid();
+
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       grid.classList.add("is-ready");
@@ -212,10 +228,76 @@ function renderCircle(policy) {
       aria-label="${escapeHtml(`${policy.party}: ${policy.title}. ${policy.size} policy.`)}"
       data-policy-id="${escapeHtml(String(policy.id))}"
       data-party="${escapeHtml(policy.party)}"
+      data-size="${escapeHtml(policy.size)}"
       data-tooltip="${escapeHtml(policy.title)}"
       style="--party-colour:${colour}; --circle-size:${size}px"
     ></button>
   `;
+}
+
+// Lay circles out the way flex-wrap will, and report how tall that comes to.
+// Used to test a candidate scale without touching the DOM.
+function packedHeight(sizes, base, width, gap) {
+  let x = 0;
+  let y = 0;
+  let rowHeight = 0;
+
+  for (const size of sizes) {
+    const diameter = base * (GRID_SIZE_RATIO[size] || GRID_SIZE_RATIO.Niche);
+    if (x > 0 && x + diameter > width) {
+      y += rowHeight + gap;
+      x = 0;
+      rowHeight = 0;
+    }
+    x += diameter + gap;
+    if (diameter > rowHeight) rowHeight = diameter;
+  }
+
+  return y + rowHeight;
+}
+
+// Find the largest scale at which every conversation still fits its square,
+// then apply it. The fullest conversation is the binding constraint, so it
+// ends up near-full and the quiet ones read as visibly emptier.
+function calibrateGrid() {
+  const cards = [...grid.querySelectorAll(".conversation-card")];
+  if (!cards.length) return;
+
+  const measured = cards.map(card => {
+    const field = card.querySelector(".policy-field");
+    const conversation = card.dataset.conversation;
+    return {
+      width: field.clientWidth,
+      height: field.clientHeight,
+      sizes: policies
+        .filter(policy => policy.conversation === conversation)
+        .sort((a, b) => sizeWeight(b.size) - sizeWeight(a.size))
+        .map(policy => policy.size)
+    };
+  }).filter(item => item.width > 0 && item.height > 0 && item.sizes.length);
+
+  if (!measured.length) return;
+
+  let low = 6;
+  let high = Math.max(...measured.map(item => Math.min(item.width, item.height)));
+
+  for (let step = 0; step < 26; step++) {
+    const candidate = (low + high) / 2;
+    const gap = Math.max(3, candidate * 0.15);
+    const fits = measured.every(
+      item => packedHeight(item.sizes, candidate, item.width, gap) <= item.height
+    );
+    if (fits) low = candidate; else high = candidate;
+  }
+
+  const gap = Math.max(3, low * 0.15);
+  grid.style.setProperty("--circle-gap", `${Math.round(gap)}px`);
+  grid.style.setProperty("--circle-ring", `${Math.max(2, Math.round(low * 0.055))}px`);
+
+  grid.querySelectorAll(".policy-circle").forEach(circle => {
+    const ratio = GRID_SIZE_RATIO[circle.dataset.size] || GRID_SIZE_RATIO.Niche;
+    circle.style.setProperty("--circle-size", `${Math.round(low * ratio)}px`);
+  });
 }
 
 function showTooltip(event) {
@@ -360,6 +442,16 @@ function bindStaticControls() {
         if (event.target === dialog) dialog.close();
       });
     });
+}
+
+function bindResize() {
+  let pending;
+  const recalibrate = () => {
+    window.clearTimeout(pending);
+    pending = window.setTimeout(calibrateGrid, 120);
+  };
+  window.addEventListener("resize", recalibrate);
+  window.addEventListener("orientationchange", recalibrate);
 }
 
 function bindViewToggle() {
