@@ -221,7 +221,7 @@ function renderGrid() {
 }
 
 const RAIL_WIDTH = 168;
-const RAIL_GAP = 26;
+const RAIL_GAP = 40;
 const HERO_MAX = 1180 - RAIL_WIDTH - RAIL_GAP;
 const HERO_FLOOR = 500;
 const HERO_TAIL = 28;
