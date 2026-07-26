@@ -1,7 +1,7 @@
 {
   "updated": "2026-07-26",
   "generated_by": "policy-intake-prompt v3 (Position axes)",
-  "note": "Fresh intake pass over raw-policy-sweep-consolidated.md per policy-intake-prompt v3. Sizes calibrated by Michael 26 Jul 2026 against a reach test (universal vs cohort; architecture vs operating inside the system). IDs are a new sequence and do NOT correspond to the previous dataset numbering. Every record carries a status: live (scored and drawn), waiting (announced but not yet published in enough detail to score), retired (no longer a live 2026 commitment). Only live records are drawn.",
+  "note": "Fresh intake pass over raw-policy-sweep-consolidated.md per policy-intake-prompt v3. Sizes calibrated by Michael 26 Jul 2026 against a reach test (universal vs cohort; architecture vs operating inside the system). IDs are a new sequence and do NOT correspond to the previous dataset numbering. Every record carries a status: live (scored and drawn), waiting (announced but not yet published in enough detail to score), retired (no longer a live 2026 commitment). Only live records are drawn. Direction rescored 26 Jul 2026 against two rules: the Tilts rung does not apply to direction (ordinary policy scores 0, 'more of the same'), and a policy only turns back the clock where the party itself names what it is returning to, not where the scorer located a precedent.",
   "count": 82,
   "policies": [
     {
@@ -19,7 +19,7 @@
       "mechanism": 2,
       "econ": 3,
       "econ_engaged": true,
-      "direction": 1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Restructures the whole income scale",
@@ -27,7 +27,7 @@
         "position": "Flatter rates cut redistribution sharply"
       },
       "confidence": "Low",
-      "confidence_note": "Immediacy is the weak section — the page carries no date. Direction reach: NZ's lowest prior top personal rate was 33% (1988–2000); a 28% top rate has not been run.",
+      "confidence_note": "Immediacy is the weak section — the page carries no date. Direction reach: NZ's lowest prior top personal rate was 33% (1988–2000); a 28% top rate has not been run. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -45,7 +45,7 @@
       "mechanism": 4,
       "econ": 2,
       "econ_engaged": true,
-      "direction": -2,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Changes the state's delivery role",
@@ -53,7 +53,7 @@
         "position": "Private provision of public care"
       },
       "confidence": "Low",
-      "confidence_note": "Size is the weak section — no volumes, costings or timeline, only a stated posture. Direction reach: NZ ran a purchaser/provider split under RHAs and CHEs from 1993.",
+      "confidence_note": "Size is the weak section — no volumes, costings or timeline, only a stated posture. Direction reach: NZ ran a purchaser/provider split under RHAs and CHEs from 1993. Direction rescored 26 Jul 2026: -2 to 0. ACT frames this as reform of delivery, not as restoring the 1993 purchaser/provider split; contracting is a familiar instrument in use, not a return.",
       "verified": false
     },
     {
@@ -71,7 +71,7 @@
       "mechanism": 3,
       "econ": 0,
       "econ_engaged": false,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Rural communities only",
@@ -79,7 +79,7 @@
         "position": "More police, tougher penalties"
       },
       "confidence": "High",
-      "confidence_note": "Econ not engaged — police resourcing sits off the redistribution/market axis. Direction reach: patrol funding and penalty increases are standing NZ practice; Text 111 extension is the only novel element.",
+      "confidence_note": "Econ not engaged — police resourcing sits off the redistribution/market axis. Direction reach: patrol funding and penalty increases are standing NZ practice; Text 111 extension is the only novel element. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -123,7 +123,7 @@
       "mechanism": 4,
       "econ": 0,
       "econ_engaged": false,
-      "direction": 1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "One offence, narrow amendment",
@@ -131,7 +131,7 @@
         "position": "New offence within existing law"
       },
       "confidence": "High",
-      "confidence_note": "Econ not engaged — criminal law with no economic lever. Direction reach: NZ family-violence law has no companion-animal coercion offence; this adds to an existing statute rather than building a new regime.",
+      "confidence_note": "Econ not engaged — criminal law with no economic lever. Direction reach: NZ family-violence law has no companion-animal coercion offence; this adds to an existing statute rather than building a new regime. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -201,7 +201,7 @@
       "mechanism": 4,
       "econ": 3,
       "econ_engaged": true,
-      "direction": -2,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Financing model, no named projects",
@@ -209,7 +209,7 @@
         "position": "Partial privatisation of public assets"
       },
       "confidence": "Low",
-      "confidence_note": "Size is the weak section — no projects, figures or targets, only a stated preference. Direction reach: NZ ran the mixed-ownership model in 2013 and has used PPPs for roads and schools.",
+      "confidence_note": "Size is the weak section — no projects, figures or targets, only a stated preference. Direction reach: NZ ran the mixed-ownership model in 2013 and has used PPPs for roads and schools. Direction rescored 26 Jul 2026: -2 to 0. PPPs and mixed ownership are instruments already in use; the 2013 model is precedent for the tool, not a settlement the party is going back to.",
       "verified": false
     },
     {
@@ -253,7 +253,7 @@
       "mechanism": 4,
       "econ": 1,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Exempts the largest emitting sector",
@@ -261,7 +261,7 @@
         "position": "Entrenches the current exemption"
       },
       "confidence": "Low",
-      "confidence_note": "Source is a single clause with no mechanism detail. Direction reach: agriculture has never entered the ETS and its entry has been deferred repeatedly; this holds today's settings against a legislated trajectory rather than moving them.",
+      "confidence_note": "Source is a single clause with no mechanism detail. Direction reach: agriculture has never entered the ETS and its entry has been deferred repeatedly; this holds today's settings against a legislated trajectory rather than moving them. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -305,7 +305,7 @@
       "mechanism": 4,
       "econ": 2,
       "econ_engaged": true,
-      "direction": 1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Changes pay structure, whole workforce",
@@ -313,7 +313,7 @@
         "position": "Individual reward over collective scales"
       },
       "confidence": "Low",
-      "confidence_note": "No figures, mechanism or timeline — 'has proposed' and 'supports enabling'. Direction reach: NZ has run uniform national pay scales set by collective agreement, with only limited allowance-based variation.",
+      "confidence_note": "No figures, mechanism or timeline — 'has proposed' and 'supports enabling'. Direction reach: NZ has run uniform national pay scales set by collective agreement, with only limited allowance-based variation. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -331,7 +331,7 @@
       "mechanism": 4,
       "econ": 0,
       "econ_engaged": false,
-      "direction": 1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Resident visa holders only",
@@ -339,7 +339,7 @@
         "position": "Permanent liability, no time bar"
       },
       "confidence": "Low",
-      "confidence_note": "The sweep could not resolve the /deport URL, so this may not be the same policy the Law & Order hub links to. Econ not engaged — immigration status, off the economic axis. Direction reach: the Immigration Act 2009 makes deportation liability time-limited by length of residence.",
+      "confidence_note": "The sweep could not resolve the /deport URL, so this may not be the same policy the Law & Order hub links to. Econ not engaged — immigration status, off the economic axis. Direction reach: the Immigration Act 2009 makes deportation liability time-limited by length of residence. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -409,7 +409,7 @@
       "mechanism": 5,
       "econ": 2,
       "econ_engaged": true,
-      "direction": -2,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Restructures the entire public service",
@@ -417,7 +417,7 @@
         "position": "Ministers appoint chief executives directly"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: an independent commissioner has held chief-executive appointment powers since the Public Service Act 1912, reaffirmed by the State Sector Act 1988; ministerial appointment returns to a pre-1912 settlement. Police, NZSIS and NZDF operational independence protected by law.",
+      "confidence_note": "Direction reach: an independent commissioner has held chief-executive appointment powers since the Public Service Act 1912, reaffirmed by the State Sector Act 1988; ministerial appointment returns to a pre-1912 settlement. Police, NZSIS and NZDF operational independence protected by law. Direction rescored 26 Jul 2026: -2 to 0. ACT campaigns on a smaller public service, not on the pre-1912 appointment settlement; the precedent is scorer research, not the party's destination.",
       "verified": true
     },
     {
@@ -461,7 +461,7 @@
       "mechanism": 3,
       "econ": -2,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "One cohort, all pregnancies",
@@ -469,7 +469,7 @@
         "position": "Extends existing regional free provision"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: the source itself records scans already free in Tairāwhiti, Nelson and the West Coast, so this nationalises an existing patchwork rather than creating a wholly new entitlement.",
+      "confidence_note": "Direction reach: the source itself records scans already free in Tairāwhiti, Nelson and the West Coast, so this nationalises an existing patchwork rather than creating a wholly new entitlement. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -487,7 +487,7 @@
       "mechanism": 3,
       "econ": -2,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "One age and sex cohort",
@@ -495,7 +495,7 @@
         "position": "Extends existing subsidised screening"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: NZ has run a subsidised national cervical screening programme with free access already extended to priority groups; this removes the remaining cost rather than creating a new programme.",
+      "confidence_note": "Direction reach: NZ has run a subsidised national cervical screening programme with free access already extended to priority groups; this removes the remaining cost rather than creating a new programme. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -513,7 +513,7 @@
       "mechanism": 2,
       "econ": -1,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Fifty loans yearly, narrow reach",
@@ -521,7 +521,7 @@
         "position": "State credit through existing scheme"
       },
       "confidence": "Low",
-      "confidence_note": "Size is the weak section — the same page bundles a far larger appointment-capacity plan (180,000 clinic, 1.9m triage, 1m long-term condition, 1.5m admin appointments a year) that is a separate instrument and would size Significant on its own. Worth splitting. Direction reach: delivery runs through the existing Small Business Cashflow Loan Scheme.",
+      "confidence_note": "Size is the weak section — the same page bundles a far larger appointment-capacity plan (180,000 clinic, 1.9m triage, 1m long-term condition, 1.5m admin appointments a year) that is a separate instrument and would size Significant on its own. Worth splitting. Direction reach: delivery runs through the existing Small Business Cashflow Loan Scheme. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -565,7 +565,7 @@
       "mechanism": 2,
       "econ": -2,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "$65m yearly, all transport users",
@@ -573,7 +573,7 @@
         "position": "Fare subsidy, familiar instrument"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: NZ ran nationwide half-price public transport fares in 2022–23, so subsidised fare-setting is an instrument already used here.",
+      "confidence_note": "Direction reach: NZ ran nationwide half-price public transport fares in 2022–23, so subsidised fare-setting is an instrument already used here. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -643,7 +643,7 @@
       "mechanism": 2,
       "econ": -2,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Homeowners who opt in",
@@ -651,7 +651,7 @@
         "position": "Subsidy instrument already used here"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: Warmer Kiwi Homes has run household energy retrofit subsidies since 2018, so the instrument is familiar even though solar is a new object for it.",
+      "confidence_note": "Direction reach: Warmer Kiwi Homes has run household energy retrofit subsidies since 2018, so the instrument is familiar even though solar is a new object for it. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -669,7 +669,7 @@
       "mechanism": 4,
       "econ": -2,
       "econ_engaged": true,
-      "direction": 1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Narrow base, investment property only",
@@ -677,7 +677,7 @@
         "position": "Taxes gains, bright-line precedent"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: the bright-line test has taxed property gains on holdings under 2, 5 and 10 years since 2015, so this extends an existing instrument to unlimited holding periods rather than creating a wholly new tax base.",
+      "confidence_note": "Direction reach: the bright-line test has taxed property gains on holdings under 2, 5 and 10 years since 2015, so this extends an existing instrument to unlimited holding periods rather than creating a wholly new tax base. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -695,7 +695,7 @@
       "mechanism": 2,
       "econ": -1,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Seven million, small fund",
@@ -703,7 +703,7 @@
         "position": "State credit, familiar instrument"
       },
       "confidence": "Low",
-      "confidence_note": "Raw text is a single line with no date or uptake target. Citation fix applied: the previous source was an RNZ article about Labour's SolarSaver. Direction reach: Crown-backed household energy lending and grants have run through EECA and Warmer Kiwi Homes.",
+      "confidence_note": "Raw text is a single line with no date or uptake target. Citation fix applied: the previous source was an RNZ article about Labour's SolarSaver. Direction reach: Crown-backed household energy lending and grants have run through EECA and Warmer Kiwi Homes. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -721,7 +721,7 @@
       "mechanism": 4,
       "econ": 1,
       "econ_engaged": true,
-      "direction": 1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Homeowners who opt in",
@@ -729,7 +729,7 @@
         "position": "Deregulates consent, familiar RMA tool"
       },
       "confidence": "Low",
-      "confidence_note": "Shape is the weak section — no date, and the source does not say whether this runs by national environmental standard or primary legislation. Direction reach: permitted-activity regimes are a standard RMA instrument; the technologies covered are new to one.",
+      "confidence_note": "Shape is the weak section — no date, and the source does not say whether this runs by national environmental standard or primary legislation. Direction reach: permitted-activity regimes are a standard RMA instrument; the technologies covered are new to one. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -773,7 +773,7 @@
       "mechanism": 4,
       "econ": 0,
       "econ_engaged": false,
-      "direction": 1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Removes one mitigating sentencing factor",
@@ -781,7 +781,7 @@
         "position": "Removes a long-standing sentencing consideration"
       },
       "confidence": "Low",
-      "confidence_note": "Description is the weak section — the raw text is a headline only, with no drafting detail or date. Econ not engaged. Direction reach: good character has been a sentencing consideration under the Sentencing Act 2002; removing it for an offence class has not been done here.",
+      "confidence_note": "Description is the weak section — the raw text is a headline only, with no drafting detail or date. Econ not engaged. Direction reach: good character has been a sentencing consideration under the Sentencing Act 2002; removing it for an offence class has not been done here. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -799,7 +799,7 @@
       "mechanism": 4,
       "econ": 2,
       "econ_engaged": true,
-      "direction": -2,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Exporters, existing trade machinery",
@@ -807,7 +807,7 @@
         "position": "More trade agreements, long-standing practice"
       },
       "confidence": "High",
-      "confidence_note": "Priority markets are Brazil, Switzerland, Argentina, Bangladesh, Nigeria, Uruguay and EFTA; a second tranche of six follows over a decade. Direction reach: NZ has pursued bilateral and regional free trade agreements continuously since CER in 1983.",
+      "confidence_note": "Priority markets are Brazil, Switzerland, Argentina, Bangladesh, Nigeria, Uruguay and EFTA; a second tranche of six follows over a decade. Direction reach: NZ has pursued bilateral and regional free trade agreements continuously since CER in 1983. Direction rescored 26 Jul 2026: -2 to 0. National campaigns on new markets, not on returning to 1983; continuous FTA practice is standing policy, not a settlement being restored.",
       "verified": false
     },
     {
@@ -825,7 +825,7 @@
       "mechanism": 4,
       "econ": 1,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Commercial developers, technical amendment",
@@ -833,7 +833,7 @@
         "position": "Formalises existing producer statements"
       },
       "confidence": "High",
-      "confidence_note": "Commercial buildings account for roughly $9 billion of consented work a year. Direction reach: producer statements are already widely used under the Building Act, and the dedicated authority is modelled on the supermarket consenting service announced in 2025.",
+      "confidence_note": "Commercial buildings account for roughly $9 billion of consented work a year. Direction reach: producer statements are already widely used under the Building Act, and the dedicated authority is modelled on the supermarket consenting service announced in 2025. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -851,7 +851,7 @@
       "mechanism": 3,
       "econ": -2,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Homeowners who opt in",
@@ -859,7 +859,7 @@
         "position": "Subsidy expansion, new solar rights"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: Warmer Kiwi Homes is explicitly expanded rather than replaced, so the spine is a familiar subsidy instrument; the counter-pull is a renters' right to solar and legalised plug-in solar, neither of which NZ has run.",
+      "confidence_note": "Direction reach: Warmer Kiwi Homes is explicitly expanded rather than replaced, so the spine is a familiar subsidy instrument; the counter-pull is a renters' right to solar and legalised plug-in solar, neither of which NZ has run. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -929,7 +929,7 @@
       "mechanism": 1,
       "econ": -2,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Rate change within existing scale",
@@ -937,7 +937,7 @@
         "position": "Redistributes via familiar rate cut"
       },
       "confidence": "Low",
-      "confidence_note": "Description is the weak section — the source gives scope (96% of earners) but no rates, thresholds or fiscal cost. Direction reach: income tax rate and threshold changes are the most routinely used instrument in NZ fiscal policy.",
+      "confidence_note": "Description is the weak section — the source gives scope (96% of earners) but no rates, thresholds or fiscal cost. Direction reach: income tax rate and threshold changes are the most routinely used instrument in NZ fiscal policy. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -1111,7 +1111,7 @@
       "mechanism": 4,
       "econ": 2,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Scope undefined, one Act named",
@@ -1119,7 +1119,7 @@
         "position": "Deregulation restoring prior consenting practice"
       },
       "confidence": "Low",
-      "confidence_note": "Size is the weak section — the source names one Act and gives no scope for the rest of the 'duplication'. Direction reach: Wildlife Act permitting for development became a live constraint only after 2024 litigation, so amendment restores earlier practice.",
+      "confidence_note": "Size is the weak section — the source names one Act and gives no scope for the rest of the 'duplication'. Direction reach: Wildlife Act permitting for development became a live constraint only after 2024 litigation, so amendment restores earlier practice. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -1215,7 +1215,7 @@
       "mechanism": 2,
       "econ": 0,
       "econ_engaged": false,
-      "direction": -2,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "One building, fifteen million",
@@ -1223,7 +1223,7 @@
         "position": "Repeats a 2018 government commitment"
       },
       "confidence": "High",
-      "confidence_note": "Econ not engaged — a heritage capital grant sits off the redistribution/market axis. The figure is a moving commitment: the City Council agreed a matching $15m in May 2026, conditional on Crown and Church contributions. Direction reach: the source names a 2018 government commitment of $25m as precedent.",
+      "confidence_note": "Econ not engaged — a heritage capital grant sits off the redistribution/market axis. The figure is a moving commitment: the City Council agreed a matching $15m in May 2026, conditional on Crown and Church contributions. Direction reach: the source names a 2018 government commitment of $25m as precedent. Direction rescored 26 Jul 2026: -2 to 0. A heritage capital grant. The 2018 commitment is precedent for funding the rebuild, not a policy setting being restored.",
       "verified": true
     },
     {
@@ -1423,7 +1423,7 @@
       "mechanism": 3,
       "econ": -2,
       "econ_engaged": true,
-      "direction": -1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Service users, existing system",
@@ -1431,7 +1431,7 @@
         "position": "Expands an existing co-response model"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: mental health co-response teams have already been piloted with Police in NZ, so this scales a running model rather than introducing one.",
+      "confidence_note": "Direction reach: mental health co-response teams have already been piloted with Police in NZ, so this scales a running model rather than introducing one. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": false
     },
     {
@@ -1969,7 +1969,7 @@
       "mechanism": 4,
       "econ": -2,
       "econ_engaged": true,
-      "direction": 1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "ECE sector and school curriculum",
@@ -1977,7 +1977,7 @@
         "position": "Community providers over corporate centres"
       },
       "confidence": "Low",
-      "confidence_note": "No costings or dates, and the page still ends 'Interested to see the detailed policy at launch?' Size matches the manual Niche→Significant upgrade recorded in the previous dataset. Direction reach: ECE pay parity has been progressively extended since 2020 but never completed; centre size limits have not been run here.",
+      "confidence_note": "No costings or dates, and the page still ends 'Interested to see the detailed policy at launch?' Size matches the manual Niche→Significant upgrade recorded in the previous dataset. Direction reach: ECE pay parity has been progressively extended since 2020 but never completed; centre size limits have not been run here. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
@@ -2021,7 +2021,7 @@
       "mechanism": 4,
       "econ": -1,
       "econ_engaged": true,
-      "direction": 1,
+      "direction": 0,
       "direction_engaged": true,
       "why": {
         "size": "Funding and regulation, no figures",
@@ -2029,7 +2029,7 @@
         "position": "Nature markets new, regulation familiar"
       },
       "confidence": "Low",
-      "confidence_note": "The thinnest of TOP's pages — no figures, dates or named instruments anywhere, and it still ends 'Interested to see the detailed policy at launch?' Borderline hold. Direction reach: NZ has run conservation funding and water regulation for decades; a nature market rewarding biodiversity gains has not been run here.",
+      "confidence_note": "The thinnest of TOP's pages — no figures, dates or named instruments anywhere, and it still ends 'Interested to see the detailed policy at launch?' Borderline hold. Direction reach: NZ has run conservation funding and water regulation for decades; a nature market rewarding biodiversity gains has not been run here. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
       "verified": true
     },
     {
