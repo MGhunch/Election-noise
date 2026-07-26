@@ -1380,19 +1380,26 @@ footer {
   color: var(--white);
 }
 
-/* Grey rather than faded. Dropping the opacity keeps the party read alive,
-   and the whole point of the mode is that party is not the story — so the
-   colour is taken away instead, and the only colour on screen belongs to the
-   pair. Overriding --party-colour rather than opacity also keeps the hollow
-   party-website circles visible; at 14% opacity a ring on white vanishes.
-   The selectors match the specificity of the .is-ready field rules they have
-   to beat. */
-.politics-field.is-ready .policy-circle.is-greyed,
-.shape-field.is-ready .policy-circle.is-greyed,
-.policy-field .policy-circle.is-greyed,
+/* Grey rather than faded. Dropping the opacity keeps the party read alive, and
+   the whole point of the mode is that party is not the story — so the colour is
+   taken away instead, and the only colour on screen belongs to the pair. Going
+   grey rather than transparent also keeps the hollow party-website circles
+   visible; at 10% opacity a ring on white disappears entirely.
+
+   This has to paint background and border directly. The circles carry
+   --party-colour as an inline style set at render, and an inline custom
+   property beats any stylesheet rule no matter how specific — so redefining
+   the variable here does nothing at all. !important is the honest way to win
+   against an inline declaration. */
 .policy-circle.is-greyed {
-  --party-colour: #dcdcda;
+  background: #dcdcda !important;
+  border-color: #dcdcda !important;
   pointer-events: none;
+}
+
+.policy-circle.is-unverified.is-greyed {
+  background: var(--white) !important;
+  border-color: #d2d2cf !important;
 }
 
 .conversation-card.is-greyed h2,
@@ -1413,13 +1420,13 @@ footer {
 }
 
 .pair-ring {
-  border: 1.5px dashed var(--ink);
+  border: 1.5px solid var(--ink);
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
 
 .is-ready .pair-ring {
-  opacity: 0.5;
+  opacity: 0.42;
 }
 
 /* Drawn between ring groups when a topic splits. One hairline — the distance

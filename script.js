@@ -774,7 +774,7 @@ function switchView(view) {
     else if (view === "politics") renderPolitics();
     else calibrateGrid();
 
-    if (samesies) applySamesies();
+    if (samesies) setSamesies(false);
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -1250,10 +1250,6 @@ function setSamesies(on) {
   applySamesies();
 }
 
-function currentPairField() {
-  return currentView === "politics" ? "position" : "shape";
-}
-
 function activeField() {
   if (currentView === "politics") {
     return { field: document.querySelector("#politics-field"), nodes: politicsNodes };
@@ -1354,17 +1350,20 @@ function applySamesies() {
 // The note carries the observation and nothing else. The confidence note stays
 // in pairs.json for anyone reading the data — on screen it was two extra lines
 // of hedge under a sentence that had already made its point.
+//
+// One line, not one per field. Every line is two clauses: the shared problem,
+// then how each party answers it. That holds on Shape and on Politics without
+// adapting, because the agreement and the disagreement are in the sentence —
+// the field only shows where the disagreement lands.
 function drawPairNote(pair, field, nodes, rings) {
   const view = currentView === "politics" ? "politics" : currentView === "shape" ? "shape" : "size";
   const note = document.querySelector(`.pair-note[data-note-for="${view}"]`);
   if (!note) return;
 
-  const copy = pair[currentPairField()] || pair.shape;
-
   note.hidden = false;
   note.innerHTML = `
     <h2>${escapeHtml(pair.label)}</h2>
-    <p>${escapeHtml(copy.line)}</p>
+    <p>${escapeHtml(pair.line)}</p>
   `;
 
   if (view === "size" || !field) return;
