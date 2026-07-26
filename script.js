@@ -10,9 +10,10 @@ const CONVERSATIONS = [
   "Government & Democracy"
 ];
 
+// Ordered by seats in the current Parliament. TOP has none, so it sits last.
 const PARTY_ORDER = [
-  "Labour",
   "National",
+  "Labour",
   "Green",
   "ACT",
   "NZ First",
@@ -36,7 +37,16 @@ const SIZE_MAP = {
   "Flagship": 52
 };
 
+// A record is drawn only if it is a live commitment AND carries a real size.
+// Two independent gates on purpose: status is the editorial decision, the size
+// check is a backstop so a malformed record can never put a phantom circle on
+// the page the way a null size used to fall through to Niche.
+function isRenderable(policy) {
+  return (policy.status || "live") === "live" && Boolean(SIZE_MAP[policy.size]);
+}
+
 let policies = [];
+let parkedPolicies = [];
 let activeParties = new Set();
 let openConversation = null;
 let currentView = "size";
@@ -52,8 +62,13 @@ async function init() {
     if (!response.ok) throw new Error("Could not load policies.json");
     const payload = await response.json();
 
-    policies = Array.isArray(payload) ? payload : payload.policies;
+    const allPolicies = Array.isArray(payload) ? payload : payload.policies;
     const updated = Array.isArray(payload) ? null : payload.updated;
+
+    // Parked records stay in the file so they can come back when a party
+    // publishes detail, but they are never drawn and never counted.
+    policies = allPolicies.filter(isRenderable);
+    parkedPolicies = allPolicies.filter(policy => !isRenderable(policy));
 
     document.querySelector("#policy-count").textContent =
       `${policies.length} ${policies.length === 1 ? "policy" : "policies"}`;
