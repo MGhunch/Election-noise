@@ -808,7 +808,7 @@ function renderPolitics() {
   // it has on the desktop hero, where these resolve to 68 and 76/41.
   const margin = Math.max(26, Math.round(Math.min(width, height) * 0.13));
   const spreadX = Math.round(width * 0.145);
-  const spreadY = Math.round(height * 0.078);
+  const spreadY = Math.round(height * 0.10);
   const centerX = width / 2;
   const centerY = height / 2;
 
@@ -824,12 +824,15 @@ function renderPolitics() {
 
   politicsNodes = nodes;
 
-  // Deliberately the same relaxation and the same constants as renderShape, so
-  // the two views move alike: weak pull toward the true position, a gentle
-  // shared pull to the centre, and wide jitter, so the seven rungs blend into
-  // one mass rather than standing as columns. The trade is the one already
-  // accepted for Shape — these are judgement calls, not measurements, so a
-  // circle's position reads as a neighbourhood rather than a score.
+  // Same relaxation as renderShape, with one constant deliberately different.
+  // Shape pulls harder vertically (0.03) than horizontally, because Mechanism
+  // is its crowded axis and needs holding. Here it is the other way round:
+  // direction sits in three heavy clusters — 27 records at 0, 27 at +2, 16 at
+  // -2 — and a strong vertical pull cancels the collision displacement that
+  // would let them mix, so circles slide along their row instead of escaping
+  // it and the view bands into three rafts. At 0.012 they merge into one mass.
+  // The trade is the one already accepted for Shape: these are judgement
+  // calls, not measurements, so a position reads as a neighbourhood.
   for (let iteration = 0; iteration < 260; iteration++) {
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
@@ -854,7 +857,7 @@ function renderPolitics() {
 
     nodes.forEach(node => {
       node.x += (node.targetX - node.x) * 0.018;
-      node.y += (node.targetY - node.y) * 0.03;
+      node.y += (node.targetY - node.y) * 0.012;
       node.x += (centerX - node.x) * 0.01;
       node.y += (centerY - node.y) * 0.01;
       node.x = Math.max(node.radius, Math.min(width - node.radius, node.x));
