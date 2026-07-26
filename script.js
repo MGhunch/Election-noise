@@ -1364,10 +1364,20 @@ function drawPairNote(pair, field, nodes, rings) {
   const note = document.querySelector(`.pair-note[data-note-for="${view}"]`);
   if (!note) return;
 
+  const line = pair.line
+    || (pair.shape && pair.shape.line)
+    || (pair.position && pair.position.line)
+    || "";
+
+  if (!line) {
+    note.hidden = true;
+    return;
+  }
+
   note.hidden = false;
   note.innerHTML = `
     <h2>${escapeHtml(pair.label)}</h2>
-    <p>${escapeHtml(pair.line)}</p>
+    <p>${escapeHtml(line)}</p>
   `;
 
   if (view === "size" || !field) return;

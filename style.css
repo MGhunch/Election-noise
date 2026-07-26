@@ -1470,14 +1470,14 @@ footer {
   color: var(--muted);
 }
 
-/* Size has no field to sit over, so the note runs under the grid rather than
-   on it — but it keeps the card, because a page that has just gone grey needs
-   the one thing still speaking to look like something. */
+/* Size has no field, so the note is pinned to the bottom-right of the grid
+   itself rather than flowing under it. Below the grid it sat off the bottom of
+   the view, which on a page that has just gone grey means the one thing still
+   speaking is the one thing you cannot see. The cards it covers are greyed
+   already. */
 .pair-note.is-static {
-  position: static;
-  width: 100%;
-  max-width: none;
-  margin-top: 16px;
+  right: 12px;
+  bottom: 12px;
 }
 
 @media (max-width: 900px) {
@@ -1492,10 +1492,8 @@ footer {
   }
 
   .pair-note.is-static {
-    position: static;
-    padding: 0;
-    background: none;
-    border: 0;
+    right: 14px;
+    bottom: 14px;
   }
 
   .samesies-toggle {
