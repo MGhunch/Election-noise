@@ -1355,6 +1355,25 @@ footer {
   border-color: var(--ink);
 }
 
+/* The browser's own focus ring is blue, which is the one colour on this site
+   that means a party. Swapped for the site's own indicator — the same
+   border-and-fill treatment the view tabs already use — rather than removed,
+   so keyboard focus is still obvious. */
+.samesies-toggle:focus {
+  outline: none;
+}
+
+.samesies-toggle:focus-visible {
+  border-color: var(--focus);
+  background: var(--soft);
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--focus);
+}
+
+.samesies-toggle[aria-pressed="true"]:focus-visible {
+  background: var(--ink);
+  color: var(--white);
+}
+
 .samesies-toggle[aria-pressed="true"] {
   background: var(--ink);
   border-color: var(--ink);
@@ -1376,6 +1395,21 @@ footer {
 
 .pair-button:hover {
   border-color: var(--ink);
+}
+
+.pair-button:focus {
+  outline: none;
+}
+
+.pair-button:focus-visible {
+  border-color: var(--focus);
+  background: var(--soft);
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--focus);
+}
+
+.pair-button[aria-pressed="true"]:focus-visible {
+  background: var(--ink);
+  color: var(--white);
 }
 
 .pair-button[aria-pressed="true"] {
