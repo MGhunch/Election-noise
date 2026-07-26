@@ -168,7 +168,6 @@ function renderGrid() {
         <button class="conversation-button" type="button" data-open-conversation="${escapeHtml(conversation)}">
           <h2>${escapeHtml(conversation)}</h2>
           <p class="conversation-stats">${noiseLevel(conversationPolicies)}</p>
-          <p class="quiet-note" hidden>This empty space is part of the story.</p>
         </button>
         <div class="policy-field">
           ${circles}
@@ -209,6 +208,7 @@ function renderGrid() {
     });
   });
 
+  sizeHero();
   calibrateGrid();
 
   requestAnimationFrame(() => {
@@ -218,6 +218,42 @@ function renderGrid() {
   });
 
   updateCircleFocus();
+}
+
+const RAIL_WIDTH = 168;
+const RAIL_GAP = 26;
+const HERO_MAX = 1180 - RAIL_WIDTH - RAIL_GAP;
+const HERO_FLOOR = 500;
+const HERO_TAIL = 28;
+
+// The hero square is the page. Both views are contents of it, so switching
+// between them changes what's inside and never the footprint. Size is the
+// smaller of what the width allows and what the viewport height allows —
+// which means a tall screen is never constrained, and a letterbox one shrinks
+// the square rather than pushing it off the bottom. Below the floor we stop
+// shrinking and let the page scroll: a small laptop scrolling a little beats
+// everyone looking at postage stamps.
+function sizeHero() {
+  const stage = document.querySelector(".stage");
+  if (!stage) return;
+
+  const isNarrow = window.matchMedia("(max-width: 720px)").matches;
+  const pageWidth = Math.min(1180, window.innerWidth - 32);
+  const availableWidth = isNarrow ? pageWidth : pageWidth - RAIL_WIDTH - RAIL_GAP;
+
+  const documentTop = stage.getBoundingClientRect().top + window.scrollY;
+  const availableHeight = window.innerHeight - documentTop - HERO_TAIL;
+
+  const hero = isNarrow
+    ? availableWidth
+    : Math.min(availableWidth, HERO_MAX, Math.max(HERO_FLOOR, availableHeight));
+
+  const rounded = Math.max(160, Math.round(hero));
+  document.documentElement.style.setProperty("--hero", `${rounded}px`);
+  document.documentElement.style.setProperty(
+    "--content",
+    isNarrow ? "1180px" : `${rounded + RAIL_WIDTH + RAIL_GAP}px`
+  );
 }
 
 function renderCircle(policy) {
@@ -365,9 +401,6 @@ function updateCircleFocus() {
 
     const isQuiet = visible.length === 0;
     card.classList.toggle("is-quiet", isQuiet);
-
-    const note = card.querySelector(".quiet-note");
-    if (note) note.hidden = !(isQuiet && activeParties.size > 0);
   });
 }
 
@@ -497,12 +530,16 @@ function bindStaticControls() {
 
 function bindResize() {
   let pending;
-  const recalibrate = () => {
+  const relayout = () => {
     window.clearTimeout(pending);
-    pending = window.setTimeout(calibrateGrid, 120);
+    pending = window.setTimeout(() => {
+      sizeHero();
+      calibrateGrid();
+      if (currentView === "shape") renderShape();
+    }, 140);
   };
-  window.addEventListener("resize", recalibrate);
-  window.addEventListener("orientationchange", recalibrate);
+  window.addEventListener("resize", relayout);
+  window.addEventListener("orientationchange", relayout);
 }
 
 function bindViewToggle() {
@@ -532,7 +569,9 @@ function switchView(view) {
     incoming.hidden = false;
     incoming.classList.add("is-transitioning");
 
+    sizeHero();
     if (view === "shape") renderShape();
+    else calibrateGrid();
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {

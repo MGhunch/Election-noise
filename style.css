@@ -42,7 +42,7 @@ button {
 .site-header,
 main,
 footer {
-  width: min(1180px, calc(100% - 32px));
+  width: min(var(--content, 1180px), calc(100% - 32px));
   margin-inline: auto;
 }
 
@@ -103,12 +103,16 @@ h1 {
 .stage {
   display: flex;
   align-items: flex-start;
-  gap: 26px;
+  justify-content: flex-start;
+  gap: var(--rail-gap, 26px);
   padding-top: 4px;
 }
 
+/* The hero square. Sized once from the viewport, shared by both views, so
+   switching between them changes the contents and never the footprint. */
 .stage-main {
-  flex: 1;
+  flex: 0 0 auto;
+  width: var(--hero, 100%);
   min-width: 0;
 }
 
@@ -292,8 +296,8 @@ h1 {
 
 .shape-view {
   position: relative;
-  min-height: 620px;
-  margin-top: 6px;
+  height: var(--hero, 620px);
+  margin-top: 0;
   padding: 44px;
   border: 1px solid var(--line);
   border-radius: 14px;
@@ -304,7 +308,6 @@ h1 {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 540px;
 }
 
 .shape-line {
@@ -435,12 +438,6 @@ h1 {
   opacity: 0.4;
 }
 
-.quiet-note {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-style: italic;
-}
 
 .conversation-button {
   width: 100%;
@@ -921,22 +918,26 @@ footer {
 
 }
 
-/* Rail collapses to a sticky strip; card becomes the tap target */
+/* Square first, nav below. The hero stays the hero. */
 @media (max-width: 720px) {
   .stage {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     padding-top: 0;
   }
 
+  .stage-main {
+    order: 1;
+    width: 100%;
+  }
+
   .controls {
-    position: sticky;
-    top: 0;
-    z-index: 6;
+    order: 2;
     width: auto;
-    margin-bottom: 2px;
-    padding: 10px 0;
-    background: var(--white);
-    border-bottom: 1px solid var(--line);
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
   }
 
   .rail-eyebrow {
@@ -945,15 +946,9 @@ footer {
 
   .party-filters {
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     gap: 6px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .party-filters::-webkit-scrollbar {
-    display: none;
   }
 
   .filter-button {
@@ -966,8 +961,8 @@ footer {
     flex-wrap: wrap;
     align-items: center;
     gap: 4px 18px;
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 12px;
+    padding-top: 12px;
   }
 
   .legend-row {
@@ -989,9 +984,16 @@ footer {
     border-width: 2px;
   }
 
-  .legend-scale,
-  .legend + .text-button {
+  .legend-scale {
     display: none;
+  }
+
+  .legend + .text-button {
+    margin-top: 12px;
+  }
+
+  .shape-view {
+    padding: 26px;
   }
 
   .card-overlay {
