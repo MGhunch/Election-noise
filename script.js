@@ -774,11 +774,10 @@ function switchView(view) {
     else if (view === "politics") renderPolitics();
     else calibrateGrid();
 
-    if (samesies) {
-      activePair = null;
-      renderPairFilters();
-      applySamesies();
-    }
+    // Samesies switches off on a view change. It is a way of reading one
+    // picture, so carrying it into the next one leaves the mode on with
+    // nothing selected — which reads as the new view being broken.
+    if (samesies) setSamesies(false);
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
