@@ -103,13 +103,3 @@ One value for the whole record:
 - **Check** — needs a human look before it's trusted.
 
 If one section is driving a lower mark, name which. That includes the description: a record can be scored confidently on size and shape while the sentence underneath it rests on a costing table.
-
-## Robot proposes, human disposes
-
-These scores are a proposal. Sizes then get calibrated by hand, and the corrections are logged.
-
-On the last full pass the robot was overruled on 35 of 82 records. The pattern, in one line: **the robot sized by how deep the mechanism went, and was corrected to reach.** Of ten records it moved up a rung on rescore, seven moved on nothing — same policy, same numbers, same facts in both descriptions. All seven were reverted.
-
-That gap is why the reach test is written down here, rather than living in a chat log.
-
-Direction went the same way on a later pass. The robot found a precedent for almost everything — 77 records, not one of them scored 0 — because the old low bar invited it. Rescored under the rules above, 26 moved, every one of them upward. That gap is why *ordinary policy scores 0* and *don't score the pipe* are written down too.
