@@ -1324,22 +1324,25 @@ footer {
 
 /* ---------------------------------------------------------------------------
    Samesies
-   A mode, not a view. It runs on top of whichever field is showing: the party
-   rail is swapped for a rail of problems, everything not in the selected pair
-   is dimmed, and the members are ringed where they already sit. The circles
-   never move — the relaxation has already decided where they go, and moving
-   them to make a point would be the picture arguing rather than reporting.
+   ---------------------------------------------------------------------------
+   A mode, not a view. It runs on top of whichever view is showing: the party
+   rail is swapped for a rail of topics, everything outside the selected pair
+   goes grey, and on the two fields the members are ringed where they already
+   sit. The circles never move — the relaxation has already decided where they
+   go, and moving them to make a point would be the picture arguing rather
+   than reporting.
    --------------------------------------------------------------------------- */
 
+/* The toggle sits in the view row because it acts on views. Pushed right so
+   the three views stay a set of three and the mode doesn't read as a fourth. */
 .samesies-toggle {
-  width: 100%;
-  margin: 0 0 18px;
-  padding: 9px 12px;
+  margin-left: auto;
+  padding: 9px 20px;
   background: none;
   border: 1px solid var(--line);
   border-radius: 999px;
-  font-size: 13px;
-  letter-spacing: 0.01em;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
 }
@@ -1377,12 +1380,28 @@ footer {
   color: var(--white);
 }
 
-/* Members keep their party colour and their place. Everything else drops to
-   14% — light enough to read as background, solid enough that the blob's
-   overall shape still shows, so the pair sits in context. */
-.policy-circle.is-faded {
-  opacity: 0.14;
+/* Grey rather than faded. Dropping the opacity keeps the party read alive,
+   and the whole point of the mode is that party is not the story — so the
+   colour is taken away instead, and the only colour on screen belongs to the
+   pair. Overriding --party-colour rather than opacity also keeps the hollow
+   party-website circles visible; at 14% opacity a ring on white vanishes.
+   The selectors match the specificity of the .is-ready field rules they have
+   to beat. */
+.politics-field.is-ready .policy-circle.is-greyed,
+.shape-field.is-ready .policy-circle.is-greyed,
+.policy-field .policy-circle.is-greyed,
+.policy-circle.is-greyed {
+  --party-colour: #dcdcda;
   pointer-events: none;
+}
+
+.conversation-card.is-greyed h2,
+.conversation-card.is-greyed .conversation-stats {
+  color: #b6b6b2;
+}
+
+.conversation-card.has-pair {
+  border-color: var(--ink);
 }
 
 .pair-ring,
@@ -1393,24 +1412,18 @@ footer {
   transition: opacity 260ms ease;
 }
 
-.is-ready .pair-ring,
-.is-ready .pair-link {
-  opacity: 1;
-}
-
 .pair-ring {
   border: 1.5px dashed var(--ink);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
 }
 
 .is-ready .pair-ring {
   opacity: 0.5;
 }
 
-/* Drawn between ring groups when a problem splits. One line, hairline weight —
-   the distance is the point, so the line only has to make the eye travel it. */
+/* Drawn between ring groups when a topic splits. One hairline — the distance
+   is the point, so the line only has to make the eye travel it. */
 .pair-link {
   height: 1px;
   background: var(--ink);
@@ -1421,20 +1434,23 @@ footer {
   opacity: 0.28;
 }
 
-/* The note sits in the field's bottom-right — the quadrant that is empty on
-   Shape because nobody promises cash later. Below 900px there is no spare
-   quadrant, so it drops out of the field and sits under it as ordinary text. */
+/* A card, not a caption. It sits over the picture, so it needs a floor of its
+   own or a circle underneath makes it unreadable. Position is chosen at draw
+   time from whichever corner the pair leaves emptiest. */
 .pair-note {
   position: absolute;
-  right: 52px;
-  bottom: 52px;
-  width: 300px;
-  z-index: 3;
+  width: 292px;
+  max-width: calc(100% - 88px);
+  padding: 14px 16px 15px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  z-index: 4;
   pointer-events: none;
 }
 
 .pair-note h2 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -1443,33 +1459,42 @@ footer {
 .pair-note p {
   margin: 0;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.45;
   color: var(--muted);
 }
 
-.pair-note .pair-note-flag {
-  margin-top: 10px;
-  font-size: 12px;
-  color: var(--muted);
-  opacity: 0.75;
-}
-
-.stage-main {
-  position: relative;
+/* Size has no field to sit over, so the note runs under the grid as ordinary
+   text with no card around it. */
+.pair-note.is-static {
+  position: static;
+  width: auto;
+  max-width: 520px;
+  margin-top: 18px;
+  padding: 0;
+  background: none;
+  border: 0;
 }
 
 @media (max-width: 900px) {
   .pair-note {
-    position: static;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    top: auto;
     width: auto;
-    margin-top: 16px;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
+    max-width: none;
+    padding: 12px 14px 13px;
+  }
+
+  .pair-note.is-static {
+    position: static;
+    padding: 0;
+    background: none;
+    border: 0;
   }
 
   .samesies-toggle {
-    width: auto;
-    margin-bottom: 12px;
+    margin-left: 0;
   }
 
   .pair-button {

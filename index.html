@@ -28,12 +28,14 @@
     <button class="view-tab" type="button" data-view="shape" aria-pressed="false">Shape</button>
     <button class="view-tab" type="button" data-view="size" aria-pressed="true">Size</button>
     <button class="view-tab" type="button" data-view="politics" aria-pressed="false">Politics</button>
+    <button id="samesies-toggle" class="samesies-toggle" type="button" aria-pressed="false">Samesies</button>
   </nav>
 
   <main>
     <div class="stage">
       <div class="stage-main">
         <section id="conversation-grid" class="conversation-grid view-pane" data-view-pane="size" aria-label="Election conversations"></section>
+        <div class="pair-note is-static" data-note-for="size" aria-live="polite" hidden></div>
 
         <section id="shape-view" class="shape-view view-pane" data-view-pane="shape" hidden aria-label="The shape of the shouting">
           <div class="shape-line shape-line-h"></div>
@@ -43,9 +45,8 @@
           <div class="shape-axis shape-axis-left">Sooner</div>
           <div class="shape-axis shape-axis-right">Later</div>
           <div id="shape-field" class="shape-field"></div>
+          <div class="pair-note" data-note-for="shape" aria-live="polite" hidden></div>
         </section>
-
-        <div id="pair-note" class="pair-note" aria-live="polite" hidden></div>
 
         <section id="politics-view" class="politics-view view-pane" data-view-pane="politics" hidden aria-label="Where the policies sit">
           <div class="shape-line shape-line-h"></div>
@@ -55,19 +56,18 @@
           <div class="shape-axis shape-axis-left">Govt steps in</div>
           <div class="shape-axis shape-axis-right">Govt steps back</div>
           <div id="politics-field" class="politics-field"></div>
+          <div class="pair-note" data-note-for="politics" aria-live="polite" hidden></div>
         </section>
       </div>
 
       <aside class="controls" aria-label="Party filters">
-        <button id="samesies-toggle" class="samesies-toggle" type="button" aria-pressed="false">Samesies</button>
-
         <div id="party-rail">
           <p class="eyebrow rail-eyebrow">Which party?</p>
           <div id="party-filters" class="party-filters"></div>
         </div>
 
         <div id="pair-rail" hidden>
-          <p class="eyebrow rail-eyebrow">Which problem?</p>
+          <p class="eyebrow rail-eyebrow">Which topic?</p>
           <div id="pair-filters" class="party-filters"></div>
         </div>
 

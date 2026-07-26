@@ -249,6 +249,7 @@ function renderGrid() {
   });
 
   updateCircleFocus();
+  if (samesies) applySamesies();
 }
 
 const RAIL_WIDTH = 168;
@@ -773,13 +774,7 @@ function switchView(view) {
     else if (view === "politics") renderPolitics();
     else calibrateGrid();
 
-    // Size has no field to ring, so the mode switches itself off rather than
-    // sitting there pressed with nothing to show.
-    if (view === "size" && samesies) setSamesies(false);
-    else if (samesies) {
-      document.querySelector("#pair-rail").hidden = false;
-      applySamesies();
-    }
+    if (samesies) applySamesies();
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -1186,15 +1181,21 @@ function openReportForm(policy) {
 /* ---------------------------------------------------------------------------
    Samesies
    ---------------------------------------------------------------------------
-   A mode that runs on top of whichever field is showing. One problem, two or
+   A mode that runs on top of whichever view is showing. One problem, two or
    more parties attempting it — the rules are in data/pair.md.
 
-   The rings are drawn from where the circles actually land, not from the
-   scores. That matters: the relaxation has already compressed the field, so a
-   ring placed at the true coordinate would sit off its own dots. Clustering
-   the drawn positions also means the picture can't disagree with itself — if
-   two records land together they get one ring, if they land apart they get
-   two, and nothing has to be declared in advance.
+   On the two fields the rings are drawn from where the circles actually land,
+   not from the scores. That matters: the relaxation has already compressed the
+   field, so a ring placed at the true coordinate would sit off its own dots.
+   Clustering the drawn positions also means the picture can't disagree with
+   itself — if two records land together they get one ring, if they land apart
+   they get two, and nothing has to be declared in advance.
+
+   On Size there are no rings, because position in a card is decorative. What
+   Size shows instead is the thing the fields can't: which conversation each
+   member was filed under. Labour's fare cap sits in Cost of Living and TOP's
+   free transport in Future & Infrastructure — the taxonomy is what hides a
+   pair, and the grid is where you can see it doing that.
    --------------------------------------------------------------------------- */
 
 function renderPairFilters() {
@@ -1226,10 +1227,9 @@ function renderPairFilters() {
 function setSamesies(on) {
   samesies = on;
 
-  // The party filters and Samesies can't both be live: filter to one party
-  // and half of every pair disappears, which would show a pair with one
-  // circle in it. Entering the mode clears the filters rather than fighting
-  // them, and the rail itself is swapped out so there's nothing to fight.
+  // The party filters and Samesies can't both be live: filter to one party and
+  // half of every pair disappears, which would show a pair with one circle in
+  // it. Entering the mode clears the filters rather than fighting them.
   if (samesies && activeParties.size > 0) {
     activeParties.clear();
     renderFilters();
@@ -1264,89 +1264,168 @@ function activeField() {
   return { field: null, nodes: [] };
 }
 
-function applySamesies() {
-  const { field, nodes } = activeField();
-  if (!field) return;
-
-  field.querySelectorAll(".pair-ring, .pair-link").forEach(element => element.remove());
-
-  const note = document.querySelector("#pair-note");
-  const pair = samesies && activePair
+function activePairRecord() {
+  return samesies && activePair
     ? pairs.find(item => item.id === activePair)
     : null;
+}
+
+function applySamesies() {
+  document.querySelectorAll(".pair-ring, .pair-link").forEach(element => element.remove());
+  document.querySelectorAll(".pair-note").forEach(note => { note.hidden = true; });
+
+  const pair = activePairRecord();
 
   if (!pair) {
-    field.querySelectorAll(".policy-circle").forEach(circle => {
-      circle.classList.remove("is-faded");
+    document.querySelectorAll(".policy-circle").forEach(circle => {
+      circle.classList.remove("is-greyed");
     });
-    if (note) note.hidden = true;
+    grid.querySelectorAll(".conversation-card").forEach(card => {
+      card.classList.remove("is-greyed", "has-pair");
+    });
     updateCircleFocus();
     return;
   }
 
   const members = new Set(pair.records);
 
-  field.querySelectorAll(".policy-circle").forEach(circle => {
-    circle.classList.toggle("is-faded", !members.has(circle.dataset.policyId));
+  // Every circle everywhere, so switching views never lands on a stale field.
+  document.querySelectorAll(".policy-circle").forEach(circle => {
+    circle.classList.toggle("is-greyed", !members.has(circle.dataset.policyId));
     circle.classList.remove("is-muted", "is-selected");
   });
 
-  const memberNodes = nodes.filter(node => members.has(String(node.policy.id)));
-  if (memberNodes.length === 0) return;
+  const conversations = new Set(
+    policies
+      .filter(policy => members.has(String(policy.id)))
+      .map(policy => policy.conversation)
+  );
 
-  const groups = clusterNodes(memberNodes);
-  const rings = groups.map(group => enclosingCircle(group));
-
-  rings.forEach(ring => {
-    const element = document.createElement("div");
-    element.className = "pair-ring";
-    element.style.left = `${ring.x}px`;
-    element.style.top = `${ring.y}px`;
-    element.style.width = `${ring.r * 2}px`;
-    element.style.height = `${ring.r * 2}px`;
-    field.appendChild(element);
+  grid.querySelectorAll(".conversation-card").forEach(card => {
+    const holdsMember = conversations.has(card.dataset.conversation);
+    card.classList.toggle("has-pair", holdsMember);
+    card.classList.toggle("is-greyed", !holdsMember);
   });
 
-  // One link between consecutive rings, left to right. On a stack there is a
-  // single ring and no link at all — which is the finding, so it shouldn't be
-  // decorated with a line that has nowhere to go.
-  const ordered = rings.slice().sort((a, b) => a.x - b.x);
-  for (let i = 0; i < ordered.length - 1; i++) {
-    const from = ordered[i];
-    const to = ordered[i + 1];
-    const dx = to.x - from.x;
-    const dy = to.y - from.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-    const gap = distance - from.r - to.r;
-    if (gap <= 6) continue;
+  const { field, nodes } = activeField();
+  let rings = [];
 
-    const angle = Math.atan2(dy, dx);
-    const link = document.createElement("div");
-    link.className = "pair-link";
-    link.style.left = `${from.x + Math.cos(angle) * from.r}px`;
-    link.style.top = `${from.y + Math.sin(angle) * from.r}px`;
-    link.style.width = `${gap}px`;
-    link.style.transform = `rotate(${angle}rad)`;
-    field.appendChild(link);
+  if (field) {
+    const memberNodes = nodes.filter(node => members.has(String(node.policy.id)));
+    rings = clusterNodes(memberNodes).map(enclosingCircle);
+
+    rings.forEach(ring => {
+      const element = document.createElement("div");
+      element.className = "pair-ring";
+      element.style.left = `${ring.x}px`;
+      element.style.top = `${ring.y}px`;
+      element.style.width = `${ring.r * 2}px`;
+      element.style.height = `${ring.r * 2}px`;
+      field.appendChild(element);
+    });
+
+    // One link between consecutive rings, left to right. On a stack there is a
+    // single ring and no link at all — which is the finding, so it shouldn't be
+    // decorated with a line that has nowhere to go.
+    const ordered = rings.slice().sort((a, b) => a.x - b.x);
+    for (let i = 0; i < ordered.length - 1; i++) {
+      const from = ordered[i];
+      const to = ordered[i + 1];
+      const dx = to.x - from.x;
+      const dy = to.y - from.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      const gap = distance - from.r - to.r;
+      if (gap <= 6) continue;
+
+      const angle = Math.atan2(dy, dx);
+      const link = document.createElement("div");
+      link.className = "pair-link";
+      link.style.left = `${from.x + Math.cos(angle) * from.r}px`;
+      link.style.top = `${from.y + Math.sin(angle) * from.r}px`;
+      link.style.width = `${gap}px`;
+      link.style.transform = `rotate(${angle}rad)`;
+      field.appendChild(link);
+    }
   }
 
-  if (note) {
-    const copy = pair[currentPairField()] || pair.shape;
-    note.hidden = false;
-    note.innerHTML = `
-      <h2>${escapeHtml(pair.label)}</h2>
-      <p>${escapeHtml(copy.line)}</p>
-      ${pair.confidence === "Check" || pair.confidence === "Low"
-        ? `<p class="pair-note-flag">${escapeHtml(pair.confidence_note)}</p>`
-        : ""}
-    `;
-  }
+  drawPairNote(pair, field, nodes, rings);
 }
 
-// Single-link clustering on the drawn positions. Two circles belong to the
-// same ring when the clear air between them is under 46px — roughly a Niche
-// circle's width, which is the point at which the eye stops reading two dots
-// as one group.
+// The note carries the observation and nothing else. The confidence note stays
+// in pairs.json for anyone reading the data — on screen it was two extra lines
+// of hedge under a sentence that had already made its point.
+function drawPairNote(pair, field, nodes, rings) {
+  const view = currentView === "politics" ? "politics" : currentView === "shape" ? "shape" : "size";
+  const note = document.querySelector(`.pair-note[data-note-for="${view}"]`);
+  if (!note) return;
+
+  const copy = pair[currentPairField()] || pair.shape;
+
+  note.hidden = false;
+  note.innerHTML = `
+    <h2>${escapeHtml(pair.label)}</h2>
+    <p>${escapeHtml(copy.line)}</p>
+  `;
+
+  if (view === "size" || !field) return;
+
+  placeNote(note, field, nodes, rings);
+}
+
+// Bottom-right by default — on Shape that quadrant is empty, because nobody
+// promises cash later. Politics has no empty quadrant and a pair can land
+// anywhere, so the corner is scored and the quietest one wins. It moves rarely,
+// which is what stops it feeling unstable.
+function placeNote(note, field, nodes, rings) {
+  const inset = 18;
+  const width = note.offsetWidth || 292;
+  const height = note.offsetHeight || 84;
+  const fieldWidth = field.clientWidth;
+  const fieldHeight = field.clientHeight;
+
+  const corners = [
+    { name: "bottom-right", x: fieldWidth - width - inset, y: fieldHeight - height - inset },
+    { name: "bottom-left", x: inset, y: fieldHeight - height - inset },
+    { name: "top-right", x: fieldWidth - width - inset, y: inset },
+    { name: "top-left", x: inset, y: inset }
+  ];
+
+  const obstacles = nodes
+    .map(node => ({ x: node.x, y: node.y, r: node.radius }))
+    .concat(rings);
+
+  let best = corners[0];
+  let bestCost = Infinity;
+
+  corners.forEach((corner, index) => {
+    const cost = obstacles.reduce((total, item) => {
+      const nearestX = Math.max(corner.x, Math.min(item.x, corner.x + width));
+      const nearestY = Math.max(corner.y, Math.min(item.y, corner.y + height));
+      const dx = item.x - nearestX;
+      const dy = item.y - nearestY;
+      const overlap = item.r - Math.sqrt(dx * dx + dy * dy);
+      return overlap > 0 ? total + overlap : total;
+    }, 0);
+
+    // Ties go to the earlier corner, so bottom-right is the default and the
+    // note only moves when something is genuinely in the way.
+    const tiebreak = index * 0.001;
+    if (cost + tiebreak < bestCost) {
+      bestCost = cost + tiebreak;
+      best = corner;
+    }
+  });
+
+  note.style.left = `${Math.max(inset, best.x)}px`;
+  note.style.top = `${Math.max(inset, best.y)}px`;
+  note.style.right = "auto";
+  note.style.bottom = "auto";
+}
+
+// Single-link clustering on the drawn positions. Two circles belong to the same
+// ring when the clear air between them is under 46px — roughly a Niche circle's
+// width, which is the point at which the eye stops reading two dots as one
+// group.
 function clusterNodes(memberNodes) {
   const groups = memberNodes.map(node => [node]);
 
@@ -1378,7 +1457,7 @@ function groupsTouch(a, b) {
   }));
 }
 
-// A circle that covers every node in the group with a little air around it.
+// A circle covering every node in the group with a little air around it.
 // Centroid-and-max-reach rather than a true minimum enclosing circle: the
 // groups are two to four dots, and the exact version buys nothing you can see.
 function enclosingCircle(group) {
