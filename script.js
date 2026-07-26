@@ -54,6 +54,15 @@ const GRID_SIZE_RATIO = {
 // Two independent gates on purpose: status is the editorial decision, the size
 // check is a backstop so a malformed record can never put a phantom circle on
 // the page the way a null size used to fall through to Niche.
+// Samesies state. `pairs` is loaded from data/pairs.json and is separate from
+// the policy file on purpose — a pair is a claim about records, never a reason
+// to change one, so the two files stay independent and a bad pair can be pulled
+// without touching a score.
+let pairs = [];
+let samesies = false;
+let activePair = null;
+let shapeNodes = [];
+
 function isRenderable(policy) {
   return (policy.status || "live") === "live" && Boolean(SIZE_MAP[policy.size]);
 }
@@ -90,7 +99,25 @@ async function init() {
     document.querySelector("#updated-date").textContent =
       updated ? `Updated ${formatDate(updated)}` : "Live policy map";
 
+    // Pairs are optional. If the file is missing or malformed the map still
+    // works and the Samesies toggle simply never appears — the mode is an
+    // addition to the map, not a dependency of it.
+    try {
+      const pairResponse = await fetch("./data/pairs.json", { cache: "no-store" });
+      if (pairResponse.ok) {
+        const pairPayload = await pairResponse.json();
+        const proposed = Array.isArray(pairPayload) ? pairPayload : pairPayload.pairs;
+        pairs = (proposed || []).filter(pair =>
+          pair.status === "live" &&
+          pair.records.every(id => policies.some(policy => String(policy.id) === id))
+        );
+      }
+    } catch (pairError) {
+      console.warn("Pairs unavailable:", pairError);
+    }
+
     renderFilters();
+    renderPairFilters();
     renderGrid();
     bindStaticControls();
     bindViewToggle();
@@ -141,6 +168,7 @@ function renderFilters() {
         activeParties.add(party);
       }
       renderFilters();
+      if (samesies) setSamesies(false);
       updateCircleFocus();
 
       if (currentView === "politics") renderPartyCentroid();
@@ -383,11 +411,16 @@ function hideTooltip() {
 }
 
 function updateCircleFocus() {
-  document.querySelectorAll(".policy-circle").forEach(circle => {
-    const isActive = activeParties.size === 0 || activeParties.has(circle.dataset.party);
-    circle.classList.toggle("is-muted", !isActive);
-    circle.classList.toggle("is-selected", activeParties.size > 0 && isActive);
-  });
+  // Samesies owns the circles while a problem is selected. Party focus and
+  // pair focus are two answers to the same question, and letting both write
+  // to the same classes is how you end up with a half-dimmed pair.
+  if (!(samesies && activePair)) {
+    document.querySelectorAll(".policy-circle").forEach(circle => {
+      const isActive = activeParties.size === 0 || activeParties.has(circle.dataset.party);
+      circle.classList.toggle("is-muted", !isActive);
+      circle.classList.toggle("is-selected", activeParties.size > 0 && isActive);
+    });
+  }
 
   // The noise line describes what you can currently see, not what's in the
   // file. Filter to one party and the quiet conversations say so — that
@@ -552,7 +585,8 @@ function openPolicy(policy, { fromList = false } = {}) {
 const PROMPT_PATHS = [
   "./data/source.md",
   "./data/sort.md",
-  "./data/summarise.md"
+  "./data/summarise.md",
+  "./data/pair.md"
 ];
 let promptMarkup = null;
 
@@ -639,6 +673,10 @@ async function openPrompts() {
 }
 
 function bindStaticControls() {
+  const samesiesToggle = document.querySelector("#samesies-toggle");
+  samesiesToggle.hidden = pairs.length === 0;
+  samesiesToggle.addEventListener("click", () => setSamesies(!samesies));
+
   document.querySelector("#close-policy").addEventListener("click", () => {
     dialog.close();
   });
@@ -735,6 +773,14 @@ function switchView(view) {
     else if (view === "politics") renderPolitics();
     else calibrateGrid();
 
+    // Size has no field to ring, so the mode switches itself off rather than
+    // sitting there pressed with nothing to show.
+    if (view === "size" && samesies) setSamesies(false);
+    else if (samesies) {
+      document.querySelector("#pair-rail").hidden = false;
+      applySamesies();
+    }
+
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         incoming.classList.remove("is-transitioning");
@@ -759,6 +805,8 @@ function renderShape() {
     const targetY = margin + ((5 - policy.mechanism) / 4) * (height - margin * 2) + jitter.y;
     return { policy, radius, targetX, targetY, x: targetX, y: targetY };
   });
+
+  shapeNodes = nodes;
 
   // Stage-pull + collide relaxation: nodes are pulled toward their true
   // Immediacy/Mechanism position each step, pushed apart only when they
@@ -868,6 +916,7 @@ function renderShape() {
         circles[index].style.left = `${node.x}px`;
         circles[index].style.top = `${node.y}px`;
       });
+      applySamesies();
     });
   });
 }
@@ -991,6 +1040,7 @@ function renderPolitics() {
         circles[index].style.left = `${node.x}px`;
         circles[index].style.top = `${node.y}px`;
       });
+      applySamesies();
     });
   });
 
@@ -1131,4 +1181,215 @@ init();
 // clicking it does nothing visible yet.
 function openReportForm(policy) {
   if (!policy) return;
+}
+
+/* ---------------------------------------------------------------------------
+   Samesies
+   ---------------------------------------------------------------------------
+   A mode that runs on top of whichever field is showing. One problem, two or
+   more parties attempting it — the rules are in data/pair.md.
+
+   The rings are drawn from where the circles actually land, not from the
+   scores. That matters: the relaxation has already compressed the field, so a
+   ring placed at the true coordinate would sit off its own dots. Clustering
+   the drawn positions also means the picture can't disagree with itself — if
+   two records land together they get one ring, if they land apart they get
+   two, and nothing has to be declared in advance.
+   --------------------------------------------------------------------------- */
+
+function renderPairFilters() {
+  const rail = document.querySelector("#pair-filters");
+  const toggle = document.querySelector("#samesies-toggle");
+  if (!rail || !toggle) return;
+
+  toggle.hidden = pairs.length === 0;
+
+  rail.innerHTML = pairs.map(pair => `
+    <button
+      class="pair-button"
+      type="button"
+      data-pair-id="${escapeHtml(pair.id)}"
+      aria-pressed="${activePair === pair.id}"
+    >${escapeHtml(pair.label)}</button>
+  `).join("");
+
+  rail.querySelectorAll(".pair-button").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.pairId;
+      activePair = activePair === id ? null : id;
+      renderPairFilters();
+      applySamesies();
+    });
+  });
+}
+
+function setSamesies(on) {
+  samesies = on;
+
+  // The party filters and Samesies can't both be live: filter to one party
+  // and half of every pair disappears, which would show a pair with one
+  // circle in it. Entering the mode clears the filters rather than fighting
+  // them, and the rail itself is swapped out so there's nothing to fight.
+  if (samesies && activeParties.size > 0) {
+    activeParties.clear();
+    renderFilters();
+    if (currentView === "politics") renderPartyCentroid();
+    if (openConversation) renderDetail(openConversation);
+  }
+
+  if (!samesies) activePair = null;
+
+  document.querySelector("#samesies-toggle").setAttribute("aria-pressed", String(samesies));
+  document.querySelector("#party-rail").hidden = samesies;
+  document.querySelector("#pair-rail").hidden = !samesies;
+
+  const legend = document.querySelector("#legend-block");
+  if (legend) legend.hidden = samesies;
+
+  renderPairFilters();
+  applySamesies();
+}
+
+function currentPairField() {
+  return currentView === "politics" ? "position" : "shape";
+}
+
+function activeField() {
+  if (currentView === "politics") {
+    return { field: document.querySelector("#politics-field"), nodes: politicsNodes };
+  }
+  if (currentView === "shape") {
+    return { field: document.querySelector("#shape-field"), nodes: shapeNodes };
+  }
+  return { field: null, nodes: [] };
+}
+
+function applySamesies() {
+  const { field, nodes } = activeField();
+  if (!field) return;
+
+  field.querySelectorAll(".pair-ring, .pair-link").forEach(element => element.remove());
+
+  const note = document.querySelector("#pair-note");
+  const pair = samesies && activePair
+    ? pairs.find(item => item.id === activePair)
+    : null;
+
+  if (!pair) {
+    field.querySelectorAll(".policy-circle").forEach(circle => {
+      circle.classList.remove("is-faded");
+    });
+    if (note) note.hidden = true;
+    updateCircleFocus();
+    return;
+  }
+
+  const members = new Set(pair.records);
+
+  field.querySelectorAll(".policy-circle").forEach(circle => {
+    circle.classList.toggle("is-faded", !members.has(circle.dataset.policyId));
+    circle.classList.remove("is-muted", "is-selected");
+  });
+
+  const memberNodes = nodes.filter(node => members.has(String(node.policy.id)));
+  if (memberNodes.length === 0) return;
+
+  const groups = clusterNodes(memberNodes);
+  const rings = groups.map(group => enclosingCircle(group));
+
+  rings.forEach(ring => {
+    const element = document.createElement("div");
+    element.className = "pair-ring";
+    element.style.left = `${ring.x}px`;
+    element.style.top = `${ring.y}px`;
+    element.style.width = `${ring.r * 2}px`;
+    element.style.height = `${ring.r * 2}px`;
+    field.appendChild(element);
+  });
+
+  // One link between consecutive rings, left to right. On a stack there is a
+  // single ring and no link at all — which is the finding, so it shouldn't be
+  // decorated with a line that has nowhere to go.
+  const ordered = rings.slice().sort((a, b) => a.x - b.x);
+  for (let i = 0; i < ordered.length - 1; i++) {
+    const from = ordered[i];
+    const to = ordered[i + 1];
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const gap = distance - from.r - to.r;
+    if (gap <= 6) continue;
+
+    const angle = Math.atan2(dy, dx);
+    const link = document.createElement("div");
+    link.className = "pair-link";
+    link.style.left = `${from.x + Math.cos(angle) * from.r}px`;
+    link.style.top = `${from.y + Math.sin(angle) * from.r}px`;
+    link.style.width = `${gap}px`;
+    link.style.transform = `rotate(${angle}rad)`;
+    field.appendChild(link);
+  }
+
+  if (note) {
+    const copy = pair[currentPairField()] || pair.shape;
+    note.hidden = false;
+    note.innerHTML = `
+      <h2>${escapeHtml(pair.label)}</h2>
+      <p>${escapeHtml(copy.line)}</p>
+      ${pair.confidence === "Check" || pair.confidence === "Low"
+        ? `<p class="pair-note-flag">${escapeHtml(pair.confidence_note)}</p>`
+        : ""}
+    `;
+  }
+}
+
+// Single-link clustering on the drawn positions. Two circles belong to the
+// same ring when the clear air between them is under 46px — roughly a Niche
+// circle's width, which is the point at which the eye stops reading two dots
+// as one group.
+function clusterNodes(memberNodes) {
+  const groups = memberNodes.map(node => [node]);
+
+  let merged = true;
+  while (merged) {
+    merged = false;
+    outer:
+    for (let i = 0; i < groups.length; i++) {
+      for (let j = i + 1; j < groups.length; j++) {
+        if (groupsTouch(groups[i], groups[j])) {
+          groups[i] = groups[i].concat(groups[j]);
+          groups.splice(j, 1);
+          merged = true;
+          break outer;
+        }
+      }
+    }
+  }
+
+  return groups;
+}
+
+function groupsTouch(a, b) {
+  return a.some(nodeA => b.some(nodeB => {
+    const dx = nodeB.x - nodeA.x;
+    const dy = nodeB.y - nodeA.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    return distance - nodeA.radius - nodeB.radius < 46;
+  }));
+}
+
+// A circle that covers every node in the group with a little air around it.
+// Centroid-and-max-reach rather than a true minimum enclosing circle: the
+// groups are two to four dots, and the exact version buys nothing you can see.
+function enclosingCircle(group) {
+  const x = group.reduce((sum, node) => sum + node.x, 0) / group.length;
+  const y = group.reduce((sum, node) => sum + node.y, 0) / group.length;
+
+  const reach = group.reduce((max, node) => {
+    const dx = node.x - x;
+    const dy = node.y - y;
+    return Math.max(max, Math.sqrt(dx * dx + dy * dy) + node.radius);
+  }, 0);
+
+  return { x, y, r: reach + 16 };
 }

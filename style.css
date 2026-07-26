@@ -1321,3 +1321,158 @@ footer {
     pointer-events: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Samesies
+   A mode, not a view. It runs on top of whichever field is showing: the party
+   rail is swapped for a rail of problems, everything not in the selected pair
+   is dimmed, and the members are ringed where they already sit. The circles
+   never move — the relaxation has already decided where they go, and moving
+   them to make a point would be the picture arguing rather than reporting.
+   --------------------------------------------------------------------------- */
+
+.samesies-toggle {
+  width: 100%;
+  margin: 0 0 18px;
+  padding: 9px 12px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.samesies-toggle:hover {
+  border-color: var(--ink);
+}
+
+.samesies-toggle[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+.pair-button {
+  display: block;
+  width: 100%;
+  padding: 7px 12px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.pair-button:hover {
+  border-color: var(--ink);
+}
+
+.pair-button[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+/* Members keep their party colour and their place. Everything else drops to
+   14% — light enough to read as background, solid enough that the blob's
+   overall shape still shows, so the pair sits in context. */
+.policy-circle.is-faded {
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.pair-ring,
+.pair-link {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.is-ready .pair-ring,
+.is-ready .pair-link {
+  opacity: 1;
+}
+
+.pair-ring {
+  border: 1.5px dashed var(--ink);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.is-ready .pair-ring {
+  opacity: 0.5;
+}
+
+/* Drawn between ring groups when a problem splits. One line, hairline weight —
+   the distance is the point, so the line only has to make the eye travel it. */
+.pair-link {
+  height: 1px;
+  background: var(--ink);
+  transform-origin: 0 50%;
+}
+
+.is-ready .pair-link {
+  opacity: 0.28;
+}
+
+/* The note sits in the field's bottom-right — the quadrant that is empty on
+   Shape because nobody promises cash later. Below 900px there is no spare
+   quadrant, so it drops out of the field and sits under it as ordinary text. */
+.pair-note {
+  position: absolute;
+  right: 52px;
+  bottom: 52px;
+  width: 300px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.pair-note h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.pair-note p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.pair-note .pair-note-flag {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.75;
+}
+
+.stage-main {
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  .pair-note {
+    position: static;
+    width: auto;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  .samesies-toggle {
+    width: auto;
+    margin-bottom: 12px;
+  }
+
+  .pair-button {
+    width: auto;
+  }
+}
