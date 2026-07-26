@@ -119,6 +119,10 @@ h1 {
   flex: 0 0 auto;
   width: var(--hero, 100%);
   min-width: 0;
+  /* Positioning context for the Samesies note on the Size view. The two field
+     views have their own; the grid does not, and without this the note falls
+     back to the page and lands beside the rail. */
+  position: relative;
 }
 
 .controls {
