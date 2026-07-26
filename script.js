@@ -808,7 +808,7 @@ function renderPolitics() {
   // it has on the desktop hero, where these resolve to 68 and 76/41.
   const margin = Math.max(26, Math.round(Math.min(width, height) * 0.13));
   const spreadX = Math.round(width * 0.145);
-  const spreadY = Math.round(height * 0.10);
+  const spreadY = Math.round(height * 0.16);
   const centerX = width / 2;
   const centerY = height / 2;
 
