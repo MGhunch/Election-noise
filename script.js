@@ -497,6 +497,81 @@ function openPolicy(policy, { fromList = false } = {}) {
   openDialog();
 }
 
+// The prompt is fetched from the deployed copy rather than from GitHub, so
+// what the modal shows is always the version that produced the data on screen
+// — no external dependency, and no drift between the repo and the site.
+const PROMPT_PATH = "./data/policy-intake-prompt.md";
+let promptMarkup = null;
+
+function renderMarkdown(source) {
+  const inline = text => escapeHtml(text)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+
+  const out = [];
+  let inFence = false;
+  let fence = [];
+  let list = [];
+
+  const flushList = () => {
+    if (!list.length) return;
+    out.push(`<ul>${list.map(item => `<li>${inline(item)}</li>`).join("")}</ul>`);
+    list = [];
+  };
+
+  source.split("\n").forEach(line => {
+    if (line.trim().startsWith("```")) {
+      if (inFence) {
+        out.push(`<pre><code>${escapeHtml(fence.join("\n"))}</code></pre>`);
+        fence = [];
+      } else {
+        flushList();
+      }
+      inFence = !inFence;
+      return;
+    }
+    if (inFence) { fence.push(line); return; }
+
+    const heading = line.match(/^(#{1,4})\s+(.*)$/);
+    if (heading) {
+      flushList();
+      const level = Math.min(heading[1].length + 1, 5);
+      out.push(`<h${level}>${inline(heading[2])}</h${level}>`);
+      return;
+    }
+    if (/^\s*[-*]\s+/.test(line)) {
+      list.push(line.replace(/^\s*[-*]\s+/, ""));
+      return;
+    }
+    if (/^---+$/.test(line.trim())) { flushList(); out.push("<hr>"); return; }
+    if (!line.trim()) { flushList(); return; }
+
+    flushList();
+    out.push(`<p>${inline(line)}</p>`);
+  });
+
+  flushList();
+  if (inFence && fence.length) out.push(`<pre><code>${escapeHtml(fence.join("\n"))}</code></pre>`);
+  return out.join("");
+}
+
+async function openPrompts() {
+  const body = document.querySelector("#prompts-body");
+  document.querySelector("#prompts-dialog").showModal();
+
+  if (promptMarkup !== null) { body.innerHTML = promptMarkup; return; }
+
+  try {
+    const response = await fetch(PROMPT_PATH, { cache: "no-store" });
+    if (!response.ok) throw new Error("Could not load the prompt.");
+    promptMarkup = renderMarkdown(await response.text());
+    body.innerHTML = promptMarkup;
+  } catch (error) {
+    body.innerHTML = `<p>The prompt could not be loaded. It lives in the repo at <code>${escapeHtml(PROMPT_PATH)}</code>.</p>`;
+    console.error(error);
+  }
+}
+
 function bindStaticControls() {
   document.querySelector("#close-policy").addEventListener("click", () => {
     dialog.close();
@@ -516,11 +591,17 @@ function bindStaticControls() {
     document.querySelector("#about-dialog").showModal();
   });
 
+  document.querySelector("#prompts-button").addEventListener("click", openPrompts);
+
+  document.querySelector("#close-prompts").addEventListener("click", () => {
+    document.querySelector("#prompts-dialog").close();
+  });
+
   document.querySelector("#close-about").addEventListener("click", () => {
     document.querySelector("#about-dialog").close();
   });
 
-  [dialog, document.querySelector("#about-dialog")]
+  [dialog, document.querySelector("#about-dialog"), document.querySelector("#prompts-dialog")]
     .forEach(dialog => {
       dialog.addEventListener("click", event => {
         if (event.target === dialog) dialog.close();

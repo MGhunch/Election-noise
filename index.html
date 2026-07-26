@@ -50,15 +50,15 @@
         <div id="party-filters" class="party-filters"></div>
 
         <div class="legend">
-          <p class="eyebrow rail-eyebrow">What the dots mean</p>
-          <p class="legend-row"><span class="legend-dot"></span>Made the news</p>
-          <p class="legend-row"><span class="legend-dot is-unverified"></span>Website only</p>
+          <p class="eyebrow rail-eyebrow">Dot fill</p>
+          <p class="legend-row"><span class="legend-dot"></span>In the news</p>
+          <p class="legend-row"><span class="legend-dot is-unverified"></span>Party website</p>
 
           <div class="legend-scale">
-            <p class="eyebrow rail-eyebrow">Impact</p>
-            <p class="legend-row"><span class="legend-dot is-flagship"></span>Flagship</p>
-            <p class="legend-row"><span class="legend-dot is-significant"></span>Significant</p>
-            <p class="legend-row"><span class="legend-dot is-niche"></span>Niche</p>
+            <p class="eyebrow rail-eyebrow">Dot size</p>
+            <p class="legend-row"><span class="legend-dot is-flagship"></span>Broad impact</p>
+            <p class="legend-row"><span class="legend-dot is-significant"></span>Key policy</p>
+            <p class="legend-row"><span class="legend-dot is-niche"></span>Specific policy</p>
           </div>
         </div>
 
@@ -93,6 +93,13 @@
     </div>
   </dialog>
 
+  <dialog id="prompts-dialog" class="about-dialog prompts-dialog">
+    <button id="close-prompts" class="close-button dialog-close" type="button" aria-label="Close">×</button>
+    <p class="eyebrow">The prompt</p>
+    <h2>How the robot is told to think.</h2>
+    <div id="prompts-body" class="prompt-body">Loading…</div>
+  </dialog>
+
   <dialog id="about-dialog" class="about-dialog">
     <button id="close-about" class="close-button dialog-close" type="button" aria-label="Close">×</button>
     <p class="eyebrow">How it works</p>
@@ -105,8 +112,7 @@
   </dialog>
 
   <footer>
-    <span>Policies as reported by RNZ and published by the parties</span>
-    <span>Built by Hunch</span>
+    <span>All parties sourced, sized and sorted by robots. <button id="prompts-button" class="text-link" type="button">Read the prompts</button></span>
   </footer>
 
   <script src="script.js"></script>
