@@ -106,8 +106,15 @@
 
   <dialog id="prompts-dialog" class="about-dialog prompts-dialog">
     <button id="close-prompts" class="close-button dialog-close" type="button" aria-label="Close">×</button>
-    <p class="eyebrow">The prompt</p>
-    <h2>How the robot is told to think.</h2>
+    <p class="eyebrow" id="prompts-top">The prompts</p>
+    <h2>How we told the robot to think.</h2>
+    <p class="prompts-dek">This project uses AI to source, sort and summarise different policies. Here are the prompts we used to get the robot to do its thing.</p>
+    <ul class="prompts-contents">
+      <li><a href="#source"><span class="contents-name">Source</span><span class="contents-what">Where the policies come from, and what gets left out</span></a></li>
+      <li><a href="#sort"><span class="contents-name">Sort</span><span class="contents-what">How each one is sized, shaped and placed</span></a></li>
+      <li><a href="#summarise"><span class="contents-name">Summarise</span><span class="contents-what">How the one-line description gets written</span></a></li>
+    </ul>
+    <p class="prompts-dek prompts-flag">If you spot something that doesn't look right, just click the flag in the detail window and we'll take another look. Robots can hallucinate, although likely less often than politicians.</p>
     <div id="prompts-body" class="prompt-body">Loading…</div>
   </dialog>
 

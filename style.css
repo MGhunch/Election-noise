@@ -677,6 +677,103 @@ dialog::backdrop {
   overflow-y: auto;
 }
 
+/* The close button sits in a dialog that scrolls inside itself, so with three
+   documents behind it, absolute positioning would scroll it out of reach. */
+.prompts-dialog .dialog-close {
+  position: sticky;
+  float: right;
+  top: 0;
+  margin-top: -14px;
+  margin-right: -14px;
+}
+
+.prompts-dek {
+  margin: 14px 0 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.prompts-flag {
+  color: var(--muted);
+}
+
+/* Three links, not numbered: the stages fan out from Source rather than
+   running in sequence, so 01/02/03 would assert something untrue. */
+.prompts-contents {
+  margin: 20px 0 4px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.prompts-contents li {
+  border-bottom: 1px solid var(--line);
+}
+
+.prompts-contents a {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.contents-name {
+  flex: 0 0 auto;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prompts-contents a:hover .contents-name {
+  text-decoration-thickness: 2px;
+}
+
+.contents-what {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.prompt-doc + .prompt-doc {
+  margin-top: 32px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+/* Anchors land under the sticky close button rather than beneath it. */
+.prompt-body h2,
+.prompt-body h3,
+.prompt-body h4 {
+  scroll-margin-top: 12px;
+}
+
+.prompt-body h2:focus-visible,
+.prompt-body h3:focus-visible,
+.prompt-body h4:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.back-to-top {
+  margin-top: 22px;
+  font-size: 0.78rem;
+}
+
+.back-to-top a {
+  color: var(--muted);
+}
+
+@media (max-width: 520px) {
+  .prompts-contents a {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
 .prompt-body {
   margin-top: 18px;
   font-size: 0.86rem;

@@ -503,13 +503,25 @@ function openPolicy(policy, { fromList = false } = {}) {
 // The prompt is fetched from the deployed copy rather than from GitHub, so
 // what the modal shows is always the version that produced the data on screen
 // — no external dependency, and no drift between the repo and the site.
-const PROMPT_PATH = "./data/policy-intake-prompt.md";
+const PROMPT_PATHS = [
+  "./data/source.md",
+  "./data/sort.md",
+  "./data/summarise.md"
+];
 let promptMarkup = null;
 
 function renderMarkdown(source) {
   const inline = text => escapeHtml(text)
     .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[^*])\*([^*]+)\*/g, "$1<em>$2</em>");
+
+  // Headings carry a slug id so the contents list has somewhere to land.
+  const slug = text => text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
 
   const out = [];
   let inFence = false;
@@ -539,7 +551,7 @@ function renderMarkdown(source) {
     if (heading) {
       flushList();
       const level = Math.min(heading[1].length + 1, 5);
-      out.push(`<h${level}>${inline(heading[2])}</h${level}>`);
+      out.push(`<h${level} id="${slug(heading[2])}" tabindex="-1">${inline(heading[2])}</h${level}>`);
       return;
     }
     if (/^\s*[-*]\s+/.test(line)) {
@@ -565,12 +577,17 @@ async function openPrompts() {
   if (promptMarkup !== null) { body.innerHTML = promptMarkup; return; }
 
   try {
-    const response = await fetch(PROMPT_PATH, { cache: "no-store" });
-    if (!response.ok) throw new Error("Could not load the prompt.");
-    promptMarkup = renderMarkdown(await response.text());
+    const sources = await Promise.all(PROMPT_PATHS.map(async path => {
+      const response = await fetch(path, { cache: "no-store" });
+      if (!response.ok) throw new Error(`Could not load ${path}`);
+      return response.text();
+    }));
+
+    promptMarkup = sources.map(text => `<article class="prompt-doc">${renderMarkdown(text)}` +
+      `<p class="back-to-top"><a href="#prompts-top">Back to top</a></p></article>`).join("");
     body.innerHTML = promptMarkup;
   } catch (error) {
-    body.innerHTML = `<p>The prompt could not be loaded. It lives in the repo at <code>${escapeHtml(PROMPT_PATH)}</code>.</p>`;
+    body.innerHTML = `<p>The prompts could not be loaded. They live in the repo at <code>${escapeHtml(PROMPT_PATHS.join(", "))}</code>.</p>`;
     console.error(error);
   }
 }
@@ -595,6 +612,20 @@ function bindStaticControls() {
   });
 
   document.querySelector("#prompts-button").addEventListener("click", openPrompts);
+
+  const promptsDialog = document.querySelector("#prompts-dialog");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  promptsDialog.addEventListener("click", event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const target = document.getElementById(link.getAttribute("href").slice(1));
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
+  });
 
   document.querySelector("#close-prompts").addEventListener("click", () => {
     document.querySelector("#prompts-dialog").close();
