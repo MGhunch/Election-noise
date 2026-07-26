@@ -54,29 +54,45 @@ Two axes, scored independently.
 
 ## Position
 
-Two more axes, also independent of each other: **Economic** (govt steps in, or govt steps back) and **Direction** (trying new things, or tried and tested). Score each on its own; don't let one pull the other toward consistency.
+Two axes, scored separately. Don't let one pull the other into line.
 
-**Economic left** is more redistribution and government ownership. **Economic right** is more market forces and individual responsibility.
+### Economic
 
-**Direction is temporal, not moral.** Does the mechanism move the settings somewhere New Zealand has never run them (**trying new things**, positive), or return to settings New Zealand has run before (**tried and tested**, negative)? Restoring a repealed law is tried and tested regardless of whose law it was. The axis describes where policies are going, never whether going there is good.
+Does the government step in, or step back. Left is redistribution and government ownership. Right is market forces and individual responsibility.
 
-Where the destination is ambiguous, the party's own stated destination places it.
+- **1** — a nudge you can feel. Low bar on purpose.
+- **2** — clearly moves the settings.
+- **3** — rewires. State ownership, universal transfer, privatisation.
 
-Score minus 3 to plus 3 on both. Economic: negative steps in, positive steps back. Direction: positive trying new things, negative tried and tested. Six rungs, three names:
+Negative steps in, positive steps back. Zero isn't a rung, it's a verdict: the pulls balance (name both in the why), or the axis barely applies. The engaged flag records which, and party averages count engaged records only.
 
-- **Tilts (1)** — a detectable nudge. Deliberately low bar: if you can feel it, it lives here at minimum.
-- **Leans (2)** — clearly moves the settings. A real redistributive or market mechanism; a real move somewhere new, or a real restoration.
-- **All-in (3)** — rewires or reverses. State ownership, universal transfer, privatisation; building what has never existed here, or returning to a prior settlement.
+### Direction
 
-**The Tilts bar sits higher on Direction.** The low bar is right for Economic, where a faint redistributive lean is a real signal. On Direction it manufactures one, because every policy has *some* relationship to the past if you look hard enough. Free cervical screening, GP loans, faster building consents — none of these winds the clock back or does anything New Zealand has never done. **Ordinary policy scores 0 on Direction.** A Direction 1 has to be a genuine faint reach, not a locatable precedent — expect them to be rare.
+New, old, or neither. Not whether it's a good idea.
 
-**The party has to be the one reaching.** Where a prior settlement is located by the scorer rather than campaigned on by the party, that's archaeology, not a policy turning back the clock. Recency doesn't sort them; intent does. The Greens' rent caps point at 1939 and are plainly a deliberate return — tried and tested. Compulsory KiwiSaver points at 1997 and is not — the party is selling it as a step forward, and the score follows the reach the party is making.
+**First: which is it?**
 
-**On Economic, zero is not a rung — it's a verdict**, earned two ways only: genuinely balanced pulls, where the why names both, or the axis barely applying. The engaged flag records which is which, and party averages count engaged records only. In the picture, both sit in the middle of the money axis — a policy that isn't about money has no lean to show, and the middle is where no-lean lives.
+- **New** — a setting New Zealand has never run.
+- **Old** — a return to one we have. Restoring a repealed law is old, whoever passed it.
+- **Neither** — 0. Most policy is neither, and 0 means nothing unusual here, not "a bit new."
 
-**When pulls conflict, score the spine.** Most policies have one dominant instrument. Score that, and name the counter-pull in the why. A balanced zero is a true 50/50 and should be rare.
+Free cervical screening, GP loans, faster building consents. None of these wind the clock back or do anything New Zealand hasn't done. They're zeroes.
 
-Judge against today's settings as the baseline. Where a Direction call reaches beyond the source for prior New Zealand settings, name that prior settlement in the confidence note — it's the checkable claim.
+**Then: how far?** 1 a bit, 2 clearly, 3 as far as it goes. Positive new, negative old.
+
+Capital gains tax is a 2 — taxing property gains isn't new, taxing them with no time limit is.
+
+**The party has to be doing the reaching.** If you had to go digging for the precedent, it isn't one. Rent caps point at 1939 and the Greens mean it — old. Compulsory KiwiSaver points at 1997 and National doesn't — the party is selling a step forward, so score that.
+
+**Don't score the pipe.** A familiar loan scheme or consenting tool is how a policy gets delivered, not where it goes.
+
+Where the destination is genuinely ambiguous, the party's own stated destination places it.
+
+### Both axes
+
+**Score the spine** — the dominant instrument. Name the counter-pull in the why. A balanced zero should be rare.
+
+**Judge against today's settings.** If a Direction call rests on a prior setting the source doesn't mention, name it in the confidence note. That's the checkable claim.
 
 ## Confidence
 
@@ -95,3 +111,5 @@ These scores are a proposal. Sizes then get calibrated by hand, and the correcti
 On the last full pass the robot was overruled on 35 of 82 records. The pattern, in one line: **the robot sized by how deep the mechanism went, and was corrected to reach.** Of ten records it moved up a rung on rescore, seven moved on nothing — same policy, same numbers, same facts in both descriptions. All seven were reverted.
 
 That gap is why the reach test is written down here, rather than living in a chat log.
+
+Direction went the same way on a later pass. The robot found a precedent for almost everything — 77 records, not one of them scored 0 — because the old low bar invited it. Rescored under the rules above, 26 moved, every one of them upward. That gap is why *ordinary policy scores 0* and *don't score the pipe* are written down too.
