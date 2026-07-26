@@ -660,10 +660,6 @@ function bindStaticControls() {
     openConversation = null;
   });
 
-  document.querySelector("#about-button").addEventListener("click", () => {
-    document.querySelector("#about-dialog").showModal();
-  });
-
   document.querySelector("#prompts-button").addEventListener("click", openPrompts);
 
   const promptsDialog = document.querySelector("#prompts-dialog");
@@ -684,11 +680,7 @@ function bindStaticControls() {
     document.querySelector("#prompts-dialog").close();
   });
 
-  document.querySelector("#close-about").addEventListener("click", () => {
-    document.querySelector("#about-dialog").close();
-  });
-
-  [dialog, document.querySelector("#about-dialog"), document.querySelector("#prompts-dialog")]
+  [dialog, document.querySelector("#prompts-dialog")]
     .forEach(dialog => {
       dialog.addEventListener("click", event => {
         if (event.target === dialog) dialog.close();
