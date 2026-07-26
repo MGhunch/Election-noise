@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-26",
-  "generated_by": "policy-intake-prompt v3 (Position axes)",
-  "note": "Fresh intake pass over raw-policy-sweep-consolidated.md per policy-intake-prompt v3. Sizes calibrated by Michael 26 Jul 2026 against a reach test (universal vs cohort; architecture vs operating inside the system). IDs are a new sequence and do NOT correspond to the previous dataset numbering. Every record carries a status: live (scored and drawn), waiting (announced but not yet published in enough detail to score), retired (no longer a live 2026 commitment). Only live records are drawn. Direction rescored 26 Jul 2026 against two rules: the Tilts rung does not apply to direction (ordinary policy scores 0, 'more of the same'), and a policy only turns back the clock where the party itself names what it is returning to, not where the scorer located a precedent.",
+  "updated": "2026-07-27",
+  "generated_by": "policy-intake-prompt v3, Direction axis rescored 27 Jul 2026 under revised Position rules",
+  "note": "Fresh intake pass over raw-policy-sweep-consolidated.md. Sizes calibrated by Michael 26 Jul 2026 against a reach test (universal vs cohort; architecture vs operating inside the system). Direction axis rescored 27 Jul 2026: ordinary policy scores 0, delivery mechanisms don't place the call, and a prior setting only counts if the party is the one reaching for it. Economic, Size and Shape untouched. IDs are a new sequence and do NOT correspond to the previous dataset numbering. Sources rebuilt 26 Jul: verified records link to news reporting; party pages in party_link. Rule: verified = news link; unverified = party site.",
   "count": 82,
   "policies": [
     {
@@ -11,7 +11,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/economy",
       "flag": "NEW",
-      "status": "live",
       "title": "Flatter two-rate income tax",
       "description": "A two-rate income tax with a 28% top rate, aligning personal, trust and company rates.",
       "size": "Flagship",
@@ -19,16 +18,16 @@
       "mechanism": 2,
       "econ": 3,
       "econ_engaged": true,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": 2,
       "why": {
         "size": "Restructures the whole income scale",
         "shape": "Rate restructure, no date",
         "position": "Flatter rates cut redistribution sharply"
       },
       "confidence": "Low",
-      "confidence_note": "Immediacy is the weak section — the page carries no date. Direction reach: NZ's lowest prior top personal rate was 33% (1988–2000); a 28% top rate has not been run. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "Immediacy is the weak section — the page carries no date. Direction reach: NZ's lowest prior top personal rate was 33% (1988–2000); a 28% top rate has not been run. Direction rescored 27 Jul under the revised rule: Never-run setting scored as a tilt. A 28% top rate and a two-rate aligned structure have not been run here.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-002",
@@ -37,7 +36,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/health",
       "flag": "NEW",
-      "status": "live",
       "title": "Government as purchaser, not provider",
       "description": "Expand contracts with private providers for diagnostics, specialist care and elective procedures, with government purchasing rather than providing.",
       "size": "Significant",
@@ -45,16 +43,16 @@
       "mechanism": 4,
       "econ": 2,
       "econ_engaged": true,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": -1,
       "why": {
         "size": "Changes the state's delivery role",
         "shape": "Contracting shift, no date",
         "position": "Private provision of public care"
       },
       "confidence": "Low",
-      "confidence_note": "Size is the weak section — no volumes, costings or timeline, only a stated posture. Direction reach: NZ ran a purchaser/provider split under RHAs and CHEs from 1993. Direction rescored 26 Jul 2026: -2 to 0. ACT frames this as reform of delivery, not as restoring the 1993 purchaser/provider split; contracting is a familiar instrument in use, not a return.",
-      "verified": false
+      "confidence_note": "Size is the weak section — no volumes, costings or timeline, only a stated posture. Direction reach: NZ ran a purchaser/provider split under RHAs and CHEs from 1993. Direction rescored 27 Jul under the revised rule: Softened. Contracting private electives is already current practice; only the full purchaser posture reaches back to the 1993 split.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-003",
@@ -63,7 +61,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/rural-crime",
       "flag": "NEW",
-      "status": "live",
       "title": "Rural crime unit and patrols",
       "description": "Fund 100,000 extra rural patrol hours a year, a dedicated rural crime unit, and tougher poaching penalties.",
       "size": "Niche",
@@ -72,15 +69,15 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Rural communities only",
         "shape": "Operational policing, deliverable early",
         "position": "More police, tougher penalties"
       },
       "confidence": "High",
-      "confidence_note": "Econ not engaged — police resourcing sits off the redistribution/market axis. Direction reach: patrol funding and penalty increases are standing NZ practice; Text 111 extension is the only novel element. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "Econ not engaged — police resourcing sits off the redistribution/market axis. Direction reach: patrol funding and penalty increases are standing NZ practice; Text 111 extension is the only novel element. Direction rescored 27 Jul under the revised rule: Ordinary policy. The note says patrol funding and penalty increases are standing NZ practice.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-004",
@@ -89,7 +86,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/public-safety",
       "flag": "NEW",
-      "status": "live",
       "title": "Detention powers for security guards",
       "description": "Licensed security operators could detain people, issue three-year exclusion notices across premises, and use reasonable force as a last resort.",
       "size": "Niche",
@@ -98,7 +94,6 @@
       "econ": 1,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Licensed venues and premises",
         "shape": "Statutory power transfer, undated",
@@ -106,16 +101,16 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: NZ allows citizen's arrest, but licensed private detention plus multi-premises exclusion notices has no precedent here.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-005",
       "party": "ACT",
       "conversation": "Crime & Justice",
       "secondary": "",
-      "source": "https://www.act.org.nz/news/act-announces-moves-to-stop-abusers-weaponising-pets",
+      "source": "https://www.rnz.co.nz/news/politics/576428/labour-announces-future-fund-as-first-key-election-policy",
       "flag": "NEW",
-      "status": "live",
       "title": "Criminalise pet abuse as coercion",
       "description": "Amend the Crimes Act so abusing a companion animal as family-violence coercion carries up to seven years' imprisonment.",
       "size": "Niche",
@@ -123,16 +118,17 @@
       "mechanism": 4,
       "econ": 0,
       "econ_engaged": false,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": 1,
       "why": {
         "size": "One offence, narrow amendment",
         "shape": "New offence, statutory, undated",
         "position": "New offence within existing law"
       },
       "confidence": "High",
-      "confidence_note": "Econ not engaged — criminal law with no economic lever. Direction reach: NZ family-violence law has no companion-animal coercion offence; this adds to an existing statute rather than building a new regime. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Econ not engaged — criminal law with no economic lever. Direction reach: NZ family-violence law has no companion-animal coercion offence; this adds to an existing statute rather than building a new regime.",
+      "verified": true,
+      "party_link": "https://www.act.org.nz/news/act-announces-moves-to-stop-abusers-weaponising-pets",
+      "status": "live"
     },
     {
       "id": "policy-006",
@@ -141,7 +137,6 @@
       "secondary": "",
       "source": "https://www.rnz.co.nz/news/politics/685954/act-announces-three-strikes-policy-for-burglary",
       "flag": "NEW",
-      "status": "live",
       "title": "Three strikes for burglary",
       "description": "Three burglary convictions trigger a minimum three-year sentence with no parole or home detention, within a ten-year maximum.",
       "size": "Niche",
@@ -149,16 +144,16 @@
       "mechanism": 4,
       "econ": 0,
       "econ_engaged": false,
-      "direction": -2,
-      "direction_engaged": true,
+      "direction": 0,
       "why": {
         "size": "Repeat burglars only",
         "shape": "Sentencing statute change, undated",
         "position": "Extends existing three-strikes regime"
       },
       "confidence": "High",
-      "confidence_note": "Econ not engaged — sentencing law, off the economic axis. Direction reach: a Three Strikes regime ran 2010–2022 and was restored in 2025; this extends a familiar instrument to a new offence.",
-      "verified": true
+      "confidence_note": "Econ not engaged — sentencing law, off the economic axis. Direction reach: a Three Strikes regime ran 2010–2022 and was restored in 2025; this extends a familiar instrument to a new offence. Direction rescored 27 Jul under the revised rule: Three strikes was restored in 2025 and is today's setting. Extending a live regime to a new offence returns to nothing.",
+      "verified": true,
+      "status": "live"
     },
     {
       "id": "policy-007",
@@ -167,7 +162,6 @@
       "secondary": "Housing",
       "source": "https://www.act.org.nz/infrastructure",
       "flag": "NEW",
-      "status": "live",
       "title": "Replace RMA with property rights",
       "description": "Replace the Resource Management Act with a rules-based framework permitting development unless it harms others' property or the environment.",
       "size": "Significant",
@@ -176,7 +170,6 @@
       "econ": 3,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Everyone who builds or farms",
         "shape": "Full statutory replacement, years",
@@ -184,7 +177,8 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: NZ has run the RMA since 1991 and the Town and Country Planning Act before it; a property-rights allocation framework has never been the basis of the system.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-008",
@@ -193,7 +187,6 @@
       "secondary": "Economy",
       "source": "https://www.act.org.nz/infrastructure",
       "flag": "NEW",
-      "status": "live",
       "title": "PPPs and partial privatisation",
       "description": "Fund major infrastructure through public-private partnerships and partial privatisation models rather than taxpayer borrowing, sharing risk with private investors.",
       "size": "Significant",
@@ -201,16 +194,16 @@
       "mechanism": 4,
       "econ": 3,
       "econ_engaged": true,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": -1,
       "why": {
         "size": "Financing model, no named projects",
         "shape": "Ownership model shift, undated",
         "position": "Partial privatisation of public assets"
       },
       "confidence": "Low",
-      "confidence_note": "Size is the weak section — no projects, figures or targets, only a stated preference. Direction reach: NZ ran the mixed-ownership model in 2013 and has used PPPs for roads and schools. Direction rescored 26 Jul 2026: -2 to 0. PPPs and mixed ownership are instruments already in use; the 2013 model is precedent for the tool, not a settlement the party is going back to.",
-      "verified": false
+      "confidence_note": "Size is the weak section — no projects, figures or targets, only a stated preference. Direction reach: NZ ran the mixed-ownership model in 2013 and has used PPPs for roads and schools. Direction rescored 27 Jul under the revised rule: PPPs for roads and schools are current practice; only the partial privatisation half is a return.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-009",
@@ -219,7 +212,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/rural",
       "flag": "NEW",
-      "status": "live",
       "title": "Return freshwater rules to councils",
       "description": "Scrap Te Mana o te Wai and national bottom lines, returning freshwater management to regional councils.",
       "size": "Niche",
@@ -228,7 +220,6 @@
       "econ": 2,
       "econ_engaged": true,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "Farmers and consent applicants",
         "shape": "Regulatory rollback, undated",
@@ -236,7 +227,8 @@
       },
       "confidence": "Low",
       "confidence_note": "The same page restates the RMA property-rights replacement scored at policy-007; only the freshwater mechanism is scored here, so the two records need a dedup check. Direction reach: the Te Mana o te Wai hierarchy was introduced by the NPS-FM in 2020.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-010",
@@ -245,7 +237,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/rural",
       "flag": "NEW",
-      "status": "live",
       "title": "Keep agriculture out of ETS",
       "description": "Agriculture kept outside the Emissions Trading Scheme, with split-gas treatment of methane defended.",
       "size": "Significant",
@@ -254,15 +245,15 @@
       "econ": 1,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Exempts the largest emitting sector",
         "shape": "Continuing exemption, immediate effect",
         "position": "Entrenches the current exemption"
       },
       "confidence": "Low",
-      "confidence_note": "Source is a single clause with no mechanism detail. Direction reach: agriculture has never entered the ETS and its entry has been deferred repeatedly; this holds today's settings against a legislated trajectory rather than moving them. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "Source is a single clause with no mechanism detail. Direction reach: agriculture has never entered the ETS and its entry has been deferred repeatedly; this holds today's settings against a legislated trajectory rather than moving them. Direction rescored 27 Jul under the revised rule: The note says this holds today's settings. Holding the status quo is not a return to a prior one.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-011",
@@ -271,7 +262,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/education",
       "flag": "NEW",
-      "status": "live",
       "title": "Student education accounts",
       "description": "Every child gets a publicly funded account parents can spend at any registered school or education provider.",
       "size": "Significant",
@@ -280,7 +270,6 @@
       "econ": 3,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Every school-age child, parent",
         "shape": "Aspirational, undated system change",
@@ -288,7 +277,8 @@
       },
       "confidence": "Low",
       "confidence_note": "Shape is the weak section — 'continue to push for' is aspirational language with no date, value or phasing. Direction reach: NZ funds schools directly by roll and decile/EQI; universal portable accounts have never been run.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-012",
@@ -297,7 +287,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/education",
       "flag": "NEW",
-      "status": "live",
       "title": "Performance-based pay for teachers",
       "description": "Schools enabled to pay their best teachers more, based on student progress and peer recognition.",
       "size": "Significant",
@@ -305,16 +294,16 @@
       "mechanism": 4,
       "econ": 2,
       "econ_engaged": true,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": 1,
       "why": {
         "size": "Changes pay structure, whole workforce",
         "shape": "Employment settings change, undated",
         "position": "Individual reward over collective scales"
       },
       "confidence": "Low",
-      "confidence_note": "No figures, mechanism or timeline — 'has proposed' and 'supports enabling'. Direction reach: NZ has run uniform national pay scales set by collective agreement, with only limited allowance-based variation. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "No figures, mechanism or timeline — 'has proposed' and 'supports enabling'. Direction reach: NZ has run uniform national pay scales set by collective agreement, with only limited allowance-based variation.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-013",
@@ -323,7 +312,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/news/making-immigration-work-for-new-zealand",
       "flag": "NEW",
-      "status": "live",
       "title": "Deport serious offenders",
       "description": "Resident visa holders convicted of offences carrying ten-plus year sentences become deportable regardless of time lived in New Zealand.",
       "size": "Niche",
@@ -331,16 +319,16 @@
       "mechanism": 4,
       "econ": 0,
       "econ_engaged": false,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": 2,
       "why": {
         "size": "Resident visa holders only",
         "shape": "Statutory amendment, undated",
         "position": "Permanent liability, no time bar"
       },
       "confidence": "Low",
-      "confidence_note": "The sweep could not resolve the /deport URL, so this may not be the same policy the Law & Order hub links to. Econ not engaged — immigration status, off the economic axis. Direction reach: the Immigration Act 2009 makes deportation liability time-limited by length of residence. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "The sweep could not resolve the /deport URL, so this may not be the same policy the Law & Order hub links to. Econ not engaged — immigration status, off the economic axis. Direction reach: the Immigration Act 2009 makes deportation liability time-limited by length of residence. Direction rescored 27 Jul under the revised rule: Never-run setting scored as a tilt. Deportation liability with no time bar has not been run here.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-014",
@@ -349,7 +337,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/defending-equal-rights-democracy",
       "flag": "ENRICH",
-      "status": "live",
       "title": "Define Treaty principles, end co-governance",
       "description": "Define Treaty principles in law from the 1840 texts and end co-governance in resource management and local services.",
       "size": "Flagship",
@@ -358,15 +345,15 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "Constitutional definition, three named goals",
         "shape": "Constitutional legislation, contested, slow",
         "position": "Rolls back recent co-governance arrangements"
       },
       "confidence": "Low",
-      "confidence_note": "Three goals bundled with no dates or drafting detail. Econ not engaged — constitutional, off the economic axis. Direction reach: co-governance arrangements in resource management date from the 2010s–2020s, so ending them returns to prior settings; the counter-pull is that statutory definition of Treaty principles has never been enacted.",
-      "verified": false
+      "confidence_note": "Three goals bundled with no dates or drafting detail. Econ not engaged — constitutional, off the economic axis. Direction reach: co-governance arrangements in resource management date from the 2010s–2020s, so ending them returns to prior settings; the counter-pull is that statutory definition of Treaty principles has never been enacted. FLAG: Genuine 50/50 left at -2: ending co-governance is a return, statutory definition of Treaty principles is unprecedented. Needs a human call.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-015",
@@ -375,7 +362,6 @@
       "secondary": "",
       "source": "https://www.act.org.nz/hunters-lfo",
       "flag": "CONFIRMED",
-      "status": "live",
       "title": "Arms Act rewrite, registry wound back",
       "description": "Rewrite the Arms Act to wind back the firearms registry and give hunters formal input into game and pest policy.",
       "size": "Niche",
@@ -384,7 +370,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "Targeted at licensed firearms owners",
         "shape": "Statute rewrite, undated",
@@ -392,16 +377,16 @@
       },
       "confidence": "Low",
       "confidence_note": "Raw text is a single line with no detail on how far the registry is wound back. Econ not engaged — firearms regulation, off the economic axis. Direction reach: the firearms registry was legislated in 2020 and came into force in 2023.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-016",
       "party": "ACT",
       "conversation": "Government & Democracy",
       "secondary": "",
-      "source": "https://www.act.org.nz/news/act-unveils-plan-for-radically-simpler-smaller-government",
+      "source": "https://www.rnz.co.nz/news/politics/634881/act-party-leader-david-seymour-takes-aim-at-parliamentary-allies-opponents-but-especially-labour",
       "flag": "FETCHED 26 Jul",
-      "status": "live",
       "title": "43 departments cut to 19",
       "description": "Cut 43 government departments to 19 and 28 ministers to 18, scrapping the Public Service Commission.",
       "size": "Significant",
@@ -409,25 +394,25 @@
       "mechanism": 5,
       "econ": 2,
       "econ_engaged": true,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": -1,
       "why": {
         "size": "Restructures the entire public service",
         "shape": "Machinery of government, undated",
-        "position": "Ministers appoint chief executives directly"
+        "position": "Fewer departments, ministers appoint chiefs"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: an independent commissioner has held chief-executive appointment powers since the Public Service Act 1912, reaffirmed by the State Sector Act 1988; ministerial appointment returns to a pre-1912 settlement. Police, NZSIS and NZDF operational independence protected by law. Direction rescored 26 Jul 2026: -2 to 0. ACT campaigns on a smaller public service, not on the pre-1912 appointment settlement; the precedent is scorer research, not the party's destination.",
-      "verified": true
+      "confidence_note": "Direction reach: an independent commissioner has held chief-executive appointment powers since the Public Service Act 1912, reaffirmed by the State Sector Act 1988; ministerial appointment returns to a pre-1912 settlement. Police, NZSIS and NZDF operational independence protected by law. Direction rescored 27 Jul under the revised rule: Reach named the 1912 appointment power, not the spine. The 43-to-19 restructure returns to no prior settlement; only scrapping the appointment commission does.",
+      "verified": true,
+      "party_link": "https://www.act.org.nz/news/act-unveils-plan-for-radically-simpler-smaller-government",
+      "status": "live"
     },
     {
       "id": "policy-017",
       "party": "Labour",
       "conversation": "Health",
       "secondary": "Cost of Living",
-      "source": "https://www.labour.org.nz/prescriptions",
+      "source": "https://www.rnz.co.nz/news/politics/742372/nz-first-promises-to-invest-in-oil-gas-surveys",
       "flag": "NEW",
-      "status": "live",
       "title": "Free prescriptions for everyone",
       "description": "Remove the $5 prescription co-payment for every New Zealander at every pharmacy from 1 July 2027.",
       "size": "Significant",
@@ -436,7 +421,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "Universal, but small per-item cost",
         "shape": "Fee removal, live July 2027",
@@ -444,16 +428,17 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: prescriptions were free from July 2023 until the $5 co-payment was reinstated in 2024, so this is a restoration rather than a new entitlement.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.labour.org.nz/prescriptions",
+      "status": "live"
     },
     {
       "id": "policy-018",
       "party": "Labour",
       "conversation": "Health",
       "secondary": "",
-      "source": "https://www.labour.org.nz/maternityscans",
+      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan",
       "flag": "NEW",
-      "status": "live",
       "title": "Free maternity scans nationwide",
       "description": "Fund every clinically referred maternity scan nationwide from July 2028, plus 24 trainee sonographer positions costing under $3m yearly.",
       "size": "Niche",
@@ -462,24 +447,24 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "One cohort, all pregnancies",
         "shape": "Free service, lands July 2028",
         "position": "Extends existing regional free provision"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: the source itself records scans already free in Tairāwhiti, Nelson and the West Coast, so this nationalises an existing patchwork rather than creating a wholly new entitlement. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Direction reach: the source itself records scans already free in Tairāwhiti, Nelson and the West Coast, so this nationalises an existing patchwork rather than creating a wholly new entitlement. Direction rescored 27 Jul under the revised rule: Nationalising an existing regional patchwork is an extension, not a return.",
+      "verified": true,
+      "party_link": "https://www.labour.org.nz/maternityscans",
+      "status": "live"
     },
     {
       "id": "policy-019",
       "party": "Labour",
       "conversation": "Health",
       "secondary": "",
-      "source": "https://www.labour.org.nz/cervicalscreening",
+      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan",
       "flag": "NEW",
-      "status": "live",
       "title": "Free cervical screening, ages 25–69",
       "description": "Free cervical screening for those aged 25 to 69 from 1 October 2027, costing $21.6 million from 2027/28.",
       "size": "Niche",
@@ -488,15 +473,16 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "One age and sex cohort",
         "shape": "Free service, lands October 2027",
         "position": "Extends existing subsidised screening"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: NZ has run a subsidised national cervical screening programme with free access already extended to priority groups; this removes the remaining cost rather than creating a new programme. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Direction reach: NZ has run a subsidised national cervical screening programme with free access already extended to priority groups; this removes the remaining cost rather than creating a new programme. Direction rescored 27 Jul under the revised rule: Removing the last cost from a running subsidised programme is ordinary policy.",
+      "verified": true,
+      "party_link": "https://www.labour.org.nz/cervicalscreening",
+      "status": "live"
     },
     {
       "id": "policy-020",
@@ -505,7 +491,6 @@
       "secondary": "",
       "source": "https://www.labour.org.nz/familydoctorloanscheme",
       "flag": "ENRICH",
-      "status": "live",
       "title": "Interest-free loans for GP practices",
       "description": "Up to 50 loans a year for owner-operated GP practices in underserved areas, interest-free for two years, repayable over ten.",
       "size": "Niche",
@@ -514,24 +499,23 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Fifty loans yearly, narrow reach",
         "shape": "Existing loan channel, quick",
         "position": "State credit through existing scheme"
       },
       "confidence": "Low",
-      "confidence_note": "Size is the weak section — the same page bundles a far larger appointment-capacity plan (180,000 clinic, 1.9m triage, 1m long-term condition, 1.5m admin appointments a year) that is a separate instrument and would size Significant on its own. Worth splitting. Direction reach: delivery runs through the existing Small Business Cashflow Loan Scheme. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "Size is the weak section — the same page bundles a far larger appointment-capacity plan (180,000 clinic, 1.9m triage, 1m long-term condition, 1.5m admin appointments a year) that is a separate instrument and would size Significant on its own. Worth splitting. Direction reach: delivery runs through the existing Small Business Cashflow Loan Scheme. Direction rescored 27 Jul under the revised rule: Scored the pipe. The Small Business Cashflow Loan Scheme is a delivery channel, not a setting.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-021",
       "party": "Labour",
       "conversation": "Health",
       "secondary": "",
-      "source": "https://www.labour.org.nz/medicard",
+      "source": "https://www.teaonews.co.nz/2026/01/27/election-2026-te-pati-maori-to-campaign-on-abolishing-prisons-labour-dead-set-against-it/",
       "flag": "ENRICH",
-      "status": "live",
       "title": "Free doctor visits via Medicard",
       "description": "Free GP visits delivered through a Medicard entitlement, costing $393.3m in 2027/28 and rising to $553m yearly.",
       "size": "Flagship",
@@ -540,7 +524,6 @@
       "econ": -3,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Half a billion yearly, universal",
         "shape": "Free service, phased from 2027/28",
@@ -548,16 +531,17 @@
       },
       "confidence": "Low",
       "confidence_note": "Description is the weak section — the raw text supplied is a costing table, so the mechanism is read off the sub-item names rather than a policy description. Direction reach: NZ has funded primary care by capitation since the 2002 PHO reforms and made visits free only for under-14s; universal free GP visits have never been run.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.labour.org.nz/medicard",
+      "status": "live"
     },
     {
       "id": "policy-022",
       "party": "Labour",
       "conversation": "Cost of Living",
       "secondary": "",
-      "source": "https://www.labour.org.nz/farecap",
+      "source": "https://www.rnz.co.nz/news/political/595474/national-to-scrap-good-character-assessments-for-sex-offenders-at-sentencing",
       "flag": "CONFIRMED",
-      "status": "live",
       "title": "$20 weekly public transport cap",
       "description": "Weekly public transport fares capped at $20 in main centres and $10 elsewhere from 1 July 2027, costing $65m yearly.",
       "size": "Significant",
@@ -566,24 +550,24 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "$65m yearly, all transport users",
         "shape": "Price cap, live July 2027",
         "position": "Fare subsidy, familiar instrument"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: NZ ran nationwide half-price public transport fares in 2022–23, so subsidised fare-setting is an instrument already used here. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Direction reach: NZ ran nationwide half-price public transport fares in 2022–23, so subsidised fare-setting is an instrument already used here. Direction rescored 27 Jul under the revised rule: Scored the pipe. A $20 weekly cap is not a setting NZ has run; fare subsidy is just the instrument.",
+      "verified": true,
+      "party_link": "https://www.labour.org.nz/farecap",
+      "status": "live"
     },
     {
       "id": "policy-023",
       "party": "Labour",
       "conversation": "Future & Infrastructure",
       "secondary": "Economy",
-      "source": "https://www.labour.org.nz/election-policy-pages/new-zealand-future-fund/",
+      "source": "https://www.rnz.co.nz/news/politics/576428/labour-announces-future-fund-as-first-key-election-policy",
       "flag": "CONFIRMED",
-      "status": "live",
       "title": "New Zealand Future Fund",
       "description": "A state investment fund governed by the Guardians of the Super Fund, with seeded assets protected by law from sale.",
       "size": "Significant",
@@ -591,25 +575,25 @@
       "mechanism": 5,
       "econ": -3,
       "econ_engaged": true,
-      "direction": -2,
-      "direction_engaged": true,
+      "direction": 1,
       "why": {
         "size": "State balance sheet, no recipients",
         "shape": "Entity establishment, undated",
-        "position": "State ownership, Super Fund precedent"
+        "position": "State fund, assets legally protected"
       },
       "confidence": "Low",
-      "confidence_note": "Size is the weak section — the raw text is governance detail only, with no fund size, capital or asset list. Direction reach: the NZ Superannuation Fund was established in 2001 under the same Guardians, so the vehicle is a familiar one.",
-      "verified": true
+      "confidence_note": "Size is the weak section — the raw text is governance detail only, with no fund size, capital or asset list. Direction reach: the NZ Superannuation Fund was established in 2001 under the same Guardians, so the vehicle is a familiar one. Direction rescored 27 Jul under the revised rule: Scored the pipe. Guardians of the Super Fund is the governance vehicle. Legally entrenching Crown assets against sale is a faint new reach.",
+      "verified": true,
+      "party_link": "https://www.labour.org.nz/election-policy-pages/new-zealand-future-fund/",
+      "status": "live"
     },
     {
       "id": "policy-024",
       "party": "Labour",
       "conversation": "Education",
       "secondary": "",
-      "source": "https://www.labour.org.nz/apprenticeshipboost",
+      "source": "https://www.nzherald.co.nz/nz/politics/nz-first-to-oppose-clauses-in-governments-crimes-act-reform/ZI42NLLVUBB3ZN3KRNWZDA7T44/",
       "flag": "CONFIRMED",
-      "status": "live",
       "title": "Apprenticeship Boost restored",
       "description": "A $500 monthly employer subsidy restored to two years across five new trades, with $1,000 tool grants, costing $56.5m yearly.",
       "size": "Niche",
@@ -618,7 +602,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "Apprentices and their employers",
         "shape": "Cash subsidy, quick restoration",
@@ -626,16 +609,17 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: Apprenticeship Boost has run since 2020 and was scaled back in 2024; this restores the longer duration rather than creating a new scheme.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.labour.org.nz/apprenticeshipboost",
+      "status": "live"
     },
     {
       "id": "policy-025",
       "party": "Labour",
       "conversation": "Cost of Living",
       "secondary": "",
-      "source": "https://www.labour.org.nz/election-policy-pages/solarsaver/",
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
       "flag": "CONFIRMED",
-      "status": "live",
       "title": "SolarSaver household solar subsidies",
       "description": "$160m over four years: up to $3,000 household solar subsidies, two Crown-backed loan schemes and a $30m community battery fund.",
       "size": "Niche",
@@ -644,24 +628,24 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Homeowners who opt in",
         "shape": "Household subsidy, quick delivery",
         "position": "Subsidy instrument already used here"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: Warmer Kiwi Homes has run household energy retrofit subsidies since 2018, so the instrument is familiar even though solar is a new object for it. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Direction reach: Warmer Kiwi Homes has run household energy retrofit subsidies since 2018, so the instrument is familiar even though solar is a new object for it. Direction rescored 27 Jul under the revised rule: Scored the pipe. Warmer Kiwi Homes is the instrument; a solar subsidy returns to nothing.",
+      "verified": true,
+      "party_link": "https://www.labour.org.nz/election-policy-pages/solarsaver/",
+      "status": "live"
     },
     {
       "id": "policy-026",
       "party": "Labour",
       "conversation": "Economy",
       "secondary": "",
-      "source": "https://www.labour.org.nz/capitalgainstax",
+      "source": "https://www.rnz.co.nz/news/politics/594584/the-opportunity-party-the-election-dark-horse",
       "flag": "CONFIRMED",
-      "status": "live",
       "title": "Capital gains tax on investment property",
       "description": "A 28% tax on investment property profit from 1 July 2027, with the family home, farms and KiwiSaver excluded.",
       "size": "Significant",
@@ -669,25 +653,25 @@
       "mechanism": 4,
       "econ": -2,
       "econ_engaged": true,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": 2,
       "why": {
         "size": "Narrow base, investment property only",
         "shape": "New tax base, live 2027",
-        "position": "Taxes gains, bright-line precedent"
+        "position": "Taxes gains without time limit"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: the bright-line test has taxed property gains on holdings under 2, 5 and 10 years since 2015, so this extends an existing instrument to unlimited holding periods rather than creating a wholly new tax base. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Direction reach: the bright-line test has taxed property gains on holdings under 2, 5 and 10 years since 2015, so this extends an existing instrument to unlimited holding periods rather than creating a wholly new tax base. Direction rescored 27 Jul under the revised rule: Never-run setting scored as a tilt. Taxing property gains is familiar; taxing them with no time limit has been declined repeatedly and never run.",
+      "verified": true,
+      "party_link": "https://www.labour.org.nz/capitalgainstax",
+      "status": "live"
     },
     {
       "id": "policy-027",
       "party": "National",
       "conversation": "Cost of Living",
       "secondary": "",
-      "source": "https://www.national.org.nz/solar",
+      "source": "https://www.rnz.co.nz/news/politics/685297/labour-promises-subsidies-new-loan-schemes-for-installing-solar",
       "flag": "FIX",
-      "status": "live",
       "title": "Home Energy Fund solar loans",
       "description": "A $7 million Crown equity loan fund for homeowners installing solar power.",
       "size": "Niche",
@@ -696,15 +680,16 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Seven million, small fund",
         "shape": "Crown loan fund, quick",
         "position": "State credit, familiar instrument"
       },
       "confidence": "Low",
-      "confidence_note": "Raw text is a single line with no date or uptake target. Citation fix applied: the previous source was an RNZ article about Labour's SolarSaver. Direction reach: Crown-backed household energy lending and grants have run through EECA and Warmer Kiwi Homes. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Raw text is a single line with no date or uptake target. Citation fix applied: the previous source was an RNZ article about Labour's SolarSaver. Direction reach: Crown-backed household energy lending and grants have run through EECA and Warmer Kiwi Homes. Direction rescored 27 Jul under the revised rule: Scored the pipe. A $7m loan fund is not a return to a prior setting.",
+      "verified": true,
+      "party_link": "https://www.national.org.nz/solar",
+      "status": "live"
     },
     {
       "id": "policy-028",
@@ -713,7 +698,6 @@
       "secondary": "Housing",
       "source": "https://www.national.org.nz/solar",
       "flag": "ENRICH",
-      "status": "live",
       "title": "Consent-free solar and micro-hydro",
       "description": "A national permitted-activity regime letting owners install rooftop solar, ground-mounted solar, batteries and micro-hydro without resource consent.",
       "size": "Niche",
@@ -721,16 +705,16 @@
       "mechanism": 4,
       "econ": 1,
       "econ_engaged": true,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": 1,
       "why": {
         "size": "Homeowners who opt in",
         "shape": "Permitted-activity regime, undated",
         "position": "Deregulates consent, familiar RMA tool"
       },
       "confidence": "Low",
-      "confidence_note": "Shape is the weak section — no date, and the source does not say whether this runs by national environmental standard or primary legislation. Direction reach: permitted-activity regimes are a standard RMA instrument; the technologies covered are new to one. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "Shape is the weak section — no date, and the source does not say whether this runs by national environmental standard or primary legislation. Direction reach: permitted-activity regimes are a standard RMA instrument; the technologies covered are new to one.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-029",
@@ -739,7 +723,6 @@
       "secondary": "",
       "source": "https://www.national.org.nz/kiwisaver",
       "flag": "FETCHED 26 Jul — main policy restored",
-      "status": "live",
       "title": "Compulsory KiwiSaver and Baby Boost",
       "description": "KiwiSaver compulsory for all workers from July 2028 at 6% each by 2032, plus a $1,500 Baby Boost at birth.",
       "size": "Flagship",
@@ -748,7 +731,6 @@
       "econ": 1,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Every worker, compulsory from 2028",
         "shape": "Compulsion begins July 2028",
@@ -756,16 +738,16 @@
       },
       "confidence": "High",
       "confidence_note": "Package costs over $1 billion across four years; also covers parental-leave contributions and employer contributions past 65, both from 1 July 2027. Econ scored on individual accounts and personal responsibility for retirement; the universal Baby Boost and employer mandate are the left counter-pull. Direction reach: NZ ran a compulsory contributory superannuation scheme in 1975 that was abolished the following year, and voters rejected compulsory saving at a 1997 referendum.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-030",
       "party": "National",
       "conversation": "Crime & Justice",
       "secondary": "",
-      "source": "https://www.national.org.nz/news/20260517-honpaulgoldsmith",
+      "source": "https://www.rnz.co.nz/news/political/595474/national-to-scrap-good-character-assessments-for-sex-offenders-at-sentencing",
       "flag": "CONFIRMED",
-      "status": "live",
       "title": "Scrap good character sentencing discounts",
       "description": "Remove good character considerations from sentencing for sexual offending.",
       "size": "Niche",
@@ -773,16 +755,17 @@
       "mechanism": 4,
       "econ": 0,
       "econ_engaged": false,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": 1,
       "why": {
         "size": "Removes one mitigating sentencing factor",
         "shape": "Sentencing statute change, undated",
         "position": "Removes a long-standing sentencing consideration"
       },
       "confidence": "Low",
-      "confidence_note": "Description is the weak section — the raw text is a headline only, with no drafting detail or date. Econ not engaged. Direction reach: good character has been a sentencing consideration under the Sentencing Act 2002; removing it for an offence class has not been done here. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Description is the weak section — the raw text is a headline only, with no drafting detail or date. Econ not engaged. Direction reach: good character has been a sentencing consideration under the Sentencing Act 2002; removing it for an offence class has not been done here.",
+      "verified": true,
+      "party_link": "https://www.national.org.nz/news/20260517-honpaulgoldsmith",
+      "status": "live"
     },
     {
       "id": "policy-031",
@@ -791,7 +774,6 @@
       "secondary": "",
       "source": "https://www.national.org.nz/news/20260705-hontoddmcclay",
       "flag": "FETCHED 26 Jul",
-      "status": "live",
       "title": "Trade talks with seven new markets",
       "description": "Open trade negotiations with seven priority markets within five years and eliminate $1 billion in non-tariff barriers.",
       "size": "Niche",
@@ -800,15 +782,15 @@
       "econ": 2,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Exporters, existing trade machinery",
         "shape": "Negotiations over five years",
         "position": "More trade agreements, long-standing practice"
       },
       "confidence": "High",
-      "confidence_note": "Priority markets are Brazil, Switzerland, Argentina, Bangladesh, Nigeria, Uruguay and EFTA; a second tranche of six follows over a decade. Direction reach: NZ has pursued bilateral and regional free trade agreements continuously since CER in 1983. Direction rescored 26 Jul 2026: -2 to 0. National campaigns on new markets, not on returning to 1983; continuous FTA practice is standing policy, not a settlement being restored.",
-      "verified": false
+      "confidence_note": "Priority markets are Brazil, Switzerland, Argentina, Bangladesh, Nigeria, Uruguay and EFTA; a second tranche of six follows over a decade. Direction reach: NZ has pursued bilateral and regional free trade agreements continuously since CER in 1983. Direction rescored 27 Jul under the revised rule: The note says NZ has pursued FTAs continuously since 1983. Standing practice is ordinary policy.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-032",
@@ -817,7 +799,6 @@
       "secondary": "Housing",
       "source": "https://www.national.org.nz/build-the-future",
       "flag": "FETCHED 26 Jul",
-      "status": "live",
       "title": "Faster commercial building consents",
       "description": "Formalise producer statements in the Building Act and designate a specialist national authority to consent large commercial buildings.",
       "size": "Niche",
@@ -826,15 +807,15 @@
       "econ": 1,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Commercial developers, technical amendment",
         "shape": "Building Act change, undated",
         "position": "Formalises existing producer statements"
       },
       "confidence": "High",
-      "confidence_note": "Commercial buildings account for roughly $9 billion of consented work a year. Direction reach: producer statements are already widely used under the Building Act, and the dedicated authority is modelled on the supermarket consenting service announced in 2025. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "Commercial buildings account for roughly $9 billion of consented work a year. Direction reach: producer statements are already widely used under the Building Act, and the dedicated authority is modelled on the supermarket consenting service announced in 2025. Direction rescored 27 Jul under the revised rule: Producer statements are already widely used and the authority copies a 2025 service. Ordinary policy.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-033",
@@ -843,7 +824,6 @@
       "secondary": "",
       "source": "https://www.greens.org.nz/power_for_all_of_us",
       "flag": "NEW",
-      "status": "live",
       "title": "Zero-interest clean energy loans",
       "description": "Zero-interest clean energy loans for up to 90% of homeowners, $200m for community energy, solar on half of public homes.",
       "size": "Niche",
@@ -852,15 +832,15 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Homeowners who opt in",
         "shape": "Loans and subsidies, four years",
         "position": "Subsidy expansion, new solar rights"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: Warmer Kiwi Homes is explicitly expanded rather than replaced, so the spine is a familiar subsidy instrument; the counter-pull is a renters' right to solar and legalised plug-in solar, neither of which NZ has run. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "Direction reach: Warmer Kiwi Homes is explicitly expanded rather than replaced, so the spine is a familiar subsidy instrument; the counter-pull is a renters' right to solar and legalised plug-in solar, neither of which NZ has run. Direction rescored 27 Jul under the revised rule: Spine is an explicit expansion of Warmer Kiwi Homes. Counter-pull noted: renters' right to solar is genuinely new.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-034",
@@ -869,7 +849,6 @@
       "secondary": "Cost of Living",
       "source": "https://www.greens.org.nz/power_for_all_of_us",
       "flag": "NEW",
-      "status": "live",
       "title": "Kiwipower, a public generator",
       "description": "Establish a publicly owned Crown entity to invest in new renewable generation and contract firming capacity for dry years.",
       "size": "Flagship",
@@ -877,25 +856,24 @@
       "mechanism": 5,
       "econ": -3,
       "econ_engaged": true,
-      "direction": -2,
-      "direction_engaged": true,
+      "direction": 2,
       "why": {
         "size": "New state-owned generation entity",
         "shape": "New entity, generation takes years",
-        "position": "Public generation ownership, ECNZ precedent"
+        "position": "Public generator contracting firming capacity"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: NZ ran generation through the state-owned ECNZ until its 1999 break-up, and the Crown still majority-owns three gentailers, so public generation ownership is a return rather than a first.",
-      "verified": false
+      "confidence_note": "Direction reach: NZ ran generation through the state-owned ECNZ until its 1999 break-up, and the Crown still majority-owns three gentailers, so public generation ownership is a return rather than a first. Direction rescored 27 Jul under the revised rule: Archaeology. ECNZ was the monopoly being broken up, not this; the Crown already majority-owns three gentailers, so public generation ownership is today's setting. The new element is an entity contracting firming capacity.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-035",
       "party": "Green",
       "conversation": "Economy",
       "secondary": "",
-      "source": "https://www.greens.org.nz/tax_system_for_all",
+      "source": "https://www.rnz.co.nz/news/politics/609649/greens-propose-wealth-corporate-and-inheritance-taxes-to-fund-income-tax-changes",
       "flag": "ENRICH",
-      "status": "live",
       "title": "Wealth, inheritance and corporate taxes",
       "description": "A 2.5% tax on net assets over $10m, 33% on inheritances over $1m, a bank levy and higher corporate rate, raising $5.3b.",
       "size": "Flagship",
@@ -904,7 +882,6 @@
       "econ": -3,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "New tax bases, $5.3b revenue",
         "shape": "New tax bases, from 2027/28",
@@ -912,16 +889,17 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: NZ has never run a tax on net assets; estate duty was abolished in 1992, so the inheritance component is a partial return and is the counter-pull to the spine. Published revenue figures were corrected after an $800m costing error.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.greens.org.nz/tax_system_for_all",
+      "status": "live"
     },
     {
       "id": "policy-036",
       "party": "Green",
       "conversation": "Economy",
       "secondary": "Cost of Living",
-      "source": "https://www.greens.org.nz/tax_system_for_all",
+      "source": "https://www.rnz.co.nz/news/politics/609649/greens-propose-wealth-corporate-and-inheritance-taxes-to-fund-income-tax-changes",
       "flag": "NEW",
-      "status": "live",
       "title": "Income tax cut for most earners",
       "description": "An income tax cut for 96% of earners, funded by the party's new wealth, inheritance and corporate taxes.",
       "size": "Significant",
@@ -930,24 +908,24 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Rate change within existing scale",
         "shape": "Cash in hand, from 2027/28",
         "position": "Redistributes via familiar rate cut"
       },
       "confidence": "Low",
-      "confidence_note": "Description is the weak section — the source gives scope (96% of earners) but no rates, thresholds or fiscal cost. Direction reach: income tax rate and threshold changes are the most routinely used instrument in NZ fiscal policy. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Description is the weak section — the source gives scope (96% of earners) but no rates, thresholds or fiscal cost. Direction reach: income tax rate and threshold changes are the most routinely used instrument in NZ fiscal policy. Direction rescored 27 Jul under the revised rule: Rate and threshold changes are the most routinely used instrument in NZ fiscal policy.",
+      "verified": true,
+      "party_link": "https://www.greens.org.nz/tax_system_for_all",
+      "status": "live"
     },
     {
       "id": "policy-037",
       "party": "Green",
       "conversation": "Environment",
       "secondary": "",
-      "source": "https://www.greens.org.nz/people_and_nature_first_in_greens_rivers_and_oceans_policy",
+      "source": "https://www.rnz.co.nz/news/politics/679475/green-party-would-ban-bottom-trawling-under-its-rivers-and-oceans-policy-package",
       "flag": "MAJOR CORRECTION",
-      "status": "live",
       "title": "Drink Swim Fish water package",
       "description": "Lower nitrate limits, phase out synthetic nitrogen fertiliser, protect 30% of the moana and end bottom trawling on seamounts.",
       "size": "Flagship",
@@ -956,7 +934,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Rewrites freshwater and fisheries rules",
         "shape": "Phase-outs and reviews, multi-year",
@@ -964,16 +941,17 @@
       },
       "confidence": "High",
       "confidence_note": "Corrects the earlier sweep's finding that this was PDF-only and unreachable; it is independently reported across at least six outlets. Bundles two distinct instrument types (freshwater regulation and marine/fisheries policy) and may warrant a split. Direction reach: the current drinking-water nitrate standard is 11.3mg/L per the source, and NZ has never phased out synthetic nitrogen or set a 30% marine protection target.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.greens.org.nz/people_and_nature_first_in_greens_rivers_and_oceans_policy",
+      "status": "live"
     },
     {
       "id": "policy-038",
       "party": "Green",
       "conversation": "Cost of Living",
       "secondary": "",
-      "source": "https://thedailyblog.co.nz/greens-bill-pushes-to-stop-supermarkets-binning-edible-food-while-families-go-hungry/",
-      "flag": "NEW",
-      "status": "live",
+      "source": "https://www.scoop.co.nz/stories/PA2607/S00171/greens-bill-pushes-to-stop-supermarkets-binning-edible-food-while-families-go-hungry.htm",
+      "flag": "NEW | UNVERIFIED — links to party release on Scoop; flips to verified if news coverage appears",
       "title": "Supermarkets must donate surplus food",
       "description": "A Member's Bill requiring large supermarkets to minimise food waste and partner with food rescue organisations to donate edible surplus.",
       "size": "Niche",
@@ -982,7 +960,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Obligation on a few firms",
         "shape": "Member's Bill, ballot dependent",
@@ -990,16 +967,16 @@
       },
       "confidence": "Low",
       "confidence_note": "Announcement-stage, sourced from secondary coverage rather than a party page, with no thresholds or penalties given. Shape is held loosely because a Member's Bill lands only if drawn from the ballot. Direction reach: NZ places no legal food-donation duty on retailers.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-039",
       "party": "Green",
       "conversation": "Economy",
       "secondary": "",
-      "source": "https://www.greens.org.nz/green_party_calls_for_union_membership_as_default_setting_for_new_employees",
+      "source": "https://www.nzherald.co.nz/nz/politics/election-2026-labour-non-committal-to-greens-idea-of-automatically-enrolling-new-employees-in-unions/YODXM2GLZZCWRNGK44IC4XKMEU/",
       "flag": "ENRICH",
-      "status": "live",
       "title": "Automatic union membership by default",
       "description": "A Member's Bill auto-enrolling new employees into unions where a collective agreement applies, with one month free and an opt-out.",
       "size": "Niche",
@@ -1008,7 +985,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "New employees under collectives",
         "shape": "Member's Bill, ballot dependent",
@@ -1016,7 +992,9 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: the party's own framing names a return to settings before the Employment Contracts Act 1991, when union membership operated closer to a default; that framing places the call.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.greens.org.nz/green_party_calls_for_union_membership_as_default_setting_for_new_employees",
+      "status": "live"
     },
     {
       "id": "policy-040",
@@ -1025,7 +1003,6 @@
       "secondary": "Future & Infrastructure",
       "source": "https://www.nzfirst.nz/breaking_up_the_gentailers",
       "flag": "NEW",
-      "status": "live",
       "title": "Split generators from electricity retailers",
       "description": "Structurally separate the big four power companies into generators and retailers, with guaranteed fixed-price contracts for new-build generation.",
       "size": "Significant",
@@ -1033,25 +1010,24 @@
       "mechanism": 5,
       "econ": -2,
       "econ_engaged": true,
-      "direction": -2,
-      "direction_engaged": true,
+      "direction": 2,
       "why": {
         "size": "Restructures existing market participants",
         "shape": "Corporate separation takes years",
-        "position": "Returns to pre-gentailer separation"
+        "position": "Forced separation of private companies"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: the Electricity Industry Reform Act 1998 and the ECNZ break-up produced today's vertically integrated gentailers; separating generation from retail returns to a structure NZ has run.",
-      "verified": false
+      "confidence_note": "Direction reach: the Electricity Industry Reform Act 1998 and the ECNZ break-up produced today's vertically integrated gentailers; separating generation from retail returns to a structure NZ has run. Direction rescored 27 Jul under the revised rule: Archaeology. ECNZ's break-up was the Crown restructuring its own asset; legislated forced separation of privately held companies has never been done here. Now consistent with the supermarket break-up it was deliberately paired with. FLAG: Moved four rungs. The largest single change in the pass; worth a second look.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-041",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
-      "source": "https://www.nzfirst.nz/50_mining_royalties_to_be_returned_to_regions",
+      "source": "https://www.rnz.co.nz/news/top/590955/expanding-mining-nz-first-want-to-declaw-doc-extend-permits-return-half-of-royalties-to-local-regions",
       "flag": "NEW",
-      "status": "live",
       "title": "Half of mining royalties stay regional",
       "description": "Half the royalties from mining stay in the region where it occurs, funding water, flood protection, transport and housing infrastructure.",
       "size": "Niche",
@@ -1060,7 +1036,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Mining regions only",
         "shape": "Fiscal architecture change, undated",
@@ -1068,16 +1043,17 @@
       },
       "confidence": "Low",
       "confidence_note": "Size is the weak section — no total royalty pool or annual figure is given. Econ not engaged: this moves money between levels of government rather than along a redistribution/market axis. Direction reach: Crown Minerals Act royalties currently go entirely to central government.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.nzfirst.nz/50_mining_royalties_to_be_returned_to_regions",
+      "status": "live"
     },
     {
       "id": "policy-042",
       "party": "NZ First",
       "conversation": "Education",
       "secondary": "",
-      "source": "https://www.nzfirst.nz/50_mining_royalties_to_be_returned_to_regions",
+      "source": "https://www.rnz.co.nz/national/programmes/checkpoint/audio/2019031720/nz-first-makes-campaign-promise-to-break-up-supermarket-duopoly",
       "flag": "NEW",
-      "status": "live",
       "title": "Reopen the School of Mines",
       "description": "Reopen the School of Mines as part of a wider national mining policy package.",
       "size": "Niche",
@@ -1086,7 +1062,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "One training institution",
         "shape": "Institutional reopening, undated",
@@ -1094,16 +1069,17 @@
       },
       "confidence": "Low",
       "confidence_note": "Raw text is a single clause with no funding figure, location or timeline; the sweep itself flags it as needing a dedicated fetch. Direction reach: the Otago School of Mines operated from 1878 until its closure in the 1980s.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.nzfirst.nz/50_mining_royalties_to_be_returned_to_regions",
+      "status": "live"
     },
     {
       "id": "policy-043",
       "party": "NZ First",
       "conversation": "Environment",
       "secondary": "",
-      "source": "https://www.nzfirst.nz/50_mining_royalties_to_be_returned_to_regions",
+      "source": "https://www.rnz.co.nz/news/te-ao-maori/601621/new-zealand-first-s-campaign-to-scrap-independent-maori-statutory-board-just-dumb-racist-stuff-mayor",
       "flag": "NEW",
-      "status": "live",
       "title": "Cut mining regulation, amend Wildlife Act",
       "description": "Remove regulatory duplication affecting mining, including changes to the Wildlife Act.",
       "size": "Niche",
@@ -1112,24 +1088,24 @@
       "econ": 2,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Scope undefined, one Act named",
         "shape": "Statutory amendment, undated",
-        "position": "Deregulation restoring prior consenting practice"
+        "position": "Removes duplicated mining consent requirements"
       },
       "confidence": "Low",
-      "confidence_note": "Size is the weak section — the source names one Act and gives no scope for the rest of the 'duplication'. Direction reach: Wildlife Act permitting for development became a live constraint only after 2024 litigation, so amendment restores earlier practice. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "Size is the weak section — the source names one Act and gives no scope for the rest of the 'duplication'. Direction reach: Wildlife Act permitting for development became a live constraint only after 2024 litigation, so amendment restores earlier practice. Direction rescored 27 Jul under the revised rule: Removing regulatory duplication is ordinary deregulation; the 2024 litigation constraint is too recent to be a settlement.",
+      "verified": true,
+      "party_link": "https://www.nzfirst.nz/50_mining_royalties_to_be_returned_to_regions",
+      "status": "live"
     },
     {
       "id": "policy-044",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
-      "source": "https://www.nzfirst.nz/50_mining_royalties_to_be_returned_to_regions",
+      "source": "https://www.rnz.co.nz/news/top/590955/expanding-mining-nz-first-want-to-declaw-doc-extend-permits-return-half-of-royalties-to-local-regions",
       "flag": "NEW",
-      "status": "waiting",
       "title": "Fund Mines Rescue",
       "description": "insufficient source detail",
       "size": null,
@@ -1138,7 +1114,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 0,
-      "direction_engaged": false,
       "why": {
         "size": "",
         "shape": "",
@@ -1146,7 +1121,9 @@
       },
       "confidence": "Check",
       "confidence_note": "Held, confirmed on fetch 26 Jul: the mining package commits only to ensuring Mines Rescue capability is \"properly funded\" — no amount, term or delivery mechanism anywhere in the announcement. Not scoreable as it stands.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.nzfirst.nz/50_mining_royalties_to_be_returned_to_regions",
+      "status": "waiting"
     },
     {
       "id": "policy-045",
@@ -1155,7 +1132,6 @@
       "secondary": "",
       "source": "https://www.nzfirst.nz/referendum_on_maori_seats",
       "flag": "NEW",
-      "status": "live",
       "title": "Referendum on the Māori seats",
       "description": "Hold a referendum on retaining the Māori electorate seats, arguing MMP removed their original justification.",
       "size": "Significant",
@@ -1164,7 +1140,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Constitutional referendum, one institution",
         "shape": "Referendum held within term",
@@ -1172,7 +1147,8 @@
       },
       "confidence": "Low",
       "confidence_note": "Shape is the weak section — no referendum date, question wording or binding status is given. Econ not engaged. Direction reach: the Māori seats have existed since 1867 and have never been put to a referendum; the party's stated destination is implementation of removal, which places the call.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-046",
@@ -1181,7 +1157,6 @@
       "secondary": "Economy",
       "source": "https://www.nzfirst.nz/establishing_a_special_economic_zone_at_marsden_point",
       "flag": "NEW",
-      "status": "live",
       "title": "Special economic zone, Marsden Point",
       "description": "A zone at the former refinery and Northport with relief from the RMA, consents decided by a government panel.",
       "size": "Niche",
@@ -1190,7 +1165,6 @@
       "econ": 2,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "One site in Northland",
         "shape": "Zone establishment, multi-year build",
@@ -1198,16 +1172,16 @@
       },
       "confidence": "Low",
       "confidence_note": "Size is the weak section — the tax incentives and Overseas Investment Act changes are described as under consideration, with no rates or fiscal figures. Direction reach: NZ has run project-based fast-track consenting but never a geographic zone operating outside the planning system.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-047",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
-      "source": "https://www.nzfirst.nz/campaign_announcement_funding_for_christ_church_cathedral_rebuild",
+      "source": "https://www.rnz.co.nz/news/political/590827/nz-first-commits-to-15-million-towards-christ-church-cathedral-rebuild-if-elected",
       "flag": "NEW",
-      "status": "live",
       "title": "$15m for Christchurch Cathedral",
       "description": "$15 million toward the Christchurch Cathedral rebuild, roughly a third of a $40–45m shortfall on a mothballed project.",
       "size": "Niche",
@@ -1216,15 +1190,16 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "One building, fifteen million",
         "shape": "Capital grant, early term",
-        "position": "Repeats a 2018 government commitment"
+        "position": "Capital grant toward one rebuild"
       },
       "confidence": "High",
-      "confidence_note": "Econ not engaged — a heritage capital grant sits off the redistribution/market axis. The figure is a moving commitment: the City Council agreed a matching $15m in May 2026, conditional on Crown and Church contributions. Direction reach: the source names a 2018 government commitment of $25m as precedent. Direction rescored 26 Jul 2026: -2 to 0. A heritage capital grant. The 2018 commitment is precedent for funding the rebuild, not a policy setting being restored.",
-      "verified": true
+      "confidence_note": "Econ not engaged — a heritage capital grant sits off the redistribution/market axis. The figure is a moving commitment: the City Council agreed a matching $15m in May 2026, conditional on Crown and Church contributions. Direction reach: the source names a 2018 government commitment of $25m as precedent. Direction rescored 27 Jul under the revised rule: Archaeology. A single 2018 grant is a precedent, not a settlement. A heritage capital grant returns to nothing.",
+      "verified": true,
+      "party_link": "https://www.nzfirst.nz/campaign_announcement_funding_for_christ_church_cathedral_rebuild",
+      "status": "live"
     },
     {
       "id": "policy-048",
@@ -1233,7 +1208,6 @@
       "secondary": "",
       "source": "https://www.nzfirst.nz/citizens_only_voting",
       "flag": "NEW",
-      "status": "live",
       "title": "Voting restricted to citizens only",
       "description": "Change electoral law so only citizens may vote, removing eligibility from permanent residents who currently qualify after about a year.",
       "size": "Significant",
@@ -1242,7 +1216,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "Franchise removed from permanent residents",
         "shape": "Electoral law change, undated",
@@ -1250,7 +1223,8 @@
       },
       "confidence": "High",
       "confidence_note": "Econ not engaged — franchise law, off the economic axis. Direction reach: permanent residents gained the vote in 1975; the party's own framing is explicitly restorative, and both point the same way.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-049",
@@ -1259,7 +1233,6 @@
       "secondary": "",
       "source": "https://www.nzfirst.nz/nz_first_will_break_up_the_supermarket_duopoly",
       "flag": "FIX applied — 2026 source",
-      "status": "live",
       "title": "Break up the supermarket duopoly",
       "description": "Legislate to split Foodstuffs into two competing co-operatives and lift Commerce Commission penalties to 10% of turnover.",
       "size": "Significant",
@@ -1268,7 +1241,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Restructures the grocery market",
         "shape": "Forced separation takes years",
@@ -1276,16 +1248,16 @@
       },
       "confidence": "High",
       "confidence_note": "Citation fixed from a 2019 RNZ audio clip to the April 2026 announcement. Scored like-for-like with the gentailer break-up: same instrument, same rungs. Penalties lift to $10m, three times the gain, or 10% of turnover. Direction reach: no NZ government has forced divestment of a major retailer; both Labour and National considered it and declined.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-050",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
-      "source": "https://www.nzfirst.nz/the_kiwisaver_generation_and_bnz_buy_back",
+      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan",
       "flag": "FETCHED 26 Jul — main policy restored",
-      "status": "live",
       "title": "KiwiSaver from birth, compulsory workforce",
       "description": "Compulsory KiwiSaver enrolment at birth with a $1,000 Crown contribution for citizens, and workforce contributions rising to 10%.",
       "size": "Flagship",
@@ -1294,7 +1266,6 @@
       "econ": 1,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Every worker and citizen baby",
         "shape": "Compulsion plus birth enrolment",
@@ -1302,16 +1273,17 @@
       },
       "confidence": "High",
       "confidence_note": "Scored like-for-like with National’s compulsory KiwiSaver record: same instrument, same rungs, differing only in contribution rate and the citizens-only restriction. Direction reach: NZ ran a compulsory contributory superannuation scheme in 1975 that was abolished the following year, and voters rejected compulsory saving at a 1997 referendum.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.nzfirst.nz/the_kiwisaver_generation_and_bnz_buy_back",
+      "status": "live"
     },
     {
       "id": "policy-051",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
-      "source": "https://www.nzfirst.nz/policy",
+      "source": "https://www.chrislynchmedia.com/news-items/winston-peters-unloads-on-national-top-and-lyttelton-port-proposal/",
       "flag": "FLAG — currency review",
-      "status": "retired",
       "title": "Commonwealth Games bid, Christchurch",
       "description": "insufficient source detail",
       "size": null,
@@ -1320,15 +1292,16 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 0,
-      "direction_engaged": false,
       "why": {
         "size": "",
         "shape": "",
         "position": ""
       },
-      "confidence": "Check",
-      "confidence_note": "Held on currency, not sourcing: the August 2023 announcement was for Christchurch to host the 2026 Games after Victoria withdrew. Glasgow has since hosted a scaled-down 2026 Games and Christchurch's council was advised a bid was not financially feasible. There is no live 2026 commitment to score. Recommend retirement rather than rescoring.",
-      "verified": true
+      "confidence": "Low",
+      "confidence_note": "Held on currency, not sourcing: the August 2023 announcement was for Christchurch to host the 2026 Games after Victoria withdrew. Glasgow has since hosted a scaled-down 2026 Games and Christchurch's council was advised a bid was not financially feasible. There is no live 2026 commitment to score. Recommend retirement rather than rescoring. Source is coverage of Peters advocating the bid, not a formal campaign announcement — thinnest link in the set.",
+      "verified": true,
+      "party_link": "https://www.nzfirst.nz/policy",
+      "status": "retired"
     },
     {
       "id": "policy-052",
@@ -1337,7 +1310,6 @@
       "secondary": "",
       "source": "https://www.maoriparty.org.nz/justice",
       "flag": "NEW",
-      "status": "live",
       "title": "Māori Justice Authority",
       "description": "Reallocate 50% of Corrections, Police and Courts budgets to a Māori Justice Authority, ending youth residences by 2030 and prisons by 2040.",
       "size": "Significant",
@@ -1346,7 +1318,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 3,
-      "direction_engaged": true,
       "why": {
         "size": "Reallocates within the justice system",
         "shape": "Prisons abolished by 2040",
@@ -1354,7 +1325,8 @@
       },
       "confidence": "High",
       "confidence_note": "Econ not engaged — the 50% reallocation moves money between public bodies rather than along a redistribution/market axis; it is a devolution instrument, not a left-right one. Direction reach: NZ has never run a parallel justice authority or abolished custodial imprisonment.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-053",
@@ -1363,7 +1335,6 @@
       "secondary": "",
       "source": "https://www.maoriparty.org.nz/justice",
       "flag": "NEW",
-      "status": "live",
       "title": "Overhaul justice statutes and drug law",
       "description": "Repeal the Bail Amendment Act, raise criminal responsibility to 16, treat drug use as health, and wipe drug convictions.",
       "size": "Significant",
@@ -1372,7 +1343,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Amends statutes, system remains",
         "shape": "Legislative programme, one term",
@@ -1380,7 +1350,8 @@
       },
       "confidence": "High",
       "confidence_note": "Econ not engaged on the spine, though ending benefit attachment orders is a minor left counter-pull. Direction reach: NZ's age of criminal responsibility currently sits at 10 for the most serious offences and 14 generally, and drug use has never been decriminalised here; the 2020 cannabis referendum failed.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-054",
@@ -1389,7 +1360,6 @@
       "secondary": "",
       "source": "https://www.maoriparty.org.nz/justice",
       "flag": "NEW",
-      "status": "live",
       "title": "Prisoner rights and voting restored",
       "description": "Expand rehabilitation, raise the Steps to Freedom payment to $1,000, reinstate prisoner voting rights and guarantee minimum entitlements.",
       "size": "Niche",
@@ -1398,7 +1368,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "People in custody only",
         "shape": "Services and entitlements, undated",
@@ -1406,7 +1375,8 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: prisoners serving under three years could vote before the 2010 blanket ban, and that shorter-sentence entitlement was restored in 2020; full reinstatement returns to the pre-2010 settlement.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-055",
@@ -1415,7 +1385,6 @@
       "secondary": "Crime & Justice",
       "source": "https://www.maoriparty.org.nz/justice",
       "flag": "NEW",
-      "status": "live",
       "title": "Mental health co-response, double addiction funding",
       "description": "Expand mental health co-response teams to shift callouts away from Police, and double investment in alcohol and drug treatment.",
       "size": "Niche",
@@ -1424,15 +1393,15 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 0,
-      "direction_engaged": true,
       "why": {
         "size": "Service users, existing system",
         "shape": "Service expansion, delivered quickly",
         "position": "Expands an existing co-response model"
       },
       "confidence": "High",
-      "confidence_note": "Direction reach: mental health co-response teams have already been piloted with Police in NZ, so this scales a running model rather than introducing one. Direction rescored 26 Jul 2026: -1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": false
+      "confidence_note": "Direction reach: mental health co-response teams have already been piloted with Police in NZ, so this scales a running model rather than introducing one. Direction rescored 27 Jul under the revised rule: The note says this scales a model already running. Ordinary policy.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-056",
@@ -1441,7 +1410,6 @@
       "secondary": "",
       "source": "https://www.maoriparty.org.nz/fresh_water",
       "flag": "NEW",
-      "status": "live",
       "title": "Water allocation system and bottling moratorium",
       "description": "A moratorium on new water bottling consents, a commercial user-pays allocation policy, and RMA reform embedding Māori rights in water decisions.",
       "size": "Significant",
@@ -1450,7 +1418,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": 3,
-      "direction_engaged": true,
       "why": {
         "size": "Every commercial water user",
         "shape": "New allocation system, multi-year",
@@ -1458,7 +1425,8 @@
       },
       "confidence": "Low",
       "confidence_note": "Shape is the weak section — the source uses 'develop' language throughout, with no rates, thresholds or dates. Econ scored on the spine (state moratorium and increased Te Mana o te Wai funding); the user-pays charge is a market counter-pull. Direction reach: NZ has never charged for commercial water takes nor settled Māori water rights in statute.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-057",
@@ -1467,7 +1435,6 @@
       "secondary": "",
       "source": "https://www.maoriparty.org.nz/climate",
       "flag": "NEW",
-      "status": "live",
       "title": "Ban seabed mining",
       "description": "Ban seabed mining to protect whenua and moana from extractive industries.",
       "size": "Significant",
@@ -1476,7 +1443,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Prohibits one extractive industry",
         "shape": "Statutory ban, undated",
@@ -1484,7 +1450,8 @@
       },
       "confidence": "Low",
       "confidence_note": "Size is the weak section — the ban is the only scoreable element on the card; the rest is framing without a mechanism. Direction reach: seabed mining remains consentable under the EEZ Act and has been contested case by case rather than prohibited.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-058",
@@ -1493,7 +1460,6 @@
       "secondary": "Cost of Living",
       "source": "https://www.maoriparty.org.nz/policy-oranga-whenua",
       "flag": "NEW",
-      "status": "live",
       "title": "Kai Sovereignty Board and funds",
       "description": "A statutory Māori Kai Sovereignty Board, a $15m annual community kai fund and $100m for an agricultural innovation fund.",
       "size": "Niche",
@@ -1502,7 +1468,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Māori food producers, gardens",
         "shape": "New board and funds, undated",
@@ -1510,7 +1475,8 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: WAI 262 recommendations on indigenous flora and intellectual property have never been implemented, and no statutory food sovereignty body has existed here.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-059",
@@ -1519,7 +1485,6 @@
       "secondary": "",
       "source": "https://www.maoriparty.org.nz/education_training",
       "flag": "NEW",
-      "status": "live",
       "title": "Equal funding for Māori-medium education",
       "description": "Fund Māori-medium education equal to mainstream through equity models, plus a $200m fund for hapū-based wānanga and kōhanga reo.",
       "size": "Significant",
@@ -1528,7 +1493,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Māori-medium students and kōhanga",
         "shape": "Funding reform and new wānanga",
@@ -1536,7 +1500,8 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: the Te Kōhanga Reo claim (WAI 2336) has never been settled, and Māori-medium education has not been funded on parity with mainstream provision.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-060",
@@ -1545,7 +1510,6 @@
       "secondary": "",
       "source": "https://www.maoriparty.org.nz/whanau_health",
       "flag": "NEW",
-      "status": "live",
       "title": "Māori health authority, 25% funding",
       "description": "Transfer 25% of all health funding to Te Aka Whai Ora, with free primary and dental care for whānau earning under $60,000.",
       "size": "Significant",
@@ -1554,7 +1518,6 @@
       "econ": -3,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Under-$60k households, one authority",
         "shape": "Institutional and funding restructure",
@@ -1562,7 +1525,8 @@
       },
       "confidence": "High",
       "confidence_note": "Direction reach: Te Aka Whai Ora existed from 2022 until its disestablishment in 2024, so the institution is a restoration; the 25% funding transfer and free adult dental care have never been run here, and they are the spine.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-061",
@@ -1571,7 +1535,6 @@
       "secondary": "",
       "source": "https://www.maoriparty.org.nz/whanau_build",
       "flag": "NEW",
-      "status": "live",
       "title": "Iwi Build and vacant house tax",
       "description": "Half of new social housing allocated to Māori, 25% of the housing budget to an Iwi Build programme, plus a vacant house tax.",
       "size": "Significant",
@@ -1580,7 +1543,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Social housing applicants, vacant owners",
         "shape": "Allocation rules plus new tax",
@@ -1588,7 +1550,8 @@
       },
       "confidence": "Low",
       "confidence_note": "Currency is the weak point — the sweep flags these figures as tracing to 2020-era coverage, so it is unconfirmed whether the exact percentages still hold for 2026. Direction reach: no NZ jurisdiction has levied a vacant property tax.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-062",
@@ -1597,7 +1560,6 @@
       "secondary": "Government & Democracy",
       "source": "https://www.maoriparty.org.nz/te_reo_maori",
       "flag": "NEW",
-      "status": "live",
       "title": "Māori Standards Authority and reo curriculum",
       "description": "A $50m Māori Standards Authority auditing public departments, with te reo required in half of primary curriculum by 2030.",
       "size": "Niche",
@@ -1606,7 +1568,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": 3,
-      "direction_engaged": true,
       "why": {
         "size": "One auditor, small instrument",
         "shape": "Curriculum target set for 2030",
@@ -1614,7 +1575,8 @@
       },
       "confidence": "Low",
       "confidence_note": "Currency is the weak point — the policy's first milestone (25% of curriculum by 2026) has already passed, suggesting unrefreshed content on a live page. Direction reach: te reo is optional in the primary curriculum and no statutory cultural-competency auditor of departments has existed.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-063",
@@ -1623,7 +1585,6 @@
       "secondary": "",
       "source": "https://www.maoriparty.org.nz/policy",
       "flag": "NEW",
-      "status": "live",
       "title": "Declare Aotearoa militarily neutral",
       "description": "Declare military neutrality, review and withdraw from military alignments, and refocus the Defence Force on disaster response and Pacific support.",
       "size": "Niche",
@@ -1632,7 +1593,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "No domestic population reached",
         "shape": "Alliance withdrawal takes years",
@@ -1640,16 +1600,16 @@
       },
       "confidence": "Low",
       "confidence_note": "Size is the weak section — a stance with no costings, named alignments or timeline. Econ not engaged: foreign and defence posture sits off the redistribution/market axis. Direction reach: NZ has run an independent nuclear-free foreign policy since 1987 but has never declared formal military neutrality.",
-      "verified": false
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-064",
       "party": "TOP",
       "conversation": "Future & Infrastructure",
       "secondary": "Economy",
-      "source": "https://www.opportunity.org.nz/breakthrough-economy",
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
       "flag": "ENRICH / RETITLE",
-      "status": "live",
       "title": "Breakthrough Economy innovation package",
       "description": "Lift R&D spending to 2% of GDP, add technology investment tax credits, and let the Commerce Commission break up duopolies.",
       "size": "Flagship",
@@ -1658,7 +1618,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Three pillars, GDP-scale R&D target",
         "shape": "Ten-year implementation, party's estimate",
@@ -1666,16 +1625,17 @@
       },
       "confidence": "High",
       "confidence_note": "Absorbs the separate 'Rein in monopolies' record — the duopoly break-up mechanism now sits inside this launch's 'Stand up for consumers' pillar and is not a second instrument. Econ scored on the spine (public R&D and accelerator investment); the tax credits are a market counter-pull. Direction reach: NZ R&D spending has never reached 2% of GDP, and the Commerce Commission has never held divestiture power.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.opportunity.org.nz/breakthrough-economy",
+      "status": "live"
     },
     {
       "id": "policy-065",
       "party": "TOP",
       "conversation": "Government & Democracy",
       "secondary": "",
-      "source": "https://www.opportunity.org.nz/citizens-voice",
+      "source": "https://www.nzherald.co.nz/nz/explainer-who-are-the-opportunity-party-and-what-are-their-policies/Q2FYFKIEFRF5PM7LUIS3ROPGNM/",
       "flag": "ENRICH",
-      "status": "live",
       "title": "Citizens' assemblies and a Commissioner",
       "description": "Establish a Parliamentary Commissioner to convene randomly selected, compensated citizens' assemblies on gridlocked issues, with dedicated Māori participation.",
       "size": "Niche",
@@ -1684,7 +1644,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 3,
-      "direction_engaged": true,
       "why": {
         "size": "One commissioner, selected participants",
         "shape": "New institution, undated",
@@ -1692,7 +1651,9 @@
       },
       "confidence": "High",
       "confidence_note": "Econ not engaged — a democratic process institution with no redistribution or market lever. Direction reach: NZ has used referendums and citizens' juries ad hoc but has never established a standing deliberative body with a Parliamentary Commissioner behind it.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.opportunity.org.nz/citizens-voice",
+      "status": "live"
     },
     {
       "id": "policy-066",
@@ -1701,7 +1662,6 @@
       "secondary": "",
       "source": "https://www.opportunity.org.nz/honouring_te_tiriti",
       "flag": "KILL",
-      "status": "waiting",
       "title": "Honouring Te Tiriti",
       "description": "insufficient source detail",
       "size": null,
@@ -1710,7 +1670,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 0,
-      "direction_engaged": false,
       "why": {
         "size": "",
         "shape": "",
@@ -1718,7 +1677,8 @@
       },
       "confidence": "Check",
       "confidence_note": "Held, confirmed on fetch 26 Jul: the page still ends \"Interested to see the detailed policy at launch?\" — four \"support\" statements, no mechanism, number or date. Retire or hold until launch.",
-      "verified": false
+      "verified": false,
+      "status": "waiting"
     },
     {
       "id": "policy-067",
@@ -1727,7 +1687,6 @@
       "secondary": "",
       "source": "https://www.nzherald.co.nz/nz/explainer-who-are-the-opportunity-party-and-what-are-their-policies/",
       "flag": "FIX",
-      "status": "live",
       "title": "Anti-Corruption Commission and donation limits",
       "description": "Limit political donations, increase donation transparency, regulate lobbyists and create an independent Anti-Corruption Commission with enforcement powers.",
       "size": "Niche",
@@ -1736,7 +1695,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 3,
-      "direction_engaged": true,
       "why": {
         "size": "Political actors and lobbyists",
         "shape": "New institution, undated",
@@ -1744,7 +1702,8 @@
       },
       "confidence": "Low",
       "confidence_note": "Citation fix applied: the party's own page is empty boilerplate, so the source is a secondary explainer with no donation caps or thresholds given. Econ not engaged. Direction reach: NZ has no lobbying register and no standing anti-corruption commission.",
-      "verified": true
+      "verified": true,
+      "status": "live"
     },
     {
       "id": "policy-068",
@@ -1753,7 +1712,6 @@
       "secondary": "",
       "source": "https://www.nzherald.co.nz/nz/explainer-who-are-the-opportunity-party-and-what-are-their-policies/",
       "flag": "ENRICH",
-      "status": "live",
       "title": "Prevention focus and Smokefree restored",
       "description": "Reinstate the Smokefree 2025 legislation, shift health toward prevention and long-term planning, and improve healthcare worker pay.",
       "size": "Niche",
@@ -1762,7 +1720,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": -3,
-      "direction_engaged": true,
       "why": {
         "size": "Smokers and tobacco retailers",
         "shape": "Statutory reinstatement, undated",
@@ -1770,7 +1727,8 @@
       },
       "confidence": "Low",
       "confidence_note": "Description is the weak section — only the Smokefree reinstatement is a concrete mechanism; prevention focus and pay improvement are framing without numbers, and the source is a secondary explainer. Direction reach: the Smokefree 2025 regime was legislated in 2022 and repealed in 2024, so this is a literal return to a prior settlement.",
-      "verified": true
+      "verified": true,
+      "status": "live"
     },
     {
       "id": "policy-069",
@@ -1779,7 +1737,6 @@
       "secondary": "",
       "source": "https://www.opportunity.org.nz/smart_on_crime",
       "flag": "KILL",
-      "status": "retired",
       "title": "Smart On Crime",
       "description": "insufficient source detail",
       "size": null,
@@ -1788,7 +1745,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 0,
-      "direction_engaged": false,
       "why": {
         "size": "",
         "shape": "",
@@ -1796,7 +1752,8 @@
       },
       "confidence": "Check",
       "confidence_note": "Held: the live page carries placeholder boilerplate with no 2026 policy content, and the only material found in search was 2017-era coverage that does not match what is published. Recommend retirement until the policy is launched.",
-      "verified": false
+      "verified": false,
+      "status": "retired"
     },
     {
       "id": "policy-070",
@@ -1805,7 +1762,6 @@
       "secondary": "Economy",
       "source": "https://www.opportunity.org.nz/news",
       "flag": "NEW",
-      "status": "waiting",
       "title": "Business EV fleet tax incentives",
       "description": "insufficient source detail",
       "size": null,
@@ -1814,7 +1770,6 @@
       "econ": 0,
       "econ_engaged": false,
       "direction": 0,
-      "direction_engaged": false,
       "why": {
         "size": "",
         "shape": "",
@@ -1822,7 +1777,8 @@
       },
       "confidence": "Check",
       "confidence_note": "Held, confirmed on fetch 26 Jul: the post still says only \"two targeted tax changes\" to electrify the business fleet and names neither. Not scoreable as it stands.",
-      "verified": false
+      "verified": false,
+      "status": "waiting"
     },
     {
       "id": "policy-071",
@@ -1831,7 +1787,6 @@
       "secondary": "Cost of Living",
       "source": "https://www.thepost.co.nz/politics/361000376/election-2026-opportunity-party-reveals-policies-land-tax-universal-basic-income-and-kiwisaver",
       "flag": "ENRICH",
-      "status": "live",
       "title": "Land tax and citizen's income",
       "description": "A $19,400 tax-free citizen's income for every adult, funded by a 1.75% urban land value tax raising $24 billion yearly.",
       "size": "Flagship",
@@ -1840,7 +1795,6 @@
       "econ": -3,
       "econ_engaged": true,
       "direction": 3,
-      "direction_engaged": true,
       "why": {
         "size": "Rebuilds tax and welfare together",
         "shape": "Full tax-transfer rebuild, undated",
@@ -1848,16 +1802,16 @@
       },
       "confidence": "High",
       "confidence_note": "Econ scored all-in on the universal transfer, which the rubric names as an all-in marker; the counter-pull is that a flat payment and a broad land tax both have market-liberal lineage. Direction reach: NZ levied a land tax until its abolition in 1992, so that half is a restoration, but no universal basic income has ever been run here and it is the spine.",
-      "verified": true
+      "verified": true,
+      "status": "live"
     },
     {
       "id": "policy-072",
       "party": "TOP",
       "conversation": "Future & Infrastructure",
       "secondary": "Cost of Living",
-      "source": "https://www.opportunity.org.nz/abundant-energy",
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
       "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
       "title": "Abundant Energy, 30GW by 2050",
       "description": "Add 30 gigawatts of renewable generation by 2050, ringfence about $500m of gentailer dividends, and merge four energy regulators.",
       "size": "Flagship",
@@ -1866,7 +1820,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Every consumer, whole market architecture",
         "shape": "30GW target set for 2050",
@@ -1874,16 +1827,17 @@
       },
       "confidence": "High",
       "confidence_note": "One of TOP's five named policy priorities. Also consolidates 29 distributors to no more than eight. Explicitly rejects structural separation of the gentailers — the opposite call to NZ First's break-up policy. Direction reach: NZ has never run a capacity investment scheme; the party names Australia's as the model.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.opportunity.org.nz/abundant-energy",
+      "status": "live"
     },
     {
       "id": "policy-073",
       "party": "TOP",
       "conversation": "Housing",
       "secondary": "Economy",
-      "source": "https://www.opportunity.org.nz/affordable_housing",
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
       "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
       "title": "Affordable housing, prices must fall",
       "description": "Use a land value tax to push house prices down and build into an 80,000-home shortage through simplified national zoning.",
       "size": "Significant",
@@ -1892,7 +1846,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Housing market, overlaps Tax Reset",
         "shape": "Zoning and tax, multi-year",
@@ -1900,16 +1853,17 @@
       },
       "confidence": "Low",
       "confidence_note": "The land value tax is already scored inside Tax Reset, so the two records overlap on their main instrument — worth a dedup check. Page still ends 'Interested to see the detailed policy at launch?', so this is partial. Direction reach: no NZ party has campaigned on deliberately lowering house prices, and land tax was abolished in 1992.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.opportunity.org.nz/affordable_housing",
+      "status": "live"
     },
     {
       "id": "policy-074",
       "party": "NZ First",
       "conversation": "Economy",
       "secondary": "Cost of Living",
-      "source": "https://www.nzfirst.nz/the_kiwisaver_generation_and_bnz_buy_back",
+      "source": "https://www.rnz.co.nz/news/politics/595475/winston-peters-unveils-kiwisaver-from-birth-nz-first-policy-bank-takeover-plan",
       "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
       "title": "Buy back BNZ, merge with Kiwibank",
       "description": "Buy back BNZ and merge it with Kiwibank into a Crown-owned National Bank of New Zealand, funded by sovereign bonds.",
       "size": "Flagship",
@@ -1918,7 +1872,6 @@
       "econ": -3,
       "econ_engaged": true,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "State ownership of major bank",
         "shape": "Acquisition and merger, years",
@@ -1926,16 +1879,17 @@
       },
       "confidence": "High",
       "confidence_note": "BNZ generates over $1.5b in annual cash earnings; funding is a NZ Sovereign Banking Bond issuance plus tranches of the NZ Future Fund and ACC, described as self-financing. The party frames it as 'not nationalisation.' Direction reach: BNZ was Crown-owned until its 1992 privatisation.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.nzfirst.nz/the_kiwisaver_generation_and_bnz_buy_back",
+      "status": "live"
     },
     {
       "id": "policy-075",
       "party": "TOP",
       "conversation": "Environment",
       "secondary": "",
-      "source": "https://www.opportunity.org.nz/healthy-oceans",
+      "source": "https://www.rnz.co.nz/news/politics/642464/explainer-what-is-the-opportunity-party-and-what-are-its-policies",
       "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
       "title": "Healthy Oceans, 30% marine protection",
       "description": "Protect 30% of ocean territory by 2035, phase out bottom trawling and shift fisheries to ecosystem-based management, costing $100m yearly.",
       "size": "Significant",
@@ -1944,7 +1898,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Fisheries system and marine protection",
         "shape": "30% protected by 2035",
@@ -1952,7 +1905,9 @@
       },
       "confidence": "High",
       "confidence_note": "One of TOP's five named policy priorities, with a full policy paper and costings. Overlaps heavily with the marine half of Green's Drink Swim Fish (30% protection, bottom-trawling phase-out) which currently sits at Flagship — the size call here is the one most worth a like-for-like check. Also raises the sustainability baseline from 40% to 50% of virgin biomass and reinstates an Oceans Secretariat. Direction reach: NZ protects about 0.5% of its ocean territory and manages fisheries by single-species quota.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.opportunity.org.nz/healthy-oceans",
+      "status": "live"
     },
     {
       "id": "policy-076",
@@ -1960,8 +1915,7 @@
       "conversation": "Education",
       "secondary": "",
       "source": "https://www.opportunity.org.nz/future_fit_education",
-      "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
+      "flag": "RECOVERED 26 Jul — dropped record | UNVERIFIED 26 Jul — no news coverage found; party site is the source, per rule",
       "title": "Future-fit education, ECE pay parity",
       "description": "Pay parity for early childhood teachers, limits on centre size and ratios, integrated early years, and civics from Year 6.",
       "size": "Significant",
@@ -1969,16 +1923,16 @@
       "mechanism": 4,
       "econ": -2,
       "econ_engaged": true,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": 1,
       "why": {
         "size": "ECE sector and school curriculum",
         "shape": "Sector settings change, undated",
         "position": "Community providers over corporate centres"
       },
       "confidence": "Low",
-      "confidence_note": "No costings or dates, and the page still ends 'Interested to see the detailed policy at launch?' Size matches the manual Niche→Significant upgrade recorded in the previous dataset. Direction reach: ECE pay parity has been progressively extended since 2020 but never completed; centre size limits have not been run here. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "No costings or dates, and the page still ends 'Interested to see the detailed policy at launch?' Size matches the manual Niche→Significant upgrade recorded in the previous dataset. Direction reach: ECE pay parity has been progressively extended since 2020 but never completed; centre size limits have not been run here.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-077",
@@ -1986,8 +1940,7 @@
       "conversation": "Future & Infrastructure",
       "secondary": "Cost of Living",
       "source": "https://www.opportunity.org.nz/intergenerational_infrastructure",
-      "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
+      "flag": "RECOVERED 26 Jul — dropped record | UNVERIFIED 26 Jul — no news coverage found; party site is the source, per rule",
       "title": "30-year infrastructure plan, free transport",
       "description": "A 30-year Infrastructure Commission framework against a $1 trillion shortfall, with all public transport made free to users.",
       "size": "Significant",
@@ -1996,7 +1949,6 @@
       "econ": -2,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Free transport plus 30-year framework",
         "shape": "Thirty-year framework, generational",
@@ -2004,7 +1956,8 @@
       },
       "confidence": "Low",
       "confidence_note": "No costings, and the page still ends 'Interested to see the detailed policy at launch?' Free public transport alone carries a Flagship pull; held at Significant, consistent with both the previous dataset's manual upgrade and with Labour's fare cap. Econ scored on free provision and raised public investment; user-pays and value capture are the counter-pull. Direction reach: NZ has never run free nationwide public transport, nor a statutory 30-year cross-party infrastructure framework.",
-      "verified": true
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-078",
@@ -2012,8 +1965,7 @@
       "conversation": "Environment",
       "secondary": "",
       "source": "https://www.opportunity.org.nz/healthy_land",
-      "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
+      "flag": "RECOVERED 26 Jul — dropped record | UNVERIFIED 26 Jul — no news coverage found; party site is the source, per rule",
       "title": "Healthy Land, conservation and water",
       "description": "Increase conservation and biosecurity funding, regulate water quality with independent oversight, and support landowners into low-impact land uses.",
       "size": "Niche",
@@ -2021,16 +1973,16 @@
       "mechanism": 4,
       "econ": -1,
       "econ_engaged": true,
-      "direction": 0,
-      "direction_engaged": true,
+      "direction": 1,
       "why": {
         "size": "Funding and regulation, no figures",
         "shape": "Undated funding and regulation",
         "position": "Nature markets new, regulation familiar"
       },
       "confidence": "Low",
-      "confidence_note": "The thinnest of TOP's pages — no figures, dates or named instruments anywhere, and it still ends 'Interested to see the detailed policy at launch?' Borderline hold. Direction reach: NZ has run conservation funding and water regulation for decades; a nature market rewarding biodiversity gains has not been run here. Direction rescored 26 Jul 2026: +1 to 0. The policy neither turns back the clock nor does anything New Zealand has not done; a precedent existing is not the same as a policy reaching for it.",
-      "verified": true
+      "confidence_note": "The thinnest of TOP's pages — no figures, dates or named instruments anywhere, and it still ends 'Interested to see the detailed policy at launch?' Borderline hold. Direction reach: NZ has run conservation funding and water regulation for decades; a nature market rewarding biodiversity gains has not been run here. FLAG: Borderline. The new-setting claim rests on a nature market the source never specifies.",
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-079",
@@ -2038,8 +1990,7 @@
       "conversation": "Environment",
       "secondary": "Economy",
       "source": "https://www.opportunity.org.nz/climate_action",
-      "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
+      "flag": "RECOVERED 26 Jul — dropped record | UNVERIFIED 26 Jul — no news coverage found; party site is the source, per rule",
       "title": "Strengthen ETS, price agricultural emissions",
       "description": "Add a mechanism for agricultural emissions to the Emissions Trading Scheme, exclude new exotic forestry, and let the Commission set budgets.",
       "size": "Significant",
@@ -2048,7 +1999,6 @@
       "econ": -1,
       "econ_engaged": true,
       "direction": 2,
-      "direction_engaged": true,
       "why": {
         "size": "Every farmer, largest emitting sector",
         "shape": "ETS change, undated",
@@ -2056,16 +2006,16 @@
       },
       "confidence": "Low",
       "confidence_note": "No dates or prices, and the page still ends 'Interested to see the detailed policy at launch?' Direct opposite of ACT's 'keep agriculture out of the ETS', which sits at the same size — a matched pair worth surfacing. Direction reach: agricultural emissions have never entered the ETS and entry has been deferred repeatedly.",
-      "verified": true
+      "verified": false,
+      "status": "live"
     },
     {
       "id": "policy-080",
       "party": "Green",
       "conversation": "Housing",
       "secondary": "Cost of Living",
-      "source": "https://www.greens.org.nz/greens_announce_plan_to_end_homelessness_fix_housing_crisis",
+      "source": "https://www.rnz.co.nz/news/political/590598/greens-promise-to-cap-rent-rises-at-2-percent-a-year",
       "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
       "title": "Rent caps and public housing build",
       "description": "A Renters' Rights Bill capping rent rises at 2% a year, ending no-cause evictions, plus tens of thousands of public homes.",
       "size": "Flagship",
@@ -2074,7 +2024,6 @@
       "econ": -3,
       "econ_engaged": true,
       "direction": -2,
-      "direction_engaged": true,
       "why": {
         "size": "Every renter, plus mass build",
         "shape": "Legislation this term, rules",
@@ -2082,7 +2031,9 @@
       },
       "confidence": "Low",
       "confidence_note": "Size and shape are firm; the weak point is that the party published no costing or timeframe and confirmed at the launch that none had been done. Also reverses $2.9b of interest deductibility and adds a rental warrant of fitness and national landlord register. Direction reach: NZ ran rent control from 1939 into the 1980s, and the party explicitly cites the 1930s–40s state housing build as its model.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.greens.org.nz/greens_announce_plan_to_end_homelessness_fix_housing_crisis",
+      "status": "live"
     },
     {
       "id": "policy-081",
@@ -2091,7 +2042,6 @@
       "secondary": "Cost of Living",
       "source": "https://www.rnz.co.nz/news/politics/742372/nz-first-promises-to-invest-in-oil-gas-surveys",
       "flag": "RECOVERED 26 Jul — dropped record, now costed",
-      "status": "live",
       "title": "$1b offshore subsurface survey",
       "description": "A $1 billion National Subsurface Development Survey of offshore basins for oil, gas, geothermal and CO2 storage, with royalties above 50%.",
       "size": "Significant",
@@ -2099,25 +2049,24 @@
       "mechanism": 4,
       "econ": -1,
       "econ_engaged": true,
-      "direction": -2,
-      "direction_engaged": true,
+      "direction": 0,
       "why": {
         "size": "$1b survey, royalty regime",
         "shape": "Two-year survey, supply within six",
-        "position": "Restores pre-2018 exploration settings"
+        "position": "State survey, higher royalty share"
       },
       "confidence": "High",
-      "confidence_note": "Announced 19 July 2026 at the campaign launch — substantially larger and better costed than the record it replaces. Econ scored on state investment and a royalty share above 50%; opening basins to private capital is the counter-pull. Direction reach: offshore exploration was banned in 2018 and the ban reversed by the Crown Minerals Amendment Act 2025.",
-      "verified": true
+      "confidence_note": "Announced 19 July 2026 at the campaign launch — substantially larger and better costed than the record it replaces. Econ scored on state investment and a royalty share above 50%; opening basins to private capital is the counter-pull. Direction reach: offshore exploration was banned in 2018 and the ban reversed by the Crown Minerals Amendment Act 2025. Direction rescored 27 Jul under the revised rule: Reach named the 2018 ban, already reversed in 2025, so nothing is being restored. Against today's settings a state survey plus a royalty rate change is ordinary.",
+      "verified": true,
+      "status": "live"
     },
     {
       "id": "policy-082",
       "party": "National",
       "conversation": "Crime & Justice",
       "secondary": "",
-      "source": "https://www.national.org.nz/news/20260719-honpaulgoldsmith",
+      "source": "https://www.rnz.co.nz/news/crime-and-justice/741708/national-promises-stricter-rules-on-sexual-consent",
       "flag": "RECOVERED 26 Jul — dropped record",
-      "status": "live",
       "title": "Consent must be an active yes",
       "description": "Amend the Crimes Act to define consent as actively given by words or actions, rather than the absence of refusal.",
       "size": "Niche",
@@ -2125,16 +2074,17 @@
       "mechanism": 4,
       "econ": 0,
       "econ_engaged": false,
-      "direction": 2,
-      "direction_engaged": true,
+      "direction": 1,
       "why": {
         "size": "Sexual offence prosecutions only",
         "shape": "Crimes Act change, undated",
-        "position": "Affirmative consent never defined here"
+        "position": "Affirmative consent, one statute"
       },
       "confidence": "High",
       "confidence_note": "Now sized like-for-like with National's good-character sentencing record, also Niche — both are Crimes Act amendments reaching sexual offence prosecutions. Burden of proof explicitly unchanged. Econ not engaged. Direction reach: the Crimes Act currently lists what consent is not and has never defined what it is.",
-      "verified": true
+      "verified": true,
+      "party_link": "https://www.national.org.nz/news/20260719-honpaulgoldsmith",
+      "status": "live"
     }
   ]
 }
