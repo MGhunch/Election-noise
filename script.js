@@ -66,7 +66,7 @@ let currentView = "size";
 
 const grid = document.querySelector("#conversation-grid");
 const filters = document.querySelector("#party-filters");
-const detailPanel = document.querySelector("#detail-panel");
+const dialog = document.querySelector("#policy-dialog");
 const floatingTooltip = document.querySelector("#floating-tooltip");
 
 async function init() {
@@ -168,10 +168,17 @@ function renderGrid() {
         <button class="conversation-button" type="button" data-open-conversation="${escapeHtml(conversation)}">
           <h2>${escapeHtml(conversation)}</h2>
           <p class="conversation-stats">${noiseLevel(conversationPolicies)}</p>
+          <p class="quiet-note" hidden>This empty space is part of the story.</p>
         </button>
         <div class="policy-field">
           ${circles}
         </div>
+        <button
+          class="card-overlay"
+          type="button"
+          data-open-conversation="${escapeHtml(conversation)}"
+          aria-label="${escapeHtml(`Open ${conversation}`)}"
+        ></button>
       </article>
     `;
   }).join("");
@@ -180,8 +187,8 @@ function renderGrid() {
     button.addEventListener("click", () => {
       openConversation = button.dataset.openConversation;
       renderDetail(openConversation);
-      detailPanel.hidden = false;
-      detailPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      showDialogState("list");
+      openDialog();
     });
   });
 
@@ -342,6 +349,26 @@ function updateCircleFocus() {
     circle.classList.toggle("is-muted", !isActive);
     circle.classList.toggle("is-selected", activeParties.size > 0 && isActive);
   });
+
+  // The noise line describes what you can currently see, not what's in the
+  // file. Filter to one party and the quiet conversations say so — that
+  // emptiness is the point of the view, so it shouldn't be contradicted by a
+  // label still reporting the unfiltered total.
+  grid.querySelectorAll(".conversation-card").forEach(card => {
+    const visible = policies.filter(policy =>
+      policy.conversation === card.dataset.conversation &&
+      (activeParties.size === 0 || activeParties.has(policy.party))
+    );
+
+    const stats = card.querySelector(".conversation-stats");
+    if (stats) stats.textContent = noiseLevel(visible);
+
+    const isQuiet = visible.length === 0;
+    card.classList.toggle("is-quiet", isQuiet);
+
+    const note = card.querySelector(".quiet-note");
+    if (note) note.hidden = !(isQuiet && activeParties.size > 0);
+  });
 }
 
 function renderDetail(conversation) {
@@ -355,9 +382,9 @@ function renderDetail(conversation) {
 
   const partyContext = activeParties.size === 0 ? "" : `Showing ${[...activeParties].join(", ")}.`;
 
-  document.querySelector("#detail-title").textContent = conversation;
-  document.querySelector("#detail-summary").textContent =
-    [noiseLevel(allConversationPolicies), partyContext].filter(Boolean).join(". ");
+  document.querySelector("#list-title").textContent = conversation;
+  document.querySelector("#list-summary").textContent =
+    [noiseLevel(visiblePolicies), partyContext].filter(Boolean).join(". ");
 
   const list = document.querySelector("#detail-policies");
 
@@ -388,14 +415,32 @@ function renderDetail(conversation) {
   list.querySelectorAll("[data-detail-policy]").forEach(button => {
     button.addEventListener("click", () => {
       const policy = policies.find(item => String(item.id) === button.dataset.detailPolicy);
-      openPolicy(policy);
+      openPolicy(policy, { fromList: true });
     });
   });
 }
 
-function openPolicy(policy) {
+function openDialog() {
+  if (!dialog.open) dialog.showModal();
+}
+
+// The dialog holds two states and swaps between them in place. Stacking a
+// second dialog on top would mean two Escapes to get out, and on a phone a
+// sheet over a sheet.
+function showDialogState(state) {
+  document.querySelector("#dialog-list").hidden = state !== "list";
+  document.querySelector("#dialog-detail").hidden = state !== "detail";
+  dialog.dataset.state = state;
+}
+
+function openPolicy(policy, { fromList = false } = {}) {
   if (!policy) return;
 
+  const back = document.querySelector("#dialog-back");
+  back.hidden = !fromList;
+  back.textContent = fromList ? `Back to ${policy.conversation}` : "";
+
+  document.querySelector("#dialog-description").textContent = policy.description || "";
   document.querySelector("#dialog-party").textContent = policy.party;
   document.querySelector("#dialog-title").textContent = policy.title;
   document.querySelector("#dialog-conversation").textContent =
@@ -415,17 +460,23 @@ function openPolicy(policy) {
     sourceLink.hidden = true;
   }
 
-  document.querySelector("#policy-dialog").showModal();
+  showDialogState("detail");
+  openDialog();
 }
 
 function bindStaticControls() {
-  document.querySelector("#close-detail").addEventListener("click", () => {
-    detailPanel.hidden = true;
-    openConversation = null;
+  document.querySelector("#close-policy").addEventListener("click", () => {
+    dialog.close();
   });
 
-  document.querySelector("#close-policy").addEventListener("click", () => {
-    document.querySelector("#policy-dialog").close();
+  document.querySelector("#dialog-back").addEventListener("click", () => {
+    if (!openConversation) return;
+    renderDetail(openConversation);
+    showDialogState("list");
+  });
+
+  dialog.addEventListener("close", () => {
+    openConversation = null;
   });
 
   document.querySelector("#about-button").addEventListener("click", () => {
@@ -436,7 +487,7 @@ function bindStaticControls() {
     document.querySelector("#about-dialog").close();
   });
 
-  [document.querySelector("#policy-dialog"), document.querySelector("#about-dialog")]
+  [dialog, document.querySelector("#about-dialog")]
     .forEach(dialog => {
       dialog.addEventListener("click", event => {
         if (event.target === dialog) dialog.close();

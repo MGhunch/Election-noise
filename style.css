@@ -100,18 +100,87 @@ h1 {
   font-size: 0.85rem;
 }
 
-.controls {
+.stage {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 0;
+  align-items: flex-start;
+  gap: 26px;
+  padding-top: 4px;
+}
+
+.stage-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.controls {
+  width: 168px;
+  flex: 0 0 auto;
+}
+
+.rail-eyebrow {
+  margin: 0 0 10px;
 }
 
 .party-filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.legend {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.legend-scale {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 9px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.legend-dot {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 15px;
+  border-radius: 0;
+  background: none;
+  position: relative;
+}
+
+.legend-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--ink);
+  transform: translate(-50%, -50%);
+}
+
+.legend-dot.is-unverified::before {
+  background: var(--white);
+  border: 3px solid var(--ink);
+}
+
+.legend-dot.is-flagship::before { width: 21px; height: 21px; }
+.legend-dot.is-significant::before { width: 14px; height: 14px; }
+.legend-dot.is-niche::before { width: 9px; height: 9px; }
+
+.legend + .text-button {
+  margin-top: 20px;
 }
 
 .filter-button,
@@ -345,6 +414,34 @@ h1 {
   overflow: hidden;
 }
 
+.card-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.card-overlay:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: -3px;
+}
+
+/* A conversation with nothing left under the current filter */
+.conversation-card.is-quiet .conversation-button h2 {
+  opacity: 0.4;
+}
+
+.quiet-note {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-style: italic;
+}
+
 .conversation-button {
   width: 100%;
   border: 0;
@@ -565,6 +662,28 @@ dialog::backdrop {
   letter-spacing: -0.035em;
 }
 
+.dialog-state[hidden] {
+  display: none;
+}
+
+.dialog-back {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.dialog-back::before {
+  content: "\2190\00a0";
+}
+
+.dialog-back:hover,
+.dialog-back:focus-visible {
+  color: var(--ink);
+}
+
 .policy-meta {
   display: grid;
   gap: 1px;
@@ -620,10 +739,6 @@ footer {
     min-width: auto;
   }
 
-  .controls {
-    align-items: flex-start;
-  }
-
   .text-button {
     font-size: 0.78rem;
   }
@@ -660,14 +775,6 @@ footer {
     font-size: 0.7rem;
   }
 
-  .controls {
-    display: block;
-  }
-
-  .party-filters {
-    margin-bottom: 8px;
-  }
-
   .filter-button {
     padding: 6px 8px;
     font-size: 0.72rem;
@@ -691,10 +798,6 @@ footer {
 
   .policy-circle {
     border-width: 1px;
-  }
-
-  .detail-panel {
-    padding: 18px;
   }
 
   .policy-row {
@@ -737,10 +840,6 @@ footer {
   padding-top: 14px;
 }
 
-.controls {
-  padding: 14px 0 18px;
-  border-bottom: 1px solid var(--line);
-}
 
 .policy-circle {
   opacity: 0;
@@ -820,7 +919,86 @@ footer {
     padding-top: 10px;
   }
 
+}
+
+/* Rail collapses to a sticky strip; card becomes the tap target */
+@media (max-width: 720px) {
+  .stage {
+    display: block;
+    padding-top: 0;
+  }
+
   .controls {
-    padding-top: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 6;
+    width: auto;
+    margin-bottom: 2px;
+    padding: 10px 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rail-eyebrow {
+    display: none;
+  }
+
+  .party-filters {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .party-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 18px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .legend-row {
+    margin: 0;
+    font-size: 0.7rem;
+  }
+
+  .legend-dot {
+    width: 14px;
+    height: 11px;
+  }
+
+  .legend-dot::before {
+    width: 11px;
+    height: 11px;
+  }
+
+  .legend-dot.is-unverified::before {
+    border-width: 2px;
+  }
+
+  .legend-scale,
+  .legend + .text-button {
+    display: none;
+  }
+
+  .card-overlay {
+    display: block;
+  }
+
+  .conversation-button {
+    pointer-events: none;
   }
 }
