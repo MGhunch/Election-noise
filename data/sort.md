@@ -54,21 +54,25 @@ Two axes, scored independently.
 
 ## Position
 
-Two more axes, also independent of each other: **Economic** (left to right) and **Direction** (something new, or keep it and bring it back). Score each on its own; don't let one pull the other toward consistency.
+Two more axes, also independent of each other: **Economic** (govt steps in, or govt steps back) and **Direction** (trying new things, or tried and tested). Score each on its own; don't let one pull the other toward consistency.
 
 **Economic left** is more redistribution and government ownership. **Economic right** is more market forces and individual responsibility.
 
-**Direction is temporal, not moral.** Does the mechanism move the settings somewhere New Zealand has never run them (**something new**, positive), or keep — or return to — settings New Zealand has or had (**keep it, bring it back**, negative)? Restoring a repealed law is bring-it-back regardless of whose law it was. The axis describes where policies are going, never whether going there is good.
+**Direction is temporal, not moral.** Does the mechanism move the settings somewhere New Zealand has never run them (**trying new things**, positive), or return to settings New Zealand has run before (**tried and tested**, negative)? Restoring a repealed law is tried and tested regardless of whose law it was. The axis describes where policies are going, never whether going there is good.
 
 Where the destination is ambiguous, the party's own stated destination places it.
 
-Score minus 3 to plus 3 on both. Economic: negative left, positive right. Direction: positive new, negative keep or bring back. Six rungs, three names:
+Score minus 3 to plus 3 on both. Economic: negative steps in, positive steps back. Direction: positive trying new things, negative tried and tested. Six rungs, three names:
 
 - **Tilts (1)** — a detectable nudge. Deliberately low bar: if you can feel it, it lives here at minimum.
 - **Leans (2)** — clearly moves the settings. A real redistributive or market mechanism; a real move somewhere new, or a real restoration.
 - **All-in (3)** — rewires or reverses. State ownership, universal transfer, privatisation; building what has never existed here, or returning to a prior settlement.
 
-**Zero is not a rung — it's a verdict**, earned two ways only: genuinely balanced pulls, where the why names both, or the axis barely applying. Those two get recorded differently. A not-engaged zero is off-axis, not centrist, and a picture leaves it off that axis entirely rather than drawing it in the middle.
+**The Tilts bar sits higher on Direction.** The low bar is right for Economic, where a faint redistributive lean is a real signal. On Direction it manufactures one, because every policy has *some* relationship to the past if you look hard enough. Free cervical screening, GP loans, faster building consents — none of these winds the clock back or does anything New Zealand has never done. **Ordinary policy scores 0 on Direction.** A Direction 1 has to be a genuine faint reach, not a locatable precedent — expect them to be rare.
+
+**The party has to be the one reaching.** Where a prior settlement is located by the scorer rather than campaigned on by the party, that's archaeology, not a policy turning back the clock. Recency doesn't sort them; intent does. The Greens' rent caps point at 1939 and are plainly a deliberate return — tried and tested. Compulsory KiwiSaver points at 1997 and is not — the party is selling it as a step forward, and the score follows the reach the party is making.
+
+**On Economic, zero is not a rung — it's a verdict**, earned two ways only: genuinely balanced pulls, where the why names both, or the axis barely applying. The engaged flag records which is which, and party averages count engaged records only. In the picture, both sit in the middle of the money axis — a policy that isn't about money has no lean to show, and the middle is where no-lean lives.
 
 **When pulls conflict, score the spine.** Most policies have one dominant instrument. Score that, and name the counter-pull in the why. A balanced zero is a true 50/50 and should be rare.
 
