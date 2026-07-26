@@ -892,6 +892,64 @@ dialog::backdrop {
   font-weight: 700;
 }
 
+.dialog-flag {
+  position: absolute;
+  top: 12px;
+  right: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+
+.dialog-flag:hover,
+.dialog-flag:focus-visible {
+  color: var(--ink);
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.action-link {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.action-link:hover,
+.action-link:focus-visible {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.action-link.is-quiet {
+  border-color: var(--line);
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.action-link.is-quiet:hover,
+.action-link.is-quiet:focus-visible {
+  border-color: var(--ink);
+  background: var(--white);
+  color: var(--ink);
+}
+
+@media (max-width: 480px) {
+  .dialog-actions {
+    flex-direction: column;
+  }
+}
+
 .source-link {
   display: inline-block;
   color: var(--ink);

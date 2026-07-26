@@ -466,8 +466,40 @@ function openDialog() {
 function showDialogState(state) {
   document.querySelector("#dialog-list").hidden = state !== "list";
   document.querySelector("#dialog-detail").hidden = state !== "detail";
+  if (state !== "detail") document.querySelector("#flag-policy").hidden = true;
   dialog.dataset.state = state;
 }
+
+// The modal speaks the legend's language, not the data's. Impact uses the
+// same words as the rail; Source names the outlet the link actually goes to,
+// derived from the domain so the label can never drift from the destination.
+const IMPACT_LABELS = { Flagship: "Broad impact", Significant: "Key policy", Niche: "Specific policy" };
+const OUTLETS = {
+  "rnz.co.nz": "RNZ",
+  "nzherald.co.nz": "NZ Herald",
+  "thepost.co.nz": "The Post",
+  "odt.co.nz": "Otago Daily Times",
+  "teaonews.co.nz": "Te Ao Māori News",
+  "1news.co.nz": "1News",
+  "stuff.co.nz": "Stuff",
+  "newsroom.co.nz": "Newsroom",
+  "chrislynchmedia.com": "Chris Lynch Media",
+  "scoop.co.nz": "Scoop"
+};
+
+function sourceDomain(url) {
+  try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return ""; }
+}
+
+function sourceInfo(policy) {
+  if (policy.verified) {
+    const domain = sourceDomain(policy.source || "");
+    return { label: `${OUTLETS[domain] || domain || "News"} reporting`, cta: "Read the story" };
+  }
+  return { label: "Party website", cta: "Read the policy" };
+}
+
+let currentDialogPolicy = null;
 
 function openPolicy(policy, { fromList = false } = {}) {
   if (!policy) return;
@@ -483,18 +515,32 @@ function openPolicy(policy, { fromList = false } = {}) {
     policy.secondary
       ? `${policy.conversation} · also ${policy.secondary}`
       : policy.conversation;
-  document.querySelector("#dialog-size").textContent = policy.size;
-  document.querySelector("#dialog-status").textContent =
-    policy.verified === false ? "From the party website" : "Reported by RNZ";
+  document.querySelector("#dialog-size").textContent = IMPACT_LABELS[policy.size] || policy.size;
+
+  const info = sourceInfo(policy);
+  document.querySelector("#dialog-source-type").textContent = info.label;
 
   const sourceLink = document.querySelector("#dialog-source");
-
   if (policy.source) {
     sourceLink.href = policy.source;
+    sourceLink.textContent = info.cta;
     sourceLink.hidden = false;
   } else {
     sourceLink.hidden = true;
   }
+
+  // Verified records carry both facts: the story that proves it, and the
+  // party page that states it. Show the second, quieter, when it exists.
+  const partyLink = document.querySelector("#dialog-party-link");
+  if (policy.verified && policy.party_link) {
+    partyLink.href = policy.party_link;
+    partyLink.hidden = false;
+  } else {
+    partyLink.hidden = true;
+  }
+
+  currentDialogPolicy = policy;
+  document.querySelector("#flag-policy").hidden = false;
 
   showDialogState("detail");
   openDialog();
@@ -595,6 +641,13 @@ async function openPrompts() {
 function bindStaticControls() {
   document.querySelector("#close-policy").addEventListener("click", () => {
     dialog.close();
+  });
+
+  // The flag spins the modal into a report form — next build. The click
+  // lands here so the wiring exists; openReportForm gets its body when the
+  // form and the /report endpoint do.
+  document.querySelector("#flag-policy").addEventListener("click", () => {
+    openReportForm(currentDialogPolicy);
   });
 
   document.querySelector("#dialog-back").addEventListener("click", () => {
@@ -1079,3 +1132,9 @@ function escapeHtml(value) {
 }
 
 init();
+
+// Placeholder until the report form exists. Keeps the flag safe to ship:
+// clicking it does nothing visible yet.
+function openReportForm(policy) {
+  if (!policy) return;
+}

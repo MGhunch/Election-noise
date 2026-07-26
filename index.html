@@ -82,6 +82,9 @@
 
   <dialog id="policy-dialog" class="policy-dialog">
     <button id="close-policy" class="close-button dialog-close" type="button" aria-label="Close">×</button>
+    <button id="flag-policy" class="close-button dialog-flag" type="button" aria-label="Report an issue with this policy" title="Something wrong?" hidden>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4"/><path d="M4 4h12l-2.5 4L16 12H4"/></svg>
+    </button>
 
     <div id="dialog-list" class="dialog-state">
       <p class="eyebrow">Conversation</p>
@@ -98,9 +101,12 @@
       <dl class="policy-meta">
         <div><dt>Conversation</dt><dd id="dialog-conversation"></dd></div>
         <div><dt>Impact</dt><dd id="dialog-size"></dd></div>
-        <div><dt>Status</dt><dd id="dialog-status"></dd></div>
+        <div><dt>Source</dt><dd id="dialog-source-type"></dd></div>
       </dl>
-      <a id="dialog-source" class="source-link" href="#" target="_blank" rel="noopener">View source</a>
+      <div class="dialog-actions">
+        <a id="dialog-source" class="action-link" href="#" target="_blank" rel="noopener">Read the story</a>
+        <a id="dialog-party-link" class="action-link is-quiet" href="#" target="_blank" rel="noopener" hidden>Read the policy</a>
+      </div>
     </div>
   </dialog>
 
