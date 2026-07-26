@@ -774,7 +774,11 @@ function switchView(view) {
     else if (view === "politics") renderPolitics();
     else calibrateGrid();
 
-    if (samesies) setSamesies(false);
+    if (samesies) {
+      activePair = null;
+      renderPairFilters();
+      applySamesies();
+    }
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {

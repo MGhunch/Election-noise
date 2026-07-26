@@ -1420,25 +1420,25 @@ footer {
 }
 
 .pair-ring {
-  border: 1.5px solid var(--ink);
+  border: 3px dashed var(--ink);
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
 
 .is-ready .pair-ring {
-  opacity: 0.42;
+  opacity: 0.85;
 }
 
 /* Drawn between ring groups when a topic splits. One hairline — the distance
    is the point, so the line only has to make the eye travel it. */
 .pair-link {
-  height: 1px;
+  height: 2px;
   background: var(--ink);
   transform-origin: 0 50%;
 }
 
 .is-ready .pair-link {
-  opacity: 0.28;
+  opacity: 0.4;
 }
 
 /* A card, not a caption. It sits over the picture, so it needs a floor of its
@@ -1470,16 +1470,14 @@ footer {
   color: var(--muted);
 }
 
-/* Size has no field to sit over, so the note runs under the grid as ordinary
-   text with no card around it. */
+/* Size has no field to sit over, so the note runs under the grid rather than
+   on it — but it keeps the card, because a page that has just gone grey needs
+   the one thing still speaking to look like something. */
 .pair-note.is-static {
   position: static;
-  width: auto;
-  max-width: 520px;
-  margin-top: 18px;
-  padding: 0;
-  background: none;
-  border: 0;
+  width: 100%;
+  max-width: none;
+  margin-top: 16px;
 }
 
 @media (max-width: 900px) {
