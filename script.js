@@ -60,6 +60,7 @@ function isRenderable(policy) {
 
 let policies = [];
 let parkedPolicies = [];
+let politicsNodes = [];
 let activeParties = new Set();
 let openConversation = null;
 let currentView = "size";
@@ -141,6 +142,8 @@ function renderFilters() {
       }
       renderFilters();
       updateCircleFocus();
+
+      if (currentView === "politics") renderPartyCentroid();
 
       if (openConversation) {
         renderDetail(openConversation);
@@ -617,6 +620,7 @@ function bindResize() {
       sizeHero();
       calibrateGrid();
       if (currentView === "shape") renderShape();
+      if (currentView === "politics") renderPolitics();
     }, 140);
   };
   window.addEventListener("resize", relayout);
@@ -652,6 +656,7 @@ function switchView(view) {
 
     sizeHero();
     if (view === "shape") renderShape();
+    else if (view === "politics") renderPolitics();
     else calibrateGrid();
 
     requestAnimationFrame(() => {
@@ -791,11 +796,208 @@ function renderShape() {
   });
 }
 
-function hashJitter(id) {
+function renderPolitics() {
+  const field = document.querySelector("#politics-field");
+  const rect = field.getBoundingClientRect();
+  const width = rect.width || 1000;
+  const height = rect.height || 540;
+  // Shape's fixed 70px margin and ±78/42 jitter were sized for a wide field.
+  // The hero is square, and on a phone it drops to under 300px — at which
+  // point a fixed margin eats half the plot and fixed jitter shuffles the
+  // rungs out of order. Scaling both to the field keeps the same proportions
+  // it has on the desktop hero, where these resolve to 68 and 76/41.
+  const margin = Math.max(26, Math.round(Math.min(width, height) * 0.13));
+  const spreadX = Math.round(width * 0.145);
+  const spreadY = Math.round(height * 0.078);
+  const centerX = width / 2;
+  const centerY = height / 2;
+
+  // Econ runs left (govt steps in, -3) to right (govt steps back, +3).
+  // Direction runs bottom (tried and tested, -3) to top (trying new things, +3).
+  const nodes = policies.map(policy => {
+    const radius = (SIZE_MAP[policy.size] || SIZE_MAP.Niche) / 2 * 0.7;
+    const jitter = hashJitter(policy.id, spreadX, spreadY);
+    const targetX = margin + ((policy.econ + 3) / 6) * (width - margin * 2) + jitter.x;
+    const targetY = margin + ((3 - policy.direction) / 6) * (height - margin * 2) + jitter.y;
+    return { policy, radius, targetX, targetY, x: targetX, y: targetY };
+  });
+
+  politicsNodes = nodes;
+
+  // Deliberately the same relaxation and the same constants as renderShape, so
+  // the two views move alike: weak pull toward the true position, a gentle
+  // shared pull to the centre, and wide jitter, so the seven rungs blend into
+  // one mass rather than standing as columns. The trade is the one already
+  // accepted for Shape — these are judgement calls, not measurements, so a
+  // circle's position reads as a neighbourhood rather than a score.
+  for (let iteration = 0; iteration < 260; iteration++) {
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const distance = Math.sqrt(dx * dx + dy * dy) || 0.01;
+        const minDistance = a.radius + b.radius;
+
+        if (distance < minDistance) {
+          const overlap = (minDistance - distance) / 2;
+          const nx = dx / distance;
+          const ny = dy / distance;
+          a.x -= nx * overlap;
+          a.y -= ny * overlap;
+          b.x += nx * overlap;
+          b.y += ny * overlap;
+        }
+      }
+    }
+
+    nodes.forEach(node => {
+      node.x += (node.targetX - node.x) * 0.018;
+      node.y += (node.targetY - node.y) * 0.03;
+      node.x += (centerX - node.x) * 0.01;
+      node.y += (centerY - node.y) * 0.01;
+      node.x = Math.max(node.radius, Math.min(width - node.radius, node.x));
+      node.y = Math.max(node.radius, Math.min(height - node.radius, node.y));
+    });
+  }
+
+  field.classList.remove("is-ready");
+
+  field.innerHTML = nodes.map((node, index) => {
+    const policy = node.policy;
+    const colour = PARTY_COLOURS[policy.party] || "#777777";
+    const classes = [
+      "policy-circle",
+      policy.verified === false ? "is-unverified" : ""
+    ].filter(Boolean).join(" ");
+
+    return `
+      <button
+        class="${classes}"
+        type="button"
+        aria-label="${escapeHtml(`${policy.party}: ${policy.title}. ${policy.size} policy.`)}"
+        data-policy-id="${escapeHtml(String(policy.id))}"
+        data-party="${escapeHtml(policy.party)}"
+        data-tooltip="${escapeHtml(policy.title)}"
+        style="--party-colour:${colour}; --circle-size:${node.radius * 2}px; --enter-delay:${Math.min(index * 12, 380)}ms; left:${centerX}px; top:${centerY}px"
+      ></button>
+    `;
+  }).join("");
+
+  field.querySelectorAll(".policy-circle").forEach(circle => {
+    circle.addEventListener("pointerenter", showTooltip);
+    circle.addEventListener("pointermove", moveTooltip);
+    circle.addEventListener("pointerleave", hideTooltip);
+    circle.addEventListener("focus", showTooltip);
+    circle.addEventListener("blur", hideTooltip);
+
+    circle.addEventListener("click", event => {
+      event.stopPropagation();
+      hideTooltip();
+      const policy = policies.find(item => String(item.id) === circle.dataset.policyId);
+      openPolicy(policy);
+    });
+  });
+
+  updateCircleFocus();
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      field.classList.add("is-ready");
+      const circles = field.querySelectorAll(".policy-circle");
+      nodes.forEach((node, index) => {
+        circles[index].style.left = `${node.x}px`;
+        circles[index].style.top = `${node.y}px`;
+      });
+    });
+  });
+
+  renderPartyCentroid();
+}
+
+// The party's average, weighted the way the noise score already weights a
+// conversation: Flagship 3, Significant 2, Niche 1, so a flagship pulls harder
+// than a one-off niche policy. One ring per selected party.
+//
+// The ring sits at the weighted middle of that party's circles as drawn, not
+// at its true score. The two are not the same: the relaxation pulls every
+// circle toward the centre of the field, compressing the picture inward by
+// around 130px for Labour and over 200px for ACT. A ring at the true score
+// would sit outside its own cloud, and worst for the parties furthest from
+// centre. The words still come from the real scores.
+function renderPartyCentroid() {
+  const field = document.querySelector("#politics-field");
+  if (!field) return;
+
+  field.querySelectorAll(".party-centroid, .party-centroid-label")
+    .forEach(node => node.remove());
+
+  if (!activeParties.size || !politicsNodes.length) return;
+
+  const placed = [];
+
+  PARTY_ORDER.filter(party => activeParties.has(party)).forEach(party => {
+    const partyNodes = politicsNodes.filter(node => node.policy.party === party);
+    if (!partyNodes.length) return;
+
+    const weight = partyNodes.reduce((sum, n) => sum + sizeWeight(n.policy.size), 0);
+    const cx = partyNodes.reduce((sum, n) => sum + n.x * sizeWeight(n.policy.size), 0) / weight;
+    const cy = partyNodes.reduce((sum, n) => sum + n.y * sizeWeight(n.policy.size), 0) / weight;
+
+    // Econ averages only the records the axis applies to. Including off-axis
+    // zeros would drag parties with a lot of crime and constitutional policy
+    // toward the middle and leave parties without any exactly where they are.
+    const onAxis = partyNodes.filter(n => n.policy.econ_engaged);
+    if (!onAxis.length) return;
+    const onWeight = onAxis.reduce((sum, n) => sum + sizeWeight(n.policy.size), 0);
+    const econAvg = onAxis.reduce((sum, n) => sum + n.policy.econ * sizeWeight(n.policy.size), 0) / onWeight;
+
+    const colour = PARTY_COLOURS[party] || "#777777";
+
+    const dot = document.createElement("div");
+    dot.className = "party-centroid";
+    dot.dataset.party = party;
+    dot.style.setProperty("--marker-colour", colour);
+    dot.style.left = `${cx}px`;
+    dot.style.top = `${cy}px`;
+    field.appendChild(dot);
+
+    // Rings can sit almost on top of each other — Te Pāti Māori and TOP land
+    // within a couple of pixels — so labels step down rather than overlap.
+    let labelY = cy;
+    while (placed.some(prev => Math.abs(prev.y - labelY) < 26 && Math.abs(prev.x - cx) < 130)) {
+      labelY += 26;
+    }
+    placed.push({ x: cx, y: labelY });
+
+    const label = document.createElement("div");
+    label.className = "party-centroid-label";
+    label.style.left = `${cx}px`;
+    label.style.top = `${labelY}px`;
+    label.textContent = econSummary(econAvg);
+    field.appendChild(label);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        dot.classList.add("is-ready");
+        label.classList.add("is-ready");
+      });
+    });
+  });
+}
+
+// Three terms only. The ring's position carries how far and which way; the
+// words only need to carry roughly where.
+function econSummary(value) {
+  if (value < -1) return "Mostly left";
+  if (value > 1) return "Mostly right";
+  return "Mostly centre";
+}
+
+function hashJitter(id, spreadX = 78, spreadY = 42) {
   const hashX = hashString(`${id}-x`);
   const hashY = hashString(`${id}-y`);
-  const spreadX = 78;
-  const spreadY = 42;
   return {
     x: (((hashX % 2000) / 2000) - 0.5) * 2 * spreadX,
     y: (((hashY % 2000) / 2000) - 0.5) * 2 * spreadY

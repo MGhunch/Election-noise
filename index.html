@@ -27,6 +27,7 @@
   <nav class="view-toggle" aria-label="View">
     <button class="view-tab" type="button" data-view="shape" aria-pressed="false">Shape</button>
     <button class="view-tab" type="button" data-view="size" aria-pressed="true">Size</button>
+    <button class="view-tab" type="button" data-view="politics" aria-pressed="false">Politics</button>
   </nav>
 
   <main>
@@ -42,6 +43,16 @@
           <div class="shape-axis shape-axis-left">Soon</div>
           <div class="shape-axis shape-axis-right">Later</div>
           <div id="shape-field" class="shape-field"></div>
+        </section>
+
+        <section id="politics-view" class="politics-view view-pane" data-view-pane="politics" hidden aria-label="Where the policies sit">
+          <div class="shape-line shape-line-h"></div>
+          <div class="shape-line shape-line-v"></div>
+          <div class="shape-axis shape-axis-top">Trying new things</div>
+          <div class="shape-axis shape-axis-bottom">Tried and tested</div>
+          <div class="shape-axis shape-axis-left">Govt steps in</div>
+          <div class="shape-axis shape-axis-right">Govt steps back</div>
+          <div id="politics-field" class="politics-field"></div>
         </section>
       </div>
 

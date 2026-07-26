@@ -297,6 +297,22 @@ h1 {
   transform: scale(0.985);
 }
 
+.politics-view {
+  position: relative;
+  height: var(--hero, 620px);
+  margin-top: 0;
+  padding: 44px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.politics-field {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .shape-view {
   position: relative;
   height: var(--hero, 620px);
@@ -371,6 +387,7 @@ h1 {
   padding: 2px 10px;
 }
 
+.politics-view .policy-circle,
 .shape-view .policy-circle {
   position: absolute;
   margin: 0;
@@ -384,16 +401,20 @@ h1 {
   transition-delay: var(--enter-delay, 0ms);
 }
 
+.politics-field.is-ready .policy-circle,
 .shape-field.is-ready .policy-circle {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 
+.politics-field.is-ready .policy-circle:hover,
+.politics-field.is-ready .policy-circle:focus-visible,
 .shape-field.is-ready .policy-circle:hover,
 .shape-field.is-ready .policy-circle:focus-visible {
   transform: translate(-50%, -50%) scale(1.14);
 }
 
+.politics-field.is-ready .policy-circle.is-muted,
 .shape-field.is-ready .policy-circle.is-muted {
   opacity: 0.1;
 }
@@ -937,6 +958,57 @@ footer {
   transition-delay: var(--enter-delay, 0ms);
 }
 
+.party-centroid {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  margin: 0;
+  border: 3px dashed var(--marker-colour, var(--ink));
+  border-radius: 50%;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease, left 500ms ease, top 500ms ease;
+}
+
+.party-centroid.is-ready {
+  opacity: 0.85;
+}
+
+.party-centroid::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--marker-colour, var(--ink));
+  transform: translate(-50%, -50%);
+}
+
+.party-centroid-label {
+  position: absolute;
+  margin-top: 40px;
+  transform: translate(-50%, 0);
+  white-space: nowrap;
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease, left 500ms ease, top 500ms ease;
+}
+
+.party-centroid-label.is-ready {
+  opacity: 1;
+}
+
 .conversation-grid.is-ready .policy-circle {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -1081,6 +1153,7 @@ footer {
     margin-top: 12px;
   }
 
+  .politics-view,
   .shape-view {
     padding: 26px;
   }
