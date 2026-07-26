@@ -900,15 +900,17 @@ function renderPolitics() {
 
   politicsNodes = nodes;
 
-  // Same relaxation as renderShape, with one constant deliberately different.
-  // Shape pulls harder vertically (0.03) than horizontally, because Mechanism
-  // is its crowded axis and needs holding. Here it is the other way round:
-  // direction sits in three heavy clusters — 27 records at 0, 27 at +2, 16 at
-  // -2 — and a strong vertical pull cancels the collision displacement that
-  // would let them mix, so circles slide along their row instead of escaping
-  // it and the view bands into three rafts. At 0.012 they merge into one mass.
-  // The trade is the one already accepted for Shape: these are judgement
-  // calls, not measurements, so a position reads as a neighbourhood.
+  // Same relaxation as renderShape. Direction sits in heavy clusters — 31
+  // records at +2, 17 at 0, 11 at -2 — and a strong vertical pull cancels
+  // the collision displacement that would let them mix, so circles slide
+  // along their row instead of escaping it and the view bands into rafts.
+  // At 0.012 they merge into one mass (shipped briefly on 26 Jul; looked
+  // like a blob, was a blob). 0.03 matches Shape's vertical hold. Note the
+  // rescore put records on the ±1 rungs, so the bands read as a graded
+  // spread rather than v004's three crisp rafts — that's the data, not
+  // the physics. The trade is the one already accepted for Shape: these
+  // are judgement calls, not measurements, so a position reads as a
+  // neighbourhood.
   for (let iteration = 0; iteration < 260; iteration++) {
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
@@ -933,7 +935,7 @@ function renderPolitics() {
 
     nodes.forEach(node => {
       node.x += (node.targetX - node.x) * 0.018;
-      node.y += (node.targetY - node.y) * 0.012;
+      node.y += (node.targetY - node.y) * 0.03;
       node.x += (centerX - node.x) * 0.01;
       node.y += (centerY - node.y) * 0.01;
       node.x = Math.max(node.radius, Math.min(width - node.radius, node.x));
