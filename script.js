@@ -1407,7 +1407,15 @@ function applySamesies() {
     return;
   }
 
-  const members = new Set(pair.records);
+  // Pairs address records by slug; the DOM and the plotted nodes still carry
+  // the numeric id. Resolve once here rather than matching on slug in three
+  // places — this is where the two naming schemes meet, and keeping the join
+  // in one spot is what stops the next rename breaking a view quietly.
+  const memberPolicies = pair.records
+    .map(slug => policies.find(policy => policy.slug === slug))
+    .filter(Boolean);
+
+  const members = new Set(memberPolicies.map(policy => String(policy.id)));
 
   // Every circle everywhere, so switching views never lands on a stale field.
   document.querySelectorAll(".policy-circle").forEach(circle => {
@@ -1415,11 +1423,7 @@ function applySamesies() {
     circle.classList.remove("is-muted", "is-selected");
   });
 
-  const conversations = new Set(
-    policies
-      .filter(policy => members.has(String(policy.id)))
-      .map(policy => policy.conversation)
-  );
+  const conversations = new Set(memberPolicies.map(policy => policy.conversation));
 
   grid.querySelectorAll(".conversation-card").forEach(card => {
     const holdsMember = conversations.has(card.dataset.conversation);
