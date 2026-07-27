@@ -1,3 +1,81 @@
+/* ---------------------------------------------------------------------------
+   Preview gate
+   ---------------------------------------------------------------------------
+   Holds the site closed until someone types the code, so it can be shown to a
+   few people before launch.
+
+   This is a courtesy lock and nothing more. The site is static: the code below
+   is readable in this file, and data/policies.json answers a direct request
+   whatever the homepage is showing. It keeps the URL from being self-serving
+   if it gets passed around; it does not keep anyone out who wants in.
+
+   To open the site to everyone, set GATE_CODE to an empty string.
+   --------------------------------------------------------------------------- */
+
+const GATE_CODE = "313ct10n26";
+const GATE_KEY = "election-noise-preview";
+
+function openGate(gate) {
+  gate.remove();
+  document.body.style.removeProperty("overflow");
+}
+
+function initGate() {
+  const gate = document.querySelector("#gate");
+  if (!gate) return;
+
+  if (!GATE_CODE) {
+    gate.remove();
+    return;
+  }
+
+  let alreadyIn = false;
+  try {
+    alreadyIn = window.localStorage.getItem(GATE_KEY) === GATE_CODE;
+  } catch (storageError) {
+    alreadyIn = false;
+  }
+
+  if (alreadyIn) {
+    gate.remove();
+    return;
+  }
+
+  gate.hidden = false;
+  document.body.style.overflow = "hidden";
+
+  const form = gate.querySelector("#gate-form");
+  const input = gate.querySelector("#gate-input");
+  const error = gate.querySelector("#gate-error");
+
+  input.focus();
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const attempt = input.value.trim().toLowerCase();
+    if (attempt !== GATE_CODE.toLowerCase()) {
+      error.hidden = false;
+      input.value = "";
+      input.focus();
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(GATE_KEY, GATE_CODE);
+    } catch (storageError) {
+      // Private browsing. They get in for this visit and type it again next
+      // time, which is a fair trade for not breaking the gate entirely.
+    }
+
+    openGate(gate);
+  });
+
+  input.addEventListener("input", () => {
+    error.hidden = true;
+  });
+}
+
 const CONVERSATIONS = [
   "Cost of Living",
   "Health",
@@ -80,6 +158,8 @@ const dialog = document.querySelector("#policy-dialog");
 const floatingTooltip = document.querySelector("#floating-tooltip");
 
 async function init() {
+  initGate();
+
   try {
     const response = await fetch("./data/policies.json", { cache: "no-store" });
     if (!response.ok) throw new Error("Could not load policies.json");
