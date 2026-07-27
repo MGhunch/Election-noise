@@ -1380,9 +1380,23 @@ footer {
   color: var(--white);
 }
 
+/* Tier headings. Quiet — three of them in a narrow rail is already a lot of
+   furniture, and they are there to be scanned past, not read. */
+.pair-tier {
+  margin: 16px 0 7px;
+}
+
+.pair-tier:first-child {
+  margin-top: 0;
+}
+
 .pair-button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   width: 100%;
+  margin-bottom: 6px;
   padding: 7px 12px;
   background: none;
   border: 1px solid var(--line);
@@ -1391,6 +1405,30 @@ footer {
   text-align: left;
   cursor: pointer;
   transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.pair-button-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Who is in this pair. After the label, not before: in the party rail the dot
+   is the thing being chosen, so it leads; here the label is the choice and the
+   dots are what you get. Right-anchored so the labels stay flush down the list
+   and the colours read as a column. */
+.pair-dots {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 3px;
+}
+
+.pair-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--party-colour, var(--ink));
 }
 
 .pair-button:hover {

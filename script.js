@@ -1281,6 +1281,23 @@ function openReportForm(policy) {
    pair, and the grid is where you can see it doing that.
    --------------------------------------------------------------------------- */
 
+// Who is in this pair. The dots sit after the label rather than before it: in
+// the party rail the dot is the thing being chosen, so it leads; here the label
+// is the choice and the dots are what you get, so they follow. Right-anchoring
+// also keeps the labels flush, which a two-to-four dot prefix would not.
+function pairDots(pair) {
+  const parties = [...new Set(
+    pair.records
+      .map(id => policies.find(policy => String(policy.id) === id))
+      .filter(Boolean)
+      .map(policy => policy.party)
+  )].sort((a, b) => PARTY_ORDER.indexOf(a) - PARTY_ORDER.indexOf(b));
+
+  return parties.map(party => `
+    <span class="pair-dot" style="--party-colour:${PARTY_COLOURS[party] || "var(--ink)"}"></span>
+  `).join("");
+}
+
 function renderPairFilters() {
   const rail = document.querySelector("#pair-filters");
   const toggle = document.querySelector("#samesies-toggle");
@@ -1288,14 +1305,36 @@ function renderPairFilters() {
 
   toggle.hidden = pairs.length === 0;
 
-  rail.innerHTML = pairs.map(pair => `
-    <button
-      class="pair-button"
-      type="button"
-      data-pair-id="${escapeHtml(pair.id)}"
-      aria-pressed="${activePair === pair.id}"
-    >${escapeHtml(pair.label)}</button>
-  `).join("");
+  // Grouped by how far apart the answers are. Degree is similar — the same
+  // lever at a different volume or scope. Kind is different — not more or less
+  // of one answer but another answer entirely. The tier describes the answers,
+  // not the picture: Teachers is a different kind of answer even though on the
+  // Shape field the two records land in the same place.
+  const TIERS = [
+    { key: "same", label: "Same / same" },
+    { key: "similar", label: "Same / similar" },
+    { key: "different", label: "Same / different" }
+  ];
+
+  rail.innerHTML = TIERS.map(tier => {
+    const group = pairs.filter(pair => (pair.tier || "different") === tier.key);
+    if (group.length === 0) return "";
+
+    return `
+      <p class="eyebrow pair-tier">${escapeHtml(tier.label)}</p>
+      ${group.map(pair => `
+        <button
+          class="pair-button"
+          type="button"
+          data-pair-id="${escapeHtml(pair.id)}"
+          aria-pressed="${activePair === pair.id}"
+        >
+          <span class="pair-button-label">${escapeHtml(pair.label)}</span>
+          <span class="pair-dots">${pairDots(pair)}</span>
+        </button>
+      `).join("")}
+    `;
+  }).join("");
 
   rail.querySelectorAll(".pair-button").forEach(button => {
     button.addEventListener("click", () => {
