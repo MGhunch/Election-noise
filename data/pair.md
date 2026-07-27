@@ -65,6 +65,20 @@ Say how many positions there are, not how many parties. Three parties can hold t
 
 ---
 
+## How far apart
+
+Every pair carries a tier, recording how far apart the answers are. The rule is short:
+
+**Degree is similar. Kind is different.**
+
+- **Same / same** — the same thing twice. Rungs may differ; the answer does not.
+- **Same / similar** — the same lever at a different volume or scope. A $20 weekly fare cap and free public transport are the same lever turned further. Free GP visits for everyone and free GP visits under $60,000 are the same lever aimed wider or narrower. Legislating a supermarket split and giving the Commerce Commission the power to order one are two routes to one outcome.
+- **Same / different** — not more or less of one answer but another answer entirely. Performance pay and pay parity are opposite accounts of how teachers should be paid. In the emissions scheme and out of it are opposite answers to one question.
+
+**The tier describes the answers, not the picture.** ACT's performance pay and TOP's pay parity land in the same place on the Shape field — same timing, same kind of lever — and the tier still reads different, because the answers are different in kind even where the instruments sit together. The field shows where a difference lands; the tier says whether there is one.
+
+Three parties with three positions still reads as different rather than earning a fourth tier. Say how many positions there are in the line.
+
 ## The label
 
 **One word, naming the problem.** KiwiSaver · Solar · Supermarkets · Transport · Gentailers · Emissions · Teachers · Doctors · Voting.
@@ -121,17 +135,17 @@ Valid JSON, one object per pair:
 {
   "id": "",
   "label": "",
+  "tier": "",
   "problem": "",
   "records": ["", ""],
-  "shape": { "reads": "", "line": "" },
-  "position": { "reads": "", "line": "" },
+  "line": "",
   "confidence": "",
   "confidence_note": "",
   "status": "waiting"
 }
 ```
 
-`problem` states the shared problem in a phrase. `reads` is `stack` or `split`, set by the gate on that field. `records` holds two ids, or more. `status` is always `waiting` on output — a pair goes live only once a human has confirmed it.
+`tier` is `same`, `similar` or `different`, per the rule above. `problem` states the shared problem in a phrase. `records` holds two ids, or more. `status` is always `waiting` on output — a pair goes live only once a human has confirmed it.
 
 ---
 

@@ -1,118 +1,166 @@
 {
   "updated": "2026-07-27",
   "generated_by": "Proposed under data/pair.md, confirmed by hand.",
-  "note": "One problem, two or more attempts at it. Every line is two clauses — the shared problem, then how each party answers it. That shape holds on both fields, because the agreement and the disagreement sit in the sentence rather than in the picture; the field only shows where the disagreement lands.",
+  "note": "One problem, two or more attempts at it. Every line is two clauses — the shared problem, then how each party answers it. The tier records how far apart the answers are: same is the same thing twice, similar is the same lever at a different volume or scope, different is a different kind of answer rather than more or less of one. Degree is similar; kind is different.",
   "count": 11,
   "pairs": [
     {
       "id": "pair-kiwisaver",
       "label": "KiwiSaver",
       "problem": "How do we get people saving for retirement?",
-      "records": ["policy-029", "policy-050"],
+      "records": [
+        "policy-029",
+        "policy-050"
+      ],
       "line": "National and NZ First both want KiwiSaver made compulsory. Same policy, a month apart.",
       "confidence": "High",
       "confidence_note": "Scored as a deliberate like-for-like. Same size, same rungs on all four axes.",
-      "status": "live"
+      "status": "live",
+      "tier": "same"
     },
     {
       "id": "pair-solar",
       "label": "Solar",
       "problem": "How do we get solar panels onto roofs?",
-      "records": ["policy-025", "policy-027", "policy-033"],
+      "records": [
+        "policy-025",
+        "policy-027",
+        "policy-033"
+      ],
       "line": "Labour, National and the Greens all want to help pay for your solar panels. Three subsidies, one idea.",
       "confidence": "Low",
       "confidence_note": "National's record is the thin one — a $7m fund with no published detail beyond the headline.",
-      "status": "live"
+      "status": "live",
+      "tier": "same"
     },
     {
       "id": "pair-marine",
       "label": "Marine",
       "problem": "How do we protect the ocean?",
-      "records": ["policy-037", "policy-075"],
+      "records": [
+        "policy-037",
+        "policy-075"
+      ],
       "line": "The Greens and TOP both want 30% of the ocean protected and bottom trawling gone. Same target, same year.",
       "confidence": "Check",
       "confidence_note": "Size mismatch. Same target, same instrument, different rungs — a question for Sort, raised by Pair.",
-      "status": "live"
+      "status": "live",
+      "tier": "same"
     },
     {
       "id": "pair-supermarkets",
       "label": "Supermarkets",
       "problem": "Why are groceries so expensive?",
-      "records": ["policy-049", "policy-064"],
+      "records": [
+        "policy-049",
+        "policy-064"
+      ],
       "line": "NZ First and TOP both want the supermarkets broken up. NZ First would legislate it. TOP would let the Commerce Commission do it.",
       "confidence": "Check",
       "confidence_note": "Size mismatch. TOP's sits inside a wider innovation package, which is why it reads larger.",
-      "status": "live"
-    },
-    {
-      "id": "pair-gentailers",
-      "label": "Gentailers",
-      "problem": "How do we keep the lights on in a dry year?",
-      "records": ["policy-034", "policy-040", "policy-072"],
-      "line": "Three parties want the dry-year problem fixed. The Greens would build a public generator, NZ First would split the existing ones, TOP would leave them alone and pay for backup.",
-      "confidence": "Check",
-      "confidence_note": "Size mismatch across the three. TOP's page rejects NZ First's structural separation by name.",
-      "status": "live"
+      "status": "live",
+      "tier": "similar"
     },
     {
       "id": "pair-doctors",
       "label": "Doctors",
       "problem": "How do we make seeing a GP affordable?",
-      "records": ["policy-021", "policy-060"],
+      "records": [
+        "policy-021",
+        "policy-060"
+      ],
       "line": "Labour and Te Pāti Māori both want the cost taken out of seeing a GP. Labour for everyone, TPM for whānau under $60,000.",
       "confidence": "Check",
       "confidence_note": "Size mismatch, and it may be the right call — one is universal, the other a cohort.",
-      "status": "live"
-    },
-    {
-      "id": "pair-emissions",
-      "label": "Emissions",
-      "problem": "What do we do about farm emissions?",
-      "records": ["policy-010", "policy-079"],
-      "line": "ACT and TOP both have a plan for farm emissions. ACT would keep them out of the trading scheme. TOP would bring them in.",
-      "confidence": "Low",
-      "confidence_note": "Both records thin on timing. The opposition itself is explicit in both descriptions.",
-      "status": "live"
-    },
-    {
-      "id": "pair-teachers",
-      "label": "Teachers",
-      "problem": "How do we keep good teachers?",
-      "records": ["policy-012", "policy-076"],
-      "line": "ACT and TOP both want more pay for teachers. ACT would pay the best ones more. TOP would pay them all properly.",
-      "confidence": "Low",
-      "confidence_note": "Different sectors — ACT's is schools, TOP's is early childhood. The shared problem is retention, not the workforce.",
-      "status": "live"
+      "status": "live",
+      "tier": "similar"
     },
     {
       "id": "pair-transport",
       "label": "Transport",
       "problem": "How do we make getting around cheaper?",
-      "records": ["policy-022", "policy-077"],
+      "records": [
+        "policy-022",
+        "policy-077"
+      ],
       "line": "Labour and TOP both want cheaper public transport. Labour would cap it. TOP would make it free.",
       "confidence": "Low",
       "confidence_note": "TOP's sits inside a 30-year infrastructure framework, which is why it lands so much later.",
-      "status": "live"
+      "status": "live",
+      "tier": "similar"
     },
     {
       "id": "pair-tax",
-      "label": "Tax burden",
+      "label": "Asset taxes",
       "problem": "Who bears the tax burden?",
-      "records": ["policy-026", "policy-035", "policy-071", "policy-061"],
+      "records": [
+        "policy-026",
+        "policy-035",
+        "policy-071",
+        "policy-061"
+      ],
       "line": "Four parties want new taxes on assets. Four different ways to do it.",
       "confidence": "Check",
       "confidence_note": "Size mismatch across four records. The shared premise is inferred from the instruments, not stated by any party.",
-      "status": "live"
+      "status": "live",
+      "tier": "similar"
+    },
+    {
+      "id": "pair-emissions",
+      "label": "Emissions",
+      "problem": "What do we do about farm emissions?",
+      "records": [
+        "policy-010",
+        "policy-079"
+      ],
+      "line": "ACT and TOP both have a plan for farm emissions. ACT would keep them out of the trading scheme. TOP would bring them in.",
+      "confidence": "Low",
+      "confidence_note": "Both records thin on timing. The opposition itself is explicit in both descriptions.",
+      "status": "live",
+      "tier": "different"
+    },
+    {
+      "id": "pair-gentailers",
+      "label": "Gentailers",
+      "problem": "How do we keep the lights on in a dry year?",
+      "records": [
+        "policy-034",
+        "policy-040",
+        "policy-072"
+      ],
+      "line": "Three parties want the dry-year problem fixed. The Greens would build a public generator, NZ First would split the existing ones, TOP would leave them alone and pay for backup.",
+      "confidence": "Check",
+      "confidence_note": "Size mismatch across the three. TOP's page rejects NZ First's structural separation by name.",
+      "status": "live",
+      "tier": "different"
+    },
+    {
+      "id": "pair-teachers",
+      "label": "Teachers",
+      "problem": "How do we keep good teachers?",
+      "records": [
+        "policy-012",
+        "policy-076"
+      ],
+      "line": "ACT and TOP both want more pay for teachers. ACT would pay the best ones more. TOP would pay them all properly.",
+      "confidence": "Low",
+      "confidence_note": "Different sectors — ACT's is schools, TOP's is early childhood. The shared problem is retention, not the workforce.",
+      "status": "live",
+      "tier": "different"
     },
     {
       "id": "pair-voting",
       "label": "Voting",
       "problem": "Who gets to vote?",
-      "records": ["policy-048", "policy-054"],
+      "records": [
+        "policy-048",
+        "policy-054"
+      ],
       "line": "NZ First would take the vote off permanent residents. Te Pāti Māori would give it back to prisoners.",
       "confidence": "Check",
       "confidence_note": "Held. The line is true but the pair rests on policy-054, a four-part prisoner-rights record in which voting is one element — so a bundle stands in for a quarter of itself. Restore once Sort splits the franchise element into its own record.",
-      "status": "waiting"
+      "status": "waiting",
+      "tier": "different"
     }
   ]
 }
