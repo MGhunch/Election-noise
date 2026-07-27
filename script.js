@@ -314,7 +314,7 @@ function renderGrid() {
     circle.addEventListener("click", event => {
       event.stopPropagation();
       hideTooltip();
-      const policy = policies.find(item => String(item.id) === circle.dataset.policyId);
+      const policy = policies.find(item => item.slug === circle.dataset.policyId);
       openPolicy(policy);
     });
   });
@@ -381,7 +381,7 @@ function renderCircle(policy) {
       class="${classes}"
       type="button"
       aria-label="${escapeHtml(`${policy.party}: ${policy.title}. ${policy.size} policy.`)}"
-      data-policy-id="${escapeHtml(String(policy.id))}"
+      data-policy-id="${escapeHtml(policy.slug)}"
       data-party="${escapeHtml(policy.party)}"
       data-size="${escapeHtml(policy.size)}"
       data-tooltip="${escapeHtml(policy.title)}"
@@ -554,7 +554,7 @@ function renderDetail(conversation) {
   }
 
   list.innerHTML = visiblePolicies.map(policy => `
-    <button class="policy-row" type="button" data-detail-policy="${escapeHtml(String(policy.id))}">
+    <button class="policy-row" type="button" data-detail-policy="${escapeHtml(policy.slug)}">
       <span class="policy-row-dot${policy.verified === false ? " is-unverified" : ""}" data-party="${escapeHtml(policy.party)}" style="--party-colour:${PARTY_COLOURS[policy.party] || "#777"}; --dot-size:${Math.round(SIZE_MAP[policy.size] * 0.6)}px"></span>
       <span>
         <strong>${escapeHtml(policy.title)}</strong>
@@ -566,7 +566,7 @@ function renderDetail(conversation) {
 
   list.querySelectorAll("[data-detail-policy]").forEach(button => {
     button.addEventListener("click", () => {
-      const policy = policies.find(item => String(item.id) === button.dataset.detailPolicy);
+      const policy = policies.find(item => item.slug === button.dataset.detailPolicy);
       openPolicy(policy, { fromList: true });
     });
   });
@@ -953,7 +953,7 @@ function renderShape() {
         class="${classes}"
         type="button"
         aria-label="${escapeHtml(`${policy.party}: ${policy.title}. ${policy.size} policy.`)}"
-        data-policy-id="${escapeHtml(String(policy.id))}"
+        data-policy-id="${escapeHtml(policy.slug)}"
         data-party="${escapeHtml(policy.party)}"
         data-tooltip="${escapeHtml(policy.title)}"
         style="--party-colour:${colour}; --circle-size:${node.radius * 2}px; --enter-delay:${Math.min(index * 12, 380)}ms; left:${centerX}px; top:${centerY}px"
@@ -971,7 +971,7 @@ function renderShape() {
     circle.addEventListener("click", event => {
       event.stopPropagation();
       hideTooltip();
-      const policy = policies.find(item => String(item.id) === circle.dataset.policyId);
+      const policy = policies.find(item => item.slug === circle.dataset.policyId);
       openPolicy(policy);
     });
   });
@@ -1087,7 +1087,7 @@ function renderPolitics() {
         class="${classes}"
         type="button"
         aria-label="${escapeHtml(`${policy.party}: ${policy.title}. ${policy.size} policy.`)}"
-        data-policy-id="${escapeHtml(String(policy.id))}"
+        data-policy-id="${escapeHtml(policy.slug)}"
         data-party="${escapeHtml(policy.party)}"
         data-tooltip="${escapeHtml(policy.title)}"
         style="--party-colour:${colour}; --circle-size:${node.radius * 2}px; --enter-delay:${Math.min(index * 12, 380)}ms; left:${centerX}px; top:${centerY}px"
@@ -1105,7 +1105,7 @@ function renderPolitics() {
     circle.addEventListener("click", event => {
       event.stopPropagation();
       hideTooltip();
-      const policy = policies.find(item => String(item.id) === circle.dataset.policyId);
+      const policy = policies.find(item => item.slug === circle.dataset.policyId);
       openPolicy(policy);
     });
   });
@@ -1206,6 +1206,8 @@ function econSummary(value) {
   return "Mostly centre";
 }
 
+// Seeded on the numeric id rather than the slug. The offset is decorative, but
+// reseeding it would rearrange every circle on both fields for no gain.
 function hashJitter(id, spreadX = 78, spreadY = 42) {
   const hashX = hashString(`${id}-x`);
   const hashY = hashString(`${id}-y`);
@@ -1407,15 +1409,11 @@ function applySamesies() {
     return;
   }
 
-  // Pairs address records by slug; the DOM and the plotted nodes still carry
-  // the numeric id. Resolve once here rather than matching on slug in three
-  // places — this is where the two naming schemes meet, and keeping the join
-  // in one spot is what stops the next rename breaking a view quietly.
   const memberPolicies = pair.records
     .map(slug => policies.find(policy => policy.slug === slug))
     .filter(Boolean);
 
-  const members = new Set(memberPolicies.map(policy => String(policy.id)));
+  const members = new Set(pair.records);
 
   // Every circle everywhere, so switching views never lands on a stale field.
   document.querySelectorAll(".policy-circle").forEach(circle => {
@@ -1435,7 +1433,7 @@ function applySamesies() {
   let rings = [];
 
   if (field) {
-    const memberNodes = nodes.filter(node => members.has(String(node.policy.id)));
+    const memberNodes = nodes.filter(node => members.has(node.policy.slug));
     rings = clusterNodes(memberNodes).map(enclosingCircle);
 
     rings.forEach(ring => {
