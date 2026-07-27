@@ -880,7 +880,7 @@ function renderShape() {
 
   const nodes = policies.map(policy => {
     const radius = (SIZE_MAP[policy.size] || SIZE_MAP.Niche) / 2 * 0.7;
-    const jitter = hashJitter(policy.id);
+    const jitter = hashJitter(policy.slug);
     const targetX = margin + ((policy.immediacy - 1) / 4) * (width - margin * 2) + jitter.x;
     const targetY = margin + ((5 - policy.mechanism) / 4) * (height - margin * 2) + jitter.y;
     return { policy, radius, targetX, targetY, x: targetX, y: targetY };
@@ -1021,7 +1021,7 @@ function renderPolitics() {
   // Direction runs bottom (tried and tested, -3) to top (trying new things, +3).
   const nodes = policies.map(policy => {
     const radius = (SIZE_MAP[policy.size] || SIZE_MAP.Niche) / 2 * 0.7;
-    const jitter = hashJitter(policy.id, spreadX, spreadY);
+    const jitter = hashJitter(policy.slug, spreadX, spreadY);
     const targetX = margin + ((policy.econ + 3) / 6) * (width - margin * 2) + jitter.x;
     const targetY = margin + ((3 - policy.direction) / 6) * (height - margin * 2) + jitter.y;
     return { policy, radius, targetX, targetY, x: targetX, y: targetY };
