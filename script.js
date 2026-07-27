@@ -445,13 +445,15 @@ function calibrateGrid() {
     if (fits) low = candidate; else high = candidate;
   }
 
-  const gap = Math.max(3, low * 0.15);
-  grid.style.setProperty("--circle-gap", `${Math.round(gap)}px`);
+  // Round down rather than to nearest: the packing test passed at `low`, and
+  // rounding a gap up can push the last row past the height that just fitted.
+  const gap = Math.max(3, Math.floor(low * 0.15));
+  grid.style.setProperty("--circle-gap", `${gap}px`);
   grid.style.setProperty("--circle-ring", `${Math.max(2, Math.round(low * 0.055))}px`);
 
   grid.querySelectorAll(".policy-circle").forEach(circle => {
     const ratio = GRID_SIZE_RATIO[circle.dataset.size] || GRID_SIZE_RATIO.Niche;
-    circle.style.setProperty("--circle-size", `${Math.round(low * ratio)}px`);
+    circle.style.setProperty("--circle-size", `${Math.floor(low * ratio)}px`);
   });
 }
 

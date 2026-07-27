@@ -489,12 +489,23 @@ h1 {
   font-size: 0.76rem;
 }
 
+/* The card is a fixed square, so the field has to be bounded by it or a dense
+   conversation spills out the bottom. flex:1 with min-height:0 gives it the
+   space left under the heading and no more, which is also the height
+   calibrateGrid measures against when it sizes the circles — without the
+   bound it was measuring the content it was trying to fit.
+
+   The gap reads the same variable calibrateGrid sets. It was hardcoded at 8px
+   while the packing maths assumed a proportional gap, so the search fitted
+   circles to a layout the browser then drew slightly larger. */
 .policy-field {
   display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
   flex-wrap: wrap;
   align-content: flex-start;
   align-items: center;
-  gap: 8px;
+  gap: var(--circle-gap, 8px);
   padding-top: 22px;
 }
 
@@ -1383,7 +1394,7 @@ footer {
 /* Tier headings. Quiet — three of them in a narrow rail is already a lot of
    furniture, and they are there to be scanned past, not read. */
 .pair-tier {
-  margin: 16px 0 7px;
+  margin: 13px 0 5px;
 }
 
 .pair-tier:first-child {
@@ -1396,12 +1407,13 @@ footer {
   justify-content: space-between;
   gap: 10px;
   width: 100%;
-  margin-bottom: 6px;
-  padding: 7px 12px;
+  margin-bottom: 4px;
+  padding: 6px 12px;
   background: none;
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 13px;
+  line-height: 1.3;
   text-align: left;
   cursor: pointer;
   transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
