@@ -157,9 +157,9 @@
         "policy-054"
       ],
       "line": "NZ First would take the vote off permanent residents. Te Pāti Māori would give it back to prisoners.",
-      "confidence": "Check",
-      "confidence_note": "Held. The line is true but the pair rests on policy-054, a four-part prisoner-rights record in which voting is one element — so a bundle stands in for a quarter of itself. Restore once Sort splits the franchise element into its own record.",
-      "status": "waiting",
+      "confidence": "Low",
+      "confidence_note": "Te Pāti Māori's record is broader than the pair — it covers rehabilitation, the Steps to Freedom payment and minimum entitlements as well as voting. Published on the basis that voting is named in its title and is the element the pair turns on. Splitting the franchise element into its own record would tighten it.",
+      "status": "live",
       "tier": "different"
     }
   ]
