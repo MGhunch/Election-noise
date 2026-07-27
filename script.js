@@ -189,7 +189,7 @@ async function init() {
         const proposed = Array.isArray(pairPayload) ? pairPayload : pairPayload.pairs;
         pairs = (proposed || []).filter(pair =>
           pair.status === "live" &&
-          pair.records.every(id => policies.some(policy => String(policy.id) === id))
+          pair.records.every(slug => policies.some(policy => policy.slug === slug))
         );
       }
     } catch (pairError) {
@@ -1290,7 +1290,7 @@ function openReportForm(policy) {
 function pairDots(pair) {
   const parties = [...new Set(
     pair.records
-      .map(id => policies.find(policy => String(policy.id) === id))
+      .map(slug => policies.find(policy => policy.slug === slug))
       .filter(Boolean)
       .map(policy => policy.party)
   )].sort((a, b) => PARTY_ORDER.indexOf(a) - PARTY_ORDER.indexOf(b));
