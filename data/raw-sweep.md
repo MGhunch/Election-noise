@@ -1,28 +1,34 @@
 # Raw Policy Sweep — Consolidated
 **As at:** 25 July 2026 · Sourcing only, no scoring. Feeds Summarise and Sort. Raw text is verbatim from source — not paraphrased — so those stages can anchor their calls in actual quoted language rather than a summary of a summary.
 
-**No record IDs.** This is raw sourced material, so candidates are named by policy rather than numbered against the dataset. Where an entry refers to something already recorded, it names it by title.
+**Three sections per party.**
 
-**⚠️ Stubs / Loose Policies are NOT candidates. Do not add them to the dataset.** They're listed for the audit trail only — pages that were checked and found to have no concrete mechanism, number, or date to score. Only items in the main "Policies" list per party should go forward to intake.
+- **POLICIES** — mechanism, numbers or dates published. Goes forward to be scored.
+- **POTENTIAL POLICIES** — a real commitment with nothing yet to score. Recorded and published as held, not drawn on the map. Moves up to POLICIES if the party publishes detail.
+- **NOT POLICIES** — checked and set aside: achievements, news feeds, prior-cycle content, values pages. Listed so the exclusion can be argued with.
+
+Only POLICIES go forward to intake.
 
 **Flag key:** NEW = not in dataset · ENRICH = existing record, richer source found · FIX = wrong/stale citation · KILL = pre-launch/empty, recommend retiring · MERGE = likely duplicate of another record · CONFIRMED = checked, no change needed
 
-## Party | Policies | Stubs / Loose
+## Counts
 
-| Party | Policies | Stubs / Loose |
-|---|---|---|
-| ACT | 16 | 0 |
-| Labour | 10 | 0 |
-| National | 6 | 2 |
-| Green | 7 | 0 |
-| NZ First | 12 | 0 |
-| Te Pāti Māori | 12 | 9 |
-| TOP | 9 | 0 |
-| **Total** | **72** | **11** |
+| Party | Policies | Potential | Not policies |
+|---|---|---|---|
+| ACT | 16 | 0 | 0 |
+| Labour | 10 | 0 | 0 |
+| National | 6 | 0 | 2 |
+| Green | 7 | 0 | 0 |
+| NZ First | 12 | 0 | 0 |
+| Te Pāti Māori | 12 | 9 | 0 |
+| TOP | 9 | 0 | 0 |
+| **Total** | **72** | **9** | **2** |
 
 ---
 
 # ACT
+
+## POLICIES
 
 **1. Flatter, simpler tax system**
 Source: https://www.act.org.nz/economy
@@ -108,6 +114,8 @@ Flag: CONFIRMED (no change needed)
 
 # Labour
 
+## POLICIES
+
 **1. Free prescriptions**
 Source: https://www.labour.org.nz/prescriptions
 Raw Text: "Labour will remove the $5 fee on prescriptions to make them free – for everyone... From 1 July 2027, the $5 fee will be removed for every New Zealander, at every pharmacy. No forms, no claiming money back." Page frames this as sitting alongside the Medicard (free GP visits, cervical screening, maternity scans).
@@ -162,6 +170,8 @@ Flag: CONFIRMED (matches, no change)
 
 # National
 
+## POLICIES
+
 **1. Home Energy Fund — correct source**
 Source: https://www.national.org.nz/solar or https://www.rnz.co.nz/news/politics/620500/national-promises-homeowners-low-cost-loans-to-install-solar-power
 Raw Text: National's Home Energy Fund: a $7m Crown equity loan fund.
@@ -192,7 +202,7 @@ Source: https://www.national.org.nz/build-the-future
 Raw Text: (page content matches the existing sourced description; no new detail found)
 Flag: CONFIRMED (no change)
 
-### Stubs / Loose — checked, no mechanism, do not add
+## NOT POLICIES — checked, not forward policy
 
 **Cost of Living Relief page**
 Source: https://www.national.org.nz/col
@@ -205,6 +215,8 @@ Raw Text: All four checked in full, all four 100% retrospective "So far, we have
 ---
 
 # Green
+
+## POLICIES
 
 **1. Power for all of us — household bills package**
 Source: https://www.greens.org.nz/power_for_all_of_us
@@ -244,6 +256,8 @@ Flag: ENRICH — also a candidate for `verified: true` given independent RNZ-tie
 ---
 
 # NZ First
+
+## POLICIES
 
 **1. Breaking up the Gentailers**
 Source: https://www.nzfirst.nz/breaking_up_the_gentailers
@@ -309,6 +323,8 @@ Flag: FLAG for currency review — likely overtaken by events, not a citation er
 
 # Te Pāti Māori
 
+## POLICIES
+
 **1. Māori Justice Authority**
 Source: https://www.maoriparty.org.nz/justice
 Raw Text: "Reallocate 50% of Corrections, Police and Courts budgets to Māori Justice Authority... Disestablish Youth Justice Residences by 2030... Abolish the type and style of prisons by 2040 (Scandinavia)... Adopt all Waitangi Tribunal recommendations regarding Justice issues."
@@ -369,7 +385,7 @@ Source: https://www.maoriparty.org.nz/policy
 Raw Text: "Declare Aotearoa a militarily neutral nation. Reset foreign policy to be independent, grounded in Māori values, and centred on Pacific and Indigenous relationships. Review and withdraw from military alignments that undermine sovereignty. Refocus the Defence Force on protection, disaster response, and Pacific support. Uphold international human rights and hold war criminals to account."
 Flag: NEW — a real, checkable stance, no dollar figure attached
 
-### Stubs / Loose — checked, no mechanism, do not add
+## POTENTIAL POLICIES — announced without enough detail to score
 
 **Mana Motuhake**
 Source: https://www.maoriparty.org.nz/mana_motuhake
@@ -410,6 +426,8 @@ Raw Text: "Under Te Tiriti o Waitangi, the Crown has no legal right to remove mo
 ---
 
 # TOP
+
+## POLICIES
 
 **1. Productivity Unleashed → relaunched as "Breakthrough Economy"**
 Source: https://www.opportunity.org.nz/breakthrough-economy (launched ~2 July 2026); independently reported by RNZ, Scoop, Newsroom, The Daily Blog
