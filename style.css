@@ -1599,10 +1599,12 @@ footer {
   font-size: 15px;
 }
 
+/* One keyline. The white-spacer ring doubled the outline against a field that
+   already has a border, which read as two lozenges rather than one focused
+   one. The border alone is enough of a state change here. */
 .gate-input:focus {
   outline: none;
   border-color: var(--focus);
-  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--focus);
 }
 
 .gate-button {
