@@ -1558,14 +1558,18 @@ footer {
   color: var(--muted);
 }
 
-/* Size has no field, so the note is pinned to the bottom-right of the grid
-   itself rather than flowing under it. Below the grid it sat off the bottom of
-   the view, which on a page that has just gone grey means the one thing still
-   speaking is the one thing you cannot see. The cards it covers are greyed
-   already. */
+/* Size has no field to sit over, so the note goes on the grid's centre line
+   rather than in a corner. Circles pack from the top of each card, which
+   leaves the lower half of every card empty — so a note sitting just below
+   centre crosses one card's dots at most, where the bottom-right corner was
+   landing squarely on Government & Democracy's second row.
+
+   Centred also suits what it is. This is the finding, not a caption on the
+   corner of the picture. */
 .pair-note.is-static {
-  right: 12px;
-  bottom: 12px;
+  left: 50%;
+  top: 56%;
+  transform: translateX(-50%);
 }
 
 @media (max-width: 900px) {
@@ -1580,8 +1584,11 @@ footer {
   }
 
   .pair-note.is-static {
+    left: 14px;
     right: 14px;
+    top: auto;
     bottom: 14px;
+    transform: none;
   }
 
   .samesies-toggle {
