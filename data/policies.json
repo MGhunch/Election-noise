@@ -1,11 +1,12 @@
 {
   "updated": "2026-07-27",
-  "generated_by": "policy-intake-prompt v3, Direction axis rescored 27 Jul 2026 under revised Position rules",
-  "note": "Fresh intake pass over raw-policy-sweep-consolidated.md. Sizes calibrated by Michael 26 Jul 2026 against a reach test (universal vs cohort; architecture vs operating inside the system). Direction axis rescored 27 Jul 2026: ordinary policy scores 0, delivery mechanisms don't place the call, and a prior setting only counts if the party is the one reaching for it. Economic, Size and Shape untouched. IDs are a new sequence and do NOT correspond to the previous dataset numbering. Sources rebuilt 26 Jul: verified records link to news reporting; party pages in party_link. Rule: verified = news link; unverified = party site.",
+  "generated_by": "policy-intake-prompt v3",
+  "note": "One circle, one policy, at the resolution the party publishes it. slug is the permanent key — never renamed, never reused, never resequenced; splits mint fresh slugs. verified records cite news reporting, with the party page in party_link; unverified records cite the party site.",
   "count": 82,
   "policies": [
     {
       "id": "policy-001",
+      "slug": "act-flat-tax",
       "party": "ACT",
       "conversation": "Economy",
       "secondary": "",
@@ -31,6 +32,7 @@
     },
     {
       "id": "policy-002",
+      "slug": "act-health-purchaser",
       "party": "ACT",
       "conversation": "Health",
       "secondary": "",
@@ -56,6 +58,7 @@
     },
     {
       "id": "policy-003",
+      "slug": "act-rural-crime",
       "party": "ACT",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -81,6 +84,7 @@
     },
     {
       "id": "policy-004",
+      "slug": "act-guard-detention",
       "party": "ACT",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -106,6 +110,7 @@
     },
     {
       "id": "policy-005",
+      "slug": "act-pet-coercion",
       "party": "ACT",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -132,6 +137,7 @@
     },
     {
       "id": "policy-006",
+      "slug": "act-burglary-strikes",
       "party": "ACT",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -157,6 +163,7 @@
     },
     {
       "id": "policy-007",
+      "slug": "act-rma-replace",
       "party": "ACT",
       "conversation": "Future & Infrastructure",
       "secondary": "Housing",
@@ -182,6 +189,7 @@
     },
     {
       "id": "policy-008",
+      "slug": "act-infra-ppp",
       "party": "ACT",
       "conversation": "Future & Infrastructure",
       "secondary": "Economy",
@@ -207,6 +215,7 @@
     },
     {
       "id": "policy-009",
+      "slug": "act-freshwater-councils",
       "party": "ACT",
       "conversation": "Environment",
       "secondary": "",
@@ -232,6 +241,7 @@
     },
     {
       "id": "policy-010",
+      "slug": "act-ag-ets",
       "party": "ACT",
       "conversation": "Environment",
       "secondary": "",
@@ -257,6 +267,7 @@
     },
     {
       "id": "policy-011",
+      "slug": "act-education-accounts",
       "party": "ACT",
       "conversation": "Education",
       "secondary": "",
@@ -282,6 +293,7 @@
     },
     {
       "id": "policy-012",
+      "slug": "act-teacher-pay",
       "party": "ACT",
       "conversation": "Education",
       "secondary": "",
@@ -307,6 +319,7 @@
     },
     {
       "id": "policy-013",
+      "slug": "act-deport-offenders",
       "party": "ACT",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -332,6 +345,7 @@
     },
     {
       "id": "policy-014",
+      "slug": "act-treaty-principles",
       "party": "ACT",
       "conversation": "Government & Democracy",
       "secondary": "",
@@ -357,6 +371,7 @@
     },
     {
       "id": "policy-015",
+      "slug": "act-firearms-registry",
       "party": "ACT",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -382,6 +397,7 @@
     },
     {
       "id": "policy-016",
+      "slug": "act-dept-cuts",
       "party": "ACT",
       "conversation": "Government & Democracy",
       "secondary": "",
@@ -408,6 +424,7 @@
     },
     {
       "id": "policy-017",
+      "slug": "lab-free-prescriptions",
       "party": "Labour",
       "conversation": "Health",
       "secondary": "Cost of Living",
@@ -434,6 +451,7 @@
     },
     {
       "id": "policy-018",
+      "slug": "lab-maternity-scans",
       "party": "Labour",
       "conversation": "Health",
       "secondary": "",
@@ -460,6 +478,7 @@
     },
     {
       "id": "policy-019",
+      "slug": "lab-cervical-screening",
       "party": "Labour",
       "conversation": "Health",
       "secondary": "",
@@ -486,6 +505,7 @@
     },
     {
       "id": "policy-020",
+      "slug": "lab-gp-loans",
       "party": "Labour",
       "conversation": "Health",
       "secondary": "",
@@ -511,6 +531,7 @@
     },
     {
       "id": "policy-021",
+      "slug": "lab-medicard",
       "party": "Labour",
       "conversation": "Health",
       "secondary": "",
@@ -537,6 +558,7 @@
     },
     {
       "id": "policy-022",
+      "slug": "lab-fare-cap",
       "party": "Labour",
       "conversation": "Cost of Living",
       "secondary": "",
@@ -563,6 +585,7 @@
     },
     {
       "id": "policy-023",
+      "slug": "lab-future-fund",
       "party": "Labour",
       "conversation": "Future & Infrastructure",
       "secondary": "Economy",
@@ -589,6 +612,7 @@
     },
     {
       "id": "policy-024",
+      "slug": "lab-apprenticeship-boost",
       "party": "Labour",
       "conversation": "Education",
       "secondary": "",
@@ -615,6 +639,7 @@
     },
     {
       "id": "policy-025",
+      "slug": "lab-solarsaver",
       "party": "Labour",
       "conversation": "Cost of Living",
       "secondary": "",
@@ -641,6 +666,7 @@
     },
     {
       "id": "policy-026",
+      "slug": "lab-cgt",
       "party": "Labour",
       "conversation": "Economy",
       "secondary": "",
@@ -667,6 +693,7 @@
     },
     {
       "id": "policy-027",
+      "slug": "nat-solar-loans",
       "party": "National",
       "conversation": "Cost of Living",
       "secondary": "",
@@ -693,6 +720,7 @@
     },
     {
       "id": "policy-028",
+      "slug": "nat-solar-consents",
       "party": "National",
       "conversation": "Cost of Living",
       "secondary": "Housing",
@@ -718,6 +746,7 @@
     },
     {
       "id": "policy-029",
+      "slug": "nat-compulsory-kiwisaver",
       "party": "National",
       "conversation": "Future & Infrastructure",
       "secondary": "",
@@ -743,6 +772,7 @@
     },
     {
       "id": "policy-030",
+      "slug": "nat-character-discounts",
       "party": "National",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -769,6 +799,7 @@
     },
     {
       "id": "policy-031",
+      "slug": "nat-trade-talks",
       "party": "National",
       "conversation": "Economy",
       "secondary": "",
@@ -794,6 +825,7 @@
     },
     {
       "id": "policy-032",
+      "slug": "nat-building-consents",
       "party": "National",
       "conversation": "Economy",
       "secondary": "Housing",
@@ -819,6 +851,7 @@
     },
     {
       "id": "policy-033",
+      "slug": "grn-energy-loans",
       "party": "Green",
       "conversation": "Cost of Living",
       "secondary": "",
@@ -844,6 +877,7 @@
     },
     {
       "id": "policy-034",
+      "slug": "grn-kiwipower",
       "party": "Green",
       "conversation": "Future & Infrastructure",
       "secondary": "Cost of Living",
@@ -869,6 +903,7 @@
     },
     {
       "id": "policy-035",
+      "slug": "grn-wealth-tax",
       "party": "Green",
       "conversation": "Economy",
       "secondary": "",
@@ -895,6 +930,7 @@
     },
     {
       "id": "policy-036",
+      "slug": "grn-tax-cut",
       "party": "Green",
       "conversation": "Economy",
       "secondary": "Cost of Living",
@@ -921,6 +957,7 @@
     },
     {
       "id": "policy-037",
+      "slug": "grn-drink-swim-fish",
       "party": "Green",
       "conversation": "Environment",
       "secondary": "",
@@ -947,6 +984,7 @@
     },
     {
       "id": "policy-038",
+      "slug": "grn-food-donation",
       "party": "Green",
       "conversation": "Cost of Living",
       "secondary": "",
@@ -972,6 +1010,7 @@
     },
     {
       "id": "policy-039",
+      "slug": "grn-union-default",
       "party": "Green",
       "conversation": "Economy",
       "secondary": "",
@@ -998,6 +1037,7 @@
     },
     {
       "id": "policy-040",
+      "slug": "nzf-gentailer-split",
       "party": "NZ First",
       "conversation": "Cost of Living",
       "secondary": "Future & Infrastructure",
@@ -1023,6 +1063,7 @@
     },
     {
       "id": "policy-041",
+      "slug": "nzf-mining-royalties",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
@@ -1049,6 +1090,7 @@
     },
     {
       "id": "policy-042",
+      "slug": "nzf-school-mines",
       "party": "NZ First",
       "conversation": "Education",
       "secondary": "",
@@ -1075,6 +1117,7 @@
     },
     {
       "id": "policy-043",
+      "slug": "nzf-mining-dereg",
       "party": "NZ First",
       "conversation": "Environment",
       "secondary": "",
@@ -1101,6 +1144,7 @@
     },
     {
       "id": "policy-044",
+      "slug": "nzf-mines-rescue",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
@@ -1127,6 +1171,7 @@
     },
     {
       "id": "policy-045",
+      "slug": "nzf-maori-seats",
       "party": "NZ First",
       "conversation": "Government & Democracy",
       "secondary": "",
@@ -1152,6 +1197,7 @@
     },
     {
       "id": "policy-046",
+      "slug": "nzf-marsden-zone",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "Economy",
@@ -1177,6 +1223,7 @@
     },
     {
       "id": "policy-047",
+      "slug": "nzf-cathedral",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
@@ -1203,6 +1250,7 @@
     },
     {
       "id": "policy-048",
+      "slug": "nzf-citizen-voting",
       "party": "NZ First",
       "conversation": "Government & Democracy",
       "secondary": "",
@@ -1228,6 +1276,7 @@
     },
     {
       "id": "policy-049",
+      "slug": "nzf-supermarket-split",
       "party": "NZ First",
       "conversation": "Cost of Living",
       "secondary": "",
@@ -1253,6 +1302,7 @@
     },
     {
       "id": "policy-050",
+      "slug": "nzf-kiwisaver-birth",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
@@ -1279,6 +1329,7 @@
     },
     {
       "id": "policy-051",
+      "slug": "nzf-commonwealth-games",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "",
@@ -1305,6 +1356,7 @@
     },
     {
       "id": "policy-052",
+      "slug": "tpm-justice-authority",
       "party": "Te Pāti Māori",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -1330,6 +1382,7 @@
     },
     {
       "id": "policy-053",
+      "slug": "tpm-justice-overhaul",
       "party": "Te Pāti Māori",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -1355,6 +1408,7 @@
     },
     {
       "id": "policy-054",
+      "slug": "tpm-prisoner-rights",
       "party": "Te Pāti Māori",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -1380,6 +1434,7 @@
     },
     {
       "id": "policy-055",
+      "slug": "tpm-co-response",
       "party": "Te Pāti Māori",
       "conversation": "Health",
       "secondary": "Crime & Justice",
@@ -1405,6 +1460,7 @@
     },
     {
       "id": "policy-056",
+      "slug": "tpm-water-allocation",
       "party": "Te Pāti Māori",
       "conversation": "Environment",
       "secondary": "",
@@ -1430,6 +1486,7 @@
     },
     {
       "id": "policy-057",
+      "slug": "tpm-seabed-ban",
       "party": "Te Pāti Māori",
       "conversation": "Environment",
       "secondary": "",
@@ -1455,6 +1512,7 @@
     },
     {
       "id": "policy-058",
+      "slug": "tpm-kai-sovereignty",
       "party": "Te Pāti Māori",
       "conversation": "Environment",
       "secondary": "Cost of Living",
@@ -1480,6 +1538,7 @@
     },
     {
       "id": "policy-059",
+      "slug": "tpm-maori-medium",
       "party": "Te Pāti Māori",
       "conversation": "Education",
       "secondary": "",
@@ -1505,6 +1564,7 @@
     },
     {
       "id": "policy-060",
+      "slug": "tpm-health-authority",
       "party": "Te Pāti Māori",
       "conversation": "Health",
       "secondary": "",
@@ -1530,6 +1590,7 @@
     },
     {
       "id": "policy-061",
+      "slug": "tpm-iwi-build",
       "party": "Te Pāti Māori",
       "conversation": "Housing",
       "secondary": "",
@@ -1555,6 +1616,7 @@
     },
     {
       "id": "policy-062",
+      "slug": "tpm-standards-authority",
       "party": "Te Pāti Māori",
       "conversation": "Education",
       "secondary": "Government & Democracy",
@@ -1580,6 +1642,7 @@
     },
     {
       "id": "policy-063",
+      "slug": "tpm-military-neutrality",
       "party": "Te Pāti Māori",
       "conversation": "Government & Democracy",
       "secondary": "",
@@ -1605,6 +1668,7 @@
     },
     {
       "id": "policy-064",
+      "slug": "top-breakthrough-economy",
       "party": "TOP",
       "conversation": "Future & Infrastructure",
       "secondary": "Economy",
@@ -1631,6 +1695,7 @@
     },
     {
       "id": "policy-065",
+      "slug": "top-citizens-assemblies",
       "party": "TOP",
       "conversation": "Government & Democracy",
       "secondary": "",
@@ -1657,6 +1722,7 @@
     },
     {
       "id": "policy-066",
+      "slug": "top-te-tiriti",
       "party": "TOP",
       "conversation": "Government & Democracy",
       "secondary": "",
@@ -1682,6 +1748,7 @@
     },
     {
       "id": "policy-067",
+      "slug": "top-anti-corruption",
       "party": "TOP",
       "conversation": "Government & Democracy",
       "secondary": "",
@@ -1707,6 +1774,7 @@
     },
     {
       "id": "policy-068",
+      "slug": "top-smokefree-restore",
       "party": "TOP",
       "conversation": "Health",
       "secondary": "",
@@ -1732,6 +1800,7 @@
     },
     {
       "id": "policy-069",
+      "slug": "top-smart-crime",
       "party": "TOP",
       "conversation": "Crime & Justice",
       "secondary": "",
@@ -1757,6 +1826,7 @@
     },
     {
       "id": "policy-070",
+      "slug": "top-ev-incentives",
       "party": "TOP",
       "conversation": "Environment",
       "secondary": "Economy",
@@ -1782,6 +1852,7 @@
     },
     {
       "id": "policy-071",
+      "slug": "top-tax-reset",
       "party": "TOP",
       "conversation": "Economy",
       "secondary": "Cost of Living",
@@ -1807,6 +1878,7 @@
     },
     {
       "id": "policy-072",
+      "slug": "top-abundant-energy",
       "party": "TOP",
       "conversation": "Future & Infrastructure",
       "secondary": "Cost of Living",
@@ -1833,6 +1905,7 @@
     },
     {
       "id": "policy-073",
+      "slug": "top-affordable-housing",
       "party": "TOP",
       "conversation": "Housing",
       "secondary": "Economy",
@@ -1859,6 +1932,7 @@
     },
     {
       "id": "policy-074",
+      "slug": "nzf-bnz-buyback",
       "party": "NZ First",
       "conversation": "Economy",
       "secondary": "Cost of Living",
@@ -1885,6 +1959,7 @@
     },
     {
       "id": "policy-075",
+      "slug": "top-healthy-oceans",
       "party": "TOP",
       "conversation": "Environment",
       "secondary": "",
@@ -1911,6 +1986,7 @@
     },
     {
       "id": "policy-076",
+      "slug": "top-future-fit",
       "party": "TOP",
       "conversation": "Education",
       "secondary": "",
@@ -1936,6 +2012,7 @@
     },
     {
       "id": "policy-077",
+      "slug": "top-infrastructure-plan",
       "party": "TOP",
       "conversation": "Future & Infrastructure",
       "secondary": "Cost of Living",
@@ -1961,6 +2038,7 @@
     },
     {
       "id": "policy-078",
+      "slug": "top-healthy-land",
       "party": "TOP",
       "conversation": "Environment",
       "secondary": "",
@@ -1986,6 +2064,7 @@
     },
     {
       "id": "policy-079",
+      "slug": "top-ag-ets",
       "party": "TOP",
       "conversation": "Environment",
       "secondary": "Economy",
@@ -2011,6 +2090,7 @@
     },
     {
       "id": "policy-080",
+      "slug": "grn-rent-caps",
       "party": "Green",
       "conversation": "Housing",
       "secondary": "Cost of Living",
@@ -2037,6 +2117,7 @@
     },
     {
       "id": "policy-081",
+      "slug": "nzf-subsurface-survey",
       "party": "NZ First",
       "conversation": "Future & Infrastructure",
       "secondary": "Cost of Living",
@@ -2062,6 +2143,7 @@
     },
     {
       "id": "policy-082",
+      "slug": "nat-affirmative-consent",
       "party": "National",
       "conversation": "Crime & Justice",
       "secondary": "",

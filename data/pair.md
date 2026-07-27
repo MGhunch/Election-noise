@@ -145,7 +145,7 @@ Valid JSON, one object per pair:
 }
 ```
 
-`tier` is `same`, `similar` or `different`, per the rule above. `problem` states the shared problem in a phrase. `records` holds two ids, or more. `status` is always `waiting` on output — a pair goes live only once a human has confirmed it.
+`tier` is `same`, `similar` or `different`, per the rule above. `problem` states the shared problem in a phrase. `records` holds two slugs, or more. `status` is always `waiting` on output — a pair goes live only once a human has confirmed it.
 
 ---
 

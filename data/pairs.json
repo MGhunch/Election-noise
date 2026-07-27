@@ -9,8 +9,8 @@
       "label": "KiwiSaver",
       "problem": "How do we get people saving for retirement?",
       "records": [
-        "policy-029",
-        "policy-050"
+        "nat-compulsory-kiwisaver",
+        "nzf-kiwisaver-birth"
       ],
       "line": "National and NZ First both want KiwiSaver made compulsory. Same policy, a month apart.",
       "confidence": "High",
@@ -23,9 +23,9 @@
       "label": "Solar",
       "problem": "How do we get solar panels onto roofs?",
       "records": [
-        "policy-025",
-        "policy-027",
-        "policy-033"
+        "lab-solarsaver",
+        "nat-solar-loans",
+        "grn-energy-loans"
       ],
       "line": "Labour, National and the Greens all want to help pay for your solar panels. Three subsidies, one idea.",
       "confidence": "Low",
@@ -38,8 +38,8 @@
       "label": "Marine",
       "problem": "How do we protect the ocean?",
       "records": [
-        "policy-037",
-        "policy-075"
+        "grn-drink-swim-fish",
+        "top-healthy-oceans"
       ],
       "line": "The Greens and TOP both want 30% of the ocean protected and bottom trawling gone. Same target, same year.",
       "confidence": "Check",
@@ -52,8 +52,8 @@
       "label": "Supermarkets",
       "problem": "Why are groceries so expensive?",
       "records": [
-        "policy-049",
-        "policy-064"
+        "nzf-supermarket-split",
+        "top-breakthrough-economy"
       ],
       "line": "NZ First and TOP both want the supermarkets broken up. NZ First would legislate it. TOP would let the Commerce Commission do it.",
       "confidence": "Check",
@@ -66,8 +66,8 @@
       "label": "Doctors",
       "problem": "How do we make seeing a GP affordable?",
       "records": [
-        "policy-021",
-        "policy-060"
+        "lab-medicard",
+        "tpm-health-authority"
       ],
       "line": "Labour and Te Pāti Māori both want the cost taken out of seeing a GP. Labour for everyone, TPM for whānau under $60,000.",
       "confidence": "Check",
@@ -80,8 +80,8 @@
       "label": "Transport",
       "problem": "How do we make getting around cheaper?",
       "records": [
-        "policy-022",
-        "policy-077"
+        "lab-fare-cap",
+        "top-infrastructure-plan"
       ],
       "line": "Labour and TOP both want cheaper public transport. Labour would cap it. TOP would make it free.",
       "confidence": "Low",
@@ -94,10 +94,10 @@
       "label": "Asset taxes",
       "problem": "Who bears the tax burden?",
       "records": [
-        "policy-026",
-        "policy-035",
-        "policy-071",
-        "policy-061"
+        "lab-cgt",
+        "grn-wealth-tax",
+        "top-tax-reset",
+        "tpm-iwi-build"
       ],
       "line": "Four parties want new taxes on assets. Four different ways to do it.",
       "confidence": "Check",
@@ -110,8 +110,8 @@
       "label": "Emissions",
       "problem": "What do we do about farm emissions?",
       "records": [
-        "policy-010",
-        "policy-079"
+        "act-ag-ets",
+        "top-ag-ets"
       ],
       "line": "ACT and TOP both have a plan for farm emissions. ACT would keep them out of the trading scheme. TOP would bring them in.",
       "confidence": "Low",
@@ -124,9 +124,9 @@
       "label": "Gentailers",
       "problem": "How do we keep the lights on in a dry year?",
       "records": [
-        "policy-034",
-        "policy-040",
-        "policy-072"
+        "grn-kiwipower",
+        "nzf-gentailer-split",
+        "top-abundant-energy"
       ],
       "line": "Three parties want the dry-year problem fixed. The Greens would build a public generator, NZ First would split the existing ones, TOP would leave them alone and pay for backup.",
       "confidence": "Check",
@@ -139,8 +139,8 @@
       "label": "Teachers",
       "problem": "How do we keep good teachers?",
       "records": [
-        "policy-012",
-        "policy-076"
+        "act-teacher-pay",
+        "top-future-fit"
       ],
       "line": "ACT and TOP both want more pay for teachers. ACT would pay the best ones more. TOP would pay them all properly.",
       "confidence": "Low",
@@ -153,8 +153,8 @@
       "label": "Voting",
       "problem": "Who gets to vote?",
       "records": [
-        "policy-048",
-        "policy-054"
+        "nzf-citizen-voting",
+        "tpm-prisoner-rights"
       ],
       "line": "NZ First would take the vote off permanent residents. Te Pāti Māori would give it back to prisoners.",
       "confidence": "Low",
