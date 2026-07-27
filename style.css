@@ -1542,3 +1542,101 @@ footer {
     width: auto;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Preview gate
+   ---------------------------------------------------------------------------
+   A courtesy lock so the site can be shown to a few people before launch. Not
+   security — this is a static site, the code is in script.js, and the data
+   files answer a direct fetch whatever the homepage is doing. Set GATE_CODE to
+   an empty string to open the site to everyone.
+   --------------------------------------------------------------------------- */
+
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--paper, #fbfbf9);
+}
+
+.gate-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.gate-title {
+  margin: 6px 0 10px;
+  font-size: clamp(38px, 7vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.gate-copy {
+  margin: 0 0 22px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.gate-form {
+  display: flex;
+  gap: 8px;
+}
+
+.gate-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 11px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  font: inherit;
+  font-size: 15px;
+}
+
+.gate-input:focus {
+  outline: none;
+  border-color: var(--focus);
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--focus);
+}
+
+.gate-button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 11px 20px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.gate-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--focus);
+}
+
+.gate-error {
+  margin: 14px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

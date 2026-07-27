@@ -11,6 +11,24 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Preview gate. A courtesy lock, not security: this is a static site, so
+       the code sits in script.js and the data files can be fetched directly.
+       It exists so the site can be shown to a few people before launch without
+       being open to anyone who guesses the URL. -->
+  <div id="gate" class="gate" hidden>
+    <div class="gate-card">
+      <p class="eyebrow">Not open yet</p>
+      <h1 class="gate-title">Election Noise</h1>
+      <p class="gate-copy">What’s the testing password?</p>
+      <form id="gate-form" class="gate-form" autocomplete="off">
+        <label class="visually-hidden" for="gate-input">Testing password</label>
+        <input id="gate-input" class="gate-input" type="password" inputmode="text" placeholder="Password" autocomplete="off" spellcheck="false">
+        <button class="gate-button" type="submit">Go to the site</button>
+      </form>
+      <p id="gate-error" class="gate-error" role="alert" hidden>That’s not the password.</p>
+    </div>
+  </div>
+
   <header class="site-header">
     <div>
       <p class="eyebrow">Who's saying what?</p>
