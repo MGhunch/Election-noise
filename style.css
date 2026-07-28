@@ -5,6 +5,9 @@
   --soft: #f5f5f3;
   --white: #ffffff;
   --focus: #151515;
+  /* Deliberately not Labour's red. A UI state that matched a party colour
+     would read as a party marker on a map made of party colours. */
+  --report: #b3261e;
 }
 
 /* Party colours are not defined here. They live in PARTY_COLOURS in script.js
@@ -1753,4 +1756,103 @@ footer {
   .footer-by {
     width: 100%;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Report a problem
+   ---------------------------------------------------------------------------
+   The flag swaps the bottom half of the detail panel — the meta table and the
+   source link — for a short form. The party, title and description stay put,
+   because someone writing "the costing is wrong" needs the costing in front of
+   them. Swapping rather than revealing also keeps the panel roughly the same
+   height, so nothing jumps or scrolls.
+
+   The flag is the toggle. Clicking it again puts the detail back, which is why
+   there is no cancel button.
+   --------------------------------------------------------------------------- */
+
+.dialog-flag.is-active {
+  background: var(--report);
+  color: var(--white);
+}
+
+.dialog-flag.is-active:hover,
+.dialog-flag.is-active:focus-visible {
+  background: var(--report);
+}
+
+.report-form {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.report-dek {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.report-note {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.report-note:focus {
+  outline: none;
+  border-color: var(--focus);
+}
+
+/* Bots fill every field they find; people never see this one. Cheaper and
+   quieter than a captcha, and it costs a submission nothing. */
+.report-catch {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.report-send {
+  margin-top: 12px;
+  padding: 11px 22px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  font: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.report-send:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.report-send:focus {
+  outline: none;
+}
+
+.report-send:focus-visible {
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--focus);
+}
+
+.report-status {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
 }

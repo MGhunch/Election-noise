@@ -582,7 +582,10 @@ function openDialog() {
 function showDialogState(state) {
   document.querySelector("#dialog-list").hidden = state !== "list";
   document.querySelector("#dialog-detail").hidden = state !== "detail";
-  if (state !== "detail") document.querySelector("#flag-policy").hidden = true;
+  if (state !== "detail") {
+    document.querySelector("#flag-policy").hidden = true;
+    closeReportForm();
+  }
   dialog.dataset.state = state;
 }
 
@@ -657,6 +660,7 @@ function openPolicy(policy, { fromList = false } = {}) {
 
   currentDialogPolicy = policy;
   document.querySelector("#flag-policy").hidden = false;
+  closeReportForm();
 
   showDialogState("detail");
   openDialog();
@@ -770,6 +774,8 @@ function bindStaticControls() {
   document.querySelector("#flag-policy").addEventListener("click", () => {
     openReportForm(currentDialogPolicy);
   });
+
+  document.querySelector("#report-form").addEventListener("submit", submitReport);
 
   document.querySelector("#dialog-back").addEventListener("click", () => {
     if (!openConversation) return;
@@ -1276,10 +1282,126 @@ function escapeHtml(value) {
 
 init();
 
-// Placeholder until the report form exists. Keeps the flag safe to ship:
-// clicking it does nothing visible yet.
+/* ---------------------------------------------------------------------------
+   Report a problem
+   ---------------------------------------------------------------------------
+   The flag toggles the bottom half of the detail panel between the meta table
+   and a short form. Nothing navigates and no state is added — the panel is the
+   same panel, showing a different half.
+
+   REPORT_ENDPOINT is where the note is posted. It is empty until the endpoint
+   exists, and while it is empty the form accepts the report, thanks the person
+   and logs it to the console rather than pretending to send. Better than a
+   dead button, and honest about what it is: the copy still says we will fix it
+   in the next update, so this must be filled in before the site is public.
+   --------------------------------------------------------------------------- */
+
+const REPORT_ENDPOINT = "";
+
+let reportOpen = false;
+
+function reportParts() {
+  return {
+    flag: document.querySelector("#flag-policy"),
+    form: document.querySelector("#report-form"),
+    meta: document.querySelector("#dialog-detail .policy-meta"),
+    actions: document.querySelector("#dialog-detail .dialog-actions"),
+    note: document.querySelector("#report-note"),
+    status: document.querySelector("#report-status"),
+    send: document.querySelector(".report-send")
+  };
+}
+
+function setReportOpen(open) {
+  const { flag, form, meta, actions, note, status, send } = reportParts();
+
+  reportOpen = open;
+  flag.classList.toggle("is-active", open);
+  flag.setAttribute("aria-expanded", String(open));
+
+  meta.hidden = open;
+  actions.hidden = open;
+  form.hidden = !open;
+
+  if (open) {
+    status.hidden = true;
+    status.textContent = "";
+    note.hidden = false;
+    send.hidden = false;
+    send.disabled = false;
+    note.focus();
+  }
+}
+
+function closeReportForm() {
+  if (reportOpen) setReportOpen(false);
+}
+
 function openReportForm(policy) {
   if (!policy) return;
+  setReportOpen(!reportOpen);
+}
+
+async function submitReport(event) {
+  event.preventDefault();
+
+  const { note, status, send } = reportParts();
+  const policy = currentDialogPolicy;
+  if (!policy) return;
+
+  // Honeypot. A person never sees this field, so anything in it is a bot —
+  // answered with the same thank-you rather than an error, which tells a
+  // scraper nothing about why it failed.
+  if (document.querySelector("#report-catch").value) {
+    showReportThanks();
+    return;
+  }
+
+  const text = note.value.trim();
+  if (!text) {
+    note.focus();
+    return;
+  }
+
+  send.disabled = true;
+  status.hidden = false;
+  status.textContent = "Sending…";
+
+  const payload = {
+    slug: policy.slug,
+    title: policy.title,
+    party: policy.party,
+    note: text
+  };
+
+  if (!REPORT_ENDPOINT) {
+    console.info("Report (no endpoint configured yet):", payload);
+    showReportThanks();
+    return;
+  }
+
+  try {
+    const response = await fetch(REPORT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error(`Report failed: ${response.status}`);
+    showReportThanks();
+  } catch (error) {
+    console.error(error);
+    send.disabled = false;
+    status.textContent = "That didn't send. Try again in a moment.";
+  }
+}
+
+function showReportThanks() {
+  const { note, status, send } = reportParts();
+  note.value = "";
+  note.hidden = true;
+  send.hidden = true;
+  status.hidden = false;
+  status.textContent = "Thanks. We'll take another look.";
 }
 
 /* ---------------------------------------------------------------------------
