@@ -1299,6 +1299,7 @@ init();
 const REPORT_ENDPOINT = "";
 
 let reportOpen = false;
+let thanksTimer = null;
 
 function reportParts() {
   return {
@@ -1323,12 +1324,18 @@ function setReportOpen(open) {
   actions.hidden = open;
   form.hidden = !open;
 
+  if (thanksTimer) {
+    clearTimeout(thanksTimer);
+    thanksTimer = null;
+  }
+
   if (open) {
     status.hidden = true;
     status.textContent = "";
     note.hidden = false;
     send.hidden = false;
     send.disabled = false;
+    document.querySelectorAll(".report-ask").forEach(part => { part.hidden = false; });
     note.focus();
   }
 }
@@ -1395,13 +1402,25 @@ async function submitReport(event) {
   }
 }
 
+// The ask has done its job by now, so it goes with the form rather than sitting
+// above a thank-you still inviting a report. The panel then returns to the
+// detail on its own — leaving someone in an empty form with nothing to do is a
+// dead end, and making them find the flag again to escape it is worse.
 function showReportThanks() {
   const { note, status, send } = reportParts();
+
   note.value = "";
   note.hidden = true;
   send.hidden = true;
+  document.querySelectorAll(".report-ask").forEach(part => { part.hidden = true; });
+
   status.hidden = false;
   status.textContent = "Thanks. We'll take another look.";
+
+  thanksTimer = setTimeout(() => {
+    thanksTimer = null;
+    if (reportOpen) setReportOpen(false);
+  }, 2400);
 }
 
 /* ---------------------------------------------------------------------------
