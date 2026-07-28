@@ -783,6 +783,23 @@ function bindStaticControls() {
 
   document.querySelector("#prompts-button").addEventListener("click", openPrompts);
 
+  // Its own panel. The link out to the prompts closes this one first, so two
+  // modals are never stacked.
+  const disclosureDialog = document.querySelector("#disclosure-dialog");
+
+  document.querySelector("#disclosure-button").addEventListener("click", () => {
+    disclosureDialog.showModal();
+  });
+
+  document.querySelector("#close-disclosure").addEventListener("click", () => {
+    disclosureDialog.close();
+  });
+
+  document.querySelector("#disclosure-to-prompts").addEventListener("click", () => {
+    disclosureDialog.close();
+    openPrompts();
+  });
+
   const promptsDialog = document.querySelector("#prompts-dialog");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
