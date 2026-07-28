@@ -615,6 +615,17 @@ h1 {
   background: rgba(0, 0, 0, 0.07);
 }
 
+/* The browser's own focus ring is blue, which on this site is a party colour.
+   The grey fill above is the indicator; the default ring is replaced rather
+   than removed. */
+.close-button:focus {
+  outline: none;
+}
+
+.close-button:focus-visible {
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--focus);
+}
+
 .policy-list {
   display: grid;
   gap: 1px;
@@ -856,6 +867,7 @@ dialog::backdrop {
 .policy-dialog h2,
 .about-dialog h2 {
   margin-right: 32px;
+  margin-bottom: 4px;
   font-size: clamp(1.5rem, 4vw, 2.4rem);
   letter-spacing: -0.035em;
 }
