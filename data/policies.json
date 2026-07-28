@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-27",
+  "updated": "2026-07-28",
   "generated_by": "airtable-export",
   "note": "Generated from the Election Noise Airtable base — do not hand-edit. Slugs are permanent: never renamed, never reused, never resequenced. Rule: verified = news link in source; unverified = party site.",
-  "count": 82,
+  "count": 90,
   "policies": [
     {
       "slug": "act-ag-ets",
@@ -31,6 +31,36 @@
       "party_link": "",
       "funds": "",
       "announced": null
+    },
+    {
+      "slug": "act-backing-hunters",
+      "party": "ACT",
+      "conversation": "Environment",
+      "secondary": "",
+      "title": "Backing Hunters",
+      "description": "Gives the Game Animal Council the decision-making authority it was created for, moving conservation calls on game animals from Wellington to hunters.",
+      "size": "Niche",
+      "immediacy": 3,
+      "mechanism": 4,
+      "econ": 1,
+      "econ_engaged": true,
+      "direction": 0,
+      "why": {
+        "size": "Reaches hunters only",
+        "shape": "Devolved authority, undated",
+        "position": "Devolves state function to sector"
+      },
+      "confidence": "Check",
+      "confidence_note": "Scored on the release alone; the Backing Hunters PDF holds the mechanism detail and is unread. Possible pair with nat-hunting-fishing (same expo, same weekend). Added 28/7 sweep.",
+      "flags": [
+        "headline-only"
+      ],
+      "status": "Published",
+      "verified": false,
+      "source": "https://www.act.org.nz/news/act-says-hunters-not-bureaucrats-should-lead-conservation",
+      "party_link": "",
+      "funds": "",
+      "announced": "2026-07-25"
     },
     {
       "slug": "act-burglary-strikes",
@@ -313,6 +343,34 @@
       "announced": null
     },
     {
+      "slug": "act-paris-renegotiate",
+      "party": "ACT",
+      "conversation": "Environment",
+      "secondary": "Economy",
+      "title": "Renegotiate Paris targets or withdraw",
+      "description": "Revisits New Zealand's Nationally Determined Contribution and Emissions Reduction Plans to set lower targets, with withdrawal from the Paris Agreement if reform fails, per the A Better Climate Deal position statement.",
+      "size": "Significant",
+      "immediacy": 2,
+      "mechanism": 4,
+      "econ": 2,
+      "econ_engaged": true,
+      "direction": 0,
+      "why": {
+        "size": "Revises targets, conditional exit",
+        "shape": "Renegotiated treaty targets, staged",
+        "position": "Loosens state climate constraint"
+      },
+      "confidence": "Check",
+      "confidence_note": "Scored from news coverage; A Better Climate Deal document and ACT's own page not fetched — Party link empty until found. Size hinges on whether the spine is revise-NDC (Significant) or exit (Flagship). Pairs with nzf-paris-exit, tier similar. Added 28/7 sweep.",
+      "flags": [],
+      "status": "Published",
+      "verified": true,
+      "source": "https://www.rnz.co.nz/news/political/571796/act-wants-out-of-paris-agreement-national-says-no",
+      "party_link": "",
+      "funds": "",
+      "announced": "2025-09-02"
+    },
+    {
       "slug": "act-pet-coercion",
       "party": "ACT",
       "conversation": "Crime & Justice",
@@ -339,6 +397,34 @@
       "party_link": "https://www.act.org.nz/news/act-announces-moves-to-stop-abusers-weaponising-pets",
       "funds": "",
       "announced": null
+    },
+    {
+      "slug": "act-regulator-speech",
+      "party": "ACT",
+      "conversation": "Government & Democracy",
+      "secondary": "",
+      "title": "Bar regulators from policing lawful opinions",
+      "description": "Legislation stopping occupational regulators from disciplining teachers, nurses, real estate agents and other professionals over lawful personal views.",
+      "size": "Niche",
+      "immediacy": 3,
+      "mechanism": 4,
+      "econ": 0,
+      "econ_engaged": false,
+      "direction": 0,
+      "why": {
+        "size": "Reaches regulated professionals only",
+        "shape": "Statutory limit on regulators",
+        "position": "Speech rules, not economics"
+      },
+      "confidence": "High",
+      "confidence_note": "Predates 27/7 file by six weeks — missed in earlier ACT sweep rather than new. Added 28/7 sweep.",
+      "flags": [],
+      "status": "Published",
+      "verified": false,
+      "source": "https://www.act.org.nz/news/act-to-stop-professional-regulators-policing-private-beliefs",
+      "party_link": "",
+      "funds": "",
+      "announced": "2026-06-17"
     },
     {
       "slug": "act-rma-replace",
@@ -451,6 +537,34 @@
       "party_link": "",
       "funds": "",
       "announced": null
+    },
+    {
+      "slug": "grn-ai-moratorium",
+      "party": "Green",
+      "conversation": "Future & Infrastructure",
+      "secondary": "Environment",
+      "title": "One-year pause on AI data centre consents",
+      "description": "Freezes consenting of new AI data centres for one year while rules are written requiring them to cover their own renewable generation, water use and grid impact; cited trigger is the consented Datagrid Southland site at roughly 6% of national electricity supply.",
+      "size": "Niche",
+      "immediacy": 1,
+      "mechanism": 3,
+      "econ": -1,
+      "econ_engaged": true,
+      "direction": 0,
+      "why": {
+        "size": "Reaches data centre developers",
+        "shape": "One-year consent freeze",
+        "position": "State halts private investment"
+      },
+      "confidence": "High",
+      "confidence_note": "Explicitly a pause not a ban; NZ has run technology moratoria before (GE), so Direction 0. Added 28/7 sweep.",
+      "flags": [],
+      "status": "Published",
+      "verified": true,
+      "source": "https://www.1news.co.nz/2026/07/26/greens-push-to-pause-big-data-centre-consents-pm-calls-it-alarmist/",
+      "party_link": "https://www.greens.org.nz/call_for_one_year_pause_on_consenting_new_ai_data_centres",
+      "funds": "",
+      "announced": "2026-07-26"
     },
     {
       "slug": "grn-drink-swim-fish",
@@ -1069,6 +1183,62 @@
       "announced": null
     },
     {
+      "slug": "nat-hunting-fishing",
+      "party": "National",
+      "conversation": "Environment",
+      "secondary": "",
+      "title": "Hunter-led conservation and Crown land access",
+      "description": "Recognises valued introduced species in law, strengthens the Game Animal Council, modernises Fish & Game, replaces the Tahr Control Plan, and opens suitable LINZ-managed Crown land to recreational hunting and fishing.",
+      "size": "Niche",
+      "immediacy": 3,
+      "mechanism": 4,
+      "econ": 0,
+      "econ_engaged": false,
+      "direction": 1,
+      "why": {
+        "size": "Reaches hunters and anglers",
+        "shape": "Statutory recognition, undated work",
+        "position": "Law change, no economic spine"
+      },
+      "confidence": "Low",
+      "confidence_note": "Direction call (pest-default flipped to valued-species reads as a new setting) rests on the release; full plan PDF unread. Added 28/7 sweep.",
+      "flags": [],
+      "status": "Published",
+      "verified": false,
+      "source": "https://www.national.org.nz/news/20260725-honjamesmeager",
+      "party_link": "",
+      "funds": "",
+      "announced": "2026-07-25"
+    },
+    {
+      "slug": "nat-parental-leave",
+      "party": "National",
+      "conversation": "Cost of Living",
+      "secondary": "Economy",
+      "title": "Paid parental leave extended to 30 weeks",
+      "description": "Extends paid parental leave from 26 to 30 weeks by 2029, starting at 27 weeks in Budget 2027, lets parents take leave concurrently in any combination, and adds a government KiwiSaver contribution at the default rate on parental leave from 1 July 2027.",
+      "size": "Significant",
+      "immediacy": 2,
+      "mechanism": 2,
+      "econ": -1,
+      "econ_engaged": true,
+      "direction": 0,
+      "why": {
+        "size": "Reaches all future parents",
+        "shape": "Staged entitlement increase, three Budgets",
+        "position": "Expands government cash entitlement"
+      },
+      "confidence": "High",
+      "confidence_note": "Announcement page carries all numbers; full policy PDF unread.",
+      "flags": [],
+      "status": "Published",
+      "verified": false,
+      "source": "https://www.national.org.nz/news/paid-parental-leave",
+      "party_link": "",
+      "funds": "",
+      "announced": "2026-07-26"
+    },
+    {
       "slug": "nat-solar-consents",
       "party": "National",
       "conversation": "Cost of Living",
@@ -1461,6 +1631,34 @@
       "announced": null
     },
     {
+      "slug": "nzf-paris-exit",
+      "party": "NZ First",
+      "conversation": "Environment",
+      "secondary": "Economy",
+      "title": "Withdraw from the Paris Agreement",
+      "description": "Exits New Zealand from the Paris climate agreement, removing the international commitment that anchors domestic emissions targets.",
+      "size": "Flagship",
+      "immediacy": 2,
+      "mechanism": 5,
+      "econ": 2,
+      "econ_engaged": true,
+      "direction": -1,
+      "why": {
+        "size": "Universal reach via emissions framework",
+        "shape": "Treaty withdrawal, multi-year unwind",
+        "position": "Removes state climate constraint"
+      },
+      "confidence": "Check",
+      "confidence_note": "Off-hub: reconfirmed in Warkworth speech alongside citizens-only voting, not yet found on nzfirst.nz policy page. Size call (universal via emissions framework) and Direction call (return to pre-2016 setting; UNFCCC membership would remain) both need a human look. Added 28/7 sweep.",
+      "flags": [],
+      "status": "Published",
+      "verified": true,
+      "source": "https://www.nzherald.co.nz/nz/politics/election-2026-winston-peters-announces-citizens-only-voting-policy/YJZGPDKAH5BYNO2SXMXZDY3TFY/",
+      "party_link": "",
+      "funds": "",
+      "announced": "2026-07-05"
+    },
+    {
       "slug": "nzf-school-mines",
       "party": "NZ First",
       "conversation": "Education",
@@ -1711,6 +1909,36 @@
       "party_link": "https://www.opportunity.org.nz/citizens-voice",
       "funds": "",
       "announced": null
+    },
+    {
+      "slug": "top-donation-cap",
+      "party": "TOP",
+      "conversation": "Government & Democracy",
+      "secondary": "",
+      "title": "Uncap the charitable donation tax credit",
+      "description": "Repeals the cap on donations eligible for the 33 percent donation tax credit, letting donors claim the credit on their full charitable giving.",
+      "size": "Niche",
+      "immediacy": 2,
+      "mechanism": 2,
+      "econ": 1,
+      "econ_engaged": true,
+      "direction": 0,
+      "why": {
+        "size": "Reaches donors above cap",
+        "shape": "Uncaps existing tax credit",
+        "position": "Tax relief expands private giving"
+      },
+      "confidence": "Low",
+      "confidence_note": "Sourced from the news-listing summary; full post unread and Source is the listing page, not the post URL. Added 28/7 sweep.",
+      "flags": [
+        "headline-only"
+      ],
+      "status": "Published",
+      "verified": false,
+      "source": "https://www.opportunity.org.nz/news",
+      "party_link": "",
+      "funds": "",
+      "announced": "2026-07-03"
     },
     {
       "slug": "top-ev-incentives",
